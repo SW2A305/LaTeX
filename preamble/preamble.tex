@@ -1,0 +1,386 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% COMMAND DEACTIVATION %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\let\added\undefined
+\let\deleted\undefined
+
+
+%%%%%%%%%%%%%%
+%% PACKAGES %%
+%%%%%%%%%%%%%%
+
+
+%%% Initial things %%%
+% Fix various issues with LaTeX2e
+\usepackage{fixltx2e}
+% Font package
+\usepackage{fourier}
+% Index
+\usepackage{makeidx}
+\makeindex
+
+
+%%% Translations and character encodings %%%
+% Enable use of several characters, including æ, ø and å
+\usepackage[utf8]{inputenc}
+% Danish language
+\usepackage[danish]{babel}
+% Use PostScript fonts instead of bitmap ones. Also does other stuff.
+\usepackage[T1]{fontenc}
+% Various LaTeX symbols
+\usepackage{latexsym}
+% Wider selection of colours
+\usepackage{xcolor}
+% Improved element justification
+\usepackage{ragged2e}
+% Font improvements
+\usepackage{fix-cm}
+% Enables inclusion of PDF files
+\usepackage{pdfpages}
+% Enables various forms of lines, like double-underlining (\uuline{})
+\usepackage[normalem,normalbf]{ulem}
+% Sets the tolerance for distance between words, determining when to hyphenate.
+\pretolerance=2500
+
+
+%%% Figures and tables (Floats) %%%
+% Ensures that floats won't appear -before- the place where they're added
+\usepackage{flafter}
+% Enable multi-rows and -columns
+\usepackage{multirow}
+\usepackage{multicol}
+% Double, horizontal lines
+\usepackage{hhline}
+% Enables coloured tables
+\usepackage{colortbl}
+% Gives improved control over placement of floats
+% \begin{figure}[!h] % Won't be floating
+\usepackage{here}
+% Wrap text around figures
+\usepackage{wrapfig}
+% Wrap text around tables
+\usepackage{floatflt}
+% Enables the \FloatBarrier command
+\usepackage{placeins}
+% Rotation of figures
+\usepackage{rotating}
+% Framed boxes
+\usepackage{framed}
+% Booktabs - Fancy tables
+\usepackage{booktabs}
+% Enables inclusion of PDF documents of version 1.6+
+\pdfoptionpdfminorversion=6
+
+
+%%% Mathematic formulas %%%
+% AMS math
+\usepackage{amsmath}
+\usepackage{amssymb}
+% Extra fonts (for math, I think)
+\usepackage{stmaryrd}
+% Access text symbols
+\usepackage{textcomp}
+% Extend AMS
+\usepackage{mathtools}
+\usepackage{cancel}
+% Use theorems in your document
+% The ntheorem package is also used for the example environment
+% When using thmmarks, amsmath must be an option as well. Otherwise \eqref doesn't work anymore.
+\usepackage[framed,amsmath,thmmarks]{ntheorem}
+% Pretty fractions, just because
+\usepackage{nicefrac}
+
+
+%%% Graphics %%%
+% Various image-commands
+\usepackage{eso-pic}
+% Use JPEG and PNG images
+\usepackage{graphicx}
+
+
+%%% Text stuff %%%
+% Filler text
+\usepackage{lipsum}
+% Page counting
+\usepackage{totpages}
+% Acronyms
+\usepackage{acronym}
+
+
+%%% Source Code Stuff %%%
+% Adds \lstinline!code there!, where !! are delimeters not used in the code
+% Adds the environment: lstlisting
+% Adds command \lstinputlisting[options]{filename.ext}
+% More info in manual.
+\usepackage{listings}
+\lstloadlanguages{[Sharp]C,XML,SQL}
+\lstset{numbers=left,
+        numberstyle=\tiny,
+        stepnumber=2,
+        numbersep=5pt,
+        frame=tb,
+        inputencoding=utf8,
+        tabsize=2,
+        extendedchars=true,
+        language=[Sharp]C}
+\lstdefinestyle{make}{tabsize=4}
+
+%%% References, bibtex and URLs %%%
+% Post URLs. Allows breaking at hyphens to help avoid long links.
+\usepackage[hyphens]{url}
+% Better cross references
+\usepackage[danish]{varioref}
+% Enable natbib citation styles
+\usepackage[square]{natbib}
+% Define a new 'leo' style for URL package, that will use a smaller font
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}
+}
+\makeatother
+% And of course, use this new style
+\urlstyle{leo}
+
+
+%%% Floats %%%
+% Not entirely sure why I need this yet
+\let\newfloat\relax
+\usepackage{float}
+% Enables usage of \subcaption, \subtop and \subbottom
+\newsubfloat{figure}
+
+
+%%% Todo Stuff %%%
+% Insert needed corrections with \fixme{..}, which will cause an error during compile, if any are present once 'draft'
+% is replaced with 'final'
+\usepackage[danish,silent]{fixme}
+\fxsetup{layout={footnote,marginclue,index},innerlayout={inline,index}}
+
+
+%%% Changes Markup %%%
+% Markup changes of varying types.
+% Adds the commands:
+%  - \added[id=(author id), remark={remark text}]{new text}
+%  - \deleted[id=(author id), remark={remark text}]{old text}
+%  - \replaced[id=(author id), remark={remark text}]{new text}{old text}
+\usepackage[xcolor,authormarkup=footnote]{changes}
+% Adds the commands:
+%  - \cbstart
+%  - \cbend
+%  - \cbdelete
+%  - Environment: changebar
+\usepackage[outerbars,xcolor]{changebar}
+\cbcolor{red}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% DOCUMENT SETTINGS %%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% Margins %%%
+% \setlrmarginsandblock{binding}{edge}{ratio}
+\setlrmarginsandblock{3.5cm}{2.5cm}{*}
+% \setulmarginsandblock{top}{bottom}{ratio}
+\setulmarginsandblock{2.5cm}{3.0cm}{*}
+% Performs various calculations and makes several non-Memoir things work with the Memoir class
+\checkandfixthelayout 
+% Correct todonotes placement
+\reversemarginpar
+
+
+%%% Paragraph formatting %%%
+% Size of paragraph indentation
+\setlength{\parindent}{0mm}
+% Distance between paragraphs (double enter)
+\setlength{\parskip}{3mm}
+% Line distance
+\linespread{1,1}
+
+
+%%% Bibliography %%%
+% Defines parameters for the bibliography, such as the parenthesis and separators
+\bibpunct{[}{]}{,}{a}{}{;}
+% Bibliography style
+\bibliographystyle{bibtex/harvard}
+
+
+%%% Table of contents %%%
+% Depth of numbered headlines
+\setsecnumdepth{subsubsection}
+% Changing the document class' limit for number-depth
+\maxsecnumdepth{subsubsection}
+% Define the depth included in the table of contents
+\settocdepth{section}
+% Use letters instead of Roman numerals in TOC
+\renewcommand{\thepart}{\Alph{part}}
+
+
+%%% Text stuff %%%
+% Removes distance between items in itemize
+\let\olditemize=\itemize
+\def\itemize{\olditemize\setlength{\itemsep}{-1ex}}
+% Removes distance between items in enumerate
+\let\oldenumerate=\enumerate
+\def\enumerate{\oldenumerate\setlength{\itemsep}{-1ex}}
+
+
+%%% Changes (Language strings) %%%
+\addto\captionsdanish{
+  \def\listofchangesname{Ændringer i dokumentet}
+  \def\summaryofchangesname{Ændringer}
+  \def\changesaddname{Tilføjet}
+  \def\changesdeletename{Slettet}
+  \def\changesreplacename{Erstattet}
+  \def\changesauthorname{Skribent}
+  \def\changesanonymousname{anonym}
+  \def\changesnoloc{Listen af ændringer tilgængelig efter næste \LaTeX\ kørsel.}
+  \def\changesnosoc{Opsummering af ændringer tilgængelig efter næste \LaTeX\ kørsel.}
+}
+
+
+%%% Visual references %%%
+% Enables clickable hyperlinks
+\usepackage[colorlinks,hidelinks]{hyperref}
+% General setup of hyperlinks package
+\hypersetup{
+    breaklinks = true,
+    colorlinks = false,
+    linkcolor = black,
+    anchorcolor = black,
+    citecolor = black
+}
+
+
+%%% Colour definitions %%%
+% Defines: gray
+\definecolor{gray}{gray}{0.80}
+% Defines: numbercolor
+\definecolor{numbercolor}{gray}{0.7}
+% Defines: shadecolor
+\definecolor{shadecolor}{RGB}{33,26,82}
+% Defines: aaublue
+\definecolor{aaublue}{RGB}{33,26,82}
+
+
+%%% Figure and table texts setup %%%
+% Font definition for the 'Figure' or 'Table' displays.
+\captionnamefont{\small\bfseries\itshape}
+% Font definition for the numbering
+\captiontitlefont{\small}
+% Delimiter between number and figure text
+\captiondelim{. }
+% Left justify multi-line figure texts below one another
+\hangcaption
+% Width of figure text
+\captionwidth{\linewidth}
+% Distance below figure text
+\setlength{\belowcaptionskip}{10pt}
+% Fix space between figure number and name
+\setlength{\cftfigurenumwidth}{14mm}
+
+
+%%% Page header and footer %%%
+% Define width of header and footer
+\setlength{\headwidth}{\textwidth}
+% Create pagestyle for pages with and without a new chapter
+\makepagestyle{reportPlain}
+\makepagestyle{reportChapter}
+% Pagestyle for chapter pages (Only a footer, of course)
+\makefootrule{reportChapter}{\headwidth}{\normalrulethickness}{\footruleskip}
+\makeevenfoot{reportChapter}{\thepage}{}{}
+\makeoddfoot{reportChapter}{}{}{\thepage}
+% Pagestyle for regular pages
+\makerunningwidth{reportPlain}{\headwidth}
+\makeheadposition{reportPlain}{flushright}{flushleft}{flushright}{flushleft}
+\makeevenhead{reportPlain}{\leftmark}{}{}
+\makeoddhead{reportPlain}{}{}{\rightmark}
+\makeevenfoot{reportPlain}{\thepage}{}{}
+\makeoddfoot{reportPlain}{}{}{\thepage}
+\makeheadrule{reportPlain}{\headwidth}{\normalrulethickness}
+\makefootrule{reportPlain}{\headwidth}{\normalrulethickness}{\footruleskip}
+% Use pagestyles
+\pagestyle{reportPlain}
+\aliaspagestyle{chapter}{reportChapter}
+\aliaspagestyle{part}{reportChapter}
+\aliaspagestyle{title}{empty}
+% Do not stretch pages
+\raggedbottom
+
+
+%%% Naming %%%
+% Define various names for captions and such
+\addto\captionsdanish{
+  \renewcommand\appendixname{Bilag}
+  \renewcommand\contentsname{Indholdsfortegnelse} 
+  \renewcommand\appendixpagename{Bilag}
+  \renewcommand\cftchaptername{\chaptername~}
+  \renewcommand\cftappendixname{\appendixname~}
+  \renewcommand\appendixtocname{Bilag}
+}
+
+
+%%% Appendix setup %%%
+% Appendix setup. Might need some settings here
+\usepackage{appendix}
+
+
+%%% Chapter look and feel %%%
+% Define style: jenor
+\newif\ifchapternonum
+\makechapterstyle{jenor}{
+  \renewcommand\printchaptername{}
+  \renewcommand\printchapternum{}
+  \renewcommand\printchapternonum{\chapternonumtrue}
+  \renewcommand\chaptitlefont{\fontfamily{pbk}\fontseries{db}\fontshape{n}\fontsize{25}{35}\selectfont\color{aaublue!90}\raggedleft}
+  \renewcommand\chapnumfont{\fontfamily{pbk}\fontseries{m}\fontshape{n}\fontsize{1in}{0in}\selectfont\color{numbercolor}}
+  \renewcommand\printchaptertitle[1]{%
+    \noindent
+    \ifchapternonum
+    \begin{tabularx}{\textwidth}{X}
+    {\let\\\newline\chaptitlefont ##1\par}
+    \end{tabularx}
+    \par\vskip-2.5mm\hrule
+    \else
+    \begin{tabularx}{\textwidth}{Xl}
+    {\parbox[b]{\linewidth}{\chaptitlefont ##1}} & \raisebox{-15pt}{\chapnumfont \thechapter}
+    \end{tabularx}
+    \par\vskip2mm\hrule
+    \fi
+  }
+}
+% Use style: jenor
+\chapterstyle{jenor}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% An example environment (http://kom.aau.dk/~jkn/latex/latex.php)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\normalfont}
+\theoremstyle{break}
+\def\theoremframecommand{{\color{aaublue!50}\vrule width 5pt \hspace{5pt}}}
+\newshadedtheorem{exa}{Eksempel}[chapter]
+\newenvironment{example}[1]{%
+		\begin{exa}[#1]
+}{%
+		\end{exa}
+}
+
+
+%%% Misc stuff %%%
+% Use regular numbers for pages
+\pagenumbering{arabic}
+% Word and letter counts
+\newcommand{\wordcount}{\input{preamble/sums/wordcount.sum}}
+\newcommand{\charcount}{\input{preamble/sums/charcount.sum}}
+\newcommand{\lettercount}{\charcount}
+\newif\ifcounts
+% Italicized quote-environment
+\newenvironment{italicquote}{\begin{quote}\itshape}{\end{quote}}
+
+
+%%% Left-aligning bibliography %%%
+%\renewcommand*{\bibfont}{\raggedright}

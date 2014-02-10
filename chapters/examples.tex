@@ -1,0 +1,96 @@
+\chapter{Eksempler}
+
+{\itshape Dette dokument er primært ment som en hjælp til at se de forskellige muligheder
+i rapporten.}
+
+\section{Akronymer}
+For lettere at håndtere akronymer, benyttes en pakke, hvor disse defineres én gang, og bruges så i
+dokumentet ved hjælp af \textbackslash ac{acronym}. Så vil systemet sørge for, at skrive det fuldt
+ud første gang man eksempelvis skriver \ac{AAU} eller \ac{KOT}.
+
+Skulle det derefter ske, at man har behov for at snakke om \ac{AAU} igen, vil den bruge forkortelsen,
+og dermed selv holde styr på det. Dette sikrer os bedre mod fejl. :)
+
+\section{Ændringsregistreringer}
+For at lette kommunikation med vejleder kan vi registrere ændringer på forskellige måder.
+
+\subsection{Hele afsnit}
+\cbstart Man kan markere, at et helt afsnit er blevet ændret eller tilføjet, ved hjælp af kommandoerne
+\textbackslash cbstart og \textbackslash cbend, som markerer henholdsvist start og slut på sidebaren.\cbend
+
+Det er også muligt at markere, at noget er blevet slettet, med \textbackslash cbdelete, hvilket er gjort i
+dette \cbdelete afsnit.
+
+\subsection{Detaljerede ændringer}
+Der er også mulighed for at vise mere detaljerede ændringer. Eksempelvis \added[id=TB]{hvis man tilføjer tekst},
+eller \deleted[id=TB]{sletter tekst}. Eller for den sags skyld \replaced[id=TB]{en kombination af de to}{a
+combination of the two}.
+
+\section{Matematik}
+Matematiske formler er lette at indsætte\ldots
+
+\begin{equation} \label{eq:example}
+  f\left(x\right) = \dfrac{a \cdot b}{c}
+\end{equation}
+
+\section{ToDo--typer}
+Der er fire forskellige typer af noter, og brugen heraf bestemmes af gruppen i fællesskab, så der er enighed om,
+hvad der benyttes til hvilket.
+
+\subsection{Generelt}
+Først og fremmest er der noterne almindelig\fxnote{Peger på et bestemt sted i teksten.}
+og \fxnote*{Fremhæver et tekststykke også.}{med modtagertekst}.
+
+Ligeledes er der advarsler\fxwarning{Dette er en advarsel!} og fejl\fxerror{Dette er en fejl!}. Sidstnævnte
+vil desuden forhindre dokumentet i at kompilere, hvis det markeres som værende \emph{final}.
+
+Disse tre typer kan naturligvis også bruges i \emph{stjerneformen}, til at fremhæve et bestemt stykke
+tekst som denne tilknyttes.
+
+\subsection{Avanceret}
+Til de lidt mere krævende noter kan det være nødvendigt med mere tekst, hvilket kræver et environment.
+
+\begin{anfxnote}{Dette er en opsummering.}
+Dette kan benyttes til at få nogle længere noter ind i teksten, hvis der eksempelvis er noget der skal
+overvejes, hvor det bare ikke er nok men en lille notits.
+
+Foruden denne anfxnote er der også \emph{anfxwarning}, \emph{anfxerror} og \emph{anfxfatal}, ligesom ovenfor.
+\end{anfxnote}
+
+
+\section{Referencer}
+Det er muligt at referere til forskellige ting, eksempelvis kan nævnes \myref{eq:example}.
+
+For at oprette en såkaldt \emph{label}, som senere kan refereres til, benyttes \verb|\label{key}|. Det er god
+stil indenfor \LaTeX at benytte prefixes til de forskellige labels, eksempelvis:
+\begin{table}[h]
+  \begin{center}
+    \begin{tabular}{ll}
+      \toprule[1.5pt]
+      \texttt{chap:}   & chapter              \\ 
+      \texttt{sec:}    & section              \\ 
+      \texttt{subsec:} & subsection           \\ 
+      \texttt{fig:}    & figure               \\ 
+      \texttt{tab:}    & table                \\ 
+      \texttt{eq:}     & equation             \\ 
+      \texttt{lst:}    & code listing         \\ 
+      \texttt{itm:}    & enumerated list item \\ 
+      \texttt{ex:}     & example              \\
+      \bottomrule[1.5pt]
+    \end{tabular}
+  \end{center}
+  \caption{Reference prefixes} \label{tab:reference_prefixes}
+\end{table}
+
+
+\section{Eksempelbokse}
+
+\begin{example}{Overskrift}
+  \label{ex:an_example}
+  \lipsum[1]
+\end{example}
+
+
+
+\section{Programmeringskode}
+

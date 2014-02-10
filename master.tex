@@ -1,0 +1,105 @@
+\documentclass[a4paper,11pt,fleqn,twoside,openright]{memoir}
+
+\input{preamble/preamble.tex}
+% Preamble additions
+\input{preamble/acronyms.tex}
+\input{preamble/authors.tex}
+\input{preamble/hyphenations.tex}
+
+% Comment out the following to remove word and letter counts
+\countstrue
+
+% Reference definition
+\usepackage[danish]{cleveref}
+\crefname{exa}{eksempel}{eksempler}
+\newcommand{\myref}[1]{\vref{#1}}
+\newcommand{\Myref}[1]{\Vref{#1}}
+
+
+\begin{document}
+
+% Front matter starts here
+\frontmatter
+
+% Insert front page
+\input{formalia/frontpage.tex}
+
+% Ensure that next page opens on the right
+\cleardoublepage
+
+% Insert title page
+\input{formalia/titlepage_da.tex}
+
+% Ensure that next page opens on the right
+\cleardoublepage
+
+% Insert foreword
+\input{formalia/foreword.tex}
+\cleardoublepage
+
+% Insert table of contents
+\thispagestyle{empty}
+\tableofcontents*
+\label{table_of_contents}
+
+
+%%%%%%%%%%%%%%
+%% CHAPTERS %%
+%%%%%%%%%%%%%%
+
+% Main matter starts here
+\mainmatter
+
+
+\part{Problemanalyse}
+
+\input{chapters/indledning.tex}
+
+\part{Problemløsning}
+
+\input{chapters/examples.tex}
+
+
+%%%%%%%%%%%%%%%%
+%% REFERENCES %%
+%%%%%%%%%%%%%%%%
+
+%\backmatter
+\makeatletter\@openrightfalse
+\let\cleardoublepage\clearpage
+\part{Referencer}
+
+%%% Bibliography %%%
+\bibliography{bibtex/litteratur}
+
+%%% Figures %%%
+\newpage
+\listoffigures
+
+%%% Tables %%%
+\listoftables
+
+
+\@openrighttrue\makeatother
+
+
+%%%%%%%%%%%%%%
+%% APPENDIX %%
+%%%%%%%%%%%%%%
+
+\part{Appendiks}
+\appendix
+\settocdepth{chapter}
+
+% Insert each appendix under this
+
+
+
+%%%%%%%%%
+% INDEX %
+%%%%%%%%%
+
+\newpage
+\printindex
+
+\end{document}

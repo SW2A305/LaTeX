@@ -1,0 +1,24 @@
+% This file was created with JabRef 2.9.2.
+% Encoding: Cp1252
+
+@BOOK{Laudon1999,
+  title = {Information Systems and the Internet: A Problem-Solving Approach},
+  publisher = {The Dryden Press, Fort Worth},
+  year = {1999},
+  author = {Kenneth C. Laudon and Jane P. Laudon},
+  pages = {1-31},
+  edition = {4th},
+  owner = {Tristan},
+  timestamp = {2013.10.30}
+}
+
+@BOOK{Trost2010,
+  title = {Interview i praksis},
+  publisher = {Hans Reitzels Forlag},
+  year = {2010},
+  editor = {Martin Laurberg},
+  author = {Jan Trost and Lise Jeremiassen},
+  owner = {Tristan},
+  timestamp = {2013.10.23}
+}
+

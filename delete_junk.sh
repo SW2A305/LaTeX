@@ -1,0 +1,26 @@
+#!/bin/bash
+echo "Deleting junk"
+rm -f *.aux
+rm -f *.bbl
+rm -f *.blg
+rm -f *.cb
+rm -f *.cb2
+rm -f *.idx
+rm -f *.ilg
+rm -f *.ind
+rm -f *.loc
+rm -f *.lof
+rm -f *.log
+rm -f *.lot
+rm -f *.lox
+rm -f *.nav
+rm -f *.out
+rm -f *.snm
+rm -f *.soc
+rm -f *.synctex.gz
+rm -f *.tdo
+rm -f *.thm
+rm -f *.toc
+rm -f *.upa
+rm -f *.upb
+echo "Junk deleted!"
