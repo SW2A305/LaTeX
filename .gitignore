@@ -48,3 +48,7 @@ master.pdf
 *.fdb_latexmk
 
 master.thm
+
+*.cb
+*.cb2
+*.soc
