@@ -15,6 +15,5 @@ pdflatex: master.tex
 	pdflatex --synctex=1 master.tex
 	pdflatex --synctex=1 master.tex
 	pdflatex --synctex=1 master.tex
-	rm -rf $(OTHER) $(PS)
 clean:
 	rm -rf $(OTHER) $(PS)
