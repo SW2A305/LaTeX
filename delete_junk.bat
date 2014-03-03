@@ -3,6 +3,7 @@ echo Deleting junk...
 del *.aux
 del *.bbl
 del *.blg
+del *.brf
 del *.cb
 del *.cb2
 del *.idx

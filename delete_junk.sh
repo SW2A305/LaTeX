@@ -3,6 +3,7 @@ echo "Deleting junk"
 rm -f *.aux
 rm -f *.bbl
 rm -f *.blg
+rm -f *.brf
 rm -f *.cb
 rm -f *.cb2
 rm -f *.idx
