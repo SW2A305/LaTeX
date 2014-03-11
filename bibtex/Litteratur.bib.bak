@@ -85,7 +85,7 @@
 }
 @misc{server,
   title = {myhosting},
-  url = {http://myhosting.com/vps-vs-dedicated/#},
+  url = {http://myhosting.com/vps-vs-dedicated},
   urldate = {2014-03-11},
   year = {2014},
   author = {myhosting}
