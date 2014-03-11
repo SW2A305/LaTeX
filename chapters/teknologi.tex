@@ -3,7 +3,7 @@ I det følgende kapitel vil forskellige teknologier, som kunne anvendes i forhol
 Derefter findes en analyse af de programmer, som på nuværende tidspunkt er state of the art inden for administration af sejlklubber.  
 \subsection*{Internet}
 En fordel for et system til administration i alle typer af klubber og organisationer ville være at kunne tilgå det fra flere steder end bare et sted. 
-Ved at gøre et system netværksbaseret kunne medlemmer og frivillige tilgå det fra hjemmet og fra deres arbejdspladser, og derved ville en tur ned til klubhuset, fx for at undersøge om der var en båd ledig den kommende uge, undgåes, hvilket i organisationsafsnittet blev fremlagt som et problem. 
+Ved at gøre et system netværksbaseret kunne medlemmer og frivillige tilgå det fra hjemmet og deres arbejdspladser, og derved ville en tur ned til klubhuset, fx for at undersøge om der var en båd ledig den kommende uge, undgåes, hvilket i organisationsafsnittet [\ref{sec:research}] blev fremlagt som et problem. 
 Anvendelsen af et system som kunne operere over internettet kunne altså øge informationsspredning i klubben, gøre det muligt at lave papirarbejde, som udfyldelse af logfiler, hjemme i stedet for i klubben og tilmelde sig sejlture og andre arrangementer hjemmefra.
   
 \subsection*{Server}
@@ -15,18 +15,25 @@ En anden mulighed for at en klub ikke selv skulle stå med at administrere end s
 
 De typer af servere der bliver udbudt af hosting firmaer, kan deles op i dedikerede servere og i virtuelle servere.
 \subsubsection*{Dedikerede servere}
-En dedikeret server lejer man hele maskinen, som skal køre systemet, og man får derfor mere ud af maskinen og har mere indflydelse på hardwaren i maskinen og hvilket operativsystem der køres.
-En dedikeret server ville umiddelbart være bedre for større klubber/organisationer, hvor mængden af informationer serveren skulle kunne indeholde er højere og trafikken til serveren også ville være højere.
+En dedikeret server lejer man hele maskinen, som skal køre systemet, og man får derfor mere ud af maskinen og har mere indflydelse på komponenterne i maskinen og hvilket operativsystem der køres.
+En dedikeret server ville umiddelbart være bedre for større klubber/organisationer, hvor mængden af informationer serveren skulle kunne håndtere er højere og trafikken til serveren også ville være højere.
 \subsubsection*{Virtuelle servere}
 Alternativet til at leje en hel maskine til at køre et system, er at leje en virtuel server, hvor der på den samme fysiske maskine findes flere separate virtuelle servere. At leje en virtuel serverplads er billigere end at leje en dedikeret server, da en virtuel serverplads kan lejes for helt ned til 5 euro i måneden\citep{Virtuelserver} hvorimod en dedikeret server kan lejes fra 39 euro i måneden \citep{Dedikeretserver}, dog variere prisen alt efter hvilket hardware der bruges og hvor efter hvor meget serverplads man ønsker. 
-Grunden til at en virtuel serverplads er billigere, er at flere forskellige virtuelle servere kan køre på samme fysiske maskine og derved er der flere til at betale for opretholdelsen. 
+Grunden til at en virtuel serverplads er billigere, er at flere forskellige virtuelle servere kan køre på samme fysiske maskine og derved er der flere til at betale for vedligeholdelsen. 
 Men en virtuel server har til gengæld ikke lige så meget plads og kraft som en dedikeret server. 
 
 En virtuel serverplads ville umiddelbart være nok til at køre et administrativt system for en sejklub, og det ville desuden være billigt at leje sig plads hos et hosting firma. 
 Det er derfor fornuftigt at antage at sejlklubber har midler til at leje en serverplads, hvilket ville kunne anvendes til at køre et administrativt system med alle informationer som kunne være nødvendigt for systemet. 
 \subsection*{Brugergrænseflade}
+I et program som skal anvendes af en bruger eller bruger gruppe ønskes det at programmet har et udseende, som brugeren forstår og som hjælper med at bruge programmet.
+Her menes der programmets interface, på dansk, brugergrænsefladen.
+Det er vigtigt at brugergrænsefladen henvender sig til modtagergruppen, hvilket i dette projekt er personer med tilknytning til en sejlklub.
+Der skal desuden tages højde for de forskelle i teknisk snilde der er i modtagergruppen, da det ikke er meget bevendt at lave et system, som halvdelen af modtagerne ikke kan bruge.
+Forskellige undergrupper i modtagergruppen skal bruge forskellige funktioner i systemet og derfor skal interfacet tilpasses, så de korrekte funktioner bliver tilgængelige for de rigtige brugere.
 
-
+En mulighed for at skabe en brugergrænseflade i samarbejde med C-sharp kode, er ved at anvende \textit{Windows forms}. 
+Det findes også andre muligheder for at anvende C-sharp kode til at skabe brugergrænseflader som \textit{Model-view-controller} og \textit{Windows Presentation Foundation}, men i løsningsdelen vil \textit{Windows forms} blive anvendt til at skabe en brugergrænseflade. \fxnote{Skal jeg komme ind på det med Windows Forms her? og i så fald skal der så argumenteres for valget af forms over MVC og WPF? -Caspar}
+\input{chapters/management_systemer.tex}
 \section{State of the art}
 For at kunne udvikle et godt produkt, der skal kunne bruges i en bådklub, er det vigtigt, at se på hvilke
 produkter der allerede er på markedet, altså hvad er ``state of the art''. I denne forbindelse er der fundet
@@ -36,23 +43,25 @@ forskellige produkter, som har nogle af de features der efterspørges i et syste
 Der er f.eks.
 et program udviklet af Anderson Software, der hedder BoatCloud.\citep{BoatCloud} BoatCloud består afsnit 3
 applikationer, StackTrack, VesselValet og Service Request. StackTrack benyttes, når medlemmerne selv sejler
-deres både, hvorimod VesselValet, er når der skal tjenere og passagerer med ombord på bådene. BoatCloud
-applikationerne er derfor mere designet til en bådklub, som passer på medlemmer af klubbens egne både, fremfor
-klubbens egne både. I applikationerne kan medlemmerne melde at de vil sejle på et bestemt tidspunkt. Medlemmet
-kan få klubben til at vaske båden, tanke den, og fylde den op med diverse snacks, alt sammen registreres
-igennem denne webbaserede applikation. Applikationen tager imod alle disse bestillinger i realtime, og 24
-timer i døgnet. Herudover bliver der sendt e-mails ud til medlemmerne når de har lavet en bestilling. Man kan
-logge ind som administrator, og her kan man se alle reservationer der er lavet, samt have mulighed for at
+deres både, hvorimod VesselValet, er når der skal tjenere og passagerer med ombord på bådene. 
+BoatCloud applikationerne er derfor mere designet til en bådklub, som passer på medlemmer af klubbens egne både, fremfor
+klubbens egne både. 
+I applikationerne kan medlemmerne melde at de vil sejle på et bestemt tidspunkt. 
+Medlemmet kan få klubben til at vaske båden, tanke den, og fylde den op med diverse snacks, alt sammen registreres
+igennem denne webbaserede applikation. 
+Applikationen tager imod alle disse bestillinger i realtime, og 24 timer i døgnet. 
+Herudover bliver der sendt e-mails ud til medlemmerne når de har lavet en bestilling. 
+Man kan logge ind som administrator, og her kan man se alle reservationer der er lavet, samt have mulighed for at
 se yderligere detaljer om hver enkelt reservation.
 
 \subsection*{Sailing Club Manager}
-En anden applikation der findes er Sailing Club Manager \citep{SailClub}. Denne applikation er også
-webbaseret, og gør det muligt for en bådklub at tilføje hvilke både der er, samt hvor det er fortøjet i
-havnen. Man kan i en kalender lave events og bookings, samt medlemstilmeldelse til forskellige events. Applikationen kan også bruges som kontaktmedium for klubben til deres medlemmer. Klubben kan sætte et
-e-mail system op, samt tilføje et template som bliver sendt med hver enkelt e-mail. Applikationen kan endvidere
-holde styr på økonomien, man kan tilføje en bankkonto, samt  holde styr på fakturaer, og endda sende
-dem og håndtere det online. Man kan tilføje medlemsskaber, med forskellige oplysninger omkring medlemmerne der
-har netop dette medlemsskab i klubben.
+En anden applikation der findes er Sailing Club Manager \citep{SailClub}. 
+Denne applikation er også webbaseret, og gør det muligt for en bådklub at tilføje hvilke både der er, samt hvor det er fortøjet i havnen.
+Man kan i en kalender lave events og bookings, samt medlemstilmeldelse til forskellige events. 
+Applikationen kan også bruges som kontaktmedium for klubben til deres medlemmer. 
+Klubben kan sætte et e-mail system op, samt tilføje et template som bliver sendt med hver enkelt e-mail. 
+Applikationen kan endvidere holde styr på økonomien, man kan tilføje en bankkonto, samt  holde styr på fakturaer, og endda sende dem og håndtere det online. 
+Man kan tilføje medlemsskaber, med forskellige oplysninger omkring medlemmerne der har netop dette medlemsskab i klubben.
 
 Ud fra denne undersøgelse er flg. features altså fundet i applikationerne:
 
@@ -69,7 +78,12 @@ Ud fra denne undersøgelse er flg. features altså fundet i applikationerne:
         bookning nogen tid før.
 \end{itemize}
 
-I bilag \myref{bilag:scm} findes der screenshots af nogle af de features der findes hos SailingClubManger.
+I bilag \myref{bilag:scm} findes der screenshots af udvalgte features der findes i SailingClubManger.
 
-Ud fra teknologi- og organisationsanalysen kan det uddrages at sejlklubber med fordel kan anvende et IT-system til at administrere deres administrative opgaver. Der findes desuden en liste med udvalgte features fra andre administrationsprogrammer i dette afsnit, som med fordel kunne tages med videre til problemløsningsdelen. 
-Endvidere kan der, ud fra de to nævnte afsnit, tænkes på et overordnet struktur for et program, som kunne hjælpe sejlklubber og andre fritidsklubber med at varetage deres administrative opgaver.  
+%Ud fra teknologi- og organisationsanalysen kan det uddrages at sejlklubber med fordel kan anvende et IT-system til at administrere deres administrative opgaver. Der findes desuden en liste med udvalgte features fra andre administrationsprogrammer i dette afsnit, som med fordel kunne tages med videre til problemløsningsdelen. 
+%Endvidere kan der, ud fra de to nævnte afsnit, tænkes på et overordnet struktur for et program, som kunne hjælpe sejlklubber og andre fritidsklubber med at varetage deres administrative opgaver. 
+Ud fra teknologianalysen de teknologiske aspekter i projektet blevet belyst. 
+Muligheden for at gøre systemet netværksbaseret, gør det muligt for medlemmer og administrationen i en sejlklub, at foretage handlinger vedrørende klubben fra hjemmet eller arbejdspladsen. 
+For at undgå at en lokal server skulle opsættes og vedligeholdes af klubben selv, kunne en virtuel server, hostet af et hosting firma, varetage denne opgave.
+Vigtigheden i en god brugergrænseflade blev gjort klart, og metode for at opsætte en brugergrænseflade blev valgt i form af \textit{Windows forms}.
+Fra state of the art delen blev nuværende systemer på market undersøgt, og udvalgte features tages med videre til løsningsdelen, som eventuelle additioner til det administrationssystem der skal udvikles.  
