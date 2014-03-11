@@ -1,6 +1,3 @@
-% This file was created with JabRef 2.9.2.
-% Encoding: Cp1252
-
 @BOOK{Laudon1999,
   title = {Information Systems and the Internet: A Problem-Solving Approach},
   publisher = {The Dryden Press, Fort Worth},
@@ -8,17 +5,74 @@
   author = {Kenneth C. Laudon and Jane P. Laudon},
   pages = {1-31},
   edition = {4th},
-  owner = {Tristan},
   timestamp = {2013.10.30}
 }
 
-@BOOK{Trost2010,
-  title = {Interview i praksis},
-  publisher = {Hans Reitzels Forlag},
-  year = {2010},
-  editor = {Martin Laurberg},
-  author = {Jan Trost and Lise Jeremiassen},
-  owner = {Tristan},
-  timestamp = {2013.10.23}
+@misc{BoatCloud,
+  title = {BoatCloud},
+  url = {http://www.boatcloud.com/clubhub.htm},
+  urldate = {2014-02-13},
+  year = {2014},
+  author = {Anderson Software}
+}
+ 
+@misc{SailClub,
+  title = {Sailing Club Manager},
+  url = {http://www.sailingclubmanager.com},
+  urldate = {2014-02-13},
+  year = {2014},
+  author = {SailingClubManager}
 }
 
+@misc{SundetUdlaan,
+  title = {Sejlklubben Sundet - Udlån},
+  url = {http://sundet.dk/baadudlaan/baadlaan.htm},
+  urldate = {2014-02-13},
+  year = {2014},
+  author = {{Sejlklubben Sundet}}
+}
+@misc{Sundet,
+  title = {Sejlklubben Sundet},
+  url = {http://sundet.dk},
+  urldate = {2014-02-19},
+  year = {2014},
+  author = {{Sejlklubben Sundet}}
+}
+
+@misc{AalborgSejlklub,
+  title = {Aalborg-Sejlklub},
+  url = {http://aalborg-sejlklub.dk},
+  urldate = {2014-02-19},
+  year = {2014},
+  author = {{Aalborg Sejlklub}}
+}
+
+@misc{Frivilligrapporten,
+  title = {Frivilligrapporten},
+  url = {http://www.frivillighed.dk/Webnodes/da/Web/Public/Viden+\%26+information/Frivilligrapporten},
+  urldate = {2014-03-02},
+  year = {2012},
+  author = {{Center for frivilligt socialt arbejde}}
+}
+
+@misc{BaadklubbenValby,
+  title = {BådklubbenValby},
+  url = {http://bådklubbenvalby.dk},
+  urldate = {2014-02-19},
+  year = {2014},
+  author = {{Bådklubben Valby}}
+}
+@misc{Virtuelserver,
+  title = {BladeVPS},
+  url = {https://www.transip.eu/vps/},
+  urldate = {2014-03-11},
+  year = {2014},
+  author = {BladeVPS}
+}
+@misc{Dedikeretserver,
+  title = {Gigapros},
+  url = {http://www.gigapros.com/portal/dedicated-servers},
+  urldate = {2014-03-11},
+  year = {2014},
+  author = {Gigapros}
+}
