@@ -11,16 +11,17 @@ Anvendelsen af et system som kunne operere over internettet kunne altså øge in
 For at alle medlemmer og frivillige arbejdere i en klub kan tilgå systemet over internettet, skal systemet opretholdes af en server, hvorfra andre computere kan forbinde sig til og bruge systemet. 
 En mulighed for opsætning af en server ville være at få en computer i selve klubhuset til at agere server og have systemet og al information til at ligge her. 
 Dette er dog en dårlig løsning, da klubben selv skulle stå for opdatering af serversoftware, tage backup af al data og det ville kræve mere af klubbens internetforbindelse. 
-En anden mulighed for at en klub ikke selv skulle stå med at administrere end server, er at købe sig ind hos et andet firma, som kan have systemet kørende, som samtidigt varetager al vedligeholdelse af serversoftware og sørger for backup af al data.
+En anden mulighed for at en klub ikke selv skulle stå med at administrere end server, er at købe sig ind hos et hosting firma, som kan have systemet kørende på en server, og firmaet varetager samtidigt al vedligeholdelse af server og serversoftware og sørger for backup af al data. 
+Dog kan forskellige firmaer have forskellige måder at gøre tingene på, bl.a. ved \textit{trans ip} skal brugeren selv lave en kopi af alle data og indstillinger på serveren, som kan bruges til backup i tilfælde af at serveren bryder ned \citep{Virtuelserver}, hvorimod \textit{liquidweb} \citep{liquid} sørger for den type backup, som brugeren specificerer ved leje af serveren.
 
 De typer af servere der bliver udbudt af hosting firmaer, kan deles op i dedikerede servere og i virtuelle servere.
 \subsubsection*{Dedikerede servere}
 En dedikeret server lejer man hele maskinen, som skal køre systemet, og man får derfor mere ud af maskinen og har mere indflydelse på komponenterne i maskinen og hvilket operativsystem der køres.
-En dedikeret server ville umiddelbart være bedre for større klubber/organisationer, hvor mængden af informationer serveren skulle kunne håndtere er højere og trafikken til serveren også ville være højere.
+En dedikeret server ville umiddelbart være bedre for større klubber/organisationer, hvor mængden af informationer serveren skulle kunne håndtere er højere og trafikken til serveren også ville være højere. \citep{server}
 \subsubsection*{Virtuelle servere}
 Alternativet til at leje en hel maskine til at køre et system, er at leje en virtuel server, hvor der på den samme fysiske maskine findes flere separate virtuelle servere. At leje en virtuel serverplads er billigere end at leje en dedikeret server, da en virtuel serverplads kan lejes for helt ned til 5 euro i måneden\citep{Virtuelserver} hvorimod en dedikeret server kan lejes fra 39 euro i måneden \citep{Dedikeretserver}, dog variere prisen alt efter hvilket hardware der bruges og hvor efter hvor meget serverplads man ønsker. 
 Grunden til at en virtuel serverplads er billigere, er at flere forskellige virtuelle servere kan køre på samme fysiske maskine og derved er der flere til at betale for vedligeholdelsen. 
-Men en virtuel server har til gengæld ikke lige så meget plads og kraft som en dedikeret server. 
+Men en virtuel server har til gengæld ikke lige så meget plads og kraft som en dedikeret server.\citep{server} 
 
 En virtuel serverplads ville umiddelbart være nok til at køre et administrativt system for en sejklub, og det ville desuden være billigt at leje sig plads hos et hosting firma. 
 Det er derfor fornuftigt at antage at sejlklubber har midler til at leje en serverplads, hvilket ville kunne anvendes til at køre et administrativt system med alle informationer som kunne være nødvendigt for systemet. 
