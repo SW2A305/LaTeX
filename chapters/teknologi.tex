@@ -1,7 +1,7 @@
 \chapter{Teknologi}\label{chap:teknologi-analyse}
 
 I det følgende kapitel vil forskellige teknologier, som kunne anvendes i forhold til at hjælpe med administrationen i en
-sejlklub blive forklaret. Derefter findes en analyse af de programmer, som på nuværende tidspunkt er state of the art
+sejlklub, blive forklaret. Derefter findes en analyse af de programmer, som på nuværende tidspunkt er state of the art
 inden for administration af sejlklubber.
 
 
@@ -11,7 +11,7 @@ flere steder end bare et sted. Ved at gøre et system netværksbaseret kunne med
 deres arbejdspladser eller måske endda deres mobile enheder, 
 og derved ville en tur ned til klubhuset, f.eks. for at undersøge om der var en båd ledig den
 kommende uge, undgås, hvilket der i \myref{sec:organisation-konklusion} blev fremlagt som et problem. Anvendelsen
-af et system som kunne operere over internettet kunne altså øge informationsspredning i klubben, gøre det muligt at lave
+af et system, som kunne operere over internettet, kunne altså øge informationsspredning i klubben, gøre det muligt at lave
 papirarbejde, som udfyldelse af log-filer, hjemmefra i stedet for i klubben og tilmelde sig sejladser og andre arrangementer
 hjemmefra. \fixme{Lang knudret sætning overvej omformulering}
 
@@ -20,16 +20,16 @@ hjemmefra. \fixme{Lang knudret sætning overvej omformulering}
 
 For at alle medlemmer og frivillige arbejdere i en klub kan tilgå systemet over internettet, skal systemet opretholdes
 af en server, hvorfra andre computere kan forbinde sig til og bruge systemet. En mulighed for opsætning af en server
-ville være at få en computer i selve klubhuset til at agere server og have systemet og al information til at ligge her.
+ville være at få en computer i selve klubhuset til at agere server og have systemet, og al information, til at ligge der.
 Dette er dog en dårlig løsning, da klubben selv skulle stå for opdatering af serversoftware, tage backup af al data og
 det ville kræve mere af klubbens internetforbindelse. En anden mulighed for at en klub ikke selv skulle stå med at
 administrere en server, er at købe sig ind hos et hosting firma. Her kan man have systemet kørende på en server, og firmaet
 varetager samtidigt al vedligeholdelse af server og serversoftware og sørger for backup af al data. Dog kan forskellige
-firmaer have forskellige måder at gøre tingene på, bl.a. ved \textit{trans ip}\fixme{Hvad er dette? Et firma?} skal brugeren selv lave en kopi af alle
+firmaer have forskellige måder at gøre tingene på, bl.a. ved \textit{TransIP}\fixme{Hvad er dette? Et firma?} skal brugeren selv lave en kopi af alle
 data og indstillinger på serveren, som kan bruges til backup i tilfælde af at serveren bryder ned \citep{Virtuelserver},
-hvorimod \textit{liquidweb} \citep{liquid} sørger for den type backup, som brugeren specificerer ved leje af serveren.
+hvorimod \textit{Liquid Web} \citep{liquid} sørger for den type backup, som brugeren specificerer ved leje af serveren.
 
-De typer af servere der bliver udbudt af hosting firmaer, kan deles op i dedikerede servere og i virtuelle servere.
+De typer af servere, der bliver udbudt af hosting firmaer, kan deles op i dedikerede servere og i virtuelle servere.
 
 
 \subsubsection*{Dedikerede servere}
@@ -44,24 +44,24 @@ trafikken til serveren også ville være højere. \citep{server}
 
 Alternativet til at leje en hel maskine til at køre et system, er at leje en virtuel server, hvor der på den samme
 fysiske maskine findes flere separate virtuelle servere. At leje en virtuel serverplads er billigere end at leje en
-dedikeret server, da en virtuel serverplads kan lejes for helt ned til 5 euro i måneden\citep{Virtuelserver} hvorimod en
+dedikeret server, da en virtuel serverplads kan lejes for helt ned til 5 euro i måneden\citep{Virtuelserver}, hvorimod en
 dedikeret server kan lejes fra 39 euro i måneden \citep{Dedikeretserver}, dog variere prisen alt efter hvilket hardware
-der bruges og efter hvor meget serverplads man ønsker. Grunden til at en virtuel serverplads er billigere, er at
-flere forskellige virtuelle servere kan køre på samme fysiske maskine og derved er der flere til at betale for
+der bruges og efter, hvor meget serverplads man ønsker. Grunden til at en virtuel serverplads er billigere, er at
+flere forskellige virtuelle servere kan køre på samme fysiske maskine, og derved er der flere til at betale for
 vedligeholdelsen. Men en virtuel server har til gengæld ikke lige så meget plads og kraft som en dedikeret
 server.\citep{server}
 
 En virtuel serverplads ville umiddelbart være nok til at køre et administrativt system for en sejlklub, og det ville
 desuden være billigt at leje plads hos et hosting firma. Det er derfor fornuftigt at antage at sejlklubber har
 midler til at leje en serverplads, hvilket ville kunne anvendes til at køre et administrativt system med alle
-informationer som kunne være nødvendigt for systemet.
+informationer, som kunne være nødvendigt for systemet.
 
 
 \section{Brugergrænseflade}
 
-I et program som skal anvendes af en bruger eller brugergruppe ønskes det at programmet har et udseende, som brugeren
+I et program som skal anvendes af en bruger eller brugergruppe, ønskes det, at programmet har et udseende, som brugeren
 forstår og som hjælper med at bruge programmet. Her menes der programmets interface, på dansk, brugergrænsefladen. Det
-er vigtigt at brugergrænsefladen henvender sig til modtagergruppen, hvilket i dette projekt er personer med tilknytning
+er vigtigt, at brugergrænsefladen henvender sig til modtagergruppen, hvilket i dette projekt er personer med tilknytning
 til en sejlklub. Der skal desuden tages højde for de forskelle i teknisk snilde, der er i modtagergruppen, da det ikke er
 effektivt at lave et system, som halvdelen af modtagerne ikke kan bruge. Forskellige undergrupper i modtagergruppen skal
 bruge forskellige funktioner i systemet, og derfor skal interfacet tilpasses, så de korrekte funktioner bliver
@@ -91,11 +91,11 @@ applikationer, StackTrack, VesselValet og Service Request. \fxnote{Skal måske �
 StackTrack benyttes, når medlemmerne selv sejler deres både,
 hvorimod VesselValet, er når der skal tjenere og passagerer med ombord på bådene. BoatCloud applikationerne er derfor
 mere designet til en bådklub, som passer på medlemmernes både, fremfor klubbens egne både. I
-applikationerne kan medlemmerne melde at de vil sejle på et bestemt tidspunkt. Medlemmet kan få klubben til at vaske
+applikationerne kan medlemmerne melde, at de vil sejle på et bestemt tidspunkt. Medlemmet kan få klubben til at vaske
 båden, tanke den, og fylde den op med diverse snacks, alt sammen registreres igennem denne webbaserede applikation.
 Applikationen tager imod alle disse bestillinger i realtime, og 24 timer i døgnet. Herudover bliver der sendt e-mails ud
-til medlemmerne når de har lavet en bestilling. Man kan logge ind som administrator, og her kan man se alle
-reservationer der er lavet, samt have mulighed for at se yderligere detaljer om hver enkelt reservation.
+til medlemmerne, når de har lavet en bestilling. Man kan logge ind som administrator, og her kan man se alle
+reservationer, der er lavet, samt have mulighed for at se yderligere detaljer om hver enkelt reservation.
 
 
 \subsection*{Sailing Club Manager}

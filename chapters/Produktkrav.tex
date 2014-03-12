@@ -1,14 +1,13 @@
 \chapter{Produktkrav}
-I problemanalysen blev det gjort klart at der er et problem på området. Problemet kommer fra at der ikke er noget EDB
-system\fixme{EDB-system vs informationssystem. -Troels} til at håndtere papirarbejde og gøre det overskueligt, i dette afsnit vil det blive set på hvilke krav et sådant
+I problemanalysen blev det gjort klart, at der er et problem på området. Problemet kommer fra, at der ikke er noget EDB-system\fixme{EDB-system vs informationssystem. -Troels} til at håndtere papirarbejde og gøre det overskueligt, i dette afsnit vil det blive set på, hvilke krav et sådant
 system har.
 
 \section{Funktionelle krav} \label{sec:funktionelleKrav}
 Papirarbejde indebærer logbøger, manifester, bådreservationer samt hvem der er ombord, tilmeldinger til begivenheder m.m.
-Som grundlag for at alt dette kan fungere kræves der en metode til at sætte sig selv på en aktivitet, for at gøre dette
-muligt kræves der således to ting, en database af medlemmer, samt en form for begivenhedskalender. Foruden dette kræves
+Som grundlag for at alt dette kan fungere, kræves der en metode til at sætte sig selv på en aktivitet. For at gøre dette
+muligt kræves der således to ting: En database af medlemmer, samt en form for begivenhedskalender. Foruden dette kræves
 der information om de forskellige begivenheder, en log over hvem der har betalt for at være med, eventuelt hvem der
-mødte op. Der kræves også et system til udlejning af både samt undervisning hvor nævnte både også benyttes.
+mødte op. Der kræves også et system til udlejning af både samt undervisning, hvor nævnte både også benyttes.
 
 Produktet har krav til følgende elementer i sejlklubben:
 \begin{itemize}
@@ -23,7 +22,7 @@ Produktet har krav til følgende elementer i sejlklubben:
 \section{Datalogiske krav}(
 Der ligger mere bag de ovenstående elementer end \myref{sec:funktionelleKrav} giver udtryk for, disse vil her blive set nærmere på fra en datalogisk vinkel.
 \subsection{Medlemmer}
-For at kunne integrere medlemmer i programmet skal der være en overordnet klasse der danner base for alle medlemmer. Yderligere specifikationer kan så laves igennem nedarvinger fra de forskellige medlemmer, (elev, administrator, kasser, underviser o.lign.)
+For at kunne integrere medlemmer i programmet, skal der være en overordnet klasse der danner base for alle medlemmer. Yderligere specifikationer kan så laves igennem nedarvinger fra de forskellige medlemmer, (elev, administrator, kasser, underviser o.lign.)
 \subsection{Begivenhedsinformation}
 
 \subsection{Begivenhedskalender}
