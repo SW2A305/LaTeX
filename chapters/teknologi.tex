@@ -7,16 +7,16 @@ inden for administration af sejlklubber.
 
 \section{Internet}
 En fordel for et system til administration i alle typer af klubber og organisationer ville være at kunne tilgå det fra
-flere steder end bare et sted. Ved at gøre et system netværksbaseret kunne medlemmer og frivillige tilgå det fra hjemmet
-og deres arbejdspladser, og derved ville en tur ned til klubhuset, f.eks. for at undersøge om der var en båd ledig den
+flere steder end bare et sted. Ved at gøre et system netværksbaseret kunne medlemmer og frivillige tilgå det fra hjemmet, 
+deres arbejdspladser eller måske endda deres mobile enheder, 
+og derved ville en tur ned til klubhuset, f.eks. for at undersøge om der var en båd ledig den
 kommende uge, undgås, hvilket der i \myref{sec:organisation-konklusion} blev fremlagt som et problem. Anvendelsen
 af et system som kunne operere over internettet kunne altså øge informationsspredning i klubben, gøre det muligt at lave
 papirarbejde, som udfyldelse af log-filer, hjemmefra i stedet for i klubben og tilmelde sig sejladser og andre arrangementer
-hjemmefra.
+hjemmefra. \fixme{Lang knudret sætning overvej omformulering}
 
 
 \subsection*{Server}
-%vps & ds
 
 For at alle medlemmer og frivillige arbejdere i en klub kan tilgå systemet over internettet, skal systemet opretholdes
 af en server, hvorfra andre computere kan forbinde sig til og bruge systemet. En mulighed for opsætning af en server
@@ -25,7 +25,7 @@ Dette er dog en dårlig løsning, da klubben selv skulle stå for opdatering af 
 det ville kræve mere af klubbens internetforbindelse. En anden mulighed for at en klub ikke selv skulle stå med at
 administrere en server, er at købe sig ind hos et hosting firma. Her kan man have systemet kørende på en server, og firmaet
 varetager samtidigt al vedligeholdelse af server og serversoftware og sørger for backup af al data. Dog kan forskellige
-firmaer have forskellige måder at gøre tingene på, bl.a. ved \textit{trans ip} skal brugeren selv lave en kopi af alle
+firmaer have forskellige måder at gøre tingene på, bl.a. ved \textit{trans ip}\fixme{Hvad er dette? Et firma?} skal brugeren selv lave en kopi af alle
 data og indstillinger på serveren, som kan bruges til backup i tilfælde af at serveren bryder ned \citep{Virtuelserver},
 hvorimod \textit{liquidweb} \citep{liquid} sørger for den type backup, som brugeren specificerer ved leje af serveren.
 
@@ -40,7 +40,7 @@ bedre for større klubber/organisationer, hvor mængden af informationer servere
 trafikken til serveren også ville være højere. \citep{server}
 
 
-\subsubsection*{Virtuelle servere}
+\subsubsection*{Virtuelle servere}\fixme{Overvej https://www.vpspro.dk/ her, det er et plus at det er dansk og windows.}
 
 Alternativet til at leje en hel maskine til at køre et system, er at leje en virtuel server, hvor der på den samme
 fysiske maskine findes flere separate virtuelle servere. At leje en virtuel serverplads er billigere end at leje en
@@ -73,7 +73,7 @@ Det findes også andre muligheder for at anvende C\#-kode til at skabe brugergr�
 \textit{Model-view-controller} og \textit{Windows Presentation Foundation}, men i løsningsdelen vil \textit{Windows
 forms} blive anvendt til at skabe en brugergrænseflade. \fxnote{Skal jeg komme ind på det med Windows Forms her? og i så
 fald skal der så argumenteres for valget af forms over MVC og WPF? + "sharp" skal lige ændres til det korrekte tegn
--Caspar} \input{chapters/management_systemer.tex}
+-Caspar Vi kunne omskrive dette når vi er færdige med programmet? -Troels} \input{chapters/management_systemer.tex}
 
 
 \section{State of the art}
@@ -87,7 +87,8 @@ forskellige produkter, som har nogle af de features der efterspørges i et syste
 \subsection*{BoatCloud}
 
 Der er f.eks. et program udviklet af Anderson Software, der hedder BoatCloud.\citep{BoatCloud} BoatCloud består af 3
-applikationer, StackTrack, VesselValet og Service Request. \fxnote{Skal måske ændres til at hedder funktioner i stedet for applikationer?} StackTrack benyttes, når medlemmerne selv sejler deres både,
+applikationer, StackTrack, VesselValet og Service Request. \fxnote{Skal måske ændres til at hedder funktioner i stedet for applikationer? Nej, en funktion er vel en del af er program (andet ord for applikation) -Troels} 
+StackTrack benyttes, når medlemmerne selv sejler deres både,
 hvorimod VesselValet, er når der skal tjenere og passagerer med ombord på bådene. BoatCloud applikationerne er derfor
 mere designet til en bådklub, som passer på medlemmernes både, fremfor klubbens egne både. I
 applikationerne kan medlemmerne melde at de vil sejle på et bestemt tidspunkt. Medlemmet kan få klubben til at vaske
