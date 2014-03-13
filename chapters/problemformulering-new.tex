@@ -5,11 +5,10 @@ Laudons model beskrevet i \myref{sec:struktur-af-problemanalyse}. Det er nu ud f
 komme frem til en problemformulering, som vil hjælpe til at finde en løsning for fritidsklubber og ikke mindst
 sejlklubberne.
 
-Der blev i kapitlet om fritidsklubber i \myref{Fritidsklubber} afgrænset til sejlklubber, da disse viste sig
-at have flere specifikke administrative opgaver, sammenlignet med andre fritidsklubber. Dette blev gjort da
-hvis et system kan håndtere generelle opgaver, samt specifikke opgaver til en sejlklub, er det muligt at
-fjerne nogle features fra programmet, og evt. ændre i nogle andre, er det muligt at opnå et brugbart program
-for de andre former for fritidsklubber. \fxnote{Whut?!} Derfor ved at analysere videre på de
+Der blev i \myref{Fritidsklubber}, omhandlende fritidsklubber, afgrænset til sejlklubber, da disse viste sig
+at have flere specifikke administrative opgaver, sammenlignet med andre fritidsklubber. Denne afgrænsning blev foretaget
+da et system der kan håndtere generelle, samt specifikke opgaver til en sejlklub, kan bruges af andre former for
+fritidsklubber ved at tilføje, fjerne og modificere specifikke funktioner. Derfor ved at analysere videre på de
 direkte forhold vedrørende en sejlklub, ville der kunne dannes en forståelse for, hvilke problemer en sejlklub
 med sejlerskole har, som kan løses vha. et administrativt system.
 
@@ -40,9 +39,8 @@ tilmelde sig disse, uden at tage turen ned til klubben.
 
 Grundet den store mængde af information der skal nedskrives i forbindelse med en sejlads, giver det mening at
 hjælpe med at organisere denne opgave, samt at gøre det lettere at registrere informationerne for diverse
-frivillige, og undervisere. Desuden kunne det hjælpe hvis hvert medlem havde en konto ved sejlklubben, således
-at regninger kan udskrives ud i et \fxnote{Lyder underligt\ldots}, og muligvis endda håndtere det gennem
-systemet, så man slipper for brugen af girokort.
+frivillige, og undervisere. Desuden kunne det hjælpe hvis hvert medlem havde en saldo over udgifter ved sejlklubben, således
+det er nemmere at håndtere brugerbetaling.
 
 Følgende er altså en liste over emner som kan dækkes af et system for sejlklubberne:
 
@@ -54,7 +52,7 @@ Følgende er altså en liste over emner som kan dækkes af et system for sejlklu
 \end{itemize}
 
 Man har fundet frem til at systemet der efterspørges er et af typen management systemer, som blev beskrevet i
-(KILDE TIL FUCKING MANAGEMENT SYSTEMER INDSÆTTES HER). For at kunne implementere disse funktioner til et
+\myref{subsec:management-systemer}. For at kunne implementere disse funktioner til et
 management system, skal der være forskellige teknologier til rådighed. Disse blev beskrevet i
 \myref{chap:teknologi-analyse}.
 
@@ -64,9 +62,7 @@ management system, skal der være forskellige teknologier til rådighed. Disse b
 For at kunne tilkoble sig systemet igennem internettet, skal man have opsat en server til systemet. Serveren
 bør ikke være lokaliseret i klubhuset, men man kan købe sig til forskellige servere i datacentre rundt om i
 verden. For at systemet skal kunne fungere optimalt for de frivillige, er det stadig vigtigt med en computer i
-klubhuset, og der skal derfor være en internetopkobling i klubhuset. \fxnote{Er det nu også dét? Ville det
-ikke være tilstrækkeligt med en tablet, hvis nu klubhuset ikke havde internet? Eller hvis de ville kunne låse
-deres tablet inde i et sikret skab, eller noget helt tredje?}
+klubhuset, og der skal derfor være en internetopkobling i klubhuset. 
 
 Foruden en serveropsætning er det vigtigt at se på designet af systemet, for at de frivillige kan udnytte det
 optimalt. Her tænkes der på brugergrænsefladen. Som nævnt i \myref{chap:interessent-analyse-ved-sejlklubber}

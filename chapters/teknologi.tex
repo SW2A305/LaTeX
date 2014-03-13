@@ -1,23 +1,24 @@
-\chapter{Teknologi}\label{chap:teknologi-analyse}
+\chapter{Teknologianalyse}\label{chap:teknologi-analyse}
 
 I det følgende kapitel vil forskellige teknologier, som kunne anvendes i forhold til at hjælpe med
 administrationen i en sejlklub, blive forklaret. Derefter findes en analyse af de programmer, som på nuværende
 tidspunkt er state of the art inden for administration af sejlklubber.
 
+\section{Teknologier}
 
-\section{Internet}
+\subsection{Internet}
 
 En fordel for et system til administration i alle typer af klubber og organisationer ville være at kunne tilgå
 det fra flere steder end bare et sted. Ved at gøre et system netværksbaseret kunne medlemmer og frivillige
 tilgå det fra hjemmet, deres arbejdspladser eller måske endda deres mobile enheder, og derved ville en tur ned
 til klubhuset, f.eks. for at undersøge om der var en båd ledig den kommende uge, undgås, hvilket der i
 \myref{sec:organisation-konklusion} blev fremlagt som et problem. Anvendelsen af et system, som kunne operere
-over internettet, kunne altså øge informationsspredning i klubben, gøre det muligt at lave papirarbejde, som
-udfyldelse af log-filer, hjemmefra i stedet for i klubben og tilmelde sig sejladser og andre arrangementer
-hjemmefra. \fxnote{Lang knudret sætning overvej omformulering}
+over internettet, kunne altså øge informationsspredning i klubben. Herved gøre det muligt at lave papirarbejde, som
+udfyldelse af log-filer hjemmefra i stedet for i klubben og tilmelde sig sejladser og andre arrangementer
+hjemmefra.
 
 
-\subsection*{Server}
+\subsection{Server}
 
 For at alle medlemmer og frivillige arbejdere i en klub kan tilgå systemet over internettet, skal systemet
 opretholdes af en server, hvorfra andre computere kan forbinde sig til og bruge systemet. En mulighed for
@@ -27,7 +28,7 @@ serversoftware, tage backup af al data og det ville kræve mere af klubbens inte
 mulighed for at en klub ikke selv skulle stå med at administrere en server, er at købe sig ind hos et hosting
 firma. Her kan man have systemet kørende på en server, og firmaet varetager samtidigt al vedligeholdelse af
 server og serversoftware og sørger for backup af al data. Dog kan forskellige firmaer have forskellige måder
-at gøre tingene på, bl.a. hos firmaet \textit{TransIP} \fxnote{Hvad er dette? Et firma?} skal brugeren selv
+at gøre tingene på, bl.a. hos firmaet \textit{TransIP} skal brugeren selv
 lave en kopi af alle data og indstillinger på serveren, som kan bruges til backup i tilfælde af at serveren
 bryder ned \citep{Virtuelserver}, hvorimod \textit{Liquid Web} \citep{liquid} sørger for den type backup, som
 brugeren specificerer ved leje af serveren.
@@ -36,7 +37,7 @@ De typer af servere, der bliver udbudt af hosting firmaer, kan deles op i dedike
 servere.
 
 
-\subsubsection*{Dedikerede servere}
+\subsubsection{Dedikerede servere}
 
 Ved en dedikeret server lejer man hele maskinen, som skal køre systemet, og man får derfor mere ud af maskinen
 og har mere indflydelse på komponenterne i maskinen og hvilket operativsystem der køres. En dedikeret server
@@ -44,8 +45,7 @@ ville umiddelbart være bedre for større klubber/organisationer, hvor mængden 
 kunne håndtere er større og trafikken til serveren også ville være højere. \citep{server}
 
 
-\subsubsection*{Virtuelle servere} \fxnote{Overvej https://www.vpspro.dk/ her, det er et plus at det er dansk
-og windows.}
+\subsubsection{Virtuelle servere}
 
 Alternativet til at leje en hel maskine til at køre et system, er at leje en virtuel server, hvor der på den
 samme fysiske maskine findes flere separate virtuelle servere. At leje en virtuel serverplads er billigere end
@@ -62,7 +62,7 @@ sejlklubber har midler til at leje en serverplads, hvilket ville kunne anvendes 
 system med alle informationer, som kunne være nødvendigt for systemet.
 
 
-\section{Brugergrænseflade}
+\subsection{Brugergrænseflade}
 
 I et program som skal anvendes af en bruger eller brugergruppe, ønskes det, at programmet har et udseende, som
 brugeren forstår og som hjælper med at bruge programmet. Her menes der programmets interface, på dansk,
@@ -75,13 +75,23 @@ skal interfacet tilpasses, så de korrekte funktioner bliver tilgængelige for d
 En mulighed for at skabe en brugergrænseflade i samarbejde med C\#-kode, er ved at anvende \textit{Windows
 Forms}. Det findes også andre muligheder for at anvende C\#-kode til at skabe brugergrænseflader som
 \textit{Model-View-Controller} og \textit{Windows Presentation Foundation}, men i løsningsdelen vil
-\textit{Windows Forms} blive anvendt til at skabe en brugergrænseflade. \fxnote{Skal jeg komme ind på det med
-Windows Forms her? og i så fald skal der så argumenteres for valget af forms over MVC og WPF? + "sharp" skal
-lige ændres til det korrekte tegn -Caspar Vi kunne omskrive dette når vi er færdige med programmet? -Troels}
-\fxnote{Vi kunne med fordel definere flere af disse som akronymer i rapporten, hvilket vi har en decideret
-pakke til at håndtere. --Tristan}
+\textit{Windows Forms} blive anvendt til at skabe en brugergrænseflade.
 
-\input{chapters/management_systemer.tex} % Hvorfor to gange?? --Tristan
+\subsection{Management systemer}\label{subsec:management-systemer}
+
+Et system som med fordel kunne anvendes til det formål, er et management system. Et management system er et
+framework af processer og procedurer, som bruges til administration af frivillige organisationer og
+virksomheder. Eksempler på management systemer findes i \myref{chap:teknologi-analyse}. Mere præcist er
+SailingClubManager et management system, hvilket er yderligere dokumenteret i \myref{bilag:scm}. Det
+management system har en grafisk brugergrænseflade (GUI) i web browseren. Dette er i kontrast til en konsol
+applikation, eller en nativ GUI.
+
+Ved at anvende et management system kan en klub eller forening, forudsat at systemet er succesfuldt, mindske den
+tid, der bruges på papirarbejde. Særligt fordi en lang række idrætsforeninger drives af frivillige. Ifølge
+\citet{Frivilligrapporten} er 26\% af de arbejdsopgaver, som findes for frivillige, sekretariatsarbejde og
+administrativt arbejde. Med et godt management system kan de administrative opgaver derved bringes ned på
+mindre tid, og derved kan de frivillige bruge deres tid på mere interessante ting for organisationen, eller
+bruge den ekstra tid på noget andet.
 
 
 \section{State of the art}
@@ -91,13 +101,11 @@ produkter der allerede er på markedet, altså hvad er ``state of the art''. I d
 forskellige produkter, som har nogle af de features der efterspørges i et system til en bådklub.
 
 
-
 \subsection*{BoatCloud}
 
 Der er f.eks. et program udviklet af Anderson Software, der hedder BoatCloud.\citep{BoatCloud} BoatCloud
-består af 3 applikationer, StackTrack, VesselValet og Service Request. \fxnote{Skal måske ændres til at hedder
-funktioner i stedet for applikationer? Nej, en funktion er vel en del af er program (andet ord for
-applikation) -Troels} StackTrack benyttes, når medlemmerne selv sejler deres både, hvorimod VesselValet, er
+består af 3 applikationer, StackTrack, VesselValet og Service Request. StackTrack benyttes, når medlemmerne selv sejler
+deres både, hvorimod VesselValet, er
 når der skal tjenere og passagerer med ombord på bådene. BoatCloud applikationerne er derfor mere designet til
 en bådklub, som passer på medlemmernes både, fremfor klubbens egne både. I applikationerne kan medlemmerne
 melde, at de vil sejle på et bestemt tidspunkt. Medlemmet kan få klubben til at vaske båden, tanke den, og
