@@ -28,10 +28,7 @@ serversoftware, tage backup af al data og det ville kræve mere af klubbens inte
 mulighed for at en klub ikke selv skulle stå med at administrere en server, er at købe sig ind hos et hosting
 firma. Her kan man have systemet kørende på en server, og firmaet varetager samtidigt al vedligeholdelse af
 server og serversoftware og sørger for backup af al data. Dog kan forskellige firmaer have forskellige måder
-at gøre tingene på, bl.a. hos firmaet \textit{TransIP} skal brugeren selv
-lave en kopi af alle data og indstillinger på serveren, som kan bruges til backup i tilfælde af at serveren
-bryder ned \citep{Virtuelserver}, hvorimod \textit{Liquid Web} \citep{liquid} sørger for den type backup, som
-brugeren specificerer ved leje af serveren.
+at gøre tingene på, men de firmaer der kigges på i de følgende afsnit, \textit{abakomp} og \textit{Softcom}, sørger begge for vedligholdelse og overvågning af serverne, og for at tage backup. 
 
 De typer af servere, der bliver udbudt af hosting firmaer, kan deles op i dedikerede servere og i virtuelle
 servere.
@@ -42,19 +39,20 @@ servere.
 Ved en dedikeret server lejer man hele maskinen, som skal køre systemet, og man får derfor mere ud af maskinen
 og har mere indflydelse på komponenterne i maskinen og hvilket operativsystem der køres. En dedikeret server
 ville umiddelbart være bedre for større klubber/organisationer, hvor mængden af informationer serveren skulle
-kunne håndtere er større og trafikken til serveren også ville være højere. \citep{server}
+kunne håndtere er større og trafikken til serveren også ville være højere. \citep{Dedikeretserver}
 
 
 \subsubsection{Virtuelle servere}
 
 Alternativet til at leje en hel maskine til at køre et system, er at leje en virtuel server, hvor der på den
 samme fysiske maskine findes flere separate virtuelle servere. At leje en virtuel serverplads er billigere end
-at leje en dedikeret server, da en virtuel serverplads kan lejes for helt ned til 5 euro i
-måneden\citep{Virtuelserver}, hvorimod en dedikeret server kan lejes fra 39 euro i måneden
-\citep{Dedikeretserver}, dog variere prisen alt efter hvilket hardware der bruges og efter, hvor meget
+at leje en dedikeret server, da en virtuel serverplads kan lejes for helt ned til 850 kr. i
+måneden\citep{Virtuelserver}, hvorimod en dedikeret server kan lejes fra 1062 kr. i måneden
+\citep{Dedikeretserver}. 
+Dog variere prisen alt efter hvilket hardware der bruges og efter, hvor meget
 serverplads man ønsker. Grunden til at en virtuel serverplads er billigere, er at flere forskellige virtuelle
 servere kan køre på samme fysiske maskine, og derved er der flere til at betale for vedligeholdelsen. Men en
-virtuel server har til gengæld ikke lige så meget plads og kraft som en dedikeret server.\citep{server}
+virtuel server har til gengæld ikke lige så meget plads og kraft som en dedikeret server.
 
 En virtuel serverplads ville umiddelbart være nok til at køre et administrativt system for en sejlklub, og det
 ville desuden være billigt at leje plads hos et hosting firma. Det er derfor fornuftigt at antage at
@@ -126,6 +124,8 @@ endvidere holde styr på økonomien, man kan tilføje en bankkonto, samt  holde 
 dem og håndtere det online. Man kan tilføje medlemsskaber, med forskellige oplysninger omkring medlemmerne der
 har netop dette medlemsskab i klubben.
 
+
+
 Ud fra denne undersøgelse er flg. features altså fundet i applikationerne:
 
 \begin{itemize}
@@ -143,11 +143,12 @@ Ud fra denne undersøgelse er flg. features altså fundet i applikationerne:
 
 I bilag \myref{bilag:scm} findes der screenshots af udvalgte features der findes i SailingClubManger.
 
-%Ud fra teknologi- og organisationsanalysen kan det uddrages at sejlklubber med fordel kan anvende et IT-system til at
-% administrere deres administrative opgaver. Der findes desuden en liste med udvalgte features fra andre
-% administrationsprogrammer i dette afsnit, som med fordel kunne tages med videre til problemløsningsdelen.
-%Endvidere kan der, ud fra de to nævnte afsnit, tænkes på et overordnet struktur for et program, som kunne hjælpe
-% sejlklubber og andre fritidsklubber med at varetage deres administrative opgaver.
+\subsection*{ForeningLet}
+
+ForeningLet er en applikation, som adskiller sig fra de andre ved ikke at henvende sig specifikt til én type klub, desuden er det en dansk applikation. Applikationen er web-baseret og har mange nyttige funktioner for en sejlklub som Sundet. Applikationen har en medlemsdatabase, et regnskabssystem samt en kontaktfunktion som kan benytte både e-mail og SMS. Der kan også opkræves betalinger fra medlemmerne gennem systemet. Applikationen har også en reservationsfunktioner. Desuden kan der oprettes begivenheder i applikationen, som medlemmerne også kan tilmelde sig gennem applikationen. ForeningLet giver også foreningen mulighed for at oprette deres egen hjemmeside samt deres egen online butik. 
+
+
+\section{Konklusion af teknologianalyse}
 
 Ud fra teknologianalysen er de teknologiske aspekter i projektet blevet belyst. Muligheden for at gøre
 systemet netværksbaseret, gør det muligt for medlemmerne og administrationen i en sejlklub, at foretage
