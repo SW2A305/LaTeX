@@ -62,31 +62,115 @@
   year = {2014},
   author = {{Bådklubben Valby}}
 }
+
 @misc{Virtuelserver,
-  title = {BladeVPS},
-  url = {https://www.transip.eu/vps/},
-  urldate = {2014-03-11},
+  title = {Virtuel server},
+  url = {http://www.abakomp.dk/virtual-server-vps.717/},
+  urldate = {2014-03-18},
   year = {2014},
-  author = {BladeVPS}
+  author = {{abakomp, virtuel server}}
 }
+
 @misc{Dedikeretserver,
-  title = {Gigapros},
-  url = {http://www.gigapros.com/portal/dedicated-servers},
-  urldate = {2014-03-11},
+  title = {Dedikeret server},
+  url = {http://www.abakomp.dk/dedikeret-server-premium.716/premium-serveri5-novice.776},
+  urldate = {2014-03-18},
   year = {2014},
-  author = {Gigapros}
+  author = {{abakomp, dedikeretserver}}
 }
-@misc{liquid,
-  title = {liquidweb},
-  url = {http://www.liquidweb.com/services/solidstate.html},
-  urldate = {2014-03-11},
+
+@misc{Softcom,
+  title = {Softcom},
+  url = {http://www.softcom.dk/produkter/hosting},
+  urldate = {2014-03-18},
   year = {2014},
-  author = {liquidweb}
+  author = {Softcom}
 }
-@misc{server,
-  title = {myhosting},
-  url = {http://myhosting.com/vps-vs-dedicated},
-  urldate = {2014-03-11},
-  year = {2014},
-  author = {myhosting}
+
+
+@misc{SundetDokument1,
+ title = {SundetDokument1},
+ url = {https://drive.google.com/file/d/0B17jaCnLSKrfTmVEY0d6WXQ4YjA/edit?usp=sharing},
+ urldate = {2014-02-26},
+ year = {2014},
+ author = {{Sundet Ledelse}}
+}
+
+@misc{SundetDokument2,
+ title = {SundetDokument2},
+ url = {https://drive.google.com/file/d/0B17jaCnLSKrfWVc4U2xSOGltLW8/edit?usp=sharing},
+ urldate = {2014-02-26},
+ year = {2014},
+ author = {{Sundet Ledelse}}
+}
+
+@misc{Sejlsportdk,
+ title = {Sejlsport.dk},
+ NOTE = "URL \url{http://www.sejlsport.dk/mere/dansk-sejlunion/strategi-og-politik/vision-og-vaerdier} og 
+ 		 \url{http://www.sejlsport.dk/mere/dansk-sejlunion/historie}",
+ urldate = {2014-02-16},
+ year = {2014},
+ author = {{Dansk Sejlunion}}
+}
+
+@misc{sundet_vedtaegter,
+	title = {Vedtægter for Sejlklubben Sundet København},
+	url = {http://www.sundet.dk/vedtaegter/Vedtaegter\%20for\%20Sundet\%2027nov12.pdf},
+	urldate = {2014-03-11},
+	publisher = {Sejlklubben Sundet},
+	author = {Sundet, Sejlklubben},
+	month = nov,
+	year = {2012}
+}
+
+@misc{aalborg_sejlklub_vedtaegter,
+	title = {Vedtægter Aalborg Sejlklub},
+	url = {http://aalborg-sejlklub.dk/show_event.php?id=232},
+	urldate = {2014-03-11},
+	journal = {Aalborg Sejlklub},
+	author = {{Aalborg Sejlklub}}
+}
+
+@misc{badklubben_valby_love,
+	title = {Love for Bådklubben Valby},
+	url = {http://xn--bdklubbenvalby-lib.dk/index.php/love-og-regler},
+	urldate = {2014-03-11},
+	journal = {Bådklubben Valby},
+	author = {Bådklubben Valby}
+}
+
+@misc{baedklubben_valby_duelighedsbevis,
+	title = {Duelighedsbevis Bådklubben Valby},
+	url = {http://xn--bdklubbenvalby-lib.dk/index.php/duelighedsbevis},
+	urldate = {2014-03-11},
+	journal = {Bådklubben Valby},
+	author = {Bådklubben Valby}
+}
+
+@misc{spt_hal,
+	title = {Spøttrup Kulturhal},
+	url = {http://www.spottrupkulturhal.dk/},
+	urldate = {2014-03-11},
+	journal = {Spøttrup Kulturhal},
+	author = {Spøttrup Kulturhal}
+}
+
+%https://drive.google.com/file/d/0B3jEBF-Oqi0bV1c0bkpOWEtzWk0/edit?usp=sharing
+
+@misc{projektkatalog,
+  title = {P2 Projektkatalog},
+  url = {https://drive.google.com/file/d/0B3jEBF-Oqi0bV1c0bkpOWEtzWk0/edit?usp=sharing},
+  urldate = {2014-03-17},
+  year = 2014,
+  author = {{Kurt Nørmark}}
+}
+
+%http://www.dst.dk/da/Statistik/emner/forbrug/elektronik-i-hjemmet.aspx?tab=nog
+
+@misc{dstSPogPC,
+  title = {Elektronik i hjemmet},
+  url = {http://www.dst.dk/da/Statistik/emner/forbrug/elektronik-i-hjemmet.aspx?tab=nog},
+  urldate = {2014-03-17},
+  year = 2013,
+  author = {{Danmarks Statistik}}
 }
