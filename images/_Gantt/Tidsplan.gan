@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2014-03-31" view-index="0" gantt-divider-location="410" resource-divider-location="300" version="2.0" locale="en_GB">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2014-04-30" view-index="0" gantt-divider-location="418" resource-divider-location="300" version="2.0" locale="en_US">
     <description/>
-    <view zooming-state="default:3" id="gantt-chart">
-        <field id="tpd3" name="Name" width="55" order="0"/>
-        <field id="tpd4" name="Begin date" width="20" order="1"/>
-        <field id="tpd5" name="End date" width="23" order="2"/>
-        <option id="taskLabelRight" value="advancement"/>
+    <view zooming-state="default:0" id="gantt-chart">
+        <field id="tpd3" name="Name" width="60" order="0"/>
+        <field id="tpd4" name="Begin date" width="12" order="1"/>
+        <field id="tpd5" name="End date" width="26" order="2"/>
     </view>
     <view id="resource-table">
         <field id="0" name="Name" width="50" order="0"/>
@@ -44,7 +43,7 @@
             </task>
             <task id="10" name="Buffer" meeting="false" start="2014-04-11" duration="7" complete="0" expand="true"/>
         </task>
-        <task id="2" name="Løsningsdel (Kode)" color="#000000" meeting="false" start="2014-03-26" duration="39" complete="18" expand="true">
+        <task id="2" name="Løsningsdel (Kode)" color="#000000" meeting="false" start="2014-03-26" duration="35" complete="18" expand="true">
             <task id="21" name="Medlemmer" meeting="false" start="2014-03-26" duration="7" complete="94" expand="true">
                 <depend id="15" type="2" difference="0" hardness="Strong"/>
                 <task id="1" name="Klasser" color="#8cb6ce" meeting="false" start="2014-03-26" duration="4" complete="100" expand="true"/>
@@ -61,41 +60,50 @@
                 <task id="38" name="Klasser" meeting="false" start="2014-04-16" duration="3" complete="0" expand="true">
                     <depend id="77" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="40" name="UI" meeting="false" start="2014-04-18" duration="7" complete="0" expand="true"/>
+                <task id="40" name="UI" meeting="false" start="2014-04-18" duration="4" complete="0" expand="true"/>
                 <task id="77" name="Funktionalitet" meeting="false" start="2014-04-21" duration="6" complete="0" expand="true">
                     <task id="79" name="Booking" meeting="false" start="2014-04-21" duration="3" complete="0" expand="true">
                         <depend id="82" type="2" difference="0" hardness="Strong"/>
                         <depend id="85" type="2" difference="0" hardness="Strong"/>
                     </task>
-                    <task id="82" name="Kommende Booking" meeting="false" start="2014-04-24" duration="2" complete="0" expand="true"/>
+                    <task id="82" name="Kommende Booking" meeting="false" start="2014-04-24" duration="1" complete="0" expand="true"/>
                     <task id="85" name="Rediger Booking" meeting="false" start="2014-04-24" duration="3" complete="0" expand="true"/>
                 </task>
             </task>
-            <task id="31" name="Logbog" color="#000000" meeting="false" start="2014-04-29" duration="5" complete="0" expand="true">
+            <task id="31" name="Logbog" color="#000000" meeting="false" start="2014-04-29" duration="4" complete="0" expand="true">
                 <depend id="32" type="2" difference="0" hardness="Strong"/>
                 <task id="42" name="Klasser" meeting="false" start="2014-04-29" duration="2" complete="0" expand="true"/>
-                <task id="44" name="UI" meeting="false" start="2014-04-30" duration="4" complete="0" expand="true"/>
+                <task id="44" name="UI" meeting="false" start="2014-04-29" duration="4" complete="0" expand="true"/>
             </task>
-            <task id="32" name="Undervisning" color="#000000" meeting="false" start="2014-05-06" duration="9" complete="0" expand="true">
+            <task id="32" name="Undervisning" color="#000000" meeting="false" start="2014-05-05" duration="6" complete="0" expand="true">
                 <depend id="33" type="2" difference="0" hardness="Strong"/>
-                <task id="46" name="Klasser" meeting="false" start="2014-05-06" duration="3" complete="0" expand="true">
+                <task id="46" name="Klasser" meeting="false" start="2014-05-05" duration="1" complete="0" expand="true">
                     <depend id="115" type="2" difference="0" hardness="Strong"/>
                 </task>
-                <task id="48" name="UI" meeting="false" start="2014-05-08" duration="4" complete="0" expand="true"/>
-                <task id="115" name="Funktionalitet" meeting="false" start="2014-05-09" duration="6" complete="0" expand="true">
-                    <task id="128" name="Til- og afmelding" meeting="false" start="2014-05-09" duration="3" complete="0" expand="true"/>
-                    <task id="131" name="Lektionsinfo" meeting="false" start="2014-05-12" duration="3" complete="0" expand="true"/>
-                    <task id="133" name="Lektionsopfølgning" meeting="false" start="2014-05-13" duration="4" complete="0" expand="true"/>
+                <task id="48" name="UI" meeting="false" start="2014-05-06" duration="4" complete="0" expand="true"/>
+                <task id="115" name="Funktionalitet" meeting="false" start="2014-05-06" duration="5" complete="0" expand="true">
+                    <task id="128" name="Til- og afmelding" meeting="false" start="2014-05-06" duration="3" complete="0" expand="true"/>
+                    <task id="131" name="Lektionsinfo" meeting="false" start="2014-05-07" duration="3" complete="0" expand="true"/>
+                    <task id="133" name="Lektionsopfølgning" meeting="false" start="2014-05-07" duration="4" complete="0" expand="true"/>
                 </task>
             </task>
-            <task id="33" name="Kalender" meeting="false" start="2014-05-19" duration="1" complete="0" expand="true">
-                <task id="50" name="Begivenheder" meeting="false" start="2014-05-19" duration="1" complete="0" expand="true"/>
-                <task id="52" name="Reservationer" meeting="false" start="2014-05-19" duration="1" complete="0" expand="true"/>
-                <task id="54" name="UI" meeting="false" start="2014-05-19" duration="1" complete="0" expand="true"/>
+            <task id="33" name="Kalender" meeting="false" start="2014-05-13" duration="1" complete="0" expand="true">
+                <task id="50" name="Begivenheder" meeting="false" start="2014-05-13" duration="1" complete="0" expand="true"/>
+                <task id="52" name="Reservationer" meeting="false" start="2014-05-13" duration="1" complete="0" expand="true"/>
+                <task id="54" name="UI" meeting="false" start="2014-05-13" duration="1" complete="0" expand="true"/>
             </task>
         </task>
-        <task id="61" name="Løsningsdel (Rapport)" meeting="false" start="2014-03-25" duration="22" complete="0" expand="true">
-            <task id="62" name="Fyld, bare fordi..." meeting="false" start="2014-03-25" duration="22" complete="0" expand="true"/>
+        <task id="61" name="Løsningsdel (Rapport)" meeting="false" start="2014-04-14" duration="27" complete="0" expand="true">
+            <task id="62" name="UI overvejelser" meeting="false" start="2014-04-14" duration="3" complete="0" expand="true"/>
+            <task id="150" name="Dokumentation af valg" meeting="false" start="2014-04-30" duration="1" complete="0" expand="true"/>
+            <task id="161" name="Program Arkitektur" meeting="false" start="2014-04-15" duration="6" complete="0" expand="true"/>
+            <task id="158" name="Gennemgang af programmet" meeting="false" start="2014-05-14" duration="2" complete="0" expand="true"/>
+            <task id="160" name="Test af kode" meeting="false" start="2014-05-14" duration="2" complete="0" expand="true"/>
+            <task id="163" name="User Tests" meeting="false" start="2014-05-15" duration="1" complete="0" expand="true"/>
+            <task id="152" name="Diskussion af mål opnået" meeting="false" start="2014-05-13" duration="3" complete="0" expand="true"/>
+            <task id="156" name="Konklusion" meeting="false" start="2014-05-16" duration="1" complete="0" expand="true"/>
+            <task id="162" name="Perspektivering" meeting="false" start="2014-05-16" duration="1" complete="0" expand="true"/>
+            <task id="154" name="Rettelser" meeting="false" start="2014-05-16" duration="3" complete="0" expand="true"/>
         </task>
     </tasks>
     <resources/>
@@ -111,9 +119,9 @@
         <displaycolumn property-id="tpd9" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd1" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd0" order="-1" width="75" visible="false"/>
-        <displaycolumn property-id="tpd3" order="0" width="226" visible="true"/>
-        <displaycolumn property-id="tpd4" order="1" width="85" visible="true"/>
-        <displaycolumn property-id="tpd5" order="2" width="95" visible="true"/>
+        <displaycolumn property-id="tpd3" order="0" width="243" visible="true"/>
+        <displaycolumn property-id="tpd4" order="1" width="51" visible="true"/>
+        <displaycolumn property-id="tpd5" order="2" width="105" visible="true"/>
     </taskdisplaycolumns>
     <previous/>
     <roles roleset-name="Default"/>
