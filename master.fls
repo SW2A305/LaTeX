@@ -466,10 +466,14 @@ INPUT chapters/organisation.tex
 INPUT chapters/organisation.tex
 INPUT chapters/teknologi.tex
 INPUT chapters/teknologi.tex
-INPUT chapters/problemformulering-new.tex
-INPUT chapters/problemformulering-new.tex
+INPUT chapters/problemformulering.tex
+INPUT chapters/problemformulering.tex
 INPUT chapters/Produktkrav.tex
 INPUT chapters/Produktkrav.tex
+INPUT chapters/kode_dokumentation.tex
+INPUT chapters/kode_dokumentation.tex
+INPUT chapters/GUI.tex
+INPUT chapters/GUI.tex
 INPUT master.bbl
 INPUT master.bbl
 INPUT master.brf
