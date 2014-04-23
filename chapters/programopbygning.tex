@@ -1,12 +1,18 @@
 \chapter{Programopbygning}
 
-I dette kapitel vil programmets opbygning blive beskrevet ud fra UML-diagrammet, som kan findes [ET ELLER ANDET STED]. Dataene indeholdt i klasser kan ses ud fra UML-diagrammet. De fleste af dataene indeholdt i klasserne giver sig selv, men nogle vil blive uddybet.
+I dette kapitel vil programmets opbygning blive beskrevet ud fra UML-diagrammet, som kan findes i \myref{UML_diagram}.
+Dataene indeholdt i klasser kan ses ud fra UML-diagrammet. De fleste af dataene indeholdt i klasserne giver sig selv,
+men nogle vil blive uddybet.
+Sidst i kapitlet vil der blive argumenteret for dataene der skal være på medlemmerne.
 
 
 \section{Klasser}
 
-For at holde styr på medlemmer i sejlklubben, er der lavet en overordnet person klasse. Klassens ``PersonId'' er et nummer som kan bruges til at skelne de enkelte personer fra hinanden. ``BoatDriver'' er en boolsk værdi som afgør om personen har et førerbevis eller ej.
-``SailClubMember'' klassen arver fra person klassen og har et ``MemberId'' og et ``Username'' og ``Password'', som skal bruges til logge på i programmet. Klassen har også et ``Position'' medlem. Denne afgør hvilke slags medlem man er. Medlemstyper er som følger:
+For at holde styr på medlemmer i sejlklubben, er der lavet en overordnet person klasse. Klassens ``PersonId'' er et
+nummer som kan bruges til at skelne de enkelte personer fra hinanden. ``BoatDriver'' er en boolsk værdi som afgør om
+personen har et førerbevis eller ej. ``SailClubMember'' klassen arver fra person klassen og har et ``MemberId'' og et
+``Username'' og ``PasswordHash''. De to sidstnævnte skal bruges til logge på i programmet. Klassen har også et
+``Position'' medlem. Denne afgør hvilke slags medlem man er. Medlemstyper er som følger:
 
 \begin{itemize}
 \item SupportMember
@@ -16,13 +22,27 @@ For at holde styr på medlemmer i sejlklubben, er der lavet en overordnet person
 \item Admin
 \end{itemize}
 
-Programmet indeholder også en båd klasse. Dataene indeholdt i denne klasser giver sig selv ud fra UML-diagrammet.
-Der er også en overordnet klasse for sejlture som er abstrakt. Denne arver klasserne skoletur og almindelig tur fra. Der skal for hver sejltur, registreres hvilken båd der bliver brugt samt tidspunkt for afgang og ankomst. Vejrforholdene skal registres og der kan tilføjes de kommentarer der muligvis kan være.
-Når der er tale om en almindelig tur, registreres der hvem kaptajnen er og de øvrige besætningsmedlemmer bliver tilføjet til en liste. Der skal desuden registreres, hvornår man regner med at være tilbage fra turen og hvad formålet med turen er og hvor man sejler henne. Dette skal gøres så det er lettere at finde båden og besætningen, f.eks. i tilfælde af at en ulykke forekommer.
-Ved en skoletur er der registret et skolehold, som er defineret i en klasse. Skoleholds klassen indeholder lærer og elever. Man kan tilføje yderligere elever til en skoletur, som normalt ikke er med samt gæster som ikke er elever. Der registreres også hvem der deltager i turen, da der kan være elever fra det normale hold, som ikke møder op.
-Til sejlturene er der tilknyttet en skadesraport, som skal, lige som navnet angiver, bruges til registre hvis der kommer skader på båden under sejladsen. 
-\fxnote{UML-diagrammet har en TripAttendance-klasse som jeg synes der er lidt overflødig, og som jeg derfor ikke har skrevet om.}
+Programmet indeholder også en båd klasse. Dataene indeholdt i denne klasser giver sig selv ud fra UML-diagrammet. Der er
+også en overordnet klasse for sejlture som er abstrakt. Denne arver klasserne skoletur og almindelig tur fra. Der skal
+for hver sejltur, registreres hvilken båd der bliver brugt samt tidspunkt for afgang og ankomst. Vejrforholdene skal
+registres og der kan tilføjes de kommentarer der muligvis kan være. Når der er tale om en almindelig tur, registreres
+der hvem kaptajnen er og de øvrige besætningsmedlemmer bliver tilføjet til en liste. Der skal desuden registreres,
+hvornår man regner med at være tilbage fra turen og hvad formålet med turen er og hvor man sejler henne. Dette skal
+gøres så det er lettere at finde båden og besætningen, f.eks. i tilfælde af at en ulykke forekommer.
+Ved en skoletur er der registret et skolehold, som er defineret i en klasse. Skoleholds klassen indeholder lærer og
+elever. Man kan tilføje yderligere elever til en skoletur, som normalt ikke er med samt gæster som ikke er elever. Der
+registreres også hvem der deltager i turen, da der kan være elever fra det normale hold, som ikke møder op. Til
+sejlturene er der tilknyttet en skadesraport, som skal, lige som navnet angiver, bruges til registre hvis der kommer
+skader på båden under sejladsen. 
 
 
 \section{Medlemsdata}
 
+``PersonId'' og ``MemberId'' bliver som nævnt brugt til at skelne de forskellige personer og medlemmer fra hinanden,
+ligesom ``FirstName'' og ``LastName'' bliver brugt til identificering. Adresse dataene er almindelige for en klub at
+have på sine medlemmer, men bliver ikke brugt til noget i programmet. Ligeledes bliver ``DateOfBirth'', ``Gender'',
+``PhoneNumber'' og ``Email'' ikke brugt. ``BoatDriver'' fortæller som sagt hvorvidt medlemmet har førerbevis, og
+bestemmer i programmet om vedkommende medlem har lov til at være ``Captain'' på en sejltur. ``Position'' afgør hvad
+medlemmet har adgang til i programmet, f.eks. har et medlem der er ``Student'' adgang til undervisningsfunktionerne i
+programmet, hvorimod et almindeligt ``Member'' ikke har. ``Username'' og ``PasswordHash'' bruges som sagt til at logge
+på.
