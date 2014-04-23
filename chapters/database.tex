@@ -1,16 +1,16 @@
 \section{Database}
-Til opbevarelse af data var der flere forskellige valg. Valget valget stod primært imellem flade filer og konkret database. Flade filer, eller såkaldte ``flat files'' på engelsk, er almindelige filer, typisk tekstfiler, som bruges til datalagring. På den anden side var der almindelige databaser. Der var under dette valg ikke taget stilling til hvilken type database som skulle bruges, men bare om der generelt skulle bruges database. 
-Fordelen ved flade filer er, at de er meget simple at håndtere, hvor databaser på den anden side er mere avanceret at håndtere og programmere. Med databaser kan der dog være flere muligheder for datahåndtering og der er også løsninger til C#, som skulle være til at overkomme at implementere.\citep{flatfiles} Af den grund blev der valgt at bruge almindelig database fremfor flade filer. 
+Til opbevarelse af data var der flere forskellige valg. Valget valget stod primært imellem flade filer og konkret database. 
+Flade filer, eller såkaldte ``flat files'' på engelsk, er almindelige filer, typisk tekstfiler, som bruges til datalagring. 
+På den anden side var der almindelige databaser. Der var under dette valg ikke taget stilling til hvilken type database som skulle bruges, men bare om der generelt skulle bruges database. 
+Fordelen ved flade filer er, at de er meget simple at håndtere, hvor databaser på den anden side er mere avanceret at håndtere og programmere. 
+Med databaser kan der dog være flere muligheder for datahåndtering og der er også løsninger til C#, som skulle være til at overkomme at implementere.\citep{flatfiles} Af den grund blev der valgt at bruge almindelig database fremfor flade filer. 
 
-Valget af database kom til at stå mellem at bruge SQLite og Entity Framework. SQLite er et databasesystem, som har implementeret det meste af SQL standarderne. SQLite blev taget i betragtning, da det skulle være meget simpelt at implementere og bruge og at det ligeledes er et populært valg til lokal database. På den anden side er der det såkaldte Entity Framework, som er en Object Relational Mapper (ORM) for ADO.NET, hvilket vil sige at den skaber objekter og entities alt efter databasetabellerne og skaber mekanismer for bl.a. CRUD (Create, Read, Update, Delete) opperationer. \citep{entity} 
-Fordelen ved Entity Framework er muligheden for at kode først, og derefter lave databasen ud fra det eksisterende kode. \fxnote{Skal uddybes, og have DAL argument med}
+Valget af database kom til at stå mellem at bruge SQLite og Entity Framework. SQLite er et databasesystem, som har implementeret det meste af SQL standarderne.
+SQLite blev taget i betragtning, da det skulle være meget simpelt at implementere og bruge og, at det ligeledes er et populært valg til lokal database. 
+På den anden side er der det såkaldte Entity Framework, som er en Object Relational Mapper (ORM) for ADO.NET, hvilket vil sige at den skaber objekter og entities alt efter databasetabellerne og skaber mekanismer for bl.a. CRUD (Create, Read, Update, Delete) opperationer. \citep{entity} 
+Den måde som Entity Framework regnes med at blive implementeret, er såkaldt ``Entity Code First'', hvilket, som navnet antyder, er at kodningen starter før opsætningen og programmeringen af selve databasen. Der er også mulighed for at lava databasen først, og så kode bagefter.
+Fordelen ved Entity Framework er, som nævnt før, muligheden for at kode først, og derefter lave databasen ud fra det eksisterende kode. 
+Valget faldt på Entity Framwork, da det skulle være simpelt at implementere. Vi var også blevet anbefalet at bruge Entity Framework af vores C#-lærer.\fxnote{Skal der henvises til vores lærers anbefaling eller bare droppe det?}
 
-
-DAL interface gør det udafhængig af databasen så den kan skiftes ud. 
-Kan også test. 
-
-Relativt nemt at implementere, entity framework code first.
-
-
-
-
+Sammen med Entity Framework, så gøres der brug af et såkaldt Data Abstraction Layer (DAL), hvilket virker som en adskillelse mellem selve koden og databasen, så koden stadig vil virke uden databasen. 
+Ved brug af et DAL, så er det også muligt at teste databasen, bl.a. læse og skrivemuligheder. 
