@@ -1,7 +1,7 @@
 \chapter{Teknologianalyse}\label{chap:teknologi-analyse}
 
 I det følgende kapitel vil forskellige teknologier, som kunne anvendes i forhold til at hjælpe med
-administrationen i en sejlklub, blive forklaret. Derefter findes en analyse af de programmer, som på nuværende
+administrationen i en sejlklub, blive undersøgt. Derefter findes en analyse af de programmer, som på nuværende
 tidspunkt er state of the art inden for administration af sejlklubber.
 
 \section{Teknologier}
@@ -70,14 +70,12 @@ snilde, der er i modtagergruppen, da det ikke er effektivt at lave et system, so
 kan bruge. Forskellige undergrupper i modtagergruppen skal bruge forskellige funktioner i systemet, og derfor
 skal interfacet tilpasses, så de korrekte funktioner bliver tilgængelige for de rigtige brugere.
 
-En mulighed for at skabe en brugergrænseflade i samarbejde med C\#-kode, er ved at anvende \textit{Windows
-Forms}. Det findes også andre muligheder for at anvende C\#-kode til at skabe brugergrænseflader som
-\ac{MVC} og \ac{WPF}, men i løsningsdelen vil
-\textit{Windows Forms} blive anvendt til at skabe en brugergrænseflade.
+En mulighed for at skabe en brugergrænseflade i samarbejde med C\#-kode, er ved at anvende \textit{Windows Presentation Foundation}. Det findes også andre muligheder for at anvende C\#-kode til at skabe brugergrænseflader, men grundet begrænset tid og viden vil
+\textit{Windows Presentation Foundation} blive anvendt til at skabe brugergrænsefladen i dette projekt.
 
 \subsection{Management systemer}\label{subsec:management-systemer}
 
-Et system som med fordel kunne anvendes til det formål, er et management system. Et management system er et
+Et system som med fordel kunne anvendes til administrere en fritidsklub, som en sejlklub, er et management system. Et management system er et
 framework af processer og procedurer, som bruges til administration af frivillige organisationer og
 virksomheder. Eksempler på management systemer findes i \myref{chap:teknologi-analyse}. Mere præcist er
 SailingClubManager et management system, hvilket er yderligere dokumenteret i \myref{bilag:scm}. Det
@@ -85,7 +83,7 @@ management system har en \ac{GUI} i web browseren. Dette er i kontrast til en ko
 applikation, eller en nativ \ac{GUI}.
 
 Ved at anvende et management system kan en klub eller forening, forudsat at systemet er succesfuldt, mindske den
-tid, der bruges på papirarbejde. Særligt fordi en lang række idrætsforeninger drives af frivillige. Ifølge
+tid, der bruges på papirarbejde. Ifølge
 \citet{Frivilligrapporten} er 26\% af de arbejdsopgaver, som findes for frivillige, sekretariatsarbejde og
 administrativt arbejde. Med et godt management system kan de administrative opgaver derved bringes ned på
 mindre tid, og derved kan de frivillige bruge deres tid på mere interessante ting for organisationen, eller
@@ -157,7 +155,7 @@ systemet netværksbaseret, gør det muligt for medlemmerne og administrationen i
 handlinger vedrørende klubben fra hjemmet eller arbejdspladsen. For at undgå at en lokal server skulle
 opsættes og vedligeholdes af klubben selv, kunne en virtuel server, hostet af et hosting firma, varetage denne
 opgave. Vigtigheden i en god brugergrænseflade blev gjort klart, og metode for at opsætte en brugergrænseflade
-blev valgt i form af \textit{Windows forms}. Fra state of the art delen blev nuværende systemer på markedet
+blev valgt i form af \textit{Windows Presentation Foundation}. Fra state of the art delen blev nuværende systemer på markedet
 undersøgt, og udvalgte features tages med videre til løsningsdelen, som eventuelle tilføjelser til det
 administrationssystem der skal udvikles.
 
