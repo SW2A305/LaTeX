@@ -7,10 +7,10 @@ Dette er vigtigt således reservationer placeres i det rigtige navn, og at bruge
 Eksempelvis skal et medlem af sejlklubben, ikke have adgang til at tilføje og fjerne brugere. 
 
 Login proceduren består fra brugeres synspunkt af at indtaste sit brugernavn og adgangskode, og trykke på login eller enter. 
-Hvis brugeren har tastet rigtigt vises deres en velkommen besked, og afhængigt at brugerens privileger får den adgang til de funktioner.
+Hvis brugeren har tastet rigtigt vises deres en velkommen besked, og afhængigt at brugerens privileger får vedkommende adgang til de funktioner de har til rådighed.
 
 Når login kaldet udføres af brugeren, oprettes der en forbindelse til databasen, hvorefter den tjekker hvorvidt de informationer som er givet stemmer overens med dens. 
-Dog anvenderes der en kryptografisk hashing algoritme, dette er for at undgå at folk med adgang til databasen, kan aflæse brugernes adgangskoder.
+Dog anvenderes der en kryptografisk hashing algoritme, dette er for at undgå at folk med adgang til databasen kan aflæse brugernes adgangskoder.
 Det er en præventiv beskyttelse mod hacking angreb.
 I programmet anvendes SHA-256, som returner en 256 bit hash (dvs. 32 bytes og 64 karakterer som en streng). 
 Men dette ville være trivielt, at udskifte med en anden hashing algoritme, hvis der blev fundet en svaghed i SHA-256. 
