@@ -1,17 +1,32 @@
 \chapter{Database}
-Til opbevarelse af data var der flere forskellige valg. Valget valget stod primært imellem flade filer og konkret database. 
-Flade filer, eller såkaldte ``flat files'' på engelsk, er almindelige filer, typisk tekstfiler, som bruges til datalagring. 
-På den anden side var der almindelige databaser. Der var under dette valg ikke taget stilling til hvilken type database, som skulle bruges, men bare om der generelt skulle bruges database. 
-Fordelen ved flade filer er, at de er meget simple at håndtere, hvor databaser på den anden side er mere avanceret at håndtere og programmere. 
-Med databaser kan der dog være flere muligheder for datahåndtering, og der er også løsninger til C\#, som skulle være til at overkomme at implementere.\citep{flatfiles} Af den grund blev der valgt at bruge almindelig database fremfor flade filer. 
+Til lagering af data findes der flere måder, den primære overvejse er mellem en database og tekstfiler.
+Flade filer, eller såkaldte ``flat files'' på engelsk, er tekstfiler, som bruges til datalagring. 
+Flade filer er en meget simpel løsning, som vil være nemt at få i gang, men den skalerer ikke særligt godt. 
+%Fordelen ved flade filer er, at de er meget simple at håndtere, hvor databaser på den anden side er mere avanceret at håndtere og programmere. 
+%På den anden side var der databaser. Der var under dette valg ikke taget stilling til hvilken type database, som skulle bruges, men bare om der generelt skulle bruges database. 
+En database er et stykke software som opbevarer data, på en hensigtsmæssig måde. 
+Der findes en lang række af database management systemer (DBMS) hver med fordele og ulemper, mange af dem understøtter Structured Query Language (SQL) standarden.
 
-Valget af database kom til at stå mellem at bruge SQLite og Entity Framework. SQLite er et databasesystem, som har implementeret det meste af SQL standarderne.
-SQLite blev taget i betragtning, da det skulle være meget simpelt at implementere og bruge og, at det ligeledes er et populært valg til lokal database. 
-Fordelen ved SQLite er dens simpelhed og integration med C\#. 
-På den anden side er der det såkaldte Entity Framework, som er en Object Relational Mapper (ORM) for ADO.NET, hvilket vil sige, at den skaber objekter og entities alt efter databasetabellerne og skaber mekanismer for bl.a. CRUD (Create, Read, Update, Delete) opperationer. \citep{entity} 
-Den måde som Entity Framework regnes med at blive implementeret, er såkaldt ``Entity Code First'', hvilket, som navnet antyder, er at kodningen starter før opsætningen og programmeringen af selve databasen. Der er også mulighed for at lava databasen først, og så kode bagefter.
-Fordelen ved Entity Framework er, som nævnt før, muligheden for at kode først, og derefter lave databasen ud fra det eksisterende kode. 
-Valget faldt på Entity Framwork, da det skulle være simpelt at implementere. Vi var også blevet anbefalet at bruge Entity Framework af vores C\#-lærer.\fxnote{Skal der henvises til vores lærers anbefaling eller bare droppe det?}
+Med databaser kan der dog være flere muligheder for datahåndtering, og der er også løsninger til C\#, som skulle være til at overkomme at implementere.\citep{flatfiles} 
+Af den grund blev der valgt at bruge almindelig database fremfor flade filer. 
 
-Sammen med Entity Framework, så gøres der brug af et såkaldt Data Abstraction Layer (DAL), hvilket virker som en adskillelse mellem selve koden og databasen, så koden stadig vil virke uden databasen. 
-Ved brug af et DAL, så er det også muligt at teste databasen, bl.a. læse og skrivemuligheder. 
+Gruppen kiggede nærmere på SQLite og Entity Framework (Code-First). 
+SQLite er en serverløs, selvstændig, konfigurationsløs database. 
+Dette gør den meget simpel i anvendelse, samt ville resourceforbruget være meget lavt. 
+Entity Framework er en object-relational mapping (ORM) framework til .NET platformen. 
+Altså får hvert objekt, der ønskes lagret, en plads i databasen. 
+Med ``Entity Code First'' arbejdsmodellen, så laves klasser først, hvorefter Entity Framework håndterer integrationen med dens database.
+
+Gruppen adspurte vores underviser i Objet Orienteret Programmering, og han anbefalede Entity Framework (Code-First), til vores problemstilling. 
+Valget faldte derfor på Entity Framework, med Code-First mønsteret. 
+
+%Valget af database kom til at stå mellem at bruge SQLite og Entity Framework. SQLite er et databasesystem, som har implementeret det meste af SQL standarderne.
+%SQLite blev taget i betragtning, da det skulle være meget simpelt at implementere og bruge og, at det ligeledes er et populært valg til lokal database. 
+%Fordelen ved SQLite er dens simpelhed og integration med C\#. 
+%På den anden side er der det såkaldte Entity Framework, som er en Object Relational Mapper (ORM) for ADO.NET, hvilket vil sige, at den skaber objekter og entities alt efter databasetabellerne og skaber mekanismer for bl.a. CRUD (Create, Read, Update, Delete) opperationer. \citep{entity} 
+%Den måde som Entity Framework regnes med at blive implementeret, er såkaldt ``Entity Code First'', hvilket, som navnet antyder, er at kodningen starter før opsætningen og programmeringen af selve databasen. Der er også mulighed for at lava databasen først, og så kode bagefter.
+%Fordelen ved Entity Framework er, som nævnt før, muligheden for at kode først, og derefter lave databasen ud fra det eksisterende kode. 
+%Valget faldt på Entity Framwork, da det skulle være simpelt at implementere. Vi var også blevet anbefalet at bruge Entity Framework af vores C\#-lærer.\fxnote{Skal der henvises til vores lærers anbefaling eller bare droppe det?}
+
+%Sammen med Entity Framework, så gøres der brug af et såkaldt Data Abstraction Layer (DAL), hvilket virker som en adskillelse mellem selve koden og databasen, så koden stadig vil virke uden databasen. 
+%Ved brug af et DAL, så er det også muligt at teste databasen, bl.a. læse og skrivemuligheder. 
