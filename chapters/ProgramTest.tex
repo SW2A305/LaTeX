@@ -4,34 +4,46 @@ I dette afsnit forklares der om teorien bag programtest samt udførelsen deraf. 
 For at kunne teste disse tre kriterier ses udvikles der først en profil af målgruppen. Idet dette program er lavet med hensigt af benyttelse i en sejlklub er denne gruppe rimelig stor. Målgruppen er hele sejlklubben, hvilket kan være rige som fattige og gamle som unge. Idet det er et computersystem er det eneste krav til målgruppen at de har basal kendskab til en computers egenskaber.
 
 For at kunne udføre en test udvikles der således også en række mål for hvad brugeren ønsker at benytte programmet til. Ud fra disse mål kan der således opstilles scenarier, der kan testes. Programmet er ment som en hjælp med organisering, således er målene for programmet er relateret til klubbens organisatoriske opgaver. Nedenfor ses en liste af mål for den almindelige bruger hvorudfra der kan udvikles scenarier.
+
 \begin{itemize}
   \item Følge ens status på duelighedsbevis.
   \item Se reservationer af både.
-  \item Opret reservation af  både.
+  \item Opret reservation af både.
   \item Find andre medlemmer.
-  \item Tilmeld sig begivenheder og undervisning.
+  \item Tilmeld sig begivenheder.
   \item Følg status på begivenheder og undervisning(ændringer/aflysninger).
 \end{itemize}
-En administrator af programmet vil have få yderligere mål såsom opdatering af bådstatus og aflysning såvel som oprettelse af klubbegivenheder. Ud fra disse mål er lavet en række scenarier til usability test som er vedlagt i bilaget, som kan findes i \myref{Usability_cases}. 
 
-Et eksempel på en usability test kunne være: Et medlem af klubben kunne godt tænke sig at komme ud og sejle. Vedkommende logger ind på systemet med sit personlige login. Han navigerer ind på bookingsiden, og booker en båd, den kommende lørdag. Han logger derefter ud af programmet igen.
+En administrator af programmet vil have få yderligere mål såsom opdatering af bådstatus og aflysning såvel som oprettelse af klubbegivenheder. Ud fra disse mål er lavet en række scenarier til user cases som er vedlagt i bilaget, som kan findes i \myref{Usability_cases}. 
 
-Ud fra disse scenarier kan hver funktionalitet beskrevet omskrives til en række korte kommandoer, som berører én bestemt funktion i programmet.\fxnote{Indsæt bilag med kommando liste til test}
-Disse specifikke kommandoer vil blive vist til testbrugere af programmet, og de vil blive overvåget mens de forsøger at udføre den kommando de har fået. Efter udførslen af opgaven de er blevet stillet, spørges der ind til brugeres oplevelse af programmet, med henblik på funktionalitet, om brugergrænsefladen var forvirrende eller guidede testpersonerne i den rigtige retning og eventuelt andre meninger fra testpersonerne.
-Kommandoerne svarene til eksemplet på usability testen fra før ville være:
+Et eksempel på en user case kunne være: Et medlem af klubben kunne godt tænke sig at komme ud og sejle. Vedkommende logger ind på systemet med sit personlige login. Han navigerer ind på bookingsiden, og booker en båd, den kommende lørdag. Han logger derefter ud af programmet igen.
+
+Ud fra disse scenarier kan hver funktionalitet beskrevet omskrives til en række korte opgaver, som berører én bestemt funktion i programmet. Opgaverne kan findes i \myref{BrugerTestCases}
+
+Dette bilag vil blive vist til testpersoner af programmet, og de vil blive observeret mens de forsøger at udføre den opgave de har fået. Efter udførslen af opgaven de er blevet stillet, spørges der ind til brugeres oplevelse af programmet, med henblik på funktionalitet, om brugergrænsefladen var forvirrende eller guidede testpersonerne i den rigtige retning og eventuelt andre meninger fra testpersonerne.
+
+Et eksempel på en opgave svarende til eksemplet på user casen fra før ville være:
+
 \begin{itemize}
-\item Log ind på systemet
-\item Naviger til bookingsiden
-\item Foretag en booking af en båd til næste lørdag
+\item Log ind på systemet med følgende brugeroplysninger: INDSÆT BRUGERNAVN og PASSWRD
+\item Foretag en booking af båden: INDSÆT BÅDNAVN til næste lørdag, med følgende andre oplysninger: INDSÆTOPLYSNINGER
 \item Log ud af systemet igen
 \end{itemize}
+
+Vi vil imens udfylde et skema med testforløbet, samt skrive kommentarer omkring brugeren færden i programmet, hvis noget er bemærkelsesværdigt, herudover tages der tid på brugernes tidsforbrug på hver enkelte opgave.
+
+I de følgende afsnit beskrives der hvordan disse data vil blive behandlet.
+
 \fxnote{Der mangles lige lidt her om hvordan vi vil behandle det data vi får ind, og hvilke data vi får ind}
+
 \section{Funktionalitet}
 I denne sektion ses der på produktets funktionalitet og udførelsen af programmets mål for den givne målgruppe. Funktionalitet ser på en overordnet succesrate af programmet og tester således for helt basale fejl i brugergrænsefladen der resultere i at opgaver ikke bliver løst. Funktionalitet kan udregnes ud fra hvor mange scenarier der er fejlet i forhold til udført. Funktionaliteten ønskes at ligge over 75 procent. 
-\fxnote{indsæt succesrate diagram}
+\fxnote{indsæt succesrate diagram samt link til kilde, og funktion til udregning}
+
 \section{Effektivitet}
 Her ses der nærmere på den egentlige udførsel af hvert scenarie og ikke bare om det er udført eller ej. Effektivitet ser på hvor lang tid en bruger benytter på at blive bekendt med programmet og kunne løse opgaver. Denne værdi kan ses relativt i forhold til hver enkelt bruger, samt sættes op imod tidsforbrug af en expertbruger, en af programmets arkitekter, for at danne et indtryk af hvor let programmet er at gå til.
-\fxnote{indsæt tidsforbrug diagram}
+\fxnote{indsæt tidsforbrug diagram, samt link til kilde, og funktion til udregning}
+
 \section{Tilfredshed}
 Til sidst laves der en tilfredshedsundersøgelse for at få brugerens meninger omkring programmets design. Dette kan gøres igennem et spørgeskema. Undersøgelsen skal give et indtryk af hvor godt brugeren synes programmede var i forhold til layout, placering af de krævede objekter i programmet, deres synlighed i programmet. Denne undersøgelse giver et indtryk af hvor godt programmet er designet, og derved hvor let forskellige funktioner i programmet er at tilgå. Et spørgeskema kan ses i bilag. \fxnote{indsæt bilag samt svar på spørgeskema}
 
