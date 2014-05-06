@@ -43,3 +43,23 @@ Brugernavn og password felterne anvendes i login systemet, som sikrer at hver br
 
 SailClubMember klassen er central i programmet, da alle brugere/medlemmer af sejklubben skal oprettes som et SailClubMember og deri skal deres position i klubben angives, så de kan tilgå de funktioner i programmet som de kunne have gavn af. Derudover findes der i RegularSailTrip-klassen og Logbook-klassen referencer til SailClubMember. Dette gøres så at information om hvem der har foretaget en booking af en båd, og hvem der har skrevet logbogen til den sejltur der blev foretaget. Disse referencer er også vist på det fulde UML-diagram som findes i \myref{UML_diagram}
  
+\subsection{Eventklasse}
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \label{img:login_interface}
+    \vspace{-20pt}
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{Event.png}
+    \end{center}
+    \vspace{-20pt}
+    \caption{Eventklasse}
+    \vspace{-10pt}
+\end{wrapfigure}
+Eventklassen er den klasse om bruges til oprettelse af  begivenheder. Klassen består af 7 felter: EventDate, EventTitle, SignUpReq, Description, SignUpMsg, Created og så en liste af klassen Person, som hedder Participants.
+
+Description er selve begivenhedsbeskrivelsen. 
+
+Participantslisten bruges når folk skal tilmeldes til begivenhederne; hver begivenhed har sig egen liste med tilmeldte. 
+
+Den eneste metode er en override af ToString, som retunerer Description.
+
