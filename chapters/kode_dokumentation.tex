@@ -34,9 +34,12 @@ Basis medlemsklassen for systemet er SailClubMember.
 Klassen er en underklasse til den mere generelle Person klasse. 
 Udbyggelsen i denne klasse er, at et medlem har et medlems Id, en position, et brugernavn og et password. 
 Id'et bliver brugt i hele systemet til at identificere hvilken bruger der gør hvad. 
+
 Positions feltet angiver at personen er et medlem i klubben. 
 Positions feltet kan også sættes til at være administrator, i tilfælde at at personen er administrator. 
 Positions feltet angiver desuden hvilke rettigheder de forskellige brugere har, fx har en administrator lov til at tilgå alle funktioner i programmet, mens et medlem ikke har lov til at gå ind i undervisnings delen af programmet. 
+
+Brugernavn og password felterne anvendes i login systemet, som sikrer at hver bruger kan logge ind på systemet og sikre at de kan tilgå funktionerne. 
 
 I klassen findes desuden en metode til at ændre medlems Id'et.
  
