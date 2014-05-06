@@ -31,7 +31,7 @@
 % Various LaTeX symbols
 \usepackage{latexsym}
 % Wider selection of colours
-\usepackage{xcolor}
+\usepackage[table]{xcolor}
 % Improved element justification
 \usepackage{ragged2e}
 % Font improvements
@@ -441,3 +441,8 @@
 \patchcmd{\Hy@backout}{Doc-Start}{\@currentHref}{}{\errmessage{I can't seem to patch backref}}
 \makeatother
 %%%% END BACKREF PATCHES
+
+
+% Enable figures like checkmarks
+\usepackage{pifont}
+
