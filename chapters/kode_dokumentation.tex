@@ -50,32 +50,53 @@ Positions feltet angiver desuden hvilke rettigheder de forskellige brugere har, 
 
 SailClubMember klassen er central i programmet, da alle brugere/medlemmer af sejklubben skal oprettes som et SailClubMember og deri skal deres position i klubben angives, så de kan tilgå de funktioner i programmet som de kunne have gavn af. Derudover findes der i RegularSailTrip-klassen og Logbook-klassen referencer til SailClubMember. Dette gøres så at information om hvem der har foretaget en booking af en båd, og hvem der har skrevet logbogen til den sejltur der blev foretaget. Disse referencer er også vist på det fulde UML-diagram som findes i \myref{UML_diagram}
 
-\subsection{StudentMember-klassen}
-\begin{minipage}[t]{1\linewidth}
-%Set imagepath and scaling, imagepath set to start in images/UmlMini folder, just write filename and extension
-%FBox added for outline on items
+\subsection*{Elevklasse}
+
 \begin{wrapfigure}{l}{0.5\textwidth}
-\includegraphics[scale=0.3]{UmlMini/StudentMember_UML.png}
+    \label{img:StudentMember}
+    \vspace{-20pt}
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{UmlMini/StudentMember_UML.png}
+    \end{center}
+    \vspace{-20pt}
+    \caption{StudentMember}
+    \vspace{-20pt}
 \end{wrapfigure}
 
-'StudentMember' klassen arver fra 'SailClubMember' klassen og fungerer som en elev på et skolehold. Denne klasses 'Position' bliver altid sat til at være 'Student'. 'AssociatedTeam' henviser til det skolehold, den pågældende elev hører til. De seks bool-værdier: 'RopeWorks', 'Navigation', 'Motor', 'Drabant', 'Gaffelrigger' og 'Night' repræsentere et læringsområde og de bliver sat til 'true' når området er lært.
+\textbf{Navn: StudentMember}
 
-\end{minipage}
+\textbf{Felter:}
+
+StudentMemberklassen arver fra SailClubMemberklassen og har derfor alle de felter SailClubMemberklassen også har men StudentMemberklassens \textbf{Position} bliver altid sat til at være 'Student'. \textbf{AssociatedTeam} henviser til det skolehold, den pågældende elev hører til. De seks bool-værdier: \textbf{RopeWorks}, \textbf{Navigation}, \textbf{Motor}, \textbf{Drabant}, \textbf{Gaffelrigger} og \textbf{Night} repræsenterer hver et læringsområde og de bliver sat til 'true' når området er lært. 
+
+\textbf{Anvendelse:}
+
+Denne klasse fungerer som en elev på et skolehold og bruges til at holde styr på ens fremskridt mod at blive bådfører. I løbet af en toårig periode bør man have lært alle områderne og herefter bliver man ``forfremmet'' til SailClubMember og får et bådførerbevis.
 
 
-\subsection{Team-klassen}
-\begin{minipage}[t]{1\linewidth}
-%Set imagepath and scaling, imagepath set to start in images/UmlMini folder, just write filename and extension
-%FBox added for outline on items
+\subsection*{Skoleholdklasse}
+
 \begin{wrapfigure}{l}{0.5\textwidth}
-\includegraphics[scale=0.7]{UmlMini/Team_UML.png}
+    \label{img:Team}
+    \vspace{-20pt}
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{UmlMini/Team_UML.png}
+    \end{center}
+    \vspace{-20pt}
+    \caption{Team}
+    \vspace{-20pt}
 \end{wrapfigure}
 
-'Team' klassen fungerer som et skolehold. 'TeamId' bruges til at identificere de enkelte hold fra hinanden. 'Teacher' er den lærer der er tilknyttet holdet. 'Name' er navnet på holdet. 'Level' fortæller om holdet er et første eller andet års hold. Klassen har en ``collection'' ('TeamMembers') som der bliver sat 'StudentMembers' ind på, hvilket repræsenterer de elever der er på skoleholdet. ``Collectionen'' 'Lectures' indeholder de lektioner som klassen har haft og skal have. 
+\textbf{Navn: Team}
 
-\end{minipage}
-\fxnote{Er ikke sikker på dette, det skal omskrives ud fra hvad der bliver skrevet om 'Lecture'-klassen}
- 
+\textbf{Felter:}
+
+\textbf{TeamId} bruges til at identificere de enkelte hold fra hinanden. \textbf{Teacher} er den lærer der er tilknyttet holdet og \textbf{Name} er navnet på holdet. \textbf{Level} fortæller om holdet er et første eller andet års hold. Klassen har en ``collection'' (\textbf{TeamMembers}) som der bliver sat \textit{StudentMembers} ind på, hvilket repræsenterer de elever der er på skoleholdet. ``Collectionen'' \textbf{Lectures} indeholder de lektioner som klassen har haft og skal have. \fxnote{Er ikke sikker på dette, det skal omskrives ud fra hvad der bliver skrevet om 'Lecture'-klassen}
+
+\textbf{Anvendelse:}
+
+Teamklassen fungerer som et skolehold. Den bliver brugt til at holde styr på eleverne og bruges som besætningen på en båd, når denne reserveres. 
+
  
 \subsection{Eventklasse}
 
