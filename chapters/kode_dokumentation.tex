@@ -18,11 +18,11 @@ Men dette ville være trivielt, at udskifte med en anden hashing algoritme, hvis
 
 \section{Klasser}
 \subsection*{Personklasse}
-\begin{wrapfigure}{l}{0.5\textwidth}
+\begin{wrapfigure}{l}{0.4\textwidth}
     \label{img:Person}
     \vspace{-20pt}
     \begin{center}
-        \includegraphics[width=0.48\textwidth]{UmlMini/SailClubMember.png}
+        \includegraphics[width=0.2\textwidth]{UmlMini/Person.png}
     \end{center}
     \vspace{-20pt}
     \caption{Person}
@@ -100,24 +100,26 @@ SailClubMember klassen er central i programmet, da alle brugere/medlemmer af sej
 \end{minipage}
 \fxnote{Er ikke sikker på dette, det skal omskrives ud fra hvad der bliver skrevet om 'Lecture'-klassen}
  
-\subsection{Sejlturs-klasserne}
-\begin{wrapfigure}{l}{0.5\textwidth}
+\subsection*{Sejlturs-klasserne}
+\begin{wrapfigure}{l}{0.4\textwidth}
     \label{img:SailTrip}
     \vspace{-20pt}
     \begin{center}
-        \includegraphics[width=0.48\textwidth]{UmlMini/SailClubMember.png}
+        \includegraphics[width=0.35\textwidth]{UmlMini/SailTrip.png}
     \end{center}
     \vspace{-20pt}
     \caption{SailTrip}
     \vspace{-10pt}
 \end{wrapfigure}
 \textbf{Navn: SailTrip og RegularSailTrip}
+
 I en tidlig designstruktur var det tænkt at programmet skulle have indeholdt flere forskellige typer af sejlture, og derfor blev SailTrip-klassen skabt som værende baseklasse for disse andre klasser. 
 Senere blev ideen om at have flere typer sejlture ændret og i stedet blev der valgt at der kun skulle være én sejlturstype. 
 SailTrip-klassen er dog bibeholdt i tilfælde af videre udbygning af programmet.
 Dog findes der enkelte felter i klasserne som overlapper hinanden lidt, men felter er også bibeholdt i tilfælde af udbygning til flere typer sejlture.
 
 \textbf{Felter:}
+
 SailTrip og RegularSailTrips felter udfyldes med informationer vedrørende en sejltur.
 Felterne \textbf{DepartureTime} og \textbf{ArrivalTime} indeholder inforamtioner om hvornår sejlturen starter og hvornår den slutter.
 
@@ -135,7 +137,9 @@ Først når turen er omme og vedkommende, som foretog bookingen, logger ind i pr
 
 \textbf{Anvendelse:}
 
- 
+SailTrip-klassen anvendes kun som baseklasse for RegularSailTrip-klassen. 
+RegularSailTrip er derimod en central del i programmet, da det ene hovedformål for programmet er at gøre det muligt at foretage bookings gennem et program. Det andet hovedformål, undervisningsdelen, gør også brug af sejlturene. \fxnote{nogen der har styr på undervisnings delen må gerne lige skrive ind hvordan sejlturene bliver anvendt der}
+
 \subsection{Eventklasse}
 
 \begin{wrapfigure}{l}{0.5\textwidth}
