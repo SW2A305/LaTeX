@@ -80,7 +80,7 @@ Programmet har et lyst farveskema, men farverne hvid og en lys blå som hovedfar
 %Set imagepath and scaling, imagepath set to start in images/UmlMini folder, just write filename and extension
 %FBox added for outline on items
 \begin{wrapfigure}{l}{0.5\textwidth}
-    \label{img:login_interface}
+    \label{img:SailClubMember}
     \vspace{-20pt}
     \begin{center}
         \includegraphics[width=0.48\textwidth]{UmlMini/SailClubMember.png}
@@ -89,18 +89,73 @@ Programmet har et lyst farveskema, men farverne hvid og en lys blå som hovedfar
     \caption{SailClubMember}
     \vspace{-10pt}
 \end{wrapfigure}
+\textbf{Navn: SailClubMember}
+
+\textbf{Felter:}
+
 Basis medlemsklassen for systemet er SailClubMember. 
 Klassen er en underklasse til den mere generelle Person klasse. 
-Udbyggelsen i denne klasse er, at et medlem har et medlems Id, en position, et brugernavn og et password. 
-Id'et bliver brugt i hele systemet til at identificere hvilken bruger der gør hvad. 
+Udbyggelsen i denne klasse er, at et medlem har et medlems Id, en position, et brugernavn og et password.
 
-Positions feltet angiver at personen er et medlem i klubben. 
+\textbf{SailClubMemberId} bliver brugt i hele systemet til at identificere hvilken bruger der gør hvad. 
+
+\textbf{Positions} feltet angiver at personen er et medlem i klubben. 
 Positions feltet kan også sættes til at være administrator, i tilfælde at at personen er administrator. 
 Positions feltet angiver desuden hvilke rettigheder de forskellige brugere har, fx har en administrator lov til at tilgå alle funktioner i programmet, mens et medlem ikke har lov til at gå ind i undervisnings delen af programmet. 
 
-Brugernavn og password felterne anvendes i login systemet, som sikrer at hver bruger kan logge ind på systemet og sikre at de kan tilgå funktionerne.
+\textbf{Username} og \textbf{PasswordHash} felterne anvendes i login systemet, som sikrer at hver bruger kan logge ind på systemet og sikre at de kan tilgå funktionerne.
+
+\textbf{Anvendelse:}
 
 SailClubMember klassen er central i programmet, da alle brugere/medlemmer af sejklubben skal oprettes som et SailClubMember og deri skal deres position i klubben angives, så de kan tilgå de funktioner i programmet som de kunne have gavn af. Derudover findes der i RegularSailTrip-klassen og Logbook-klassen referencer til SailClubMember. Dette gøres så at information om hvem der har foretaget en booking af en båd, og hvem der har skrevet logbogen til den sejltur der blev foretaget. Disse referencer er også vist på det fulde UML-diagram som findes i \myref{UML_diagram}
+
+\subsection*{Elevklasse}
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \label{img:StudentMember}
+    \vspace{-20pt}
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{UmlMini/StudentMember_UML.png}
+    \end{center}
+    \vspace{-20pt}
+    \caption{StudentMember}
+    \vspace{-20pt}
+\end{wrapfigure}
+
+\textbf{Navn: StudentMember}
+
+\textbf{Felter:}
+
+StudentMemberklassen arver fra SailClubMemberklassen og har derfor alle de felter SailClubMemberklassen også har men StudentMemberklassens \textbf{Position} bliver altid sat til at være 'Student'. \textbf{AssociatedTeam} henviser til det skolehold, den pågældende elev hører til. De seks bool-værdier: \textbf{RopeWorks}, \textbf{Navigation}, \textbf{Motor}, \textbf{Drabant}, \textbf{Gaffelrigger} og \textbf{Night} repræsenterer hver et læringsområde og de bliver sat til 'true' når området er lært. 
+
+\textbf{Anvendelse:}
+
+Denne klasse fungerer som en elev på et skolehold og bruges til at holde styr på ens fremskridt mod at blive bådfører. I løbet af en toårig periode bør man have lært alle områderne og herefter bliver man ``forfremmet'' til SailClubMember og får et bådførerbevis.
+
+
+\subsection*{Skoleholdklasse}
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \label{img:Team}
+    \vspace{-20pt}
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{UmlMini/Team_UML.png}
+    \end{center}
+    \vspace{-20pt}
+    \caption{Team}
+    \vspace{-20pt}
+\end{wrapfigure}
+
+\textbf{Navn: Team}
+
+\textbf{Felter:}
+
+\textbf{TeamId} bruges til at identificere de enkelte hold fra hinanden. \textbf{Teacher} er den lærer der er tilknyttet holdet og \textbf{Name} er navnet på holdet. \textbf{Level} fortæller om holdet er et første eller andet års hold. Klassen har en ``collection'' (\textbf{TeamMembers}) som der bliver sat \textit{StudentMembers} ind på, hvilket repræsenterer de elever der er på skoleholdet. ``Collectionen'' \textbf{Lectures} indeholder de lektioner som klassen har haft og skal have. \fxnote{Er ikke sikker på dette, det skal omskrives ud fra hvad der bliver skrevet om 'Lecture'-klassen}
+
+\textbf{Anvendelse:}
+
+Teamklassen fungerer som et skolehold. Den bliver brugt til at holde styr på eleverne og bruges som besætningen på en båd, når denne reserveres. 
+
  
 \subsection{Eventklasse}
 
