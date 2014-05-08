@@ -3,15 +3,14 @@ I dette kapitel vil funktioner i programmet blive forklaret.
 
 \section{Klasser}
 \subsection*{Personklasse}
-\begin{wrapfigure}{l}{0.4\textwidth}
+\begin{wrapfigure}[9]{R}{0.25\textwidth}
     \label{img:Person}
     \vspace{-20pt}
     \begin{center}
         \includegraphics[width=0.2\textwidth]{UmlMini/Person.png}
     \end{center}
-    \vspace{-20pt}
-    \caption{Person}
     \vspace{-10pt}
+    \caption{Person}
 \end{wrapfigure}
 \textbf{Navn: Person}
 
@@ -29,15 +28,14 @@ Ved en booking af en sejltur angiver man hvilket hold man skal have med, og i ti
 
 \subsection*{Medlemsklasse}
 %Set imagepath and scaling, imagepath set to start in images/ folder, just write filename and extension
-\begin{wrapfigure}{l}{0.5\textwidth}
+\begin{wrapfigure}[6]{R}{0.5\textwidth}
     \label{img:SailClubMember}
-    \vspace{-20pt}
+    \vspace{-30pt}
     \begin{center}
         \includegraphics[width=0.48\textwidth]{UmlMini/SailClubMember.png}
     \end{center}
     \vspace{-20pt}
     \caption{SailClubMember}
-    \vspace{-10pt}
 \end{wrapfigure}
 \textbf{Navn: SailClubMember}
 
@@ -61,15 +59,14 @@ SailClubMember klassen er central i programmet, da alle brugere/medlemmer af sej
 
 \subsection*{Elevklasse}
 
-\begin{wrapfigure}{l}{0.5\textwidth}
+\begin{wrapfigure}[10]{R}{0.5\textwidth}
     \label{img:StudentMember}
-    \vspace{-20pt}
+    \vspace{-30pt}
     \begin{center}
         \includegraphics[width=0.48\textwidth]{UmlMini/StudentMember_UML.png}
     \end{center}
     \vspace{-20pt}
     \caption{StudentMember}
-    \vspace{-20pt}
 \end{wrapfigure}
 
 \textbf{Navn: StudentMember}
@@ -85,15 +82,12 @@ Denne klasse fungerer som en elev på et skolehold og bruges til at holde styr p
 
 \subsection*{Skoleholdklasse}
 
-\begin{wrapfigure}{l}{0.5\textwidth}
+\begin{wrapfigure}{R}{0.5\textwidth}
     \label{img:Team}
-    \vspace{-20pt}
     \begin{center}
         \includegraphics[width=0.48\textwidth]{UmlMini/Team_UML.png}
     \end{center}
-    \vspace{-20pt}
     \caption{Team}
-    \vspace{-20pt}
 \end{wrapfigure}
 
 \textbf{Navn: Team}
@@ -110,7 +104,7 @@ Teamklassen fungerer som et skolehold. Den bliver brugt til at holde styr på el
 \fxnote{Er ikke sikker på dette, det skal omskrives ud fra hvad der bliver skrevet om 'Lecture'-klassen}
  
 \subsection*{Sejlturs-klasserne}
-\begin{wrapfigure}{l}{0.4\textwidth}
+\begin{wrapfigure}[12]{R}{0.4\textwidth}
     \label{img:SailTrip}
     \vspace{-20pt}
     \begin{center}
@@ -118,7 +112,6 @@ Teamklassen fungerer som et skolehold. Den bliver brugt til at holde styr på el
     \end{center}
     \vspace{-20pt}
     \caption{SailTrip}
-    \vspace{-10pt}
 \end{wrapfigure}
 \textbf{Navn: SailTrip og RegularSailTrip}
 
@@ -151,7 +144,7 @@ RegularSailTrip er derimod en central del i programmet, da det ene hovedformål 
 
 \subsection{Eventklasse}
 
-\begin{wrapfigure}{l}{0.5\textwidth}
+\begin{wrapfigure}[10]{R}{0.5\textwidth}
     \label{img:login_interface}
     \vspace{-20pt}
     \begin{center}
@@ -159,7 +152,6 @@ RegularSailTrip er derimod en central del i programmet, da det ene hovedformål 
     \end{center}
     \vspace{-20pt}
     \caption{Eventklasse}
-    \vspace{-10pt}
 \end{wrapfigure}
 
 \textbf{Navn: Event}
@@ -177,5 +169,26 @@ Eventklassen er den klasse om bruges til oprettelse af  begivenheder, nødvendig
 
 \textbf{Participantslisten} bruges når folk skal tilmeldes til begivenhederne; hver begivenhed har sig egen liste med tilmeldte. 
 
+\subsection*{Logbook}
+\begin{wrapfigure}[9]{R}{0.25\textwidth}
+    \label{img:logbook}
+    \vspace{-20pt}
+    \begin{center}
+        \includegraphics[width=0.2\textwidth]{UmlMini/Person.png}
+    \end{center}
+    \vspace{-10pt}
+    \caption{Logbook}
+\end{wrapfigure}
+\textbf{Navn: Logbook}
 
+\textbf{Felter:}
+
+Logbook klassen indeholder et \textbf{LogbookId} som bruges til at adskille de forskellige logbøger der bliver oprettet efter sejlturene. 
+
+Derudover findes der desuden to tids felter, \textbf{ActualDepartureTime} og \textbf{ActualArrivalTime}, som bruges til at gemme det faktiske afgangs- og ankomsttidspunkt. 
+
+Feltet \textbf{DamageInflicted} bruges til at angive om båden tog skade under sejlturen. I tilfælde af at båden faktisk har taget skade, bliver det muligt at beskrive skaden, hvilket bliver gemt i feltet \textbf{DamageDescription}
+\textbf{Metoder:}
+
+\textbf{Anvendelse:}
 
