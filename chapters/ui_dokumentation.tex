@@ -120,15 +120,18 @@ Der verificeres om turen er gyldig, der er flere krav:
     \begin{center}
         \includegraphics[width=0.48\textwidth]{Screenshots/CreateCrewWindow.png}
     \end{center}
-    \vspace{-15pt}
+    \vspace{-20pt}
     \caption{CreateCrewWindow}
+    \vspace{-30pt}
 \end{wrapfigure}
 
-\textbf{Formål}: Dette vindue åbnes op to steder i programmet: \textbf{CreateLogbookWindow} og i \textbf{CreateBoatBookingWindow}. Det bruges når der skal laves en besætning til en RegularSailtrip. 
+\textbf{Formål}: Dette vindue åbnes op to steder i programmet: \textbf{CreateLogbookWindow} og i \textbf{CreateBoatBookingWindow}. Det bruges når der skal laves en besætning til en RegularSailtrip.  
 
-\textbf{BrugerGrænseflade}:
+\textbf{BrugerGrænseflade}: Der er to datagrids som indeholder to lister. Listen til venstre består af SailClubMembers som bliver hentet ind fra databasen. Listen til højre indeholder det Crew som man er i gang med at udforme til enten RegularSailTrip, eller Logbook. Der er også tilføjet tekstfelter, så man kan skrive navnet på en gæst man tog med på sejlturen. Der er knapper som tilføjer de forskellige personer til Crewlisten. Øverst findes også et tekstfelt til at søge listen over medlemmer igennem. Når man har lavet sin liste, kan man trykke udfør, for at komme tilbage til vinduet der kaldte CreateCrewWindow.
 
-\textbf{Code-Behind}:
+\textbf{Code-Behind}: 
+
+\subsection{CreateLogbookWindow}
 
 \begin{wrapfigure}{r}{0.5\textwidth}
     \label{img:login_interface}
@@ -138,4 +141,11 @@ Der verificeres om turen er gyldig, der er flere krav:
     \end{center}
     \vspace{-15pt}
     \caption{CreateLogBookWindow}
+    \vspace{-30pt}
 \end{wrapfigure}
+
+\textbf{Formål}: Dette vindue bruges når et medlem som har booket en båd, skal udfylde sejlturens logbog. Vinduet tilgås fra usercontrollen FrontPage. Medlemmet skal udfylde de forskellige felter der findes i vinduet og trykke udfør, for at gemme logbogen i databasen.
+
+\textbf{BrugerGrænseflade}: 
+
+\textbf{Code-Behind}:
