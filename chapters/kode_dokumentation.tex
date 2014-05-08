@@ -2,9 +2,33 @@
 I dette kapitel vil funktioner i programmet blive forklaret.
 
 \section{Klasser}
+\subsection*{Personklasse}
+\begin{wrapfigure}{l}{0.4\textwidth}
+    \label{img:Person}
+    \vspace{-20pt}
+    \begin{center}
+        \includegraphics[width=0.2\textwidth]{UmlMini/Person.png}
+    \end{center}
+    \vspace{-20pt}
+    \caption{Person}
+    \vspace{-10pt}
+\end{wrapfigure}
+\textbf{Navn: Person}
+
+\textbf{Felter:}
+I personklassen findes felter som indeholder informationer vedrørende personen, såsom navn, alder, adresse, postnr. og kontaktinformation. 
+Desuden indeholder klassen også et felt, \textbf{BoatDriver}, som angiver om personen har lov til at føre en båd. \fxnote{Har vi overhovedet anvendt det felt til noget?}
+
+\textbf{Metoder:}
+Personklassen indeholder en metode, \textbf{ToString()}, som overrider den eksisterende ToString metode og returnerer personens fulde navn. 
+Denne metode er oprette for at gøre det lettere andre steder i programmet at hente personers fulde navne.
+
+\textbf{Anvendelse:}
+Personklassen fungerer som baseklasse for SailClubMemberklassen. Grunden til at personklassen og SailClubMember klassen ikke er slået sammen til en klasse er, at personklassen også er grundlag for en gæst i systemet. 
+Ved en booking af en sejltur angiver man hvilket hold man skal have med, og i tilfælde af at man skal have en gæst med, som ikke er medlem af klubben, oprettes en instans af personklassen, med de informationer som man angiver i bookingen.
+
 \subsection*{Medlemsklasse}
-%Set imagepath and scaling, imagepath set to start in images/UmlMini folder, just write filename and extension
-%FBox added for outline on items
+%Set imagepath and scaling, imagepath set to start in images/ folder, just write filename and extension
 \begin{wrapfigure}{l}{0.5\textwidth}
     \label{img:SailClubMember}
     \vspace{-20pt}
@@ -82,7 +106,49 @@ Denne klasse fungerer som en elev på et skolehold og bruges til at holde styr p
 
 Teamklassen fungerer som et skolehold. Den bliver brugt til at holde styr på eleverne og bruges som besætningen på en båd, når denne reserveres. 
 
+\end{minipage}
+\fxnote{Er ikke sikker på dette, det skal omskrives ud fra hvad der bliver skrevet om 'Lecture'-klassen}
  
+\subsection*{Sejlturs-klasserne}
+\begin{wrapfigure}{l}{0.4\textwidth}
+    \label{img:SailTrip}
+    \vspace{-20pt}
+    \begin{center}
+        \includegraphics[width=0.35\textwidth]{UmlMini/SailTrip.png}
+    \end{center}
+    \vspace{-20pt}
+    \caption{SailTrip}
+    \vspace{-10pt}
+\end{wrapfigure}
+\textbf{Navn: SailTrip og RegularSailTrip}
+
+I en tidlig designstruktur var det tænkt at programmet skulle have indeholdt flere forskellige typer af sejlture, og derfor blev SailTrip-klassen skabt som værende baseklasse for disse andre klasser. 
+Senere blev ideen om at have flere typer sejlture ændret og i stedet blev der valgt at der kun skulle være én sejlturstype. 
+SailTrip-klassen er dog bibeholdt i tilfælde af videre udbygning af programmet.
+Dog findes der enkelte felter i klasserne som overlapper hinanden lidt, men felter er også bibeholdt i tilfælde af udbygning til flere typer sejlture.
+
+\textbf{Felter:}
+
+SailTrip og RegularSailTrips felter udfyldes med informationer vedrørende en sejltur.
+Felterne \textbf{DepartureTime} og \textbf{ArrivalTime} indeholder inforamtioner om hvornår sejlturen starter og hvornår den slutter.
+
+Der findes en refererence til et object af typen \textbf{Boat} i SailTrip.
+Denne reference kobler en sejltur sammen med en bestemt båd, således at der holdes styr på hvilke både der er optaget hvilke tidspunkter.
+
+Desuden findes der i begge klaser et Id,\textbf{SailTripId}/\textbf{RegularTripId}, som bruges til at adskille de forskellige sejlture fra hinanden.
+
+I RegularSailTrip findes der desuden en samling af personer i feltet \textbf{Crew}.
+Her er det værd at bemærke at besætningen er en samling af typen \textbf{Person}, hvilket gør det muligt at vælge besætningsmedlemmer som ikke er medlemmer af klubben, da de kan oprettes som gæster, og derved tilføjes til besætningen.
+
+I SailTrip er der også en reference til en \textbf{Logbook}.
+Når en sejltur oprettes i form af en booking, bliver logbogen sat til at være tom.
+Først når turen er omme og vedkommende, som foretog bookingen, logger ind i programmet og udfylder logbogen for turen, vil den indeholde data.
+
+\textbf{Anvendelse:}
+
+SailTrip-klassen anvendes kun som baseklasse for RegularSailTrip-klassen. 
+RegularSailTrip er derimod en central del i programmet, da det ene hovedformål for programmet er at gøre det muligt at foretage bookings gennem et program. Det andet hovedformål, undervisningsdelen, gør også brug af sejlturene. \fxnote{nogen der har styr på undervisnings delen må gerne lige skrive ind hvordan sejlturene bliver anvendt der}
+
 \subsection{Eventklasse}
 
 \begin{wrapfigure}{l}{0.5\textwidth}
