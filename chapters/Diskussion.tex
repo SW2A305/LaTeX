@@ -1,6 +1,6 @@
 \chapter{Diskussion}
 I vores produktkrav var det er punkt vedrørende medlemmer, hvilket er blevet tilfredstillende implementeret i programmet. 
-Medlemmer har fået deres egen klasse,\textbf{SailClubMember}, som indeholder de relevante informationer om et medlem. 
+Medlemmer har fået deres egen klasse, \textbf{SailClubMember}, som indeholder de relevante informationer om et medlem. 
 Medlemmerne udgør desuden grundlaget for login-systemet, da der herigennem kan bestemmes hvilken bruger der logger ind, og hvilke funktioner i programmet de skal have lov til at tilgå. 
 Login-systemet fungerer desuden med at brugerne har brugernavne og kodeord. 
 Kodeordene er krypteret med en hashingalgoritme, hvilket er gjort for at gøre dem ulæslige i tilfælde af at databasen skulle blive aflæst af andre. 
@@ -9,5 +9,17 @@ Et vigtigt punkt i programmet var at sørge for at man kunne oprette en booking 
 Dette punkt er blevet gennemført, da der i programmet kan oprettes en booking. 
 Desuden er det indført logik som sikrer at båden skal være ledig og ikke være skadet før at bookingen kan gennemføres. 
 Yderligere er der til en reservation også knyttet en logbog, som skal udfyldes efter sejladsen er gennemført. 
-Dette blev fremført i interviewet med Jacob Nørbjerg, som værende en besværligt i Sejlklubben Sundet, da deres logbøger skal udfyldes på papir. 
+Udfyldelsen af logbøger blev fremført i interviewet med Jacob Nørbjerg, som værende en besværligt i Sejlklubben Sundet, da deres logbøger skal udfyldes på papir. 
 Det menes derfor at programmet her kan gøre det lettere at klubben at holde styr på logbøger, ved at digitalisere dem, holde referencer til hvilken sejltur de hører til, sørge for at ikke alle kan udfylde logbøgerne og selvfølgelig indeholde de krævede informationer. 
+
+Et andet vigtigt punkt i programmet var at gøre det muligt at holde styr på undervisningen, både fra elevernes side og undervisernes side. 
+I programmet er det blevet konstrueret et del som specifikt tager sig af undervisningen, hvorfra underviserne kan notere hvilke hold og elever der har gennemført specifikke opgaver.
+Tilsvarende kan eleverne se deres egne fremskridt og hvornår de har deres undervisningslektioner.
+Programmet er på undervsiningsdelen fungererende, dog er det specifikke pensum, som sejlklubben Sundet selv står for at udvælge, ikke implementeret. 
+Men det menes at skifte fra det overfladiske pensum som programmet er skabt med, til det faktiske pensum som sejlklubben Sundet anvender, ville være relativt simpelt, og derfor kan programmet også bruges i andre sejlklubber med undervsning, hvilke anvender et andet pensum.
+
+Begivenheder blev også fremsat under listen af produktkrav.
+Begivenhedsdelene er blevet implementeret og det er muligt for brugere selv at oprette, samt tilmelde sig begivenheder.
+Desuden kan en bruger, når de logger ind på systemet se deres kommende begivenheder.
+Dog er der som sådan ikke blevet lavet et egentlig kalender, men i stedet en agenda med begivenheder.
+Agendaen blev valgt i stedet for kalenderen, da et agenda format ville egne sig bedre til at fremvise bestemte dage med begivenheder, fremfor en kalender hvor alle dage, med og uden begivenheder, ville blive vist.
