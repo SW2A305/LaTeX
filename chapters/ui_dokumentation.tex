@@ -79,6 +79,33 @@ Der anvendes UserControls til at kode både brugergrænsefladen og den tilhøren
     \vspace{-30pt}
 \end{wrapfigure}
 
+\textbf{Formål}: Denne Usercontrol, er lille i forhold til de andre der findes i programmet.
+Den bruges når der skal vælges et tidspunkt som både indeholder en dato og et tidspunkt. 
+Der findes en DateTimePicker i extended WPF toolkit, men da der blev opdaget en underlig fejl ved denne, blev det besluttet at en usercontrol, som gruppen selv kunne programmere, ville være bedre. 
+
+\textbf{BrugerGrænseflade}: Den består af en DatePicker, og en TimePicker som findes i extended WPF toolkit.
+
+\textbf{Code-Behind}: De to værdier man skriver i henholdsvis DatePickeren og TimePickeren, skal samles i en enkelt værdi som kan tilgås vha. usercontrollen. 
+Dette er gjort ved at lave et property der kaldes for Value. 
+Det kan ses på \myref{DateTimePickerValue} hvordan dette er blevet implementeret.
+Man kan ved at assigne value igennem en instans af usercontrollen, sætte både usercontrollens TimePicker og DatePicker, og dermed give de to GUI elementer en værdi som brugerne ser.
+Herudover kan man kalde dens get hvilket resultere begge værdier sat sammen, hvor TimePickeren bruger TimeOfDay, for at få et TimeSpan, som kan tilføjes direkte på den DateTime der laves fra en DatePicker, vha. + operatoren.
+
+\begin{lstlisting}[frame=single, caption=DateTimePicker Value, label=DateTimePickerValue]
+public DateTime Value
+{
+    get
+    {
+        return (DatePicker.SelectedDate.GetValueOrDefault() + TimePicker.Value.GetValueOrDefault().TimeOfDay);
+    }
+    set
+    {
+        DatePicker.SelectedDate = value;
+        TimePicker.Value = value;
+    }
+}
+\end{lstlisting}
+
 \subsection{Forside}
 %\begin{wrapfigure}{r}{0.75\textwidth}
 %    \label{img:frontpage}
@@ -224,21 +251,59 @@ private void AddButton_OnClick(object sender, RoutedEventArgs e)
 
 \textbf{Formål}: Dette vindue bruges når et medlem som har booket en båd, skal udfylde sejlturens logbog. Vinduet tilgås fra usercontrollen FrontPage. Medlemmet skal udfylde de forskellige felter der findes i vinduet og trykke udfør, for at gemme logbogen i databasen.
 
-\textbf{BrugerGrænseflade}: Der er mange elementer på dette skærmbillede. Øverst til venstre finder man en tekstboks, som udfyldes automatisk når man vil udfylde sin logbog. 
-Tekstboksen indeholder navnet på den båd, logbogen skrives for, og dette loades igennem den RegularSailtrip, som logbogen skrives for.
+\textbf{BrugerGrænseflade}: Der er mange elementer på dette skærmbillede. Øverst til venstre finder man en textbox, som udfyldes automatisk når man vil udfylde sin logbog. 
+Textboxen indeholder navnet på den båd, logbogen skrives for, og dette loades igennem den RegularSailtrip, som logbogen skrives for.
 Under den findes en combobox hvor man vælger Kaptajn eller bådføren for sejlturen.
 Her kan vælges imellem alle de personer som er sat på besætningslisten. 
 Der bliver altså ikke tjekket om personerne har duelighedsbevis, da gæsterne netop også kan være kaptajnen eller bådføren.
 Under dette finder man en boks hvor man angiver turens formål. 
 Der er desuden tre RadioButtons, som angiver hvilken tilstand båden er i. 
-Hvis man aktivere enten knappen med teksten:"Ja men skadet" eller "nej", så påkræves det at man udfylder dette felt. 
+Hvis man aktivere enten knappen med teksten: "Ja men skadet" eller "nej", så påkræves det at man udfylder dette felt. 
 
 Til højre finder man 4 DateTimePicker usercontrols, som beskrevet i \myref{subsec:DateTimePicker}. De to øverste er ikke enabled, da de også er loaded fra den RegularSailtrip man udfylder logbog for. De to andre skal dog udfyldes, og ændres fra de standardværdier som de har når man åbner vinduet. 
 
-Under disse usercontrols, finder man endnu et teksboksfejlt, som skal udfyldes med et vejrrapport.
+Under disse DateTimePickers, finder man endnu en textbox, som skal udfyldes med en vejrrapport.
+
+Der findes et lignende vindue som hedder ViewSpecificLogbookWindow.
+Dette vindue indeholder alle de samme felter, men har også et svar fra BoatChief som findes i en textbox.
+Alle elementerne i det vindue er sat til Readonly eller IsEnabled="False", da man kun skal kunne se logbogen i det vindue, og altså ikke udfylde noget.
 
 
-\textbf{Code-Behind}:
+\textbf{Code-Behind}: Der er ikke meget kode at se på ved dette vindue, da meget af det er simpelt, men man kan se på den kode der findes bag knappen med teksten: "Udfør".
+Koden for dette kan ses på \myref{SaveLogbookButton}.
+Først tjekkes der om de forskellige felter i vinduet er udfyldt, og hvis alt er udfyldt kommer man ind i det sidste else if-statement der ses i koden. 
+Her afsættes der om båden har taget skade under sejlturen, og derefter gemmes alle felterne i de lokale kopier af både RegularSailTrip og Logbook, hvor der til slut kaldes updateDatabase på de to lokale objekter.
 
+\begin{lstlisting}[frame=single, caption= Gem Logbog, label=SaveLogbookButton]
+private void FileLogbookButton_OnClick(object sender, RoutedEventArgs e)
+{
+	if (YesRadioButton.IsChecked == false && NoRadioButton.IsChecked == false)
+	{
+	    MessageBox.Show("Udfyld venligst om båden blev skadet under sejladsen");
+	}
+	...
+	else if (YesRadioButton.IsChecked == true || NoRadioButton.IsChecked == true
+	            || YesButBrokenRadioButton.IsChecked == true) 
+	{
+	        if (YesRadioButton.IsChecked == true)
+	        {
+	            currentLogbook.DamageInflicted = false;
+	        }      
+	        if (NoRadioButton.IsChecked == true || YesButBrokenRadioButton.IsChecked == true)
+	        {
+	            currentLogbook.DamageInflicted = true;
+	        }
+	    RegularSailTrip.PurposeAndArea = PurposeTextBox.Text;
+	    currentLogbook.DamageDescription = DamageTextBox.Text;
+	    currentLogbook.ActualCrew = CrewList;
+	    currentLogbook.ActualArrivalTime = DateTimePickerActualArrival.Value;
+	    currentLogbook.ActualDepartureTime = DateTimePickerActualDeparture.Value;
+	    currentLogbook.FiledBy = _currentSailClubMember;
+	    RegularSailTrip.WeatherConditions = WeatherConditionTextBox.Text;
+	    RegularSailTrip.Crew = CrewList;
+	    RegularSailTrip.Logbook = currentLogbook;
+}
+\end{lstlisting}
 
+\fxnote{Opdater denne listning med Update Database kaldet.}
 
