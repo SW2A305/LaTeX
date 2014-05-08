@@ -170,11 +170,11 @@ Eventklassen er den klasse om bruges til oprettelse af  begivenheder, nødvendig
 \textbf{Participantslisten} bruges når folk skal tilmeldes til begivenhederne; hver begivenhed har sig egen liste med tilmeldte. 
 
 \subsection*{Logbook}
-\begin{wrapfigure}[9]{R}{0.25\textwidth}
+\begin{wrapfigure}[9]{R}{0.37\textwidth}
     \label{img:logbook}
     \vspace{-20pt}
     \begin{center}
-        \includegraphics[width=0.2\textwidth]{UmlMini/Person.png}
+        \includegraphics[width=0.35\textwidth]{UmlMini/Logbook.png}
     \end{center}
     \vspace{-10pt}
     \caption{Logbook}
@@ -186,9 +186,15 @@ Eventklassen er den klasse om bruges til oprettelse af  begivenheder, nødvendig
 Logbook klassen indeholder et \textbf{LogbookId} som bruges til at adskille de forskellige logbøger der bliver oprettet efter sejlturene. 
 
 Derudover findes der desuden to tids felter, \textbf{ActualDepartureTime} og \textbf{ActualArrivalTime}, som bruges til at gemme det faktiske afgangs- og ankomsttidspunkt. 
+På samme måde findes der den reelle besætning, \textbf{ActualCrew}, hvor den besætning som var på turen indsættes. 
+Disse 3 felter er oprettet, da der imellem bookingen og sejlturen kunne være sket ændringer i besætningen, og hvornår sejlturen faktisk blev påbegyndt og afsluttet. 
 
-Feltet \textbf{DamageInflicted} bruges til at angive om båden tog skade under sejlturen. I tilfælde af at båden faktisk har taget skade, bliver det muligt at beskrive skaden, hvilket bliver gemt i feltet \textbf{DamageDescription}
-\textbf{Metoder:}
+Feltet \textbf{DamageInflicted} bruges til at angive om båden tog skade under sejlturen. I tilfælde af at båden faktisk har taget skade, bliver det muligt at beskrive skaden, hvilket bliver gemt i feltet \textbf{DamageDescription}.
+Envidere kan en administrator på systemet svare på skaden i feltet \textbf{AnswerFromBoatChief}.
+
+Feltet \textbf{FiledBy} bruges til at registrere hvilket medlem af klubben som har udfyldt den pågældende logbog.
 
 \textbf{Anvendelse:}
 
+I programmet har oprettede sejlture(bookinger) en reference til den logbog der hører til turen.
+Logbogen selv har referencer til de personer som besætningen bestod af, og et bestemt medlem af klubben som har udfyldt logbogen.
