@@ -143,13 +143,20 @@
   showspaces=false,
   showtabs=false,
   breaklines=true,
+  inputencoding=utf8,
   showstringspaces=false,
   breakatwhitespace=true,
   escapeinside={(*@}{@*)},
   commentstyle=\color{greencomments},
   keywordstyle=\color{bluekeywords},
   stringstyle=\color{redstrings},
-  basicstyle=\ttfamily
+  basicstyle=\ttfamily,
+  literate={ø}{{\o}}1
+  		   {æ}{{\ae}}1
+  		   {å}{{\aa}}1
+  		   {Ø}{{\O}}1
+  		   {Æ}{{\AE}}1
+  		   {Å}{{\AA}}1
 }
 
 \lstdefinestyle{make}{tabsize=4}
