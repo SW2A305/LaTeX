@@ -65,6 +65,20 @@ Programmet har et lyst farveskema, men farverne hvid og en lys blå som hovedfar
 \section{UserControls}
 Der anvendes UserControls til at kode både brugergrænsefladen og den tilhørende code behind.
 
+
+\subsection{DateTimePicker}\label{subsec:DateTimePicker}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \label{img:DateTimePicker}
+    \vspace{-20pt}
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{Screenshots/DateTimePicker.png}
+    \end{center}
+    \vspace{-15pt}
+    \caption{DateTimePicker}
+    \vspace{-30pt}
+\end{wrapfigure}
+
 \subsection{Forside}
 %\begin{wrapfigure}{r}{0.75\textwidth}
 %    \label{img:frontpage}
@@ -210,10 +224,21 @@ private void AddButton_OnClick(object sender, RoutedEventArgs e)
 
 \textbf{Formål}: Dette vindue bruges når et medlem som har booket en båd, skal udfylde sejlturens logbog. Vinduet tilgås fra usercontrollen FrontPage. Medlemmet skal udfylde de forskellige felter der findes i vinduet og trykke udfør, for at gemme logbogen i databasen.
 
-\textbf{BrugerGrænseflade}: 
+\textbf{BrugerGrænseflade}: Der er mange elementer på dette skærmbillede. Øverst til venstre finder man en tekstboks, som udfyldes automatisk når man vil udfylde sin logbog. 
+Tekstboksen indeholder navnet på den båd, logbogen skrives for, og dette loades igennem den RegularSailtrip, som logbogen skrives for.
+Under den findes en combobox hvor man vælger Kaptajn eller bådføren for sejlturen.
+Her kan vælges imellem alle de personer som er sat på besætningslisten. 
+Der bliver altså ikke tjekket om personerne har duelighedsbevis, da gæsterne netop også kan være kaptajnen eller bådføren.
+Under dette finder man en boks hvor man angiver turens formål. 
+Der er desuden tre RadioButtons, som angiver hvilken tilstand båden er i. 
+Hvis man aktivere enten knappen med teksten:"Ja men skadet" eller "nej", så påkræves det at man udfylder dette felt. 
+
+Til højre finder man 4 DateTimePicker usercontrols, som beskrevet i \myref{subsec:DateTimePicker}. De to øverste er ikke enabled, da de også er loaded fra den RegularSailtrip man udfylder logbog for. De to andre skal dog udfyldes, og ændres fra de standardværdier som de har når man åbner vinduet. 
+
+Under disse usercontrols, finder man endnu et teksboksfejlt, som skal udfyldes med et vejrrapport.
+
 
 \textbf{Code-Behind}:
 
-\myref{HelloWorld}
 
 
