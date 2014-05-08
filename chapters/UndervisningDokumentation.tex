@@ -7,8 +7,14 @@ I 'StudyTeacher' delen kan en underviser oprette lektioner og hold, slette hold,
 
 \subsubsection{Brugergrænsefladen}
 \paragraph*{StudyTeacher}
-\fxnote{Her skal indsættes et par billeder, disse markeres som texten refere til dem, indsæt også de korrekte referencer på billedet}
-På <indsæt billede reference> ses en 'Usercontrol' for 'StudyTeacher' på de markerede områder ses grupperinger af brugergrænsefladens funktioner som er sammenhængende.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1\textwidth]{images/UI/StudyTeacherMarked.jpg}
+  \caption[UIStudyTeacher]{UI for undervisning tab som underviser og admin, markeringer bruges til forklaringer nedenfor}
+  \label{fig:StudyTeacher}
+\end{figure}
+
+På \myref{fig:StudyTeacher} ses en 'Usercontrol' for 'StudyTeacher' på de markerede områder ses grupperinger af brugergrænsefladens funktioner som er sammenhængende.
 \textbf{1} Referere til en 'ComboBox' som benyttes til valg af hold. 
 Denne 'ComboBox' har indflydelse på det meste af undervisningsdelen, da denne information er afhængig af hvilket hold, som er valgt.
 \textbf{2} Henviser til en 'CheckBox', som har kontrol over \textbf{3}, et 'Grid' indeholdende funktionalitet til brug af redigering samt kreation af hold.
@@ -25,11 +31,36 @@ Det venstre 'DataGrid' benyttes til søgning af medlemmer, i dette grid kan find
 Den sidste funktion \textbf{14} åbner et nyt 'Window', 'NewLecture', hvor man kan oprette en ny lektion for det givne hold valgt i \textbf{1}.
 
 \paragraph{StudyStudent}
-På <indsæt billede reference> ses en 'Usercontrol' for 'StudyStudent'. \textbf{1} Indeholder information omkring personens undervisning, 'CheckBox'ene' indikere undervisningsområder for den student som er logget ind, mens texten ovenfor viser hvilket hold personen er på. \textbf{2} Viser den næste lektionstidspunkt for det hold studenten er tilknyttet.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1\textwidth]{images/UI/StudyStudentMarked.jpg}
+  \caption[UIStudyStudent]{UI for undervisning tab som student, markeringer bruges til forklaringer nedenfor}
+  \label{fig:StudyStudent}
+\end{figure}
+
+På \myref{fig:StudyStudent} ses en 'Usercontrol' for 'StudyStudent'. \textbf{1} Indeholder information omkring personens undervisning, 'CheckBox'ene' indikere undervisningsområder for den student som er logget ind, mens texten ovenfor viser hvilket hold personen er på. \textbf{2} Viser den næste lektionstidspunkt for det hold studenten er tilknyttet.
 
 \paragraph{NewLecture og NewTeam}
-På <indsæt billede reference> ses et 'Window' for 'NewLecture'. 
+
+\begin{figure}[htbp]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/UI/NewLecture.jpg}
+  \caption[UINewLecture]{UI for NewLecture window}
+  \label{fig:NewLecture}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/UI/NewTeam.jpg}
+  \caption[UINewTeam]{UI for NewTeam window}
+  \label{fig:NewTeam}
+\end{minipage}%
+\end{figure}
+
+På \myref{fig:NewLecture} ses et 'Window' for 'NewLecture'. 
 I 'NewLecture' vælges der to datoer ud i fremtiden, disse bruges til at oprette en lektion, dette sker når der trykkes 'OK'. 
-På <Indsæt billede reference> ses 'NewTeam', her skrives et holdnavn i tekstboksen, og således kan et hold oprettes.
+På \myref{fig:NewTeam} ses 'NewTeam', her skrives et holdnavn i tekstboksen, og således kan et hold oprettes.
 
 \subsubsection{Code Behind}
