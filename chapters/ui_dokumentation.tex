@@ -131,6 +131,69 @@ Der verificeres om turen er gyldig, der er flere krav:
 \textbf{BrugerGrænseflade}: Der er to datagrids som indeholder to lister. Listen til venstre består af SailClubMembers som bliver hentet ind fra databasen. Listen til højre indeholder det Crew som man er i gang med at udforme til enten RegularSailTrip, eller Logbook. Der er også tilføjet tekstfelter, så man kan skrive navnet på en gæst man tog med på sejlturen. Der er knapper som tilføjer de forskellige personer til Crewlisten. Øverst findes også et tekstfelt til at søge listen over medlemmer igennem. Når man har lavet sin liste, kan man trykke udfør, for at komme tilbage til vinduet der kaldte CreateCrewWindow.
 
 \textbf{Code-Behind}: 
+På \myref{AddGuestButton} kan man se koden der sker når man trykker på knappen med teksten Tilføj Gæst.
+Der er blevet brugt et \textbf{regular expression} til at tjekke om den string brugeren angiver i de to tekstbokse for gæstens navne er lovlige. 
+Det er blevet valgt man må bruge hele det danske alfabet samt mellemrum, så navne såsom: Lars Peter Vesterager, er mulige.
+Hvis begge tekstbokse er lovlige, kommer man ind i det inderste if-statement, hvor der laves en ny person med det pågældende FirstName og LastName. 
+Derefter tilføjes personen til Listen der vises i Datagridded til højre, og til sidst kaldes RefreshDatagrid, som man kan se på \myref{RefreshDatagrid}.
+
+\begin{lstlisting}[frame=single, caption=Add Guest Buttton, label=AddGuestButton]
+{
+    if (Regex.IsMatch(FirstNameBox.Text, "^[A-ZÆØÅa-zæøå ]*$") && FirstNameBox.Text.Trim() != String.Empty)
+    {
+        if (Regex.IsMatch(LastNameBox.Text, "^[A-ZÆØÅa-zæøå ]*$") && LastNameBox.Text.Trim() != String.Empty)
+        {
+            var p = new Person();
+            p.FirstName = FirstNameBox.Text;
+            p.LastName = LastNameBox.Text;
+            CrewList.Add(p);
+
+            RefreshDatagrid(CurrentCrewDataGrid, CrewList);
+
+            FirstNameBox.Clear();
+            LastNameBox.Clear();
+        }
+    }
+    else
+    {
+        MessageBox.Show("Ugyldigt navn. \nPrøv venligst igen");
+    }
+}      
+\end{lstlisting}
+
+Her modtages der et Datagrid, som skal have dets Itemssource Refreshet, og en ICollection, som er det data der skal sættes ind i Datagridded. 
+Det gøres ved at assigne dets Itemssource til null, og derefter assigne det tilbage til den ICollection der blev sendt med. 
+
+\begin{lstlisting}[frame=single, caption=Refresh Datagrid, label=RefreshDatagrid]
+private void RefreshDatagrid(DataGrid Grid, ICollection<Person> list)
+{
+    Grid.ItemsSource = null;
+    Grid.ItemsSource = list;
+}
+\end{lstlisting}
+
+Knappen til at tilføje et medlem kan ses på \myref{AddMember}.
+Inden det valgte medlem tilføjes til listen tjekkes der om medlemmet allerede findes i den anden liste. 
+Dette gøres ved at anvende standard query operatorerne. 
+Først et where med et lambda udtryk hvor der findes alle SailClubMembers i listen. 
+Herefter castes disse om til SailClubMembers, for derefter at kunne tjekke om det valgte medlems SailClubMemberId er forskelligt fra de andre i listen. 
+Hvis det hele er true, så bliver det valgte medlem tilføjet til listen, og RefreshDataGrid kaldes for at opdatere Datagridded.
+
+\begin{lstlisting}[frame=single, caption=Add Member, label=AddMember]
+private void AddButton_OnClick(object sender, RoutedEventArgs e)
+{
+    var currentPerson = (SailClubMember) MemberDataGrid.SelectedItem;
+
+    if (
+        CrewList.Where(x => x is SailClubMember)
+            .Cast<SailClubMember>()
+            .All(x => x.SailClubMemberId != currentPerson.SailClubMemberId))
+        CrewList.Add(currentPerson);
+
+    DataGridCollection.Filter = Filter; 
+    RefreshDatagrid(CurrentCrewDataGrid, CrewList);
+}
+\end{lstlisting}
 
 \subsection{CreateLogbookWindow}
 
@@ -151,17 +214,6 @@ Der verificeres om turen er gyldig, der er flere krav:
 
 \textbf{Code-Behind}:
 
+\myref{HelloWorld}
 
-\begin{lstlisting}[frame=single, caption=Hej]
-/**
-* Prints Hello World.
-**/
-class Program
-{
-  public static void Main()
-  {
-    System.Console.WriteLine("Hello World!");
-  }
-}
-\end{lstlisting}
 
