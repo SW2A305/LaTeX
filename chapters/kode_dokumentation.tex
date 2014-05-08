@@ -1,11 +1,11 @@
-\chapter{Dokumentation af kode} \label{chap:kode_docs}
+\chapter{Klasser} \label{chap:klasser}
 I dette kapitel vil funktioner i programmet blive forklaret.
 
 \section{Klasser}
 \subsection*{Personklasse}
-\begin{wrapfigure}[8]{R}{0.4\textwidth}
+\begin{wrapfigure}{l}{0.4\textwidth}
     \label{img:Person}
-    \vspace{-30pt}
+    \vspace{-20pt}
     \begin{center}
         \includegraphics[width=0.2\textwidth]{UmlMini/Person.png}
     \end{center}
@@ -29,14 +29,15 @@ Ved en booking af en sejltur angiver man hvilket hold man skal have med, og i ti
 
 \subsection*{Medlemsklasse}
 %Set imagepath and scaling, imagepath set to start in images/ folder, just write filename and extension
-\begin{wrapfigure}[6]{R}{0.5\textwidth}
+\begin{wrapfigure}{l}{0.5\textwidth}
     \label{img:SailClubMember}
-    \vspace{-30pt}
+    \vspace{-20pt}
     \begin{center}
         \includegraphics[width=0.48\textwidth]{UmlMini/SailClubMember.png}
     \end{center}
     \vspace{-20pt}
     \caption{SailClubMember}
+    \vspace{-10pt}
 \end{wrapfigure}
 \textbf{Navn: SailClubMember}
 
@@ -60,14 +61,15 @@ SailClubMember klassen er central i programmet, da alle brugere/medlemmer af sej
 
 \subsection*{Elevklasse}
 
-\begin{wrapfigure}[10]{R}{0.5\textwidth}
+\begin{wrapfigure}{l}{0.5\textwidth}
     \label{img:StudentMember}
-    \vspace{-30pt}
+    \vspace{-20pt}
     \begin{center}
         \includegraphics[width=0.48\textwidth]{UmlMini/StudentMember_UML.png}
     \end{center}
     \vspace{-20pt}
     \caption{StudentMember}
+    \vspace{-20pt}
 \end{wrapfigure}
 
 \textbf{Navn: StudentMember}
@@ -83,12 +85,15 @@ Denne klasse fungerer som en elev på et skolehold og bruges til at holde styr p
 
 \subsection*{Skoleholdklasse}
 
-\begin{wrapfigure}{R}{0.5\textwidth}
+\begin{wrapfigure}{l}{0.5\textwidth}
     \label{img:Team}
+    \vspace{-20pt}
     \begin{center}
         \includegraphics[width=0.48\textwidth]{UmlMini/Team_UML.png}
     \end{center}
+    \vspace{-20pt}
     \caption{Team}
+    \vspace{-20pt}
 \end{wrapfigure}
 
 \textbf{Navn: Team}
@@ -105,7 +110,7 @@ Teamklassen fungerer som et skolehold. Den bliver brugt til at holde styr på el
 \fxnote{Er ikke sikker på dette, det skal omskrives ud fra hvad der bliver skrevet om 'Lecture'-klassen}
  
 \subsection*{Sejlturs-klasserne}
-\begin{wrapfigure}[12]{R}{0.4\textwidth}
+\begin{wrapfigure}{l}{0.4\textwidth}
     \label{img:SailTrip}
     \vspace{-20pt}
     \begin{center}
@@ -113,6 +118,7 @@ Teamklassen fungerer som et skolehold. Den bliver brugt til at holde styr på el
     \end{center}
     \vspace{-20pt}
     \caption{SailTrip}
+    \vspace{-10pt}
 \end{wrapfigure}
 \textbf{Navn: SailTrip og RegularSailTrip}
 
@@ -145,7 +151,7 @@ RegularSailTrip er derimod en central del i programmet, da det ene hovedformål 
 
 \subsection{Eventklasse}
 
-\begin{wrapfigure}[10]{R}{0.5\textwidth}
+\begin{wrapfigure}{l}{0.5\textwidth}
     \label{img:login_interface}
     \vspace{-20pt}
     \begin{center}
@@ -153,12 +159,13 @@ RegularSailTrip er derimod en central del i programmet, da det ene hovedformål 
     \end{center}
     \vspace{-20pt}
     \caption{Eventklasse}
+    \vspace{-10pt}
 \end{wrapfigure}
-Eventklassen er den klasse om bruges til oprettelse af  begivenheder, nødvendigvis ikke sejlbegivenheder, men generelle begivenheder. Et eksempel kunne være en grillaften eller natsejlads. Klassen består af 7 felter: \textbf{EventDate}, \textbf{EventTitle}, \textbf{SignUpReq}, \textbf{Description}, \textbf{SignUpMsg}, \textbf{Created} og så en liste af klassen Person, som hedder \textbf{Participants}.
+Eventklassen er den klasse om bruges til oprettelse af  begivenheder. Klassen består af 7 felter: EventDate, EventTitle, SignUpReq, Description, SignUpMsg, Created og så en liste af klassen Person, som hedder Participants.
 
-\textbf{Description} er selve begivenhedsbeskrivelsen. 
+Description er selve begivenhedsbeskrivelsen. 
 
-\textbf{Participantslisten} bruges når folk skal tilmeldes til begivenhederne; hver begivenhed har sig egen liste med tilmeldte. 
+Participantslisten bruges når folk skal tilmeldes til begivenhederne; hver begivenhed har sig egen liste med tilmeldte. 
 
-Den eneste metode er en override af ToString, som retunerer \textbf{Description}.
+Den eneste metode er en override af ToString, som retunerer Description.
 
