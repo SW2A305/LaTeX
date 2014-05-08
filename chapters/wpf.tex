@@ -12,6 +12,8 @@ En hjemmeside blev fravalgt, da der blev vurderet at WPF var nemmere at oprette 
 \subsection{Ofte anvendte WPF-controls}
 Der anvendes ofte nogle få WPF-controls til at bygge brugergrænsefladen.
 Disse vil blive beskrevet her.
+På figur \ref{img:wpfdemo} vises de beskrevede elementer (Note de 3 sidste elementer er henholdsvis DataGrid, ComboBox og ListBox).
+
 
 \subsubsection{ComboBox}
 I WPF er en ComboBox det element som andre steder omtales som en dropdown menu. 
@@ -20,20 +22,61 @@ Hvis dette indhold skal være dynamisk, vil Code-Behind ofte være anvendt.
 Eksempelvis hvis man kun vil have de medlemmer af en liste som opfylder et givent prædikat. 
 
 \subsubsection{Button}
-En Button er en knap, knappen svarer til en method i Code-Behind koden. 
+En Button er en knap, knappen kalder en methode i Code-Behind koden. 
+Den metode udfører et stykke arbejde.
 
 \subsubsection{DataGrid}
+Et DataGrid er et grafisk element som kan vise data dynamisk.
+Ofte vil det vise en liste af objekter af en klasse.
+Dets layout er opdelt i rækker og kolloner, hvor hver kollone indeholder en bestemt type data, og kan sorteres ved at klikke på labellet.
+Det er også muligt at konstruere en søgefunktion, altså kan et DataGrid bliver filteret.
 
-\subsubsection{Checkbox}
+\begin{wrapfigure}[22]{R}{0.5\textwidth}
+    \label{img:wpfdemo}
+    \vspace{-30pt}
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{UI/WPF-Demo.png}
+    \end{center}
+    \vspace{-15pt}
+    \caption{Demonstration af WPFs Controls}
+\end{wrapfigure}
 
-\subsubsection{Stackpanel}
+\subsubsection{CheckBox}
+En CheckBox er en kvadratisk boks, som enten er ``Checked'' eller ikke ``Checked''. 
+Dens stadie et binært, og (som standard) uafhængig af andre elementer.
+
+\subsubsection{RadioButton}
+En RadioButton er en cirkelformet CheckBox.
+Dog vil RadioButtons ofte optræde i serie, altså 2 eller flere sammen.
+Et oplagt brug af dem er til ja, nej (og måske), situationer, hvor kun en af dem skal vælges.
+
+\subsubsection{StackPanel}
+Et stackpanel er ikke synligt for slutbrugeren, men bruges til at organisere de andre grafiske elementer.
+Pricippet er at alle elementer i et StackPanel, bliver skubbet sammen i mod en given retning.
+Dette gør det nemmere at få de grafiske elementer til at flugte.
+Derudover sikrer det en konsistet bredde af elementer deri, med mindre andet angivet.
 
 \subsubsection{TextBlock}
+En TextBlock er det stykke læs-kun tekst.
+Det vil typisk være en forklarende tekst, op ad et andet grafisk element.
+Det er også muligt at ændre en TextBlock via Code-Behind. 
+Hvis man vil føre en dialog med brugeren, eksempelvis til fejlbeskeder.
 
 \subsubsection{TextBox}
+En TextBox er et tekstfelt, hvori brugeren kan skrive infomation. 
+Dette kan dermed ses som et inputfelt. 
+Det er også muligt at sætte sådan et felt til at være skrivebeskyttet, samt at ændre dets indhold.
 
 \subsubsection{ListBox}
+En ListBox er en tabel, med en kollone og flere rækker, hvori en bruger kan vælge en eller flere elementer.
+ListBoxen er i stand til at indeholde samlinger af data på enhverform, oftest vil det være en streng, men et billede er også en mulighed.
+Den vil i nogen tilfælde have samme brugsscenarie som en ComboBox eller et DataGrid. 
+Forskellen fra en ComboBox er at der kan være flere synlige elementer, i en ListBox på samme tid, samt der ikke er nogen dropdown menu.
+Et DataGrid kan indeholde flere infomationer, på kolloner, mens en ListBox kun kan indeholde en infomation.
 
 \subsubsection{UserControls}
-
+Det er mulig at konstruere sine egne grænseflade elementer, fra et ellere flere at WPFs indbyggede eller 3. parts Controls.
+Dette kaldes en UserControl, denne indholder både en grafisk del og en Code-Behind.
+Det brugerskabte element, kan derefter genbruges flere stedder i programmet.
+Dette er et eksempel på genanvendelse, hvilket kan bidrage til højere program kvalitet, og større konsistens gennem programmet. 
 
