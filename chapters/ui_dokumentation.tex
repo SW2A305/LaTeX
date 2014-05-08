@@ -61,3 +61,53 @@ Programmet er lavet til at køre i opløsningen 1024x720 pixels.
 Denne opløsning er valgt for at understøtte alt fra bærbare, med opløsninger som 1366x768 pixels i et vindue, og op til FullHD (1920x1080 pixels) osv.
 Programmet har et lyst farveskema, men farverne hvid og en lys blå som hovedfarver (\#87D4EE).
 
+\section{UserControls}
+Der anvendes UserControls til at kode både brugergrænsefladen og den tilhørende code behind.
+
+\subsection{Forside}
+%\begin{wrapfigure}{r}{0.75\textwidth}
+%    \label{img:frontpage}
+%    \vspace{-20pt}
+%    \begin{center}
+%        \includegraphics[scale=0.75]{UI/UserControl_FrontPage}
+%    \end{center}
+%    \vspace{-15pt}
+%    \caption{Login interface}
+%\end{wrapfigure}
+
+
+\textbf{Datafremvisning:} 
+En brugers kommende sejlture, og sejlture hvor brugeren mangler at udgylde logbøger for.
+
+\textbf{Funktioner:} 
+Kan åbne opret logbogsvinduet, enten ved dobbeltklik på sejltur, eller ved valgt af markering og tryk på opret logbog knappen. 
+
+\textbf{Logik:} 
+Hvis ingen sejltur er valgt i DataGridet med logbøger, så skal opret logbog knappen ikke være tilgængelig.
+
+\fixme{Mangler billede, tænker at vi tager screenshots fra en platfor (win8/win7)}
+
+
+\section{Vinduer}
+\subsection{Opret sejltur}
+
+\textbf{Datafremvisning:} 
+Viser det data som bliver valgt, når brugeren vælger det. 
+Der er også flere conscructorer, således der kan forudintastes data ved dets oprettelse.
+
+\textbf{Funktioner:} 
+Kan åbne vælg besætningsvinduet. 
+Kan gemme data til databasen, hvis turen er gyldig.
+
+\textbf{Logik:} 
+Der verificeres om turen er gyldig, der er flere krav:
+\begin{itemize}
+    \item Er der valgt en båd?
+    \item Er starttidspunktet efter det nuværende?
+    \item Er sluttidspunktet efter starttidspunktet?
+    \item Er båden ledig i dette tidsrum?
+    \item Er der valgt mindst et besætningsmedlem?
+    \item Er der valgt en kaptajn?
+    \item Er der angivet et formål?
+\end{itemize}
+
