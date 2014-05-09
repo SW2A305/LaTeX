@@ -65,9 +65,49 @@ På \myref{fig:NewTeam} ses 'NewTeam', her skrives et holdnavn i tekstboksen, og
 
 \subsubsection{Code-Behind}
 \paragraph{StudyTeacher}
+'StudyTeacher' indeholder al interaktion mellem brugeren som admin eller underviser og programmet, samt fungerer som mellemled mellem 'StudyStudent' og programmet. 'StudyTeacher' består primært af at ændre data for diverse elementer alt efter hvilket hold der er valgt, samt at redigere eller oprette hold. Det mester tager således udgangspunkt i den 'ComboBox' som styrer hvilket hold der er valgt. Når et hold bliver valgt udføres koden som ses på \myref{TDDSC}
+\begin{lstlisting}[caption={DropDownTeam SelectionChanged event kode.},
+label=TDDSC]
+private void teamDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ClearFields();
+            if (teamDropdown.SelectedItem != null)
+            {
+                foreach (var member in ((Team)teamDropdown.SelectedItem).TeamMembers)
+                {
+                    MembersList.Add(member);
+                }
+                CurrentMemberDataGrid.ItemsSource = CollectionViewSource.GetDefaultView(MembersList);
+                teamName.Text = ((Team)teamDropdown.SelectedItem).Name;
+                lectureDropdown.ItemsSource = ((Team)teamDropdown.SelectedItem).Lectures.OrderBy(lect => lect.DateOfLecture);
+                promoteTeam.IsEnabled = ((Team)teamDropdown.SelectedItem).Level == Team.ClassLevel.Second;
+                newLecture1.IsEnabled = true;
+                if (((Team)teamDropdown.SelectedItem).Teacher != null)
+                {
+                    TeacherName.Width = Double.NaN;
+                    TeacherName.Text = ((Team)teamDropdown.SelectedItem).Teacher.FullName;
+                }
+                switch (((Team)teamDropdown.SelectedItem).Level)
+                {
+                    case 0:
+                        Level1RadioButton.IsChecked = false;
+                        Level2RadioButton.IsChecked = false;
+                        break;
+                    case Team.ClassLevel.First:
+                        Level1RadioButton.IsChecked = true;
+                        break;
+                    case Team.ClassLevel.Second:
+                        Level2RadioButton.IsChecked = true;
+                        break;
+                }
+            }
+        }
+
+\end{lstlisting}
 \paragraph{StudyStudent}
-'StudyStudent' har absolut ingen interaktion med brugeren, al koden i denne Usercontrol ligger i 'InitializeComponent' sektionen, hvilket består af at sætte den visuelle information som er tilgængelig for brugeren, ses på \myref{fig:StudyStudent}, til brugerens korrekte værdi. Det meste af dette foregår gennem en simpel assignment, enkelte værdier indeholder lidt mere logig som kan ses på \label{StudyStudentCode}. Kodeeksemplet viser 2 labels der sættes til at indeholde den korrekte string. første label, linje 5 - 7, angiver om holdet eleven er på er af 1. eller 2. år ved brug af en 'conditional operator'. den næste label, 8 - 11, benytter flere 'lambda expressions' for at finde den næste lektion i forhold til computerens tidsindstilling, denne DateTime bliver implicit casted til en string grundet linje 8'es '"" + ...' konvention.
-\begin{lstlisting}[caption={Kode for at initialisere 'StudyStudent'.}\label{StudyStudentCode}]
+'StudyStudent' har absolut ingen interaktion med brugeren, al koden i denne Usercontrol ligger i 'InitializeComponent' sektionen, hvilket består af at sætte den visuelle information som er tilgængelig for brugeren, ses på \myref{fig:StudyStudent}, til brugerens korrekte værdi. Det meste af dette foregår gennem en simpel assignment, enkelte værdier indeholder lidt mere logik som kan ses på \label{StudyStudentCode}. Kodeeksemplet viser 2 labels der sættes til at indeholde den korrekte string. første label, linje 5 - 7, angiver om holdet eleven er på er af 1. eller 2. år ved brug af en 'conditional operator'. den næste label, 8 - 11, benytter flere 'lambda expressions' for at finde den næste lektion i forhold til computerens tidsindstilling, denne DateTime bliver implicit casted til en string grundet linje 8'es ' '''' + ...' konvention.
+\begin{lstlisting}[caption={Kode for at initialisere 'StudyStudent'.},
+label=StudyStudentCode]
 public StudyStudent()
         {
             InitializeComponent();
@@ -85,7 +125,7 @@ public StudyStudent()
 \paragraph{NewLecture}
 'NewLecture' er for brugeren simpel at benytte, der er dog mere funktionalitet i dette vindue end der bliver vist for brugeren.
 
-\begin{lstlisting}[caption={Kode for 'OK' knap i 'NewLecture' 'Window'.}\label{NewLectOk}]
+\begin{lstlisting}[caption={Kode for 'OK' knap i 'NewLecture' 'Window'.}, label=NewLectureOk]
 private void CompleteLectureCreate_Click(object sender, RoutedEventArgs e)
         {
             var lecture = new Lecture
@@ -98,9 +138,10 @@ private void CompleteLectureCreate_Click(object sender, RoutedEventArgs e)
             var book = new CreateBoatBookingWindow(Departure, Arrival, _currentTeam);
         }
 \end{lstlisting}
-I \myref{NewLectOk} ses koden for at trykke på OK knappen i 'NewLecture' vinduet. DateTimePicker bliver aflæst og informationen brugt til at oprette en 'Lecture', yderligere bliver informationen også gemt i henholdsvis 'Departure' og 'Arrival'. Disse bliver således videresendt i en constructer for booking af både, 'CreateBoatBookingWindow()'. Dette er OK knappens indirekte funktionalitet, funktionaliteten af dette kan ses på \myref{IndirekteBook}.
+I \myref{NewLectureOk} ses koden for at trykke på OK knappen i 'NewLecture' vinduet. DateTimePicker bliver aflæst og informationen brugt til at oprette en 'Lecture', yderligere bliver informationen også gemt i henholdsvis 'Departure' og 'Arrival'. Disse bliver således videresendt i en constructer for booking af både, 'CreateBoatBookingWindow()'. Dette er OK knappens indirekte funktionalitet, funktionaliteten af dette kan ses på \myref{IndirekteBook}.
 
-\begin{lstlisting}[caption={Dette kode bliver indirekte udført når der trykkes på 'OK' knappen, og opretter en bådreservation for lektionen.}\label{IndirekteBook}]
+\begin{lstlisting}[caption={Dette kode bliver indirekte udført når der trykkes på 'OK' knappen, og opretter en bådreservation for lektionen.},
+label=IndirekteBook]
 public CreateBoatBookingWindow(DateTime departure, DateTime arrival, Team currentTeam) 
 	   : this(-1)
         {
@@ -108,14 +149,14 @@ public CreateBoatBookingWindow(DateTime departure, DateTime arrival, Team curren
             boats = DalLocator.BoatDal.GetAll().ToList();
             Boat Anya = new Boat
             {
-                Type = (currentTeam.Level == Team.ClassLevel.Second) ? BoatType.Gaffelrigger 
-                : BoatType.Drabant
+                Type = (currentTeam.Level == Team.ClassLevel.Second) ?
+                BoatType.Gaffelrigger : BoatType.Drabant
             };
-
             Boat currentBoat = boats.FirstOrDefault(
                 x => x.Type == Anya.Type);
 
-            BoatComboBox.SelectedIndex = boats.FindIndex(b => b == currentBoat);
+            BoatComboBox.SelectedIndex = boats.FindIndex(
+            b => b == currentBoat);
             CrewList.Add(GlobalInformation.CurrentUser);
             CaptainComboBox.SelectedIndex = 0;
             foreach (var member in currentTeam.TeamMembers)
@@ -129,6 +170,6 @@ public CreateBoatBookingWindow(DateTime departure, DateTime arrival, Team curren
         }
 \end{lstlisting}
 Denne constructer nedarver fra 'CreateBoatBookingWindow()' constructeren som kun tager en paramter, index, hertil benyttes ': this(-1)', ses på linje 2, for at sætte ComboBox'en, der styrer valg af booking, kan ses på <indsæt reference til BoatBooking>\fxnote{look at <>}, til null.
-Alt efter om sejler holdet er et 1. eller 2. års sejlerhold, skal der bookes henholdsvis en drabant eller en gaffelrigger, dette håndteres på linje 6 - 15. Der laves en lokal båd, Anya, hvis 'BoatType' bliver sat gennem en 'conditional operator'.
+Alt efter om sejler holdet er et 1. eller 2. års sejlerhold, skal der bookes henholdsvis en drabant eller en gaffelrigger, dette håndteres på linje 6 - 12. Der laves en lokal båd, Anya, hvis 'BoatType' bliver sat gennem en 'conditional operator'.
 Herefter benyttes et 'lambda expression' til at finde den første båd af den korrekte type i databasen og 'BoatComboBox', som styrer valg af båd, bliver sat til denne.
 Efterfølgende bliver den admin eller underviser der opretter lektionen sat som kaptajn, det medsendte hold tilføjes 'CrewList', Departure og Arrival sættes også til de medsendte værdier, Formål bliver sat til undervisning og til sidst kaldes det event som fuldfører bookningen.
