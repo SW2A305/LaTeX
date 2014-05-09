@@ -134,10 +134,12 @@
 \definecolor{greencomments}{rgb}{0,0.5,0}
 \definecolor{redstrings}{rgb}{0.9,0,0}
 
+\usepackage{courier}
 
 \usepackage{listings}
 \lstset{language=[Sharp]C,
-  captionpos=b,                    
+  captionpos=b,            
+  columns=fixed,     
   numbers=left,
   numberstyle=\tiny,
   showspaces=false,
@@ -150,7 +152,7 @@
   commentstyle=\color{greencomments},
   keywordstyle=\color{bluekeywords},
   stringstyle=\color{redstrings},
-  basicstyle=\ttfamily,
+  basicstyle=\ttfamily\small,
   literate={ø}{{\o}}1
   		   {æ}{{\ae}}1
   		   {å}{{\aa}}1
