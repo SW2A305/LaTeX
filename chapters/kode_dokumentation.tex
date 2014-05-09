@@ -187,3 +187,9 @@ Feltet \textbf{FiledBy} bruges til at registrere hvilket medlem af klubben som h
 
 I programmet har oprettede sejlture(bookinger) en reference til den logbog der hører til turen.
 Logbogen selv har referencer til de personer som besætningen bestod af, og et bestemt medlem af klubben som har udfyldt logbogen.
+
+\subsection*{Lecture-klassen}
+\fxnote{indsæt UML diagram}
+\textbf{Navn: Lecture}
+'Lecture' klassen benyttes som en property i 'Team' klassen og indeholder en 'DateTime' for lektionens start, seks booleans som benyttes for en indikator af hvad der er blevet undervist i, samt en ICollection af 'StudentMember' klassen hvori hver fremmødte elev til lektionen er indeholdt.
+Klassens funktionalitet i programmet er for at holde styr på et holds samlede lektioner, hvad der er undervist i samt at holde styr på hver enkelt elevs fremskridt i undervisningsområderne.
