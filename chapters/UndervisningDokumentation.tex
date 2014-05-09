@@ -82,7 +82,7 @@ private void CompleteLectureCreate_Click(object sender, RoutedEventArgs e)
             var book = new CreateBoatBookingWindow(Departure, Arrival, _currentTeam);
         }
 \end{lstlisting}
-I \myref{NewLectOk} ses koden for at trykke på OK knappen i 'NewLecture' vinduet. DateTimePicker bliver aflæst og informationen brugt til at oprette en lecture, yderligere bliver informationen også gemt i henholdsvis 'Departure' og 'Arrival'. Disse bliver således videresendt i en metode 'CreateBoatBookingWindow()'. Dette er OK knappens indirekte funktionalitet, denne metode kan ses på \myref{IndirekteBook}.
+I \myref{NewLectOk} ses koden for at trykke på OK knappen i 'NewLecture' vinduet. DateTimePicker bliver aflæst og informationen brugt til at oprette en 'Lecture', yderligere bliver informationen også gemt i henholdsvis 'Departure' og 'Arrival'. Disse bliver således videresendt i en constructer for booking af både, 'CreateBoatBookingWindow()'. Dette er OK knappens indirekte funktionalitet, funktionaliteten af dette kan ses på \myref{IndirekteBook}.
 
 \begin{lstlisting}[caption={Dette kode bliver indirekte udført når der trykkes på 'OK' knappen, og opretter en bådreservation for lektionen.}\label{IndirekteBook}]
 public CreateBoatBookingWindow(DateTime departure, DateTime arrival, Team currentTeam) 
@@ -112,3 +112,7 @@ public CreateBoatBookingWindow(DateTime departure, DateTime arrival, Team curren
             SaveButton_Click(new object(), new RoutedEventArgs());
         }
 \end{lstlisting}
+Denne constructer nedarver fra 'CreateBoatBookingWindow()' constructeren som kun tager en paramter, index, hertil benyttes ': this(-1)', ses på linje 2, for at sætte ComboBox'en, der styrer valg af booking, kan ses på <indsæt reference til BoatBooking>\fxnote{look at <>}, til null.
+Alt efter om sejler holdet er et 1. eller 2. års sejlerhold, skal der bookes henholdsvis en drabant eller en gaffelrigger, dette håndteres på linje 6 - 15. Der laves en lokal båd, Anya, hvis 'BoatType' bliver sat gennem en 'conditional operator'.
+Herefter benyttes et 'lambda expression' til at finde den første båd af den korrekte type i databasen og 'BoatComboBox', som styrer valg af båd, bliver sat til denne.
+Efterfølgende bliver den admin eller underviser der opretter lektionen sat som kaptajn, det medsendte hold tilføjes 'CrewList', Departure og Arrival sættes også til de medsendte værdier, Formål bliver sat til undervisning og til sidst kaldes det event som fuldfører bookningen.
