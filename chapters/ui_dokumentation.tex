@@ -66,52 +66,123 @@ Programmet har et lyst farveskema, men farverne hvid og en lys blå som hovedfar
 Der anvendes UserControls til at kode både brugergrænsefladen og den tilhørende code behind.
 
 \subsection{Forside}
-%\begin{wrapfigure}{r}{0.75\textwidth}
-%    \label{img:frontpage}
-%    \vspace{-20pt}
-%    \begin{center}
-%        \includegraphics[scale=0.75]{UI/UserControl_FrontPage}
-%    \end{center}
-%    \vspace{-15pt}
-%    \caption{Login interface}
-%\end{wrapfigure}
+\begin{figure}
+    \label{img:frontpage}
+    \vspace{-10pt}
+    \begin{center}
+        \includegraphics[scale=0.55]{UI/UserControl_FrontPage}
+    \end{center}
+    \vspace{-15pt}
+    \caption{FrontPage-Usercontrol}
+\end{figure}
 
+\textbf{Formål}: 
+Formålet med forsiden er at vise aktuel infomation på en overskulig måde for brugeren.
+Det er den første side som medlemmer, og op, ser.
+Fra forsiden kan man ændre og slette sine bookings, samt starte oprettelsen af en logbog.
 
-\textbf{Datafremvisning:} 
-En brugers kommende sejlture, og sejlture hvor brugeren mangler at udgylde logbøger for.
+\textbf{BrugerGrænseflade}: 
+Brugergrænsefladen er forsiden består primært af to DataGrids, det venste viser de kommende sejlture og det højre viser dem personen manlger at udføre logbøger for. 
+Under dem er der knapper, som bliver aktive efter en markering er udført ved, at trykke på en af rækkerne i det passende DataGrid.
 
-\textbf{Funktioner:} 
-Kan åbne opret logbogsvinduet, enten ved dobbeltklik på sejltur, eller ved valgt af markering og tryk på opret logbog knappen. 
+\textbf{Code-Behind}: 
+For at kun vise de sejlture hvor personen som er logget ind deltager i, anvendes der standard query operatorerne. 
+I Listing \ref{fntpg-cb} er et udsnit af koden, nærmere bestemt den del som vælger de rigtige sejlture.
+Det første udtryk finder de ture som er i fremtiden, hvor personen indgår i besætningslisten, ud fra alle turene.
 
-\textbf{Logik:} 
-Hvis ingen sejltur er valgt i DataGridet med logbøger, så skal opret logbog knappen ikke være tilgængelig.
+Det andet udtryk finder de ture, hvor den nuværende person er kaptajn for, som er forventet at være returneret til havn og ikke har nogen logbog. 
 
-\fixme{Mangler billede, tænker at vi tager screenshots fra en platfor (win8/win7)}
+Begge udtryk returnerer en IEnumerable som derefter assignes som DataGridenes ItemSource.
 
+\begin{lstlisting}[frame=single, caption=Forsidens Code-Behind, label=fntpg-cb]
+UpcommingTripsDataGrid.ItemsSource =
+    sailTripList.Where(t => t.Crew.Select(p => p.PersonId).Contains(usrId))
+        .Where(t => t.DepartureTime > DateTime.Now);
+
+LogbookDataGrid.ItemsSource =
+    sailTripList.Where(t => t.Captain.PersonId == usrId && t.ArrivalTime < DateTime.Now && t.Logbook == null);
+\end{lstlisting}
 
 \section{Vinduer}
-\subsection{Opret sejltur}
+\subsection{CreateBoatBookingWindow}
 
-\textbf{Datafremvisning:} 
-Viser det data som bliver valgt, når brugeren vælger det. 
-Der er også flere conscructorer, således der kan forudintastes data ved dets oprettelse.
+\begin{wrapfigure}{R}{0.5\textwidth}
+    \label{img:boatBookWindow}
+    \vspace{-20pt}
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{UI/CreateBoatbookingWindow.png}
+    \end{center}
+    \vspace{-20pt}
+    \caption{CreateBoatbookingWindow}
+    \vspace{-30pt}
+\end{wrapfigure}
 
-\textbf{Funktioner:} 
-Kan åbne vælg besætningsvinduet. 
-Kan gemme data til databasen, hvis turen er gyldig.
+\textbf{Formål}: 
+Dette vindue opretter, eller ændrer, en \textbf{RegularTrip} (En bådbooking).
+Dette vindue anvendes fire stedder i programmet, fra \textbf{Boats}-UserControllen, \textbf{NewLecture}-vinduet (under Undervisning), og fra \textbf{FrontPage}-UserControllen eller \textbf{Boats}-UserControllen (Til at redigere en booking). 
 
-\textbf{Logik:} 
-Der verificeres om turen er gyldig, der er flere krav:
-\begin{itemize}
-    \item Er der valgt en båd?
-    \item Er starttidspunktet efter det nuværende?
-    \item Er sluttidspunktet efter starttidspunktet?
-    \item Er båden ledig i dette tidsrum?
-    \item Er der valgt mindst et besætningsmedlem?
-    \item Er der valgt en kaptajn?
-    \item Er der angivet et formål?
-\end{itemize}
+\textbf{BrugerGrænseflade}: 
+Vinduet er opbygget af et vertikalt StackPanel.
+Først vælges en båd, her anvendes en ComboBox da der skal vælges en værdi fra en liste.
+Herefter anvendes \textbf{DateTimePicker}-UserControllen til at vælge et start- og sluttidspunkt.
+Der vises den nuværende besætning, samt muligheden for at ændre den ved at trykke på en Button med labellet ``Ændre Besætning''.
+Når en besætning er valgt, kan der vælges en kaptajn ud fra besætningslisten.
+Tilsidst er der en TextBox, hvori brugeren kan angive formålet med turen.
+Derudover er der to Buttons, en til at gemme og en til at annulere.
 
+\textbf{Code-Behind}: 
+Til vinduet er der tre constructors, dette er således de fire stedder hvorfra vinduet åbnes, hver kan behande det på deres måde, da to af dem er ens. 
+De tre constuctors er i Listing \ref{threeConstructors}.
+Den første constuctor skaber et nyt vindue, herunder henter den bådede fra DataBasen og bliver kaldt fra Boats-UserControllen.
+Den vælger også den båd, som er angivet i dens index parameter.
+De to DateTimerPickere sættes også til det nuværende tidspunkt, dette gør det nemmere at vælge et passende tidspunkt for den kommende booking.
+
+De to andre constructors kalder, den første da den er grundlæggende for at kunne bruge vinduet. 
+Constructoren med forskiften ``CreateBoatBookingWindow(RegularTrip rt) : this(-1)'', ændrer teksten på gem knappen fra ``Gem Booking'' til ``Ændre Booking''. \fixme{Skal der være nutids-r på ændre(r)?}
+Samt den ændre hvilken methode den kalder, således der ikke forsøges at oprette en ny sejltur, men derimod opdateres en ekstisterende. 
+Fælles for de to metoder som kaldes af knappen er at de skal verificere gyldigheden af en tur. 
+Dette udføres i ``CreateSailTrip()'' som returner en gyldig instans af SailTrip-klassen hvis turen er gyldig, eller null og en fejlbesked hvis den ikke er. 
+Dette null bliver håndtereret af kaldermetoden, således der ikke opstår exceptions.
+
+\begin{lstlisting}[frame=single, caption=De tre constuctoreres forskrifter, label=threeConstructors]
+// Called to Initialize the window, from the other constructors and from the Boats-UserControl
+public CreateBoatBookingWindow(int index)
+{
+    InitializeComponent();
+
+    // Initialize ComboBoxes and Databaseforbindelsen
+    [...]
+
+    // Set DateTimerPickers to the current time.
+    [...]
+}
+
+// Called to edit a trip from the FrontPage
+public CreateBoatBookingWindow(RegularTrip rt) : this(-1)
+{
+    // Sets all the value from the input RegularTrip
+    [...]
+
+    // Change the text and behaveour of the buttons
+    [...]
+}
+
+// Called from NewLecture
+public CreateBoatBookingWindow(DateTime departure, DateTime arrival, Team currentTeam) : this(-1)
+{
+    // Sets values to match the parameters given
+    [...]
+
+    // Set the Captain to be the tracher
+    [...]
+
+    // Add a description of the class in the PurposeTextBox.
+    [...]
+
+    // Call the SaveFunction
+    [...]
+}
+\end{lstlisting}
 
 \subsection{CreateCrewWindow}
 
