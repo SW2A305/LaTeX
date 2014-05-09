@@ -66,6 +66,22 @@ På \myref{fig:NewTeam} ses 'NewTeam', her skrives et holdnavn i tekstboksen, og
 \subsubsection{Code-Behind}
 \paragraph{StudyTeacher}
 \paragraph{StudyStudent}
+'StudyStudent' har absolut ingen interaktion med brugeren, al koden i denne Usercontrol ligger i 'InitializeComponent' sektionen, hvilket består af at sætte den visuelle information som er tilgængelig for brugeren, ses på \myref{fig:StudyStudent}, til brugerens korrekte værdi. Det meste af dette foregår gennem en simpel assignment, enkelte værdier indeholder lidt mere logig som kan ses på \label{StudyStudentCode}. Kodeeksemplet viser 2 labels der sættes til at indeholde den korrekte string. første label, linje 5 - 7, angiver om holdet eleven er på er af 1. eller 2. år ved brug af en 'conditional operator'. den næste label, 8 - 11, benytter flere 'lambda expressions' for at finde den næste lektion i forhold til computerens tidsindstilling, denne DateTime bliver implicit casted til en string grundet linje 8'es '"" + ...' konvention.
+\begin{lstlisting}[caption={Kode for at initialisere 'StudyStudent'.}\label{StudyStudentCode}]
+public StudyStudent()
+        {
+            InitializeComponent();
+			...
+            level.Text = ((StudentMember) GlobalInformation.CurrentUser)
+            .AssociatedTeam.Level == Team.ClassLevel.First
+            ? "1. års sejlerhold" : "2. års sejlerhold";
+            nextSessionDate.Text = "" +
+                (((StudentMember) GlobalInformation.CurrentUser)
+                 .AssociatedTeam.Lectures.OrderBy(lect => lect.DateOfLecture))
+                 .FirstOrDefault(lect => lect.DateOfLecture > DateTime.Now);
+        }
+\end{lstlisting}
+
 \paragraph{NewLecture}
 'NewLecture' er for brugeren simpel at benytte, der er dog mere funktionalitet i dette vindue end der bliver vist for brugeren.
 
