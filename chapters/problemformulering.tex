@@ -22,9 +22,9 @@ med at få et godt administrativt system, så klubberne kan give deres medlemmer
 Medlemmerne, underviserne og de frivillige vil alle være personer der skal bruge det udviklede system. De har
 derfor en mere direkte indvirkning på, hvordan system skal opbygges. Hvis systemet ikke har de funktioner som
 de efterspørger, vil det ikke være den gode løsning, som de gerne vil have. Dette gælder for alle de tre
-nævnte interessenter. Det skal dog understreges at de ikke ville skulle bruge samme dele af systemet. Dette
+nævnte interessenter. Det skal dog understreges, at de ikke vil bruge samme dele af systemet. Dette
 skyldes, at medlemmerne ikke skal kunne oprette undervisningsdage mm., det er kun underviserne. Dette er bl.a.
-en af grundene til at de delt op i de tre forskellige grupper.
+en af grundene til, at de er delt op i de tre forskellige grupper.
 
 
 \section{Organisation}
@@ -33,13 +33,13 @@ I forbindelse med organisationsafsnittet blev der undersøgt, hvordan sejlklubbe
 opgaver i klubben, samt hvilke opgaver de beskæftiger sig med.
 
 Det viste sig, at klubberne har individuelle medlemstyper, og det kan derfor være relevant at lade klubberne
-selv oprette forskellige medlemstyper i systemet. Desuden efterspørges det at man kan tilkoble sig systemet
+selv oprette forskellige medlemstyper i systemet. Desuden efterspørges det, at man kan tilkoble sig systemet
 hjemmefra, for således at kunne få informationer om begivenheder og undervisning i klubben, og måske endda
 tilmelde sig disse, uden at tage turen ned til klubben.
 
-Grundet den store mængde af information der skal nedskrives i forbindelse med en sejlads, giver det mening at
+Grundet den store mængde af information, der skal nedskrives, i forbindelse med en sejlads, giver det mening at
 hjælpe med at organisere denne opgave, samt at gøre det lettere at registrere informationerne for diverse
-frivillige, og undervisere. Desuden kunne det hjælpe hvis hvert medlem havde en saldo over udgifter ved sejlklubben, således
+frivillige og undervisere. Desuden kunne det hjælpe hvis hvert medlem havde en saldo over udgifter ved sejlklubben, således
 det er nemmere at håndtere brugerbetaling.
 
 Følgende er altså en liste over emner som kan dækkes af et system for sejlklubberne:
@@ -47,11 +47,11 @@ Følgende er altså en liste over emner som kan dækkes af et system for sejlklu
 \begin{itemize}
   \item Tilkobling hjemmefra, via internettet.
   \item Mulighed for at få informationer vedr. begivenheder, samt at tilmelde sig disse.
-  \item Organisering af informationer der foretages ifm. sejladser.
+  \item Organisering af informationer der foretages i form af sejladser.
   \item Organisering af betalinger, samlet for det enkelte medlem, samt mulighed for online betaling.
 \end{itemize}
 
-Man har fundet frem til at systemet der efterspørges er et af typen management systemer, som blev beskrevet i
+Man har fundet frem til, at systemet, der efterspørges, er et af typen management systemer, som blev beskrevet i
 \myref{subsec:management-systemer}. For at kunne implementere disse funktioner til et
 management system, skal der være forskellige teknologier til rådighed. Disse blev beskrevet i
 \myref{chap:teknologi-analyse}.
@@ -66,14 +66,14 @@ klubhuset, og der skal derfor være en internetopkobling i klubhuset.
 
 Foruden en serveropsætning er det vigtigt at se på designet af systemet, for at de frivillige kan udnytte det
 optimalt. Her tænkes der på brugergrænsefladen. Som nævnt i \myref{chap:interessent-analyse-ved-sejlklubber}
-er det en blandet gruppe af mennesker der kan være frivillige i en sejlklub. Derfor bør brugergrænsefladen
+er det en blandet gruppe af mennesker, der kan være frivillige i en sejlklub. Derfor bør brugergrænsefladen
 være nem at finde rundt i, således de fleste vil kunne bruge systemet uden større problemer. Dette
-forventes at blive gjort ved brugen af Windows Presentation Foundation.
+forventes at blive gjort ved brugen af Windows Presentation Foundation.\fxnote{Skal dette være der inden diskussionen mellem WPF, WinForms og Webpage?}
 
-Sejlklubben Sundet, viste sig at have mange flere forhold at organisere end de andre klubber der er undersøgt,
-derfor afgrænses projektet til konkret at designe et IT-system for Sundet. Dette gøres da hvis et system kan
+Sejlklubben Sundet, viste sig at have mange flere forhold at organisere end de andre klubber der er undersøgt, og
+derfor afgrænses projektet til konkret at designe et IT-system til Sundet. Dette gøres da hvis et system kan
 hjælpe Sundet, vil der på baggrund af analysen kunne konkluderes, at det også kan hjælpe andre sejlklubber,
-med færre forhold at holde styr på.
+med færre forhold at holde styr på.\fxnote{Kan ikke helt finde ud af starten af sætning}
 
 \subsubsection*{Ud fra denne afgrænsning er flg. problemformulering formuleret:}
 
@@ -86,20 +86,21 @@ med færre forhold at holde styr på.
 
 \section{Afgrænsning for problemløsning}
 
-Da dette projekt er foretaget i løbet af forårs semestret på AAU, er der ikke uanede mængder af tid. Der
+Da dette projekt er foretaget i løbet af forårssemestret på Aalborg Universitet, er der ikke uanede mængder af tid. Der
 afgrænses derfor fra at udvikle hele management systemet til sejlklubben Sundet, til i stedet at lave enkelte
 dele af systemet.
 
-Grundet de manglende ressourcer og tid, vil der altså ikke blive kreeret et system der kører over internettet,
-men i stedet et system, som kan håndtere de forskellige emner lokalt. Denne afgrænsning finder sted, da hvis
+Grundet de manglende ressourcer og tid, vil der altså ikke blive lavet et system, der kører over internettet,
+men i stedet et system, som kan håndtere de forskellige emner lokalt. 
+Denne afgrænsning finder sted, da hvis
 funktionerne for klubben kan fungerer på computeren, skal det blot tilkobles en server, for dermed at kunne
-virke på flere forskellige computere. Derfor ser projektgruppen altså funktionerne for sejlklubben som værende
-de vigtige ting at udvikle, selvom systemet mister meget af sin effektivitet uden internetopkoblingen. Men
-dette ses som værende okay, da systemet ikke skal tages i brug af klubben, da dette er et projekt lavet i
-forbindelse med uddannelsen på Softwareingeniørstudiet ved AAU.
+virke på flere forskellige computere.\fxnote{Underlig sætning, er lidt i tvivl om hvad der menes}
+Derfor ser projektgruppen altså funktionerne for sejlklubben som værende de vigtige ting at udvikle, selvom systemet mister meget af sin effektivitet uden internetopkoblingen. 
+Men dette ses som værende okay, da systemet ikke skal tages i brug af klubben, da dette er et projekt lavet i
+forbindelse med uddannelsen på Softwareingeniørstudiet ved Aalborg Universitet.
 
 Hvis tiden er til det i slutningen af projektet, vil der muligvis ændres i systemet så det virker igennem en
-internetopkobling.
+internetopkobling.\fxnote{Skal sådanne gisninger omkring projektforløbet med?}
 
 De resterende kapitler i rapporten, vil beskæftige sig med udviklingen af et management system, henvendt imod
 sejlklubben Sundet, baseret på problemformuleringen. Som det første vil der komme en kravspecifikation for
