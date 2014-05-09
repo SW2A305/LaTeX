@@ -1,26 +1,6 @@
 \chapter{Programmets brugergrænseflade}
 I dette kapitel vil programmet grafiske brugergrænseflade blive beskrevet.
 
-\section{Login brugergrænseflade}
-\begin{wrapfigure}{r}{0.5\textwidth}
-    \label{img:login_interface}
-    \vspace{-20pt}
-    \begin{center}
-        \includegraphics[width=0.48\textwidth]{UI/Login_Window_Empty_Fields.png}
-    \end{center}
-    \vspace{-15pt}
-    \caption{Login interface}
-\end{wrapfigure}
-
-Login brugergrænsefladen (Figur \ref{img:login_interface}) er opstartsvinduet, og giver brugerne mulighed for at logge ind.
-Formålet med dette er, at programmet skal kende identiteten af den person som anvender programmet.
-Login knappen (samt at trykke på ``Enter''/``Return''-knappen mens tekstfelterne er i fokus), udfører et login. 
-Forudsagt at brugeroplysninger angivet er korrekte, eller vises en passende fejlbesked.
-Man kan også logge ind som en gæste bruge, som har reducerede tilladelser. 
-Den kan bruges, hvis man vil tjekke noget infomation hurtigt, og ikke vil til at logge ind, da det tager tid.
-Dette udføres ved at trykke på ``Login som gæst''-knappen. 
-
-Efter fuldført login åbens et passene hovedvindue, med funktionaliteter i henhold til tabel \ref{tab:permissions}.
 
 % LaTeX tabel som viser alle brugerniveauer og deres muligheder efter login.
 % http://bit.ly/1kToHZ3 to edit raw table
@@ -193,6 +173,70 @@ Til sidst så bliver dataet som hentes fra \textbf{databasen} afbildet i hvert s
 
 
 \section{Vinduer}
+
+
+\subsubsection{Login brugergrænseflade}
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \label{img:login_interface}
+    \vspace{-20pt}
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{UI/Login_Window_Empty_Fields.png}
+    \end{center}
+    \vspace{-15pt}
+    \caption{Login interface}
+\end{wrapfigure}
+ 
+\textbf{Formål}: 
+Login brugergrænsefladen har til formål at verificere en brugers identitet. 
+Det er det første vindue brugeren ser, og åbner hovedvinduet.
+ 
+\textbf{BrugerGrænseflade}: 
+Brugergrænsefladen til loginvinduet er meget simpel og lige til. 
+Der er en TextBox til brugernavnet og en PasswordBox til kodeordet.
+En PasswordBox er en TextBox hvor de intastede karakterer vises som en sort prik, i stedet for de skrevne tegn, for at beskytte brugeren.
+Login knappen trykkes efter brugeren har indtastet sine brugeroplysninger, den åbner hovedvinduet hvis infomationen er korrekt.
+``Login som gæst''-knappen kræver ingen brugeroplysninger og åbner en let udgave af hovedvinduet, uden særlige tilladelser.
+Til sidst er en TextBlock som giver brugen indikationer hvis der er skrevet forkert.
+ 
+\textbf{Code-Behind}: 
+Den centrale del af det Code-Behind som er i forbindelse med loginvinduet, er der der verificerer at en bruger findes og koden er korrekt.
+I \myref{dologin} vises det stykke kode som tjekker brugeroplysningerne.
+Først sikres det er der findes medlemmer i databasen af sejlklubmedlemmer.
+Herefter hentes den anmodede bruger, udtrykket sammenligner det indtastede brugernavn, med alle dem i databasen, dette er case insensitive (Altså vil ``FoOBar'' være lig med ``foobar'' og ``FOOBAR'').
+Hvis brugen findes så sammenlignes det indtastede kodeord med det i databasen, her anvendes en hashing algoritme. 
+Den sikrer at hvis noget får adgang til databasen, kan de ikke se brugernes kodeord.
+Er alt infomation gyldigt så kaldes ``LoginCompleted''-metoden med argumentet ``usr'' som er brugeren. 
+ 
+\begin{lstlisting}[frame=single, caption=DoLogin, label=dologin]
+private void DoLogin(object sender, RoutedEventArgs e)
+{
+    // If usernamebox or password is empty display an error message.
+    [...]
+ 
+    if (sailClubMembers != null)
+    {
+        SailClubMember usr =
+            sailClubMembers.FirstOrDefault(
+                x => String.Equals(x.Username, UsernameBox.Text, StringComparison.CurrentCultureIgnoreCase));
+ 
+        // Check if user exists (Case insensitive)
+        if (usr != null &&
+            String.Equals(usr.Username, UsernameBox.Text, StringComparison.CurrentCultureIgnoreCase))
+        {
+            // Check if the password is correct (Case sensitive)
+            if (usr.PasswordHash == EncryptionHelper.Sha256(PasswordBox.Password))
+            {
+                LoginCompleted(usr);
+            } 
+ 
+            // Code to show errors for wrong infomation
+            [...]
+        }
+    }
+}
+\end{lstlisting}
+
+
 \subsection{CreateBoatBookingWindow}
 
 \begin{wrapfigure}{R}{0.5\textwidth}
