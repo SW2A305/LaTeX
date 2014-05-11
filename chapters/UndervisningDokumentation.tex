@@ -65,45 +65,46 @@ På \myref{fig:NewTeam} ses 'NewTeam', her skrives et holdnavn i tekstboksen, og
 
 \subsubsection{Code-Behind}
 \paragraph{StudyTeacher}
-'StudyTeacher' indeholder al interaktion mellem brugeren som admin eller underviser og programmet, samt fungerer som mellemled mellem 'StudyStudent' og programmet. 'StudyTeacher' består primært af at ændre data for diverse elementer alt efter hvilket hold der er valgt, samt at redigere eller oprette hold. Det mester tager således udgangspunkt i den 'ComboBox' som styrer hvilket hold der er valgt. Når et hold bliver valgt udføres koden som ses på \myref{TDDSC}
-\begin{lstlisting}[caption={DropDownTeam SelectionChanged event kode.},
-label=TDDSC]
-private void teamDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ClearFields();
-            if (teamDropdown.SelectedItem != null)
-            {
-                foreach (var member in ((Team)teamDropdown.SelectedItem).TeamMembers)
-                {
-                    MembersList.Add(member);
-                }
-                CurrentMemberDataGrid.ItemsSource = CollectionViewSource.GetDefaultView(MembersList);
-                teamName.Text = ((Team)teamDropdown.SelectedItem).Name;
-                lectureDropdown.ItemsSource = ((Team)teamDropdown.SelectedItem).Lectures.OrderBy(lect => lect.DateOfLecture);
-                promoteTeam.IsEnabled = ((Team)teamDropdown.SelectedItem).Level == Team.ClassLevel.Second;
-                newLecture1.IsEnabled = true;
-                if (((Team)teamDropdown.SelectedItem).Teacher != null)
-                {
-                    TeacherName.Width = Double.NaN;
-                    TeacherName.Text = ((Team)teamDropdown.SelectedItem).Teacher.FullName;
-                }
-                switch (((Team)teamDropdown.SelectedItem).Level)
-                {
-                    case 0:
-                        Level1RadioButton.IsChecked = false;
-                        Level2RadioButton.IsChecked = false;
-                        break;
-                    case Team.ClassLevel.First:
-                        Level1RadioButton.IsChecked = true;
-                        break;
-                    case Team.ClassLevel.Second:
-                        Level2RadioButton.IsChecked = true;
-                        break;
-                }
-            }
-        }
-
-\end{lstlisting}
+%Kommenteret ud fordi det ikke er færdig yet
+%'StudyTeacher' indeholder al interaktion mellem brugeren som admin eller underviser og programmet, samt fungerer som mellemled mellem 'StudyStudent' og programmet. 'StudyTeacher' består primært af at ændre data for diverse elementer alt efter hvilket hold der er valgt, samt at redigere eller oprette hold. Det mester tager således udgangspunkt i den 'ComboBox' som styrer hvilket hold der er valgt. Når et hold bliver valgt udføres koden som ses på \myref{TDDSC}
+%\begin{lstlisting}[caption={DropDownTeam SelectionChanged event kode.},
+%label=TDDSC]
+%private void teamDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
+%        {
+%            ClearFields();
+%            if (teamDropdown.SelectedItem != null)
+%            {
+%                foreach (var member in ((Team)teamDropdown.SelectedItem).TeamMembers)
+%                {
+%                    MembersList.Add(member);
+%                }
+%                CurrentMemberDataGrid.ItemsSource = CollectionViewSource.GetDefaultView(MembersList);
+%                teamName.Text = ((Team)teamDropdown.SelectedItem).Name;
+%                lectureDropdown.ItemsSource = ((Team)teamDropdown.SelectedItem).Lectures.OrderBy(lect => lect.DateOfLecture);
+%                promoteTeam.IsEnabled = ((Team)teamDropdown.SelectedItem).Level == Team.ClassLevel.Second;
+%                newLecture1.IsEnabled = true;
+%                if (((Team)teamDropdown.SelectedItem).Teacher != null)
+%                {
+%                    TeacherName.Width = Double.NaN;
+%                    TeacherName.Text = ((Team)teamDropdown.SelectedItem).Teacher.FullName;
+%                }
+%                switch (((Team)teamDropdown.SelectedItem).Level)
+%                {
+%                    case 0:
+%                        Level1RadioButton.IsChecked = false;
+%                        Level2RadioButton.IsChecked = false;
+%                        break;
+%                    case Team.ClassLevel.First:
+%                        Level1RadioButton.IsChecked = true;
+%                        break;
+%                    case Team.ClassLevel.Second:
+%                        Level2RadioButton.IsChecked = true;
+%                        break;
+%                }
+%            }
+%        }
+%
+%\end{lstlisting}
 \paragraph{StudyStudent}
 'StudyStudent' har absolut ingen interaktion med brugeren, al koden i denne Usercontrol ligger i 'InitializeComponent' sektionen, hvilket består af at sætte den visuelle information som er tilgængelig for brugeren, ses på \myref{fig:StudyStudent}, til brugerens korrekte værdi. Det meste af dette foregår gennem en simpel assignment, enkelte værdier indeholder lidt mere logik som kan ses på \label{StudyStudentCode}. Kodeeksemplet viser 2 labels der sættes til at indeholde den korrekte string. første label, linje 5 - 7, angiver om holdet eleven er på er af 1. eller 2. år ved brug af en 'conditional operator'. den næste label, 8 - 11, benytter flere 'lambda expressions' for at finde den næste lektion i forhold til computerens tidsindstilling, denne DateTime bliver implicit casted til en string grundet linje 8'es ' '''' + ...' konvention.
 \begin{lstlisting}[caption={Kode for at initialisere 'StudyStudent'.},
