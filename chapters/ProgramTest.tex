@@ -1,9 +1,9 @@
 \chapter{Program test}
-I dette afsnit forklares der om teorien bag programtest samt udførelsen deraf. Foruden ses der nærmere på resultater af test og ses på hvor succesfuld programmet er. For at teste programmet udnyttes der i dette projekt en række user tests. Denne type test lægger fokus på at teste tre primære emner hos brugeren: Funktionalitet, effektivitet og tilfredshed. 
+I dette afsnit forklares der om teorien bag programtest samt udførelsen deraf. Foruden ses der nærmere på hvordan resultaterne bruges, hvorfra der kan dannes et overblik over programmet funktionalitet. For at teste programmet anvendes der, foruden unit tests i dette projekt, en række user tests, som tager udgangspunkt i projektets userstories\fxnote{myref til userstories}. Denne type test ligger fokus på at teste tre primære emner hos brugeren: Funktionalitet, effektivitet og tilfredshed. 
 
-For at kunne teste disse tre kriterier ses udvikles der først en profil af målgruppen. Idet dette program er lavet med hensigt af benyttelse i en sejlklub er denne gruppe rimelig stor. Målgruppen er hele sejlklubben, hvilket kan være rige som fattige og gamle som unge. Idet det er et computersystem er det eneste krav til målgruppen at de har basal kendskab til en computers egenskaber.
+For at kunne teste disse tre kriterier udvikles der først en profil af målgruppen. Idet dette program er lavet med hensigt af benyttelse i en sejlklub, er denne gruppe rimelig stor. Målgruppen er hele sejlklubben, hvilket kan være rige som fattige og gamle som unge. Idet det er et computersystem, er det eneste krav til målgruppen, at de har basal kendskab til brugen af en computer.
 
-For at kunne udføre en test udvikles der således også en række mål for hvad brugeren ønsker at benytte programmet til. Ud fra disse mål kan der således opstilles scenarier, der kan testes. Programmet er ment som en hjælp med organisering, således er målene for programmet er relateret til klubbens organisatoriske opgaver. Nedenfor ses en liste af mål for den almindelige bruger hvorudfra der kan udvikles scenarier.
+For at kunne udføre en test, udvikles der således også en række mål for, hvad brugeren ønsker at benytte programmet til. Ud fra disse mål kan der således opstilles scenarier, der kan testes. Programmet er ment som en hjælp med organisering, således at målene for programmet er relateret til klubbens organisatoriske opgaver. Nedenfor ses en liste af mål for den almindelige bruger, hvorudfra der kan udvikles scenarier.
 
 \begin{itemize}
   \item Følge ens status på duelighedsbevis.
@@ -14,36 +14,39 @@ For at kunne udføre en test udvikles der således også en række mål for hvad
   \item Følg status på begivenheder og undervisning(ændringer/aflysninger).
 \end{itemize}
 
-En administrator af programmet vil have få yderligere mål såsom opdatering af bådstatus og aflysning såvel som oprettelse af klubbegivenheder. Ud fra disse mål er lavet en række scenarier til user cases som er vedlagt i bilaget, som kan findes i \myref{Use_cases}. 
+En administrator af programmet vil have få yderligere mål såsom opdatering af bådstatus og aflysning såvel som oprettelse af klubbegivenheder. Ud fra disse mål er der lavet en række scenarier til user cases, som er vedlagt i bilaget, som kan findes i \myref{Use_cases}. 
 
-\cbstart
-Et eksempel på en user case kunne være: Et medlem af klubben kunne godt tænke sig at komme ud og sejle. Vedkommende logger ind på systemet med sit personlige login. Han navigerer ind på bookingsiden, og booker en båd, den kommende lørdag. Han logger derefter ud af programmet igen.
+Et eksempel på en user case kunne være: Et medlem af klubben kunne godt tænke sig at komme ud og sejle. Vedkommende logger ind på systemet med sit personlige login. Han navigerer ind på bookingsiden og booker en båd den kommende lørdag. Han logger derefter ud af programmet igen.
 
 Ud fra disse scenarier kan hver funktionalitet beskrevet omskrives til en række korte opgaver, som berører én bestemt funktion i programmet. Opgaverne kan findes i \myref{BrugerTestCases}
 
-Dette bilag vil blive vist til testpersoner af programmet, og de vil blive observeret mens de forsøger at udføre den opgave de har fået. Efter udførslen af opgaven de er blevet stillet, spørges der ind til brugeres oplevelse af programmet, med henblik på funktionalitet, om brugergrænsefladen var forvirrende eller guidede testpersonerne i den rigtige retning og eventuelt andre meninger fra testpersonerne.
+Dette bilag vil blive vist til testpersoner af programmet, og de vil blive observeret mens de forsøger at udføre den opgave de har fået. Efter udførslen af opgaven de er blevet stillet, spørges der ind til brugeres oplevelse af programmet med henblik på funktionalitet, om brugergrænsefladen var forvirrende eller guidede testpersonerne i den rigtige retning og eventuelt andre meninger fra testpersonerne.
 
 Et eksempel på en opgave svarende til eksemplet på user casen fra før ville være:
 
 \begin{itemize}
-\item Log ind på systemet med følgende brugeroplysninger: INDSÆT BRUGERNAVN og PASSWRD
+\item Log ind på systemet med følgende brugeroplysninger: INDSÆT BRUGERNAVN og PASSWORD
 \item Foretag en booking af båden: INDSÆT BÅDNAVN til næste lørdag, med følgende andre oplysninger: INDSÆTOPLYSNINGER
 \item Log ud af systemet igen
 \end{itemize}
 
-Vi vil imens udfylde et skema med testforløbet, samt skrive kommentarer omkring brugeren færden i programmet, hvis noget er bemærkelsesværdigt, herudover tages der tid på brugernes tidsforbrug på hver enkelte opgave.
+Vi vil imens udfylde et skema med testforløbet, samt skrive kommentarer omkring brugeren færden i programmet hvis noget er bemærkelsesværdigt. Herudover tages der tid på brugernes tidsforbrug på hver enkelte opgave.
 
 I de følgende afsnit beskrives der hvordan disse data vil blive behandlet.
-\cbend
+
 \fxnote{Der mangles lige lidt her om hvordan vi vil behandle det data vi får ind, og hvilke data vi får ind}
 
 \section{Funktionalitet}
-I denne sektion ses der på produktets funktionalitet og udførelsen af programmets mål for den givne målgruppe. Funktionalitet ser på en overordnet succesrate af programmet og tester således for helt basale fejl i brugergrænsefladen der resultere i at opgaver ikke bliver løst. Funktionalitet kan udregnes ud fra hvor mange scenarier der er fejlet i forhold til udført. Funktionaliteten ønskes at ligge over 75 procent. 
-\fxnote{indsæt succesrate diagram samt link til kilde, og funktion til udregning}
+I denne sektion ses der på produktets funktionalitet og udførelsen af programmets mål for den givne målgruppe. Funktionalitet ser på en overordnet succesrate af programmet og tester således for helt basale fejl i brugergrænsefladen, der resultere i at opgaver ikke bliver løst. Funktionalitet kan udregnes ud fra hvor mange scenarier der er fejlet i forhold til udført. Funktionen for at udregne dette kan ses på \myref{FunktionalitetEquation}. Her er N antallet af opgaver, R antallet af brugere, $n_{ij}$ er resultatet fra brugeren j ved at udføre opgave i. Her er $n_{ij}$ lig med 0, hvis brugeren ikke klarede opgaven, og det er lig med 1 hvis brugeren klarede opgaven. Funktionaliteten ønskes at ligge over 75 procent.\citep{UIEffectiveness}
+
+\begin{equation}\label{FunktionalitetEquation}
+\overline{E}=\frac{\sum\limits_{j=1}^{R}\sum\limits_{i=1}^{N}n_{ij}}{RN}\cdot 100\% 
+\end{equation}
+
 
 \section{Effektivitet}
-Her ses der nærmere på den egentlige udførsel af hvert scenarie og ikke bare om det er udført eller ej. Effektivitet ser på hvor lang tid en bruger benytter på at blive bekendt med programmet og kunne løse opgaver. Denne værdi kan ses relativt i forhold til hver enkelt bruger, samt sættes op imod tidsforbrug af en expertbruger, en af programmets arkitekter, for at danne et indtryk af hvor let programmet er at gå til.
-\fxnote{indsæt tidsforbrug diagram, samt link til kilde, og funktion til udregning}
+Her ses der nærmere på den egentlige udførsel af hvert scenarie og ikke bare om det er udført eller ej. Effektivitet ser på, hvor lang tid en bruger benytter på at blive bekendt med programmet og kunne løse opgaver. Denne værdi kan ses relativt i forhold til hver enkelt bruger, samt sættes op imod tidsforbrug af en ekspertbruger, en af programmets arkitekter, for at danne et indtryk af hvor let programmet er at gå til. I stedet for at bruges formlen der findes på \citep{UIEffeciency}, vil der i stedet findes et gennemsnit af brugernes udførelse af alle opgaverne, og denne værdi sammenlignes derefter med en eksperts tid på at løse opgaverne.
+
 
 \section{Tilfredshed}
-Til sidst laves der en tilfredshedsundersøgelse for at få brugerens meninger omkring programmets design. Dette kan gøres igennem et spørgeskema. Undersøgelsen skal give et indtryk af hvor godt brugeren synes programmede var i forhold til layout, placering af de krævede objekter i programmet, deres synlighed i programmet. Denne undersøgelse giver et indtryk af hvor godt programmet er designet, og derved hvor let forskellige funktioner i programmet er at tilgå. Et spørgeskema kan ses i bilag. \fxnote{indsæt bilag samt svar på spørgeskema}
+Til sidst laves der en tilfredshedsundersøgelse for at få brugerens meninger omkring programmets design. Dette kan gøres igennem et spørgeskema. Undersøgelsen skal give et indtryk af, hvor godt brugeren synes programmet var i forhold til layout, placering af de krævede objekter i programmet og deres synlighed i programmet. Denne undersøgelse giver et indtryk af, hvor godt programmet er designet, og derved hvor let forskellige funktioner i programmet er at tilgå. Et spørgeskema kan ses i \myref{bilag:SporgeSkema}. \citep{UISatisfaction}
