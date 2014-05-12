@@ -1,59 +1,117 @@
 \chapter{Database}
 
-I forbindelse med programmets data var det nødvendigt at overveje, om programmet skulle have foruddefineret
-data, som ville blive nulstillet ved hvert programopstart, eller om dataene skulle gemmes mellem kørsler.
+Dette kapittel vil omhandle valget af en løsningen, på at opnå persistens mellem kørsler af programmet.
+Det ønskes naturligvis at programmet kan lagre sit data, uden for ram, for at kunne bruge det igen senere.
 
-Efter nogen overvejelse blev det bestemt, at der skulle benyttes et såkaldt persistenslag. Efter at have
-overvejet SQLite og \ac{EF} faldt valget på \ac{EF}, der er populært blandt C\#--udviklere, da det tillader en
-hurtig start på kodeprocessen.
+\section{Persistensløsninger}
 
-\ac{EF} er et såkaldt \ac{ORM} framework, der sammenkæder tabeller i en database med objekter i et program.
-Det kan benyttes på flere måder, der kort fortalt afhænger af, om man starter med en defineret database, eller
-en samling af klasser. Sidstnævnte mulighed kaldes for ``Code First'' og blev den valgte metode, da det tillod
-en -- for gruppen -- logisk arbejdsproces, hvori klassestrukturen blev opbygget, og databasen blev automatisk
-tilpasset denne.
+Der er flere løsninger til denne problemstilling, en meget simple løsning vil være at anvende flade filer. 
+Dvs. at man skriver data til en tekst eller binær fil ved programnedlukning, og indlæser samme fil ved opstart.
 
-Der blev truffet afgørelse i gruppen om at benytte et såkaldt \ac{DAL} til at give programmet yderligere
-robusthed. Et \ac{DAL} er en samling af interfaces, samt implementationer af disse, som lægger sig mellem
-programmet og det valgte persistenslag. Hermed opnås mulighed for at udskifte persistenslag, eller sågar
-benytte flere forskellige i det samme program. Ligeledes bliver det muligt at have et lag specifikt til at
-teste med. I yderste konsekvens, hvis det skulle vise sig, af \ac{EF} fejlede, og der ikke kunne rettes op på
-det i tide, så ville det være muligt at skrive en såkaldt ``mock implementation'', hvilket ville give den
-først overvejede mulighed for at have data, som ikke gemmes i noget lager.
+\subsection{Flade filer}
+Denne løsningen bliver dog hurtig upraktisk, da den ikke har samme evne til at skalere til et større system.
+Et alternativ er at anvende en database, der findes mange typer databaser, hver med deres fordele.
 
-Det er også værd at bemærke, at mange udviklere vælger at benytte \ac{EF} Code First under udviklingen, med en
-passende \ac{DAL}--implementation, for derefter, når programmet skal distribueres, at kode en implementation
-der benytter en database eller lignende, som de har fuld kontrol over. \ac{EF} har et højt abstraktionsniveau,
-hvilket simplificerer arbejdsprocessen, men fratager udvikleren en del kontrol.
+\subsection{Databaser}
+Efter research, herunder rådgivning fra OOP lektor Rene Hansen, stod valget mellem to databaser: Entity Framework og SQLite.
+
+\subsubsection*{Entity Framework}
+Den første af de to, Entity Framework, er en Object-Relational Mapping (ORM), til dotNet Frameworket.
+Et ORM skaber et billede af objekterne i hukommelsen i databasen. 
+Herunder var rådgivningen fra Rene Hansen, at anvende Code-First udvikling. 
+Code-First vil sige, i korte træk,\fxfatal{lidt talesprogsagtigt} at man først udvikler sine klasser (Model), og derefter kobler databasen til ved at bruge såkaldte migrations. 
+Fordelen ved denne løsning er at mange database tekniske valg træffes af programmet, så programøren ikke skal gøre det. 
+Dette ses som en god løsningen til gruppen her, ikke har haft undervisning hverken i databaser eller implementering af dem i C\#.
+
+\subsubsection*{SQLite}
+Den anden kandidat er SQLite, som er et relationel datebase management system (RDBMS).
+SQLite er en letvægts embedded database, som ikke kører i en applikation for sig, men bliver tilgået i vores program.
+SQLite implementerer det meste af SQL standarden, og er ofte brugt som en database for applikationer, hvor bruger ikke er meget stort, men stadig stort nok til at en database er nødvendigt.
+
+\fxfatal{Her skal der nok være en konkludere bemærkning på hvilken vi vil vælge}
+
+\section{Database Abstraction Layer}
+Et database abstraction layer (DAL) bruges til at separere programmet fra databasen.
+Man udstiller et interface til programmet, som så anvendes, og ikke en direkte forbindelse.
+Hver tabel som findes i den database programmet skal anvende, skal have sin egen DAL, som er logikken der forbinder til databasen.
+Der findes fire basale operationer til en database, kaldt CRUD: Create, Read, Update, Delete. 
+Hver af disse operationer skal DALet udstille. 
+
+I vores generiske DAL interface, som hver af de konkrete DAL nedarver fra er der otte metoder, disse er forklaret i \myref{tab:ourExtCrud}
+
+\begin{table}[h]
+    \begin{tabular}{p{2cm}|p{13cm}}
+    \textbf{Metode}   & \textbf{Forklaring}       \\ \hline
+    Create   & Opretter et eller flere nye elementer i databasen.                                                    \\ \hline
+    Update   & Opdaterer et eller flere elementer i databasen.                                                       \\ \hline
+    Delete   & Fjerner et eller flere elementer fra databasen.                                                       \\ \hline
+    GetAll   & Findes i to udgaver, en som henter alle elementer, og en hvor der kan medsendes et prædikat.          \\ \hline
+    GetOne   & Henter et element i databasen, ud fra det itemId givet.                                               \\ \hline
+    LoadData & Findes i to udgaver, de henter de indre referencetype objekter til elementet eller elementerne givet. \\ \hline
+    \end{tabular}
+    \caption{Forklaring af hver metode i det generiske DAL interface.}
+    \label{tab:ourExtCrud}
+\end{table}
+
+Ud fra dette interface skal der være en implementation i hver af de databaser, man vil anvende.
+Dette gør også et databasen kan udskiftes.
+Da programmet vil anvende den såkaldte DalLocator, som er en statisk hjælpeklasse som indholder en reference, til det DAL der anvendes.
+Her ligger en af grundene til at anvende et DAL, derudover vil forbindelsen til databasen være standardiseret, således det er nemmere at undgå at lave fejl. \fxfatal{De 2 sidste linjer her skal nok omformuleres.}
 
 
 
+%I forbindelse med programmets data var det nødvendigt at overveje, om programmet skulle have foruddefineret
+%data, som ville blive nulstillet ved hvert programopstart, eller om dataene skulle gemmes mellem kørsler.
+%
+%Efter nogen overvejelse blev det bestemt, at der skulle benyttes et såkaldt persistenslag. Efter at have
+%overvejet SQLite og \ac{EF} faldt valget på \ac{EF}, der er populært blandt C\#--udviklere, da det tillader en
+%hurtig start på kodeprocessen.
+%
+%\ac{EF} er et såkaldt \ac{ORM} framework, der sammenkæder tabeller i en database med objekter i et program.
+%Det kan benyttes på flere måder, der kort fortalt afhænger af, om man starter med en defineret database, eller
+%en samling af klasser. Sidstnævnte mulighed kaldes for ``Code First'' og blev den valgte metode, da det tillod
+%en -- for gruppen -- logisk arbejdsproces, hvori klassestrukturen blev opbygget, og databasen blev automatisk
+%tilpasset denne.
+%
+%Der blev truffet afgørelse i gruppen om at benytte et såkaldt \ac{DAL} til at give programmet yderligere
+%robusthed. Et \ac{DAL} er en samling af interfaces, samt implementationer af disse, som lægger sig mellem
+%programmet og det valgte persistenslag. Hermed opnås mulighed for at udskifte persistenslag, eller sågar
+%benytte flere forskellige i det samme program. Ligeledes bliver det muligt at have et lag specifikt til at
+%teste med. I yderste konsekvens, hvis det skulle vise sig, af \ac{EF} fejlede, og der ikke kunne rettes op på
+%det i tide, så ville det være muligt at skrive en såkaldt ``mock implementation'', hvilket ville give den
+%først overvejede mulighed for at have data, som ikke gemmes i noget lager.
+%
+%Det er også værd at bemærke, at mange udviklere vælger at benytte \ac{EF} Code First under udviklingen, med en
+%passende \ac{DAL}--implementation, for derefter, når programmet skal distribueres, at kode en implementation
+%der benytter en database eller lignende, som de har fuld kontrol over. \ac{EF} har et højt abstraktionsniveau,
+%hvilket simplificerer arbejdsprocessen, men fratager udvikleren en del kontrol.
 
-\section{Det ``gamle'' --- Bare i tilfælde af, at noget af det skal bruges.}
 
-For at kunne holde på data, imellem kørsler af programmet, skal der været en form for persistens. 
-Dette opnåes ved at lagere data. 
-
-Til lagering af data findes der flere måder, den primære overvejse er mellem en database og tekstfiler.
-Flade filer, eller såkaldte ``flat files'' på engelsk, er tekstfiler, som bruges til datalagring. 
-Flade filer er en meget simpel løsning, som vil være nemt at få i gang, men den skalerer ikke særligt godt. 
-%Fordelen ved flade filer er, at de er meget simple at håndtere, hvor databaser på den anden side er mere avanceret at håndtere og programmere. 
-%På den anden side var der databaser. Der var under dette valg ikke taget stilling til hvilken type database, som skulle bruges, men bare om der generelt skulle bruges database. 
-En database er et stykke software som opbevarer data, på en hensigtsmæssig måde. 
-Der findes en lang række af database management systemer (DBMS) hver med fordele og ulemper, mange af dem understøtter Structured Query Language (SQL) standarden.
-
-Med databaser kan der dog være flere muligheder for datahåndtering, og der er også løsninger til C\#, som skulle være til at overkomme at implementere.\citep{flatfiles} 
-Af den grund blev der valgt at bruge almindelig database fremfor flade filer. 
-
-Gruppen kiggede nærmere på SQLite og Entity Framework (Code-First). 
-SQLite er en serverløs, selvstændig, konfigurationsløs database. 
-Dette gør den meget simpel i anvendelse, samt ville resourceforbruget være meget lavt. 
-Entity Framework er en object-relational mapping (ORM) framework til .NET platformen. 
-Altså får hvert objekt, der ønskes lagret, en plads i databasen. 
-Med ``Entity Code First'' arbejdsmodellen, så laves klasser først, hvorefter Entity Framework håndterer integrationen med dens database.
-
-Gruppen adspurte vores underviser i Objet Orienteret Programmering, og han anbefalede Entity Framework (Code-First), til vores problemstilling. 
-Valget faldte derfor på Entity Framework, med Code-First mønsteret. 
+%\section{Det ``gamle'' --- Bare i tilfælde af, at noget af det skal bruges.}
+%
+%For at kunne holde på data, imellem kørsler af programmet, skal der været en form for persistens. 
+%Dette opnåes ved at lagere data. 
+%
+%Til lagering af data findes der flere måder, den primære overvejse er mellem en database og tekstfiler.
+%Flade filer, eller såkaldte ``flat files'' på engelsk, er tekstfiler, som bruges til datalagring. 
+%Flade filer er en meget simpel løsning, som vil være nemt at få i gang, men den skalerer ikke særligt godt. 
+%%Fordelen ved flade filer er, at de er meget simple at håndtere, hvor databaser på den anden side er mere avanceret at håndtere og programmere. 
+%%På den anden side var der databaser. Der var under dette valg ikke taget stilling til hvilken type database, som skulle bruges, men bare om der generelt skulle bruges database. 
+%En database er et stykke software som opbevarer data, på en hensigtsmæssig måde. 
+%Der findes en lang række af database management systemer (DBMS) hver med fordele og ulemper, mange af dem understøtter Structured Query Language (SQL) standarden.
+%
+%Med databaser kan der dog være flere muligheder for datahåndtering, og der er også løsninger til C\#, som skulle være til at overkomme at implementere.\citep{flatfiles} 
+%Af den grund blev der valgt at bruge almindelig database fremfor flade filer. 
+%
+%Gruppen kiggede nærmere på SQLite og Entity Framework (Code-First). 
+%SQLite er en serverløs, selvstændig, konfigurationsløs database. 
+%Dette gør den meget simpel i anvendelse, samt ville resourceforbruget være meget lavt. 
+%Entity Framework er en object-relational mapping (ORM) framework til .NET platformen. 
+%Altså får hvert objekt, der ønskes lagret, en plads i databasen. 
+%Med ``Entity Code First'' arbejdsmodellen, så laves klasser først, hvorefter Entity Framework håndterer integrationen med dens database.
+%
+%Gruppen adspurte vores underviser i Objet Orienteret Programmering, og han anbefalede Entity Framework (Code-First), til vores problemstilling. 
+%Valget faldte derfor på Entity Framework, med Code-First mønsteret. 
 
 %Valget af database kom til at stå mellem at bruge SQLite og Entity Framework. SQLite er et databasesystem, som har implementeret det meste af SQL standarderne.
 %SQLite blev taget i betragtning, da det skulle være meget simpelt at implementere og bruge og, at det ligeledes er et populært valg til lokal database. 
