@@ -1,0 +1,31 @@
+\subsection{Programopbygning}
+\begin{figure}[h]
+\centering
+\tikzstyle{lille} = [rectangle, minimum width=2cm, minimum height=1.0cm,text centered, draw=black, fill=blue!30]
+\tikzstyle{invi} = [draw, rectangle, minimum height=2cm, minimum width=2cm]
+\tikzstyle{line} = [draw]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\begin{tikzpicture}[node distance = 1.5cm]
+%noderne (objekterne) laves
+\node (uixaml) [lille] {UI XAML};
+\node (cb) [lille, below of=uixaml] {CB};
+\node (invi1) [invi,draw=none,below of=cb] {};
+\node (model) [lille, below of=invi1] {Model};
+\node (idal) [lille, right of=invi1] {iDal};
+\node (sqldal) [lille, right=0.5cm of idal] {SQLite Dal};
+\node (efdal) [lille, below of=sqldal] {EF Dal};
+\node (sql) [lille, right=0.5cm of sqldal] {SQLite};
+\node (ef) [lille, below of=sql,align=center] {Entity\\ Framework};
+%pointers laves
+\draw [line] (uixaml) -- (cb);
+\draw [line] (cb) -| (idal);
+\draw [dashed] (cb)-- (model);
+\draw [line] (model) -| (idal);
+\draw [line] (idal) -- (sqldal);
+\draw [line] (idal) to [bend right] (efdal);
+\draw [line] (sqldal) -- (sql);
+\draw [line] (efdal) -- (ef);
+\end{tikzpicture}
+\caption{Figuren viser sammenhængen mellem de forskellige komponenter i programmet.}
+\label{Program_flow}
+\end{figure}
