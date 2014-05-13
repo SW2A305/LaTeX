@@ -28,43 +28,40 @@ Produktet bør have følgende funktioner i prioriteret rækkefølge:
 
 \section{Uddybning af funktionelle krav}
 
-Der ligger mere bag de ovenstående elementer end \myref{sec:funktionelleKrav} giver udtryk for, disse vil her blive set nærmere på fra en datalogisk synsvinkel.
+Der ligger mere bag de ovenstående elementer end \myref{sec:funktionelleKrav} giver udtryk for, disse vil her blive set nærmere på fra en datalogisk synsvinkel. \myref{Stadig datalogisk synsvinkel?????}
 
 \subsection{Medlemmer}
 
-For at kunne integrere medlemmer i programmet, skal der være en overordnet klasse, der danner base for alle
-medlemmer. 
-Da der også kan komme gæster i klubben, er det relevant at lave en personklasse over dette.
-Yderligere specifikationer kan så laves igennem subklasser af personklassen og på denne måde få lavet forskellige
-instanser af f.eks. elever, undervisere, administratorer osv. 
-Da Sundet allerede har en database med deres medlemmer, skal der tages højde for at importere dette data over i en anden database\fxnote{Menes der vores database eller hvad?}, så Sundet ville kunne have denne mulighed, hvis behovet skulle opstå.
+Det er et krav at man kan udnytte medlemmerne i klubben, så man kan registrere hvem der er tilmeldt de forskellige reservationer eller lignende. 
+Systemet skal kunne forskel på medlemmer, så man ikke kan have flere af det samme medlem på en booking eller en begivenhed.
+Forskellige informationer skal kunne findes på medlemmerne i programmet, så brugerne kan finde de rigtige medlemmer og markere om de mødte op.
 
 \subsection{Login system}
 
-For at medlemmerne skal kunne få en personlig oplevelse i programmet, er det vigtigt at have et loginsystem, som vil
-være relevant ved f.eks. bådreservation og begivenheder. Hvis medlemmet skal kunne se hvilke begivenheder de deltager i, eller kunne reservere en båd, er det smart at reservationen kan kobles på objektet af medlemmet. 
-Dette kan registreres på en nem måde, ved at medlemmet er logget ind på deres personlige bruger i systemet.
+Det skal væge muligt at registrere hvem der er logget ind i programmet, for på denne måde at give forskellig adgang til diverse funktionaliteter i programmet.
+Det bør f.eks. ikke være muligt for alle klubbens medlemmer at håndtere undervisnings
 
+\subsection{Oversigt over undervisning}
 
-\subsection{Begivenhedsinformation}
-
-Begivenhederne skal også gemmes i en database, således de kan tilgås og gemmes fra runtime til runtime af programmet. 
-Derfor er det også et krav at håndtere objekter af begivenheder i en database. 
-Her skal der være information omkring den pågældende begivenhed, såsom dato, start tidspunkt, og andre informationer relevante for medlemmernes deltagelse til
-begivenheden.
-
-\subsection{Begivenhedskalender}
-
-Når begivenhederne kan findes i databasen, skal den kunne forbinde dem med kalenderen, som også skal indbygges i
-programmet. Her skal det være muligt for programmet at vise, hvornår der sker begivenheder og opsætte begivenhederne i den rigtige kronologiske rækkefølge så det er nemt at finde rundt i for klubbens medlemmer.
+Det skal være muligt for elever ved sejlerskolen at se hvornår deres næste lektion finder sted.
+Herudover skal de også kunne se hvor langt de er kommet i forbindelse med deres uddannelse. Hvilke milepæle de har udført, mm.
+Underviserne skal have mulighed for at oprette nye lektioner og angive hvilke læremål eleverne udførte i den pågældende lektion. 
+Underviserne skal også kunne udforme og redigere hold på skolen hvis nogle skulle melde sig ud, eller ved sæsonstart.
 
 \subsection{Bådreservation}
 
-Der skal oprettes objekter af bådene, som findes i klubben og på denne måde reservere disse objekter, på den pågældende dag. 
-Bådene, samt reservationerne, skal også gemmes i databasen, så de kan findes fra runtime, til runtime af programmet.
-Foruden dette skal bådene også have en log omkring de forskellige sejladser, der er blevet foretaget i bådene. Disse logs er blevet omtalt og uddybet i \myref{bilag:sundet}
+Medlemmerne i klubben har muligheden for at reservere klubbens både, og skal derfor kunne gøre dette i programmet.
+Derfor skal der være en måde hvorpå man kan tjekke om en båd er booket i en given tidsperiode, og samtidig en måde hvorpå man kan reservere båden.
+Herudover skal det være muligt af afmelde sig en booking hvis man ikke deltager alligevel, og dermed åbne op for nye besætningsmedlemmer.
 
-\subsection{Oversigt og kommunikation for undervisning}
 
-Det skal være muligt for underviserne og eleverne at kunne holde styr på deres undervisningsdage, se hvilke typer
-undervisning de har haft hvornår, samt at se hvilke typer undervisning de mangler for at kunne bestå. Underviserne skal også i den forbindelse kunne se hvilke elever der er på de forskellige hold, og samtidig være i stand til at skrive hvem der er deltaget hvornår.
+\subsection{Logbog}
+
+I forbindelse med en sejltur, skal der kunne gemmes en logbog over turen med informationer, som beskrevet i \myref{subsec:bådudlån}.
+Der skal her være registreret på hvilken både turen foregik, så de korrekte logbøger kan findes for en given bog.
+
+\subsection{Vise begivenhedsinformation}
+
+Endeligt skal man kunne gemme begivenheder i klubben, med en dato og en beskrivelse af begivenheden. 
+Det skal være muligt at til- og afmelde sig begivenheden, foruden at kunne se hvilke medlemmer der er tilmeldt.
+Desuden skal der kunne vise en liste over begivenheder sorteret efter dato, så man kan danne et overblik over hvornår der sker hvad i klubben.
