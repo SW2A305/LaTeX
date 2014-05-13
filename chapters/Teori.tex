@@ -34,15 +34,30 @@ Når brugergrænsefladen er lavet, skal den dermed også testes. Der vil blive f
 Forklar alle tre frameworks side om side og derefter konkluder. 
 Forklare Code behind, XAML element styrer C\# code behind. 
 
+\subsection{Windows Presentation Foundation}
 Windows Presentation Foundation (WPF) er en grafisk brugergrænseflade på Windowsbaserede applikationer. 
-WPF gør brug af  bl.a. vektorbaseret rendering af grafik, databinding, til nem redigering af data igennem den grafiske brugergrænseflade, og har også inkluderet Extensible Application Markup Language (XAML), hvilket er en nem måde at skabe WPF-grafik på.\citep{wpf} 
+WPF gør brug af  bl.a. vektorbaseret rendering af grafik, databinding, til nem redigering af data igennem den grafiske brugergrænseflade, og har også inkluderet Extensible Application Markup Language (XAML), hvilket er en nem måde at skabe WPF-grafik på. 
+Selve C\#-koden, den såkaldte code behind, ligger i en separat fil, med samme navn som XAML-filen. 
+Hvis der f.eks. er skabt en Button, en almindelig knap, i XAML-filen, så vil det kode, som Button'en skal udføre, blive placeret i Code behind-filen, så grafikken og koden bliver hver for sig, hvilken kan give et bedre overblik.\citep{wpf} 
 
-I dette projekt bruges WPF til at skabe den grafiske brugergrænseflade. Valget stod mellem WPF og Windows Forms (WinForms), hvilket er forgængeren til WPF til generering af grafik til Windows. 
-Valget faldt på WPF, da XAML, som WinForms ikke har, gør det let at hurtigt lave en grafisk brugergrænseflade. 
-Microsoft har også informeret om, at der ikke længere tilføjes nye funktioner til WinForms, men kun udelukkende rettelser af fejl.\citep{winforms}
+\subsection{Windows Forms}
+Windows Forms (WinForms) er, som WPF, en grafisk brugergrænseflade på Windowsbaserede applikationer. WinForms forgængeren til WPF, hvilket betyder at der er nogle nye features, som WinForms ikke har.
+WinForms har ikke XAML, så selve grafikken skal skrives sammen med selve koden. 
+Hvor WPF er bygget helt fra bunden, så er WinForms et ``lag'' oven på standard Windows API (WinAPI), hvilket betyder, at hvis det som man vil lave i WinForms ikke er en del af WinAPI, så kan man ende med at skulle bruge 3. parts kode, for at kunne lave det i WinForms.\citep{winforms2}
 
-En helt anden mulighed, som blev diskuteret, var at bruge en hjemmeside, som ville have den fordel, at den kan køre på stort set alle enheder, som har adgang til internettet via en browser. En hjemmeside, som gør brug af C\#, vil kunne laves lidt på samme måde som ved WPF; med HTML (HyperText Markup Language) og CSS (Cascading Style Sheets) som frontend og C\#-klasser som backend. 
-En hjemmeside blev fravalgt, da det blev vurderet at WPF var nemmere at oprette end en hjemmeside, og at \textbf{Se trolls noter}
+\subsection{Website}
+En helt anden mulighed, som blev diskuteret, var at bruge en hjemmeside, som ville have den fordel, at den kan køre på stort set alle enheder, som har adgang til internettet via en browser. 
+En hjemmeside, som gør brug af C\#, vil kunne laves lidt på samme måde som ved WPF og XAML; med HTML (HyperText Markup Language) og CSS (Cascading Style Sheets) som frontend og C\#-klasser som backend. 
+
+\subsection{Afgrænsning}
+En hjemmeside blev fravalgt, da det blev vurderet at WPF var nemmere at oprette end en hjemmeside, og at vores fokus er rette nærmere mod objekt orienterede principper end udvikling af brugergrænseflade.\fxnote{Er dette ok?}
+
+WinForms blev fravalgt af den grund at det er så småt ved at være forældet.
+Microsoft har informeret om, at der ikke længere tilføjes nye funktioner til WinForms, men kun udelukkende rettelser af fejl.\citep{winforms}
+
+I dette projekt bruges WPF til at skabe den grafiske brugergrænseflade. 
+Valget faldt på WPF, da XAML, som WinForms ikke har, gør det let at hurtigt lave en grafisk brugergrænseflade og ligeledes skaber et bedre generelt overblik når der skabes en brugergrænseflade.
+
 
 \subsection{Ofte anvendte WPF-controls}
 I projektet anvendes bestemte WPF controls til at bygge brugergrænsefladen. 
