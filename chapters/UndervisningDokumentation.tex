@@ -16,19 +16,19 @@ I 'StudyTeacher' delen kan en underviser oprette lektioner og hold, slette hold,
 
 På \myref{fig:StudyTeacher} ses en 'Usercontrol' for 'StudyTeacher' på de markerede områder ses grupperinger af brugergrænsefladens funktioner som er sammenhængende.
 \textbf{1} Referere til en 'ComboBox' som benyttes til valg af hold. 
-Denne 'ComboBox' har indflydelse på det meste af undervisningsdelen, da denne information er afhængig af hvilket hold, som er valgt.
-\textbf{2} Henviser til en 'CheckBox', som har kontrol over \textbf{3}, et 'Grid' indeholdende funktionalitet til brug af redigering samt kreation af hold.
-\textbf{4} er tilføjning og sletning af hold, slet hold knappen sletter det hold som er valgt i \textbf{1}, mens nyt hold knappen åbner et 'nested window', 'NewTeam', i programmet hvor et nyt hold kan blive oprettet.
-\textbf{5} Disse 'Radio Buttons' benyttes for at vælge om holdet er 1. års eller 2. års sejlere.
-\textbf{6} Dette område benyttes til at tilføje medlemmer til et hold, at fjerne dem igen ved brug af tilføj og fjern knapperne. 
+Denne 'ComboBox' har indflydelse på det meste af undervisningsdelen, da denne information er afhængig af hvilket hold, som er valgt. \textbf{2} viser den primære lærer for det individuelle hold, som er den lærer der først oprettede holdet.
+\textbf{4} Henviser til en 'CheckBox', som har kontrol over \textbf{3}, et 'Grid' indeholdende funktionalitet til brug af redigering samt kreation af hold.
+\textbf{5} er tilføjning og sletning af hold, slet hold knappen sletter det hold som er valgt i \textbf{1}, mens nyt hold knappen åbner et 'nested window', 'NewTeam', i programmet hvor et nyt hold kan oprettes.
+\textbf{6} Disse 'Radio Buttons' benyttes for at vælge om holdet er 1. års eller 2. års sejlere.
+\textbf{7} Denne knap forsøger at angive et duelighedsbevis til de medlemmer på det valgte hold i \textbf{1} som opfylder alle undervisningskrav.
+\textbf{8} Dette område benyttes til at tilføje medlemmer til et hold, at fjerne dem igen ved brug af tilføj og fjern knapperne. 
 Det venstre 'DataGrid' benyttes til søgning af medlemmer, i dette grid kan findes alle 'StudentMember', mens i det højre 'DataGrid' ses de studerende som der på det valgte hold i \textbf{1}.
-\textbf{7} Denne knap gemmer ændringer for holdet, dette er lavet separat for at undgå kommunikation med database ved hvert klik.
-\textbf{8} Denne knap forsøger at angive et duelighedsbevis til de medlemmer på det valgte hold i \textbf{1} som opfylder alle undervisningskrav.
-\textbf{9} Referer til et grid med lektionsinformation, hvis der ikke er valgt en lektion i \textbf{13} er dette 'Grid' ikke muligt at benytte.
-\textbf{10} Denne række af 'CheckBoxe' bruges til at krydse af hvad der er blevet undervist i på den valgte lektion, \textbf{11} benyttes ligeledes til at afkrydse hvilke elever var til stede.
-\textbf{12} Fungerer for lektion ligesom \textbf{7} for hold og er lavet for samme formål.
-\textbf{13} Er en 'ComboBox' som bruges til valg af lektion.
-Den sidste funktion \textbf{14} åbner et nyt 'Window', 'NewLecture', hvor man kan oprette en ny lektion for det givne hold valgt i \textbf{1}.
+\textbf{9} Denne knap gemmer ændringer for holdet, dette er lavet separat for at undgå kommunikation med database ved hvert klik.
+\textbf{10} Angiver et markeret område, her kan vælges en lektion igennem ComboBoxen såvel som oprette eller slette den en lektion ved brug af knapperne
+\textbf{11} Referer til et grid med lektionsinformation, hvis der ikke er valgt en lektion i ComboBoxen i \textbf{10} er dette 'Grid' ikke muligt at benytte.
+\textbf{12} Denne række af CheckBoxes bruges til at krydse af hvad der er blevet undervist i på den valgte lektion, \textbf{13} benyttes ligeledes til at afkrydse hvilke elever var til stede.
+\textbf{14} Fungerer for lektion ligesom \textbf{7} for hold og er lavet for samme formål.
+Den sidste funktion \textbf{15} åbner et nyt vindue, 'StudentProgressWindow', hvor man kan se hvad hver enkelt elev på det valgte hold har været igennem.
 
 \paragraph{StudyStudent}
 
