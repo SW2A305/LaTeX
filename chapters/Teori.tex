@@ -1,32 +1,35 @@
 \chapter{Grafisk teori}
 \section{Grafisk brugergrænseflade} \label{chap:GUI}
 
-I forbindelsen med udviklingen af systemet, skal man sørge for at designe det, så brugerne kan finde rundt i de forskellige funktioner. Da sejlklubben Sundets medlemmer kan bestå af en meget mangfoldig gruppe af mennesker, er det svært at indskrænke brugerne i en enkelt gruppe. Brugerne af systemet konkluderes derfor at kunne have meget forskellige evner inden for brugen af IT.
+I forbindelsen med udviklingen af systemet, skal man sørge for at designe det, så brugerne kan finde rundt i de forskellige funktioner. 
+Da sejlklubben Sundets medlemmer kan bestå af en meget mangfoldig gruppe af mennesker, er det svært at indskrænke brugerne i en enkelt gruppe, dermed formodes det at IT-evnerne kan være meget forskellige.
+
 
 \subsection{Designet} \label{sec:Designet}
 
-Programmets brugergrænseflade er designet ud fra principperne ifølge. \citep{gui1} 
+Programmets brugergrænseflade vil blive designet ud fra principperne i følge Kand og Kims fortolkning. \citep{gui1} 
 
 \begin{itemize}
 	\item Minimalisme
 	\item Konsistente
 \end{itemize}
 
-Det betyder at der skal være så få forstyrrelser på skærmbilledet som muligt. Det skal være enkelt og simpelt at navigere rundt og finde de funktioner i programmet, man skal bruge. Der skal ikke være mange forskellige farver, og generelt skal programmet følge samme struktur til at navigere rundt igennem hele programmet. Herudover skal der ikke være en dyb menustruktur; helst ikke et dybere hierarki end 3.\fxnote{Er dette nu også korrekt?}
+Det betyder, at der skal være så få forstyrrelser på skærmbilledet som muligt. 
+Det skal være enkelt og simpelt at navigere rundt og finde de funktioner i programmet, man skal bruge. 
+Der skal ikke være mange forskellige farver, og generelt skal programmet følge samme struktur til at navigere rundt igennem hele programmet. 
+Herudover skal der ikke være en dyb menustruktur; helst ikke et dybere hierarki end tre.\fxnote{Er dette nu også korrekt?}\fxnote{Forklar minimalisme og konsistens}
 
 Disse forskellige principper eller retningslinjer, er forsøgt implementeret i systemet.
 
 \subsection{Implementation}\label{sec:Implementation}
 
-Menustrukturen består af tabs, som er store og lette at se. De forskellige funktioner i programmet er delt op i deres tilhørende tabs, og man kan altid gå ind i en ny tab uanset hvor, man befinder sig i programmet. Dette betyder, at strukturen ikke har et hierarki, da uanset hvor man befinder sig, kan der navigeres ind i alle programmets funktioner. Der er valgt blå nuancer, da det er en sejlklub, og dermed virkede som en logisk beslutning. Grunden til der ikke er flere farver rundt omkring i programmet, skyldes den minimalistiske, samt den konsistente, tankegang.
-
-\fxnote{Her skal tilføjes nogle screenshots, så man kan se hvordan det helt konkret ser ud. Dette synes jeg dog skal vente til programmet når et mere færdigt stadie.}
+Menustrukturen består af tabs, som er store og lette at se.
+De forskellige funktioner i programmet er delt op i deres tilhørende tabs, og man kan altid gå ind i en ny tab uanset hvor, man befinder sig i programmet. 
+Dette betyder, at strukturen ikke har et hierarki, da uanset hvor man befinder sig, kan der navigeres ind i alle programmets funktioner. 
 
 Når brugergrænsefladen er lavet, skal den dermed også testes. Der vil blive forklaret hvordan dette vil blive gjort i et senere kapitel. \fxnote{Tilføj en kilde til kapitlet omhandlende test af programmets GUI}
 
-\section{Windows Presentation Foundation}
-
-\cbstart
+\section{Valg af grafikframework}
 
 Windows Presentation Foundation (WPF) er en grafisk brugergrænseflade på Windowsbaserede applikationer. 
 WPF gør brug af  bl.a. vektorbaseret rendering af grafik, databinding, til nem redigering af data igennem den grafiske brugergrænseflade, og har også inkluderet Extensible Application Markup Language (XAML), hvilket er en nem måde at skabe WPF-grafik på.\citep{wpf} 
@@ -107,5 +110,3 @@ Det er mulig at konstruere sine egne grænsefladeelementer fra et eller flere af
 Dette kaldes en UserControl, som indeholder både en grafisk del og en Code-Behind del.
 Det brugerskabte element kan derefter genbruges flere steder i programmet.
 Dette er et eksempel på genanvendelse, hvilket kan bidrage til højere programkvalitet og større konsistens gennem programmet. 
-
-\cbend
