@@ -1,36 +1,34 @@
 \chapter{Produktkrav}
 
-I problemanalysen blev det gjort klart, at der findes et problem ved fritidsklubber, nærmere specificeret sejlskoler, når det kommer til management af deres ressourcer samt dokumenthåndtering. 
-Problemet kan muligvis løses ved et informationssystem\fxnote{skal der ikke stå management system?}, til at håndtere papirarbejde og gøre det overskueligt, i dette afsnit vil det
-blive set på, hvilke krav et sådant system har.
+Igennem problemanalysen blev det gjort klart, at der findes et problem ved fritidsklubber, særligt Sejlklubben Sundet, når det kommer til management af deres ressourcer samt dokumenthåndtering. 
+Problemet kan løses ved et management system, til at håndtere dokumentation for sejlklubben og gøre det overskueligt. 
+I følgende afsnit undersøges der, hvilke krav et managements system for Sejlklubben Sundet skal have. 
 
 
 \section{Funktionelle krav} \label{sec:funktionelleKrav}
 
-Papirarbejde indebærer logbøger, bådreservationer, samt hvem der er ombord, tilmeldinger til
-begivenheder m.m. Som grundlag for at alt dette kan fungere, kræves der en metode til at sætte sig selv på en
-aktivitet. For at gøre dette muligt kræves der således to ting: En database af medlemmer, samt en form for
-begivenhedskalender. Foruden dette kræves der information om de forskellige begivenheder, en log over hvem der
-har betalt for at være med og eventuelt hvem der mødte op. Der kræves også et system til udlejning af både samt
-undervisning, hvor nævnte både også benyttes.
+Den nødvendige dokumentation indebærer logbøger, bådreservationer, besætningslisten, tilmeldinger til begivenheder m.m. 
+Som grundlag for at alt dette kan fungere, kræves der en metode til at sætte sig selv på en aktivitet. 
+For at gøre dette muligt kræves der således to ting: En database af medlemmer, samt en form for begivenhedskalender. 
+Foruden dette kræves der information om de forskellige begivenheder og hvem der er tilmeldt. 
+Der kræves også et system til udlejning af både samt undervisning.
 
-Produktet har krav til følgende elementer i sejlklubben:
+Produktet bør have følgende funktioner i prioriteret rækkefølge:
 \begin{itemize}
-  \item Medlemmer
-  \item Login system
-  \item Begivenhedsinformation
-  \item Begivenhedskalender
+  \item Medlemshåndtering
+  \item Brugerlogin
+  \item Oversigt over undervisning
   \item Bådreservation
-  \item Oversigt og kommunikation for undervisning
+  \item Logbog
+  \item Vise begivenhedsinformation
 \end{itemize}
 
 
 %Dette afsnit skal uddybes meget mere, har skrevet et eksempel på hvad jeg mener afsnittet skal indeholde
 
-\section{Datalogiske krav}
+\section{Uddybning af funktionelle krav}
 
-(Der ligger mere bag de ovenstående elementer end \myref{sec:funktionelleKrav} giver udtryk for, disse vil her blive set nærmere på fra en datalogisk synsvinkel.
-
+Der ligger mere bag de ovenstående elementer end \myref{sec:funktionelleKrav} giver udtryk for, disse vil her blive set nærmere på fra en datalogisk synsvinkel.
 
 \subsection{Medlemmer}
 
