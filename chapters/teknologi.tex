@@ -4,9 +4,8 @@ I det følgende kapitel vil forskellige teknologier, som kunne anvendes i forhol
 administrationen i en sejlklub, blive undersøgt. Derefter findes en analyse af de programmer, som på nuværende
 tidspunkt er state of the art inden for administration af sejlklubber.
 
-\section{Teknologier}
 
-\subsection{Management systemer}\label{subsec:management-systemer}
+\section{Management systemer}\label{subsec:management-systemer}
 
 Et system som med fordel kunne anvendes til at administrere en fritidsklub, som en sejlklub, er et management system. Et management system er et
 framework af processer og procedurer, som bruges til administration af frivillige organisationer og
@@ -52,7 +51,20 @@ Man kan i en kalender lave begivenheder og reservationer, samt medlemstilmeldels
 Klubben kan sætte et e-mail system op, samt tilføje et template som bliver sendt med hver enkelt e-mail. Applikationen kan endvidere holde styr på økonomien, man kan tilføje en bankkonto, samt  holde styr på fakturaer, og endda sende dem og håndtere det online. 
 Man kan tilføje medlemsskaber, med forskellige oplysninger omkring medlemmerne der har netop dette medlemsskab i klubben.
 
-Ud fra denne undersøgelse er flg. features altså fundet i applikationerne:
+I bilag \myref{bilag:scm} findes der screenshots af udvalgte features der findes i SailingClubManger.\fxnote{Kan slettes hvis der er for mange bilag}
+
+\subsection*{ForeningLet}
+
+ForeningLet er en applikation, som adskiller sig fra de andre ved ikke at henvende sig specifikt til én type klub, desuden er det en dansk applikation. 
+Applikationen er web-baseret og har mange nyttige funktioner for en sejlklub som Sundet. 
+Applikationen har en medlemsdatabase, et regnskabssystem samt en kontaktfunktion som kan benytte både e-mail og SMS. 
+Der kan også opkræves betalinger fra medlemmerne gennem systemet. 
+Applikationen har også en reservationsfunktioner, hvilket kunne specielt klubber som Sundet kunne anvende til at administrere  udlejning af deres både. 
+Desuden kan der oprettes begivenheder i applikationen, som medlemmerne også kan tilmelde sig gennem applikationen. ForeningLet giver også foreningen mulighed for at oprette deres egen hjemmeside samt deres egen online butik.
+\fxnote{Udvidelse af ForeningLet. Hvorfor anvendes de tidligere nævnte systemer ikke. Se evt. Jacobs noter} 
+
+
+Ud fra undersøgelsen af disse tre programmer er flg. features fundet i applikationerne:
 
 \begin{itemize}
   \item Medlemmer kan reservere afgange
@@ -66,26 +78,12 @@ Ud fra denne undersøgelse er flg. features altså fundet i applikationerne:
   \item Bådklubben kan sende e-mails med klubbens egen template gennem hjemmesiden, herunder påmindelser om en
         kommende reservation.
 \end{itemize}
-
-I bilag \myref{bilag:scm} findes der screenshots af udvalgte features der findes i SailingClubManger.\fxnote{Kan slettes hvis der er for mange bilag}
-
-\subsection*{ForeningLet}
-
-ForeningLet er en applikation, som adskiller sig fra de andre ved ikke at henvende sig specifikt til én type klub, desuden er det en dansk applikation. 
-Applikationen er web-baseret og har mange nyttige funktioner for en sejlklub som Sundet. 
-Applikationen har en medlemsdatabase, et regnskabssystem samt en kontaktfunktion som kan benytte både e-mail og SMS. 
-Der kan også opkræves betalinger fra medlemmerne gennem systemet. 
-Applikationen har også en reservationsfunktioner. 
-Desuden kan der oprettes begivenheder i applikationen, som medlemmerne også kan tilmelde sig gennem applikationen. ForeningLet giver også foreningen mulighed for at oprette deres egen hjemmeside samt deres egen online butik.\fxnote{Udvidelse af ForeningLet. Hvorfor anvendes de tidligere nævnte systemer ikke. Se evt. Jacobs noter} 
-
 \section{Konklusion af teknologianalyse}
 
-Ud fra teknologianalysen er de teknologiske aspekter i projektet blevet belyst. 
-Muligheden for at gøre systemet netværksbaseret, gør det muligt for medlemmerne og administrationen i en sejlklub, at foretage handlinger vedrørende klubben fra hjemmet eller arbejdspladsen. 
-For at undgå at en lokal server skulle opsættes og vedligeholdes af klubben selv, kunne en virtuel server, hostet af et hosting firma, varetage denne opgave. 
-Vigtigheden i en god brugergrænseflade blev gjort klart, og metode for at opsætte en brugergrænseflade
-blev valgt i form af \textit{Windows Presentation Foundation}. 
-Fra state of the art sektionen blev nuværende systemer på markedet undersøgt, og udvalgte features tages med videre til løsningsdelen, som eventuelle tilføjelser til det
-administrationssystem der skal udvikles.
-
+Ud fra state of the art afsnittet kan der konkluderes at der findes programmer som administerer udlån/udlejning af både.
+Specielt ForeningLet har denne funktion, hvilket netop ville være en funktion som Sejlklubben Sundet ville kunne benytte sig af.
+Flere af funktionerne, som findes på tværs af de tre programmer, anses for at være relevante for dette projekt, og vil derfor blive taget med videre til problemløsningsdelen.
+Dog er der ikke nogen af disse tre programmer der har undervisningsfunktioner, hvilket var efterspurgt fra Sejlklubben Sundet, derfor menes der, at der her findes en mangel indenfor de produkter der allerede findes.
+Netop manglen af undervisningsfunktioner kunne være en grund til at Sejlklubben Sundet ikke anvender en af disse produkter.
+Et produkt med undervisningsfunktioner vil derfor kunne indtage det "hul'' som de nuværende produkter har efterladt.
 
