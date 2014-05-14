@@ -1,206 +1,85 @@
-\chapter{Klasser} \label{chap:klasser}
-
-\cbstart
+\chapter{Modeller} \label{chap:klasser}
 
 I dette kapitel vil klasserne i modellaget blive beskrevet.
 
-\begin{wrapfigure}[9]{R}{0.25\textwidth}
-    \label{img:Person}
-    \vspace{-20pt}
-    \begin{center}
-        \includegraphics[width=0.2\textwidth]{UmlMini/Person.png}
-    \end{center}
-    \vspace{-10pt}
-    \caption{Person}
-\end{wrapfigure}
-\subsection*{Navn: Person}
+\subsection{Klasse: Person}
 
-\textbf{Felter:}
-I personklassen findes felter, som indeholder informationer vedrørende personen såsom navn, alder, adresse, postnummer og kontaktinformation. 
-Desuden indeholder klassen også et felt, \textbf{BoatDriver}, som angiver om personen har lov til at føre en båd. \fxnote{Har vi overhovedet anvendt det felt til noget?}
+\textbf{Formål:}
+I personklassen findes felter, som indeholder informationer vedrørende personen. Felterne ses på \myref{img:UML}.
 
 \textbf{Metoder:}
-Personklassen indeholder en metode, \textbf{ToString()}, som overrider den eksisterende ToString metode og returnerer personens fulde navn. 
-Denne metode er oprette for at gøre det lettere andre steder i programmet at hente personers fulde navne.
+Personklassen har overrided \textbf{ToString()}, som returnerer \textbf{FullName}.
 
 \textbf{Anvendelse:}
-Personklassen fungerer som baseklasse for SailClubMember klassen. Grunden til at personklassen og SailClubMember klassen ikke er slået sammen til en klasse er, at personklassen også er grundlag for en gæst i systemet. 
-Ved en booking af en sejltur angiver man hvilket hold man skal have med, og i tilfælde af at man skal have en gæst med, som ikke er medlem af klubben, oprettes en instans af personklassen, med de informationer som man angiver i bookingen.
+Personklassen bruges til at repræsentere alle personer i systemet. 
+Gæster repræsenteres direkte som instanser af personklassen. Sejlklubbens medlemmer repræsenteres som subklasser af personklassen. 
 
-%Set imagepath and scaling, imagepath set to start in images/ folder, just write filename and extension
-\begin{wrapfigure}[6]{R}{0.5\textwidth}
-    \label{img:SailClubMember}
-    \vspace{-30pt}
-    \begin{center}
-        \includegraphics[width=0.48\textwidth]{UmlMini/SailClubMember.png}
-    \end{center}
-    \vspace{-20pt}
-    \caption{SailClubMember}
-\end{wrapfigure}
-\subsection*{Navn: SailClubMember}
+\subsection*{Klasse: SailClubMember}
 
-\textbf{Felter:}
+\textbf{Formål:}
+SailClubMember nedarver fra personklassen og tilføjer felter, som er vigtige for at repræsentere hvert medlem.
+Disse felter kan ses på \myref{img:UML}.
 
-Basis medlemsklassen for systemet er SailClubMember. 
-Klassen er en underklasse til den mere generelle Person klasse. 
-Udbyggelsen i denne klasse er, at et medlem har et medlemsid, en position, et brugernavn og et password.
-
-\textbf{SailClubMemberId} bliver brugt i hele systemet til at identificere hvilken bruger der gør hvad. 
-
-\textbf{Positions} feltet angiver at personen er et medlem i klubben. 
-Positions feltet kan også sættes til at være administrator, i tilfælde af at personen er administrator. 
-Positions feltet angiver desuden hvilke rettigheder de forskellige brugere har, f.eks. har en administrator lov til at tilgå alle funktioner i programmet, mens et medlem  ikke har lov til at gå ind i undervisnings delen af programmet.\fxnote{evt. ref til tabel over rettigheder}
-
-\textbf{Username} og \textbf{PasswordHash} felterne anvendes i loginsystemet, som sikrer at hver bruger kan logge ind på systemet og sikre at de kan tilgå funktionerne.
+\textbf{Position} feltet angiver hvilken rank, og dermed rettigheder, som et sejlklubmedlem har. 
+Dette repræsenteres ud fra en enumeration.
 
 \textbf{Anvendelse:}
+SailClubMember bruges til at danne instanser af alle sejlklubbens medlemmer. 
 
-SailClubMember klassen er central i programmet, da alle brugere/medlemmer af sejklubben skal oprettes som et SailClubMember, og deri skal deres position i klubben angives, så de kan tilgå de funktioner i programmet, som de kunne have gavn af. Derudover findes der i RegularSailTrip-klassen og Logbook-klassen referencer til SailClubMember. Dette gøres således, at information om hvem der har foretaget en booking af en båd, og hvem der har skrevet logbogen til den sejltur, der blev foretaget. Disse referencer er også vist på det fulde UML-diagram, som findes i \myref{UML_diagram}
-
-\begin{wrapfigure}[10]{R}{0.5\textwidth}
-    \label{img:StudentMember}
-    \vspace{-30pt}
-    \begin{center}
-        \includegraphics[width=0.48\textwidth]{UmlMini/StudentMember_UML.png}
-    \end{center}
-    \vspace{-20pt}
-    \caption{StudentMember}
-\end{wrapfigure}
-
-\subsection*{Navn: StudentMember}
-
-\textbf{Felter:}
-
-StudentMemberklassen arver fra SailClubMemberklassen og har derfor alle de felter SailClubMemberklassen også har, men StudentMemberklassens \textbf{Position} bliver altid sat til at være 'Student'. \textbf{AssociatedTeam} henviser til det skolehold, den pågældende elev hører til. De seks bool-værdier: \textbf{RopeWorks}, \textbf{Navigation}, \textbf{Motor}, \textbf{Drabant}, \textbf{Gaffelrigger} og \textbf{Night} repræsenterer hver et læringsområde, og de bliver sat til 'true', når området er lært. 
+\subsection*{Klasse: StudentMember}
+\textbf{Formål:}
+Klassen StudentMember indeholder informationer om, hvilke læringsmål eleven har udført i forbindelse med sejlerskolen. 
 
 \textbf{Anvendelse:}
+Klassen StudentMember nedarver fra SailClubMember og bruges til at repræsentere eleverne i sejlklubben.
 
-Denne klasse fungerer som en elev på et skolehold og bruges til at holde styr på ens fremskridt mod at blive bådfører. I løbet af en toårig periode bør man have lært alle områderne, og herefter bliver man ``forfremmet'' til SailClubMember og får et bådførerbevis.
+\subsection*{Klasse: Team}
 
-\begin{wrapfigure}{R}{0.5\textwidth}
-    \label{img:Team}
-    \begin{center}
-        \includegraphics[width=0.48\textwidth]{UmlMini/Team_UML.png}
-    \end{center}
-    \caption{Team}
-\end{wrapfigure}
-
-\subsection*{Navn: Team}
-
-\textbf{Felter:}
-
-\textbf{TeamId} bruges til at identificere de enkelte hold fra hinanden. \textbf{Teacher} er den lærer der er tilknyttet holdet, og \textbf{Name} er navnet på holdet. \textbf{Level} fortæller om holdet er et første eller andet års hold. Klassen har en ``collection'' (\textbf{TeamMembers}), som der bliver sat \textit{StudentMembers} ind på, hvilket repræsenterer de elever der er på skoleholdet. ``Collectionen'' \textbf{Lectures} indeholder de lektioner, som klassen har haft og skal have. \fxnote{Er ikke sikker på dette, det skal omskrives ud fra hvad der bliver skrevet om 'Lecture'-klassen}
-
+\textbf{Formål:}
+Klassen Team indeholder informationer om et vilkårligt hold. 
+Samtidigt inderholder den både en liste over elever og lektioner.
 \textbf{Anvendelse:}
+Team anvendes til at samle en gruppe elever i sejlerskolen.
+Denne samling gør det muligt at håndtere eleverne på holdet på samme tid.
 
-Teamklassen fungerer som et skolehold. Den bliver brugt til at holde styr på eleverne og bruges som besætningen på en båd, når denne reserveres. 
+\subsection*{Klasse: SailTrip og RegularSailTrip}
 
-
-\fxnote{Er ikke sikker på dette, det skal omskrives ud fra hvad der bliver skrevet om 'Lecture'-klassen}
- 
-\begin{wrapfigure}[12]{R}{0.4\textwidth}
-    \label{img:SailTrip}
-    \vspace{-20pt}
-    \begin{center}
-        \includegraphics[width=0.35\textwidth]{UmlMini/SailTrip.png}
-    \end{center}
-    \vspace{-20pt}
-    \caption{SailTrip}
-\end{wrapfigure}
-
-\subsection*{Navn: SailTrip og RegularSailTrip}
-
-I en tidlig designstruktur var det tænkt at programmet skulle have indeholdt flere forskellige typer af sejlture, og derfor blev SailTrip-klassen skabt som værende baseklasse for disse andre klasser. 
+I en tidlig designstruktur var det tænkt at programmet skulle have indeholdt flere forskellige typer af sejlture, og derfor blev SailTrip-klassen skabt som værende superklasse for sejltursklasser. 
 Senere blev ideen om at have flere typer sejlture ændret, og i stedet blev der valgt, at der kun skulle være én sejlturstype. 
 SailTrip-klassen er dog bibeholdt i tilfælde af videre udbygning af programmet.
 Dog findes der enkelte felter i klasserne, som overlapper hinanden lidt, men felter er også bibeholdt i tilfælde af udbygning til flere typer sejlture.
 
-\textbf{Felter:}
-
-SailTrip og RegularSailTrips felter udfyldes med informationer vedrørende en sejltur.
-Felterne \textbf{DepartureTime} og \textbf{ArrivalTime} indeholder inforamtioner om, hvornår sejlturen starter og slutter.
-
-Der findes en reference til et object af typen \textbf{Boat} i SailTrip.
-Denne reference kobler en sejltur sammen med en bestemt båd således, at der holdes styr på, hvilke både der er optaget hvilke tidspunkter.
-
-Desuden findes der i begge klaser et Id,\textbf{SailTripId}/\textbf{RegularTripId}, som bruges til at adskille de forskellige sejlture fra hinanden.
-
-I RegularSailTrip findes der desuden en samling af personer i feltet \textbf{Crew}.
-Her er det værd at bemærke, at besætningen er en samling af typen \textbf{Person}, hvilket gør det muligt at vælge besætningsmedlemmer, som ikke er medlemmer af klubben, da de kan oprettes som gæster og derved tilføjes til besætningen.
-
-I SailTrip er der også en reference til en \textbf{Logbook}.
-Når en sejltur oprettes, i form af en booking, bliver logbogen sat til at være tom.
-Først når turen er omme og vedkommende, som foretog bookingen, logger ind i programmet og udfylder logbogen for turen, vil den indeholde data.
+\textbf{Formål:}
+Felterne i klasserne indeholder de nødvendige informationer for at kunne reservere en båd.
+Feltet WeatherConditions er placeret her, men udfyldes først i logbogen, da det er sejlturen, og ikke logbogen, som havde et vejrforhold.
+Desuden indeholder klassen SailTrip en reference til en logbog, som er den logbog, som udfyldes senere i forbindelse med sejlturens afslutning.
 
 \textbf{Anvendelse:}
+SailTrip-klassen anvendes kun som superklasse for RegularTrip-klassen. 
+Hver reservation er en instans af klassen RegularTrip, dette gælder også reservationer for sejlerskolens lektioner.
 
-SailTrip-klassen anvendes kun som baseklasse for RegularSailTrip-klassen. 
-RegularSailTrip er derimod en central del i programmet, da det ene hovedformål for programmet er at gøre det muligt at foretage bookings gennem et program. Det andet hovedformål, undervisningsdelen, gør også brug af sejlturene. \fxnote{nogen der har styr på undervisnings delen må gerne lige skrive ind hvordan sejlturene bliver anvendt der}
+\subsection*{Klasse: Event}
 
-\begin{wrapfigure}[10]{R}{0.5\textwidth}
-    \label{img:event}
-    \vspace{-20pt}
-    \begin{center}
-        \includegraphics[width=0.48\textwidth]{UmlMini/Event.png}
-    \end{center}
-    \vspace{-20pt}
-    \caption{Eventklasse}
-\end{wrapfigure}
-
-\subsection*{Navn: Event}
-
-\textbf{Felter:}
-Klassen består af 7 felter: \textbf{EventDate}, \textbf{EventTitle}, \textbf{SignUpReq}, \textbf{Description}, \textbf{SignUpMsg}, \textbf{Created} og så en liste af klassen Person, som hedder \textbf{Participants}.
-
-\textbf{Description} er selve begivenhedsbeskrivelsen. 
-
-\textbf{SignUpReq} bruges til registrering af, om en begivenhed kræver tilmelding og \textbf{SignUpMsg} bruges til at vise beskeden ``Tilmelding krævet!'', så man kan se, at der kæves tilmelding til begivenheden. 
-
-Feltet \textbf{Created} bruges internt i programmet, til at tjekke om en begivenhed oprettes korrekt.
-
-Den eneste metode Eventklassen indeholder en override af ToString, som retunerer \textbf{Description}.
+\textbf{Formål:}
+Klassen indeholder felter, som giver en beskrivelse af, hvornår og hvad begivenheden går ud på. 
 
 \textbf{Anvendelse:}
+En instans af eventklassen repræsenterer en begivenhed. 
+Det behøves ikke at være en sejlrelateret begivenhed.
 
-Eventklassen er den klasse om bruges til oprettelse af  begivenheder, nødvendigvis ikke sejlbegivenheder, men generelle begivenheder. Et eksempel kunne være en grillaften eller natsejlads.
+\subsection*{Klasse: Logbook}
 
-\textbf{Participantslisten} bruges når folk skal tilmeldes til begivenhederne; hver begivenhed har sig egen liste med tilmeldte. 
-
-\begin{wrapfigure}[9]{R}{0.37\textwidth}
-    \label{img:logbook}
-    \vspace{-20pt}
-    \begin{center}
-        \includegraphics[width=0.35\textwidth]{UmlMini/Logbook.png}
-    \end{center}
-    \vspace{-10pt}
-    \caption{Logbook}
-\end{wrapfigure}
-\subsection*{Navn: Logbook}
-
-\textbf{Felter:}
-
-Logbook klassen indeholder et \textbf{LogbookId}, som bruges til at adskille de forskellige logbøger, der bliver oprettet efter sejlturene. 
-
-Derudover findes der desuden to tids felter, \textbf{ActualDepartureTime} og \textbf{ActualArrivalTime}, som bruges til at gemme det faktiske afgangs- og ankomsttidspunkt. 
-På samme måde findes der den reelle besætning, \textbf{ActualCrew}, hvor den besætning som var på turen indsættes.\fxnote{Lidt sjov sætning, ... der den... kan ikke helt tyde meningen} 
-Disse 3 felter er oprettet, da der imellem bookingen og sejlturen kunne være sket ændringer i besætningen og, hvornår sejlturen faktisk blev påbegyndt og afsluttet. 
-
-Feltet \textbf{DamageInflicted} bruges til at angive, om båden tog skade under sejlturen. I tilfælde af at båden faktisk har taget skade, bliver det muligt at beskrive skaden, hvilket bliver gemt i feltet \textbf{DamageDescription}.
-Envidere kan en administrator på systemet svare på skaden i feltet \textbf{AnswerFromBoatChief}.
-
-Feltet \textbf{FiledBy} bruges til at registrere hvilket medlem af klubben, som har udfyldt den pågældende logbog.
+\textbf{Formål:}
+Klassen logbook indeholder de nødvendige informationer, som bruges til postsejlads dokumentation, som beskrevet i \myref{subsec:bådudlån}.
 
 \textbf{Anvendelse:}
+En instans af klassen Logbook findes på hver sejltur. 
+Den udfyldes af personen, som har foretaget reservationen, efter sejladsens fuldførelse. 
 
-I programmet har oprettede sejlture(bookinger) en reference til den logbog, der hører til turen.
-Logbogen selv har referencer til de personer, som besætningen bestod af, og et bestemt medlem af klubben som har udfyldt logbogen.
+\subsection*{Klasse: Lecture}
 
-\subsection*{Lecture-klassen}
-\fxnote{indsæt UML diagram}
-\textbf{Navn: Lecture}
-'Lecture' klassen benyttes som en property i 'Team' klassen og indeholder en 'DateTime' for lektionens start, seks booleans som benyttes for en indikator af hvad der er blevet undervist i, samt en ICollection af 'StudentMember' klassen hvori hver fremmødte elev til lektionen er indeholdt.
-Klassens funktionalitet i programmet er at holde styr på et holds samlede lektioner, hvad der er undervist i samt at holde styr på hver enkelt elevs fremskridt i undervisningsområderne.
+\textbf{Formål:}
+Klassen Lecture indeholder information vedrørende en undervisning. 
 
-\fxnote{Formatet er stadig ikke 100 \% konsistent: Eventklassen vs event-klassen og andre fremmedeord om der skal være bindestreg eller bare sammensat og Lecture klassens generelt}
-
-\cbend
+\textbf{Anvendelse:}
+Denne klasse bruges, når der reserveres en båd til sejlerskolen og samtidigt til at registrere, hvilke læringsmål som blev udført på turen. 
