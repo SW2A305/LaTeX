@@ -1,6 +1,6 @@
 \chapter{Database}\label{chap:database}
 
-Dette kapittel vil omhandle valget af en løsningen, på at opnå persistens mellem kørsler af programmet.
+Dette kapitel vil omhandle valget af en løsningen, på at opnå persistens mellem kørsler af programmet.
 Det ønskes naturligvis at programmet kan lagre sit data, uden for ram, for at kunne bruge det igen senere.
 
 \section{Persistensløsninger}
@@ -18,13 +18,13 @@ Efter research, herunder rådgivning fra OOP lektor Rene Hansen, stod valget mel
 \subsubsection*{Entity Framework}
 Den første af de to, Entity Framework, er en Object-Relational Mapping (ORM), til dotNet Frameworket.
 Et ORM skaber et billede af objekterne i hukommelsen i databasen. 
-Herunder var rådgivningen fra Rene Hansen, at anvende Code-First udvikling. 
-Code-First vil sige, i korte træk,\fxfatal{lidt talesprogsagtigt} at man først udvikler sine klasser (Model), og derefter kobler databasen til ved at bruge såkaldte migrations. 
-Fordelen ved denne løsning er at mange database tekniske valg træffes af programmet, så programøren ikke skal gøre det. 
+Herunder var rådgivningen fra Rene Hansen, at anvende Code-First udvikling.
+Med Code-First designes objekterne først, i form af modelklasser, hvorefter databasen og tabellerne i denne genereres ud fra sammenkoblingen mellem de forskellige modeller. Denne sammenkobling sker i såkaldte migrations, som opretter, ændrer og sletter tabeller, afhængigt af ændringerne i de benyttede modeller.
+Fordelen ved denne løsning er, at mange tekniske valg træffes af programmet, så programmøren ikke behøver at have et kendskab til \ac{SQL} for at kunne benytte databasen og dermed persistens.
 Dette ses som en god løsningen til gruppen her, ikke har haft undervisning hverken i databaser eller implementering af dem i C\#.
 
 \subsubsection*{SQLite}
-Den anden kandidat er SQLite, som er et relationel datebase management system (RDBMS).
+Den anden kandidat er SQLite, som er et \ac{RDBMS}.
 SQLite er en letvægts embedded database, som ikke kører i en applikation for sig, men bliver tilgået i vores program.
 SQLite implementerer det meste af SQL standarden, og er ofte brugt som en database for applikationer, hvor bruger ikke er meget stort, men stadig stort nok til at en database er nødvendigt.
 
