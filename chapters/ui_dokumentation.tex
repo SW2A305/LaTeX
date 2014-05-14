@@ -100,7 +100,7 @@ LogbookDataGrid.ItemsSource =
     sailTripList.Where(t => t.Captain.PersonId == usrId && t.ArrivalTime < DateTime.Now && t.Logbook == null);
 \end{lstlisting}
 
-\subsection{Boat user control}
+\subsection{Boat UserControl}
 
 \textbf{Formål:}
 I fanebladet Både kan man få et overblik over hvilke både som, der er til rådighed i sejlklubben inklusiv bådtype og status på båden. 
@@ -115,6 +115,29 @@ Foruden disse funktionaliteter kan man også herinde reserver den valgte båd sa
 
 \textbf{Code-Behind:}
 Den bagvedliggende kode henter data fra databasen og opdaterer de grafiske elementer med dataet. 
+
+
+\subsection{StudyTeacher UserControl}
+
+\textbf{Formål:}
+Denne UserControl bruges til give lærerer på sejlerskolen mulighed for at administrere skolehold og undervisningslektioner.
+
+\textbf{Brugergrænseflade:}
+Når der er valgt et hold, er der forskellige controls som opdateres.
+Man kan se holdets lærer, elever og hvorvidt holdet er et 1. eller 2. års hold. 
+Det er også muligt at se holdets lektioner, samt oprette og slette disse.
+Når der trykkes på knappen for opretning af en ny lektion, åbnes et nyt vindue, hvor man indtaster start og sluttidspunkt.
+Efter der er valgt en lektion kan der afkrydset hvad der er lært på lektionen, samt hvilke elever der har lært disse.
+Der er også en knap som åbner et vindue, hvor man kan se hvilke læringsområder de enkelte elever har lært.
+Når der laves et nyt hold, åbnes et vindue hvor man blot indtaster det ønskede navn for holdet.
+Der kan slettes og forfremmes hold, hvilket betyder de får et bådførerbevis.
+
+\textbf{Code-Behind:}
+Når der oprettes en lektion, bliver der reserveret en båd på det pågældende tidspunkt.
+Når der forsøges at forfremme et hold, tjekker Code-Behinden om eleverne har lært alt det de skal og ændrer herefter eleverne fra StudentMember til SailClubMember og sætter deres BoatDriver property til true.
+
+Der findes også en undervisnings UserControl for elever. 
+Denne kan ikke interageres med men viser blot hvilke læringsområde eleverne har lært, informationer om det hold de er på, samt hvornår næste lektion er.
 
 
 \section{Vinduer}
@@ -199,121 +222,3 @@ Code-Behinden verificerer dataet inden det gemmes i databasen.
 Herudover sættes referencen til logbogen i det pågældende RegularTrip.
 
 \subsection{Undervisning}
-Undervisningsdelen i programmet består af to 'usercontrols' og to 'windows'.
-Af 'usercontrols' eksistere 'StudyTeacher' som er det et medlem med undervisning eller administratorstatus kan se.
-Den anden 'usercontrol' er 'StudyStudent', hvilket er den, studenter har adgang til. Hvis man hverken er student, underviser eller administrator, har man således ikke adgang til nogle af disse. 
-'StudyStudent' er programmeringsmæssigt meget begrænset, idet dens eneste funktion er at repræsentere den enkelte students information, hvilket kun er tilgængelig for student på et read-only niveau.
-I 'StudyTeacher' delen kan en underviser oprette lektioner og hold, slette hold, ændre på hold samt fuldføre uddannelsesforløbet ved at give studenter deres duelighedsbevis.
-
-\subsubsection{Brugergrænsefladen}
-\paragraph*{StudyTeacher}
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=1\textwidth]{images/UI/StudyTeacherMarked.jpg}
-  \caption[UIStudyTeacher]{UI for undervisning tab som underviser og admin, markeringer bruges til forklaringer nedenfor}
-  \label{fig:StudyTeacher}
-\end{figure}
-
-På \myref{fig:StudyTeacher} ses en 'usercontrol' for 'StudyTeacher'. På de markerede områder ses grupperinger af brugergrænsefladens funktioner, som er sammenhængende.
-\textbf{1} referere til en 'combobox', som benyttes til valg af hold. 
-Denne 'combobox' har indflydelse på det meste af undervisningsdelen, da denne information er afhængig af hvilket hold, som er valgt.
-\textbf{2} henviser til en 'checkbox', som har kontrol over \textbf{3}, et 'grid' indeholdende funktionalitet til brug af redigering samt kreation af hold.
-\textbf{4} er tilføjelse og sletning af hold, ``Slet hold'' knappen sletter det hold, som er valgt i \textbf{1}, mens ``Nyt hold'' knappen åbner et 'nested window', 'NewTeam', i programmet, hvor et nyt hold kan blive oprettet.
-\textbf{5} disse 'radio buttons' benyttes for at vælge om holdet er 1. års eller 2. års sejlere.
-\textbf{6} dette område benyttes til at tilføj og fjerne medlemmer ved brug af ``Tilføj'' og ``Fjern'' knapperne. 
-Det venstre 'datagrid' benyttes til søgning af medlemmer. I dette grid kan alle 'StudentMember' findes, mens i det højre 'datagrid' ses de studerende, som der er på det valgte hold i \textbf{1}.
-\textbf{7} denne knap gemmer ændringer for holdet. Dette er lavet separat for at undgå kommunikation med database ved hvert klik.
-\textbf{8} denne knap angiver et duelighedsbevis til de medlemmer på det valgte hold i \textbf{1}, som opfylder alle undervisningskrav.
-\textbf{9} referer til et grid med lektionsinformation. Hvis der ikke er valgt en lektion i \textbf{13}, er dette 'grid' ikke muligt at benytte.
-\textbf{10} denne række af 'checkboxe' bruges til at krydse af hvad der er blevet undervist i på den valgte lektion og \textbf{11} benyttes ligeledes til at afkrydse hvilke elever var til stede.
-\textbf{12} fungerer for lektion ligesom \textbf{7} for hold og er lavet til samme formål.
-\textbf{13} er en 'combobox' som bruges til valg af lektion.
-Den sidste funktion \textbf{14} åbner et nyt 'window', 'NewLecture', hvor man kan oprette en ny lektion for det givne hold valgt i \textbf{1}.
-
-\paragraph{StudyStudent}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=1\textwidth]{images/UI/StudyStudentMarked.jpg}
-  \caption[UIStudyStudent]{UI for undervisning tab som student, markeringer bruges til forklaringer nedenfor}
-  \label{fig:StudyStudent}
-\end{figure}
-
-På \myref{fig:StudyStudent} ses en 'usercontrol' for 'StudyStudent'. \textbf{1} indeholder information omkring personens undervisning, 'checkbox'ene' indikerer undervisningsområder for den student som er logget ind, mens teksten ovenfor viser hvilket hold personen er på. \textbf{2} viser den næste lektionstidspunkt for det hold, studenten er tilknyttet.
-
-\paragraph{NewLecture og NewTeam}
-
-\begin{figure}[htbp]
-\centering
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[width=0.8\textwidth]{images/UI/NewLecture.jpg}
-  \caption[UINewLecture]{UI for NewLecture window}
-  \label{fig:NewLecture}
-\end{minipage}%
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[width=0.8\textwidth]{images/UI/NewTeam.jpg}
-  \caption[UINewTeam]{UI for NewTeam window}
-  \label{fig:NewTeam}
-\end{minipage}%
-\end{figure}
-
-På \myref{fig:NewLecture} ses et 'window' for 'NewLecture'. 
-I 'NewLecture' vælges der to datoer ud i fremtiden. Disse bruges til at oprette en lektion, hvilket sker når der trykkes 'OK'. 
-På \myref{fig:NewTeam} ses 'NewTeam'. Her skrives et holdnavn i tekstboksen, og således kan et hold oprettes.
-
-\subsubsection{Code-Behind}
-\paragraph{StudyTeacher}
-\paragraph{StudyStudent}
-\paragraph{NewLecture}
-'NewLecture' er for brugeren simpel at benytte, der er dog mere funktionalitet i dette vindue end der bliver vist for brugeren.\fxnote{Menes der almindelig bruger set i forhold til administrator?}
-
-\begin{lstlisting}[caption={Kode for 'OK' knap i 'NewLecture' 'Window'.}\label{NewLectOk}]
-private void CompleteLectureCreate_Click(object sender, RoutedEventArgs e)
-        {
-            var lecture = new Lecture
-            {
-                DateOfLecture = DateTimePickerPlannedLectureTime.Value
-            };
-            DalLocator.LectureDal.Create(lecture);
-            var Departure = DateTimePickerPlannedLectureTime.Value;
-            var Arrival = DateTimePickerPlannedLectureTimeEnd.Value;
-            var book = new CreateBoatBookingWindow(Departure, Arrival, _currentTeam);
-        }
-\end{lstlisting}
-I \myref{NewLectOk} ses koden for ``OK'' knappen i 'NewLecture' vinduet. Datetimepicker bliver aflæst og informationen brugt til at oprette en 'Lecture'. Yderligere bliver informationen også gemt i henholdsvis 'Departure' og 'Arrival'. Disse bliver videresendt i en constructer for booking af både, 'CreateBoatBookingWindow()'. Dette er ``OK'' knappens indirekte funktionalitet. Funktionaliteten af dette kan ses på \myref{IndirekteBook}.
-
-\begin{lstlisting}[caption={Dette kode bliver indirekte udført når der trykkes på 'OK' knappen, og opretter en bådreservation for lektionen.}\label{IndirekteBook}]
-public CreateBoatBookingWindow(DateTime departure, DateTime arrival, Team currentTeam) 
-	   : this(-1)
-        {
-            List<Boat> boats = new List<Boat>();
-            boats = DalLocator.BoatDal.GetAll().ToList();
-            Boat Anya = new Boat
-            {
-                Type = (currentTeam.Level == Team.ClassLevel.Second) ? BoatType.Gaffelrigger 
-                : BoatType.Drabant
-            };
-
-            Boat currentBoat = boats.FirstOrDefault(
-                x => x.Type == Anya.Type);
-
-            BoatComboBox.SelectedIndex = boats.FindIndex(b => b == currentBoat);
-            CrewList.Add(GlobalInformation.CurrentUser);
-            CaptainComboBox.SelectedIndex = 0;
-            foreach (var member in currentTeam.TeamMembers)
-            {
-                CrewList.Add(member);
-            }
-            DateTimeStart.Value = departure;
-            DateTimeEnd.Value = arrival;
-            PurposeTextBox.Text = "Undervisning af:" + currentTeam.Name;
-            SaveButton_Click(new object(), new RoutedEventArgs());
-        }
-\end{lstlisting}
-Denne constructer nedarver fra 'CreateBoatBookingWindow()' constructeren, som tager en paramter, index. Hertil benyttes ': this(-1)', ses på linje 2, for at sætte combobox'en, der styrer valg af booking, kan ses på <indsæt reference til BoatBooking>\fxnote{look at <>}, til null.\fxnote{Dårlige sætninger imo}
-Alt efter om sejlerholdet er et 1. eller 2. års-hold, skal der bookes henholdsvis en drabant eller en gaffelrigger. Dette håndteres på linje 6 - 15. Der laves en lokal båd, Anya, hvis 'BoatType' bliver sat gennem en 'conditional operator'.
-Herefter benyttes et 'lambda expression' til at finde den første båd af den korrekte type i databasen og 'boatcombobox', som styrer valg af båd, bliver sat til denne.
-Efterfølgende bliver den administrator eller underviser der opretter lektionen sat som kaptajn. Det medsendte hold tilføjes 'CrewList', Departure og Arrival sættes også til de medsendte værdier. Formål bliver sat til undervisning og til sidst kaldes det event, som fuldfører bookningen.\fxnote{Enten slettes alle de apostroffer omkring de udvalgte navneord eller tilføjes til alle andre specielle navneord, fra Undervisning og ned passer ikke rigtig sammen med det tidligere skrevet}
-
