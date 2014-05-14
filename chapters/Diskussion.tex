@@ -1,35 +1,40 @@
 \chapter{Diskussion}
 
-\cbstart
+I diskussionen diskuteres der i hvilken grad produktkravene er blevet opfyldt.
 
-I vores produktkrav var det er punkt vedrørende medlemmer, hvilket er blevet tilfredstillende implementeret i programmet. 
-Medlemmer har fået deres egen klasse, \textbf{SailClubMember}, som indeholder de relevante informationer om et medlem. 
-Medlemmerne udgør desuden grundlaget for login-systemet, da der herigennem kan bestemmes hvilken bruger der logger ind, og hvilke funktioner i programmet de skal have lov til at tilgå. 
-Login-systemet fungerer desuden med at brugerne har brugernavne og kodeord. 
-Kodeordene er krypteret med en hashingalgoritme, hvilket er gjort for at gøre dem ulæselige i tilfælde af at databasen skulle blive aflæst af andre. 
+Et af produktkravene var medlemshåndtering, dette er implementeret i klasserne Person, SailClubMember og StudentMember. 
+Derudover lagres objekterne i databasen. 
 
-Et vigtigt punkt i programmet var at sørge for at man kunne oprette en booking af en båd. 
-Dette punkt er blevet gennemført, da der i programmet kan oprettes en booking. 
-Desuden er det indført logik som sikrer at båden skal være ledig og ikke være skadet før at bookingen kan gennemføres. 
+Medlemmerne udgør desuden grundlaget for login-systemet, da der herigennem kan bestemmes hvilken bruger der logger ind, og hvilke funktioner i programmet de skal have lov til at tilgå.  
+Denne løsning ses som værende tilstrækkeligt, da det er muligt at registrere hvem som er logget ind og dermed give dem adgang til de respektive funktionaliteter. 
+
+Et vigtigt punkt i programmet var at sørge for at man kunne oprette en reservation af en båd. 
+Dette punkt er blevet gennemført, da der i programmet kan oprettes en reservation. 
+Desuden er det indført logik som sikrer at båden skal være ledig og ikke være skadet før at reservationen kan gennemføres. 
 Yderligere er der til en reservation også knyttet en logbog, som skal udfyldes efter sejladsen er gennemført. 
-Udfyldelsen af logbøger blev fremført i interviewet med Jacob Nørbjerg, som værende besværligt i Sejlklubben Sundet, da deres logbøger skal udfyldes på papir. 
-Det menes derfor at programmet her kan gøre det lettere at klubben at holde styr på logbøger, ved at digitalisere dem, holde referencer til hvilken sejltur de hører til, sørge for at ikke alle kan udfylde logbøgerne og selvfølgelig indeholde de krævede informationer. 
+Udfyldelsen af logbøger blev beskrevet i interviewet med Jacob Nørbjerg, som værende besværligt i Sejlklubben Sundet, da deres logbøger skal udfyldes på papir. 
+Det menes derfor at programmet her kan gøre det lettere for klubben at holde styr på logbøger, ved at digitalisere dem, holde referencer til hvilken sejltur de hører til, sørge for at ikke alle kan udfylde logbøgerne og selvfølgelig indeholde de krævede informationer. 
+Dette anses for at være en god løsning, sammenlignet med at skulle finde den korrekte, fysiske logbog i klubhuset for den pågældende båd og derefter udfylde alle informationerne i hånden. 
 
-Et andet vigtigt punkt i programmet var at gøre det muligt at holde styr på undervisningen, både fra elevernes side og undervisernes side. 
-I programmet er det blevet konstrueret et del som specifikt tager sig af undervisningen, hvorfra underviserne kan notere hvilke hold og elever der har gennemført specifikke opgaver.
+
+Et andet vigtigt krav til programmet var at gøre det muligt at holde styr på undervisningen, både fra elevernes side og undervisernes side. 
+I programmet er der blevet konstrueret en del som specifikt tager sig af undervisningen, hvorfra underviserne kan notere hvilke hold og elever der har gennemført specifikke opgaver.
 Tilsvarende kan eleverne se deres egne fremskridt og hvornår de har deres undervisningslektioner.
-Programmet er på undervsiningsdelen fungererende, dog er det specifikke pensum, som sejlklubben Sundet selv står for at udvælge, ikke implementeret. 
-Men det menes at skifte fra det overfladiske pensum som programmet er skabt med, til det faktiske pensum som sejlklubben Sundet anvender, ville være relativt simpelt, og derfor kan programmet også bruges i andre sejlklubber med undervsning, hvilke anvender et andet pensum.
+Programmets undervisningsdel fungerer, dog er det specifikke pensum, som sejlklubben Sundet selv står for at udvælge, ikke implementeret. 
+Det menes, at skiftet fra det overfladiske pensum, som programmet er skabt med, til det faktiske pensum som Sejlklubben Sundet anvender, ville være relativt simpelt. 
+Derfor kan programmet også bruges i andre sejlklubber med undervisning, hvilke anvender et andet pensum.
 
-Begivenheder blev også fremsat under listen af produktkrav.
-Begivenhedsdelene er blevet implementeret og det er muligt for brugere selv at oprette, samt tilmelde sig begivenheder.
-Desuden kan en bruger, når de logger ind på systemet se deres kommende begivenheder.
-Dog er der som sådan ikke blevet lavet et egentlig kalender, men i stedet en agenda med begivenheder.
-Agendaen blev valgt i stedet for kalenderen, da et agenda format ville egne sig bedre til at fremvise bestemte dage med begivenheder, fremfor en kalender hvor alle dage, med og uden begivenheder, ville blive vist.
+Begivenheder findes også på listen af produktkrav.
+Funktionaliteten for begivenhedshåndtering er blevet implementeret og det er muligt for brugere selv at oprette, samt tilmelde sig begivenheder.
+Desuden kan en bruger, når de logger ind på systemet, se kommende begivenheder og hvem som er tilmeldt, hvis der kræves tilmelding. 
+Dette ses som en god løsning, da medlemmer hurtigt kan få et overblik over kommende begivenheder i klubben.
+Dog er det ikke muligt kun at se hvilke begivenheder man selv er tilmeldt, hvilket anses for at være en mangel. 
 
-Ses der på problemformulering i forhold til den færdige løsning, kan det argumenteres for at der er blevet udviklet et it-system, som digitalisere en stor del af det dokumenthåndtering som foregår i klubben, såsom undervisningsfremskridt for hver elev, booking af både, udfyldelse af logbøger, oprettelser af begivenheder og visning af begivenheder.
+\fxfatal{Husk test + DB + portability til andre klubber}
+
+Ses der på problemformuleringen i forhold til den færdige løsning, kan der argumenteres for at der er blevet udviklet et IT-system. 
+Dette digitaliserer en stor del af den dokumenthåndtering som foregår i klubben, såsom undervisningsfremskridt for hver elev, booking af både, udfyldelse af logbøger, oprettelser af begivenheder og visning af begivenheder.
 Dog er målet om at understøtte frivilligt arbejde ikke blevet opfyldt til fulde, da der er blevet lagt mere fokus på elev, undervisere og almindelige medlemmer i programmet. 
-Programmet er dog godt til at håndtere al det dokumentation som påkræves af sejlklubben Sundet vedrørende sejlture og undervisning.
+Programmet er dog god til at håndtere dokumentationen som påkræves af Sejlklubben Sundet vedrørende sejlture og undervisning.
 Desuden hjælper programmet også med at sikre at alle nødvendige informationer bliver skrevet ind, og ikke bliver glemt.
 
-\cbend

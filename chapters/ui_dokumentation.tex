@@ -1,6 +1,6 @@
 \chapter{Programmets brugergrænseflade}
 
-\cbstart
+
 
 I dette kapitel vil programmet grafiske brugergrænseflade blive beskrevet.
 
@@ -27,10 +27,10 @@ I dette kapitel vil programmet grafiske brugergrænseflade blive beskrevet.
     \caption{Tabel over alle brugerniveauer og deres tilladte funktioner.}\label{tab:permissions}\fixme{Måske skal denne tabel lige laves lidt om, enten indholdet, eller hvordan det virker i programmet.}
 \end{table}
 
-\section{Primære brugergrænseflade}
-Det primære vindue tilgås via loginvinduet, som er det der starter ved programstart eller ved at trykke på logudknappen inde fra selve programmet. 
-Der findes 4 vinduer, forskellen mellem dem er, hvilke tabs der er aktive. 
-I hver tab findes der en funktionalitet, samlet set findes følgende tabs:
+\section{Hovedvinduet}
+Hovedvinduet tilgås via loginvinduet, som starter ved programstart eller ved at trykke på logudknappen inde fra hovedvinduet selv. 
+Der findes fire udgaver af hovedvinduet, forskellen mellem dem er, hvilke tabs der er aktive.
+Hver tab indeholder forskellige funktioner, samlet set findes følgende tabs:
 \begin{itemize}% Denne skulle måske relatere til tabel tab:permission
     \item Forside
     \item Undervisning
@@ -47,8 +47,7 @@ Stort set alle computerskærme har en opløsning større end 1024x720 pixels\cit
 Programmet har et lyst farveskema; med farverne hvid og en lys blå som hovedfarver (\#87D4EE).
 
 \section{UserControls}
-Der anvendes Usercontrols til at kode både brugergrænsefladen og den tilhørende code behind.
-
+Der anvendes Usercontrols til at kode både brugergrænsefladen og den tilhørende Code-Behind.
 
 \subsection{DateTimePicker}\label{subsec:DateTimePicker}
 
@@ -63,313 +62,142 @@ Der anvendes Usercontrols til at kode både brugergrænsefladen og den tilhøren
     \vspace{-30pt}
 \end{wrapfigure}
 
-\textbf{Formål}: Denne Usercontrol er lille i forhold til de andre, der findes i programmet.
-Den bruges, når der skal vælges et tidspunkt, som både indeholder en dato og et tidspunkt. 
-Der findes en DateTimePicker i extended WPF toolkit, men da der blev opdaget en underlig fejl ved denne\fxnote{evt. uddybe?}, blev det besluttet at en usercontrol, som gruppen selv kunne programmere, ville være bedre. 
+\textbf{Formål}: 
+Denne Usercontrol er lavet, da der ikke fandtes en tilfredsstillende løsning, som gjorde det muligt at vælge både dato og tidspunkt i samme control. 
+Det er ofte nødvendigt at vælge både dato og tidspunkt samtidigt. 
 
-\textbf{BrugerGrænseflade}: Den består af en DatePicker, og en TimePicker som findes i extended WPF toolkit.
+\textbf{BrugerGrænseflade}: 
+Den består af en DatePicker, og en TimePicker som findes i extended WPF toolkit.
 
-\textbf{Code-Behind}: De to værdier man skriver i henholdsvis DatePickeren og TimePickeren skal samles i en enkelt værdi, som kan tilgås vha. usercontrollen. 
-Dette er gjort, ved at lave et property der kaldes for Value. 
-Det kan ses på \myref{DateTimePickerValue}, hvordan dette er blevet implementeret.
-Man kan ved at assigne value igennem en instans af usercontrollen, sætte både usercontrollens TimePicker og DatePicker, og dermed give de to GUI elementer en værdi som brugerne ser.
-Herudover kan man kalde dens get, hvilket resulterer i at begge værdier bliver sat sammen, hvor TimePickeren bruger TimeOfDay, for at få et TimeSpan, som kan tilføjes direkte på den DateTime, der laves fra en DatePicker, vha. + operatoren.
+\textbf{Code-Behind}: 
+Der er blevet lavet en specialfremstillet getter og setter for Usercontrolen. 
 
-\begin{lstlisting}[frame=single, caption=DateTimePicker Value, label=DateTimePickerValue]
-public DateTime Value
-{
-    get
-    {
-        return (DatePicker.SelectedDate.GetValueOrDefault() + TimePicker.Value.GetValueOrDefault().TimeOfDay);
-    }
-    set
-    {
-        DatePicker.SelectedDate = value;
-        TimePicker.Value = value;
-    }
-}
-\end{lstlisting}
 
 \subsection{Forside}
-\begin{figure}
-    \label{img:frontpage}
-    \vspace{-10pt}
-    \begin{center}
-        \includegraphics[scale=0.55]{UI/UserControl_FrontPage}
-    \end{center}
-    \vspace{-15pt}
-    \caption{FrontPage-Usercontrol}
-\end{figure}
 
 \textbf{Formål}: 
 Formålet med forsiden er at vise aktuel infomation på en overskuelig måde for brugeren.
-Det er den første side som medlemmer, og op, ser\fxnote{Medlemmer og hvad ser? (btw. OP is a faggot)}.
+Det er den første side i hovedvinduet, som man ser, med mindre man er gæst.
 Fra forsiden kan man ændre og slette sine bookings, samt starte oprettelsen af en logbog.
 
-\textbf{BrugerGrænseflade}: 
-Brugergrænsefladen på forsiden består primært af to datagrids: Det venstre viser de kommende sejlture, og det højre viser de sejlture personen mangler at udføre logbøger for. 
+\textbf{Brugergrænseflade}: 
+Brugergrænsefladen på forsiden består primært af to DataGrids: Det venstre viser dine kommende sejlture, og det højre viser de sejlture personen mangler at udfylde logbøger for. 
 Under dem er der knapper, som bliver aktive efter en markering er udført ved, at trykke på en af rækkerne i det tilhørende datagrid.
 
 \textbf{Code-Behind}: 
-For at kun vise de sejlture hvor personen, som er logget, ind deltager i, anvendes der standard query operatorer. 
-I listing \ref{fntpg-cb} er der et udsnit af koden, nærmere bestemt den del som vælger de rigtige sejlture.
-Det første udtryk finder de ture, som er i fremtiden, hvor personen indgår i besætningslisten.
-
-Det andet udtryk finder de ture, hvor den nuværende person er kaptajn, som er forventet at være returneret til havn og ikke har udfyldt logbog. 
+For kun at vise de sejlture hvor personen, som er logget ind deltager i, anvendes der standard query operatorer. 
+I listing \ref{fntpg-cb} er der et udsnit af koden, nærmere bestemt den del som vælger de korrekte sejlture.
 
 Begge udtryk returnerer en IEnumerable, som derefter assignes som DataGridenes ItemSource.
 
 \begin{lstlisting}[frame=single, caption=Forsidens Code-Behind, label=fntpg-cb]
+//Sets the trips for the person currently logged in while only getting the ones in the furture to the DataGrid ItemsSource
 UpcommingTripsDataGrid.ItemsSource =
     sailTripList.Where(t => t.Crew.Select(p => p.PersonId).Contains(usrId))
         .Where(t => t.DepartureTime > DateTime.Now);
-
+//Sets trips created by the current user which happend in the past while also missing a logbook, to the other DataGrid ItemsSource 
 LogbookDataGrid.ItemsSource =
     sailTripList.Where(t => t.Captain.PersonId == usrId && t.ArrivalTime < DateTime.Now && t.Logbook == null);
 \end{lstlisting}
 
-\subsection{Boat user control}
-
-\begin{wrapfigure}{l}{0.5\textwidth}
-    \label{img:boat_scr}
-    \vspace{-20pt}
-    \begin{center}
-        \includegraphics[width=0.48\textwidth]{/Screenshots/boat_scr.png}
-    \end{center}
-    \vspace{-20pt}
-    \caption{Boat screenshot}
-    \vspace{-10pt}
-\end{wrapfigure}
+\subsection{Boat UserControl}
 
 \textbf{Formål:}
-
-Under Boat kan man få et overblik over hvilke både som, der er til rådighed i sejlklubben inklusiv bådtype og status på båden (om den f.eks. er operationel). 
-Man kan også booke en båd, se liste over logbøger for en valgt båd og ligeledes se en liste over kommende sejlture (bookings). 
+I fanebladet Både kan man få et overblik over hvilke både som, der er til rådighed i sejlklubben inklusiv bådtype og status på båden. 
+Man kan også booke en båd, se liste over logbøger for en valgt båd og ligeledes se en liste over kommende reservationer. 
 
 \textbf{Brugergrænseflade:}
+Efter valg af båd opdateres de resterende elementer i UserControlen. 
+Her kan der ses et DataGrid med udfyldte logbøger samt et andet DataGrid med kommende reservationer på båden.
+Det er muligt at vise og ændre felterne i begge DataGrids.
+Som administrator kan man også svare på logbogens skadesrapport.
+Foruden disse funktionaliteter kan man også herinde reserver den valgte båd samt har administratorer mulighed for at tilføje og redigere både.
 
-På siden findes der flere forskellige controls.
-Man starter først med en dropdown menu, hvor man kan vælge, hvilken båd man vil se informationer om.
-Til højre for den er der en knap ``Book Båden'', som man kan trykke på, hvis man vil booke båden. Når den trykkes på, så åbner der en ny fane, hvor man kan angive bookingsinformationerne. 
-Helt ude til højre er der et billede af hver enkelt båd. 
-Under dropdown menuen bliver der vist i en textbox bådtypen og bådens status. 
-Til visning af logbøger og kommende sejlture er der to listbokse ved siden af hinanden, hvor hhv. logbøger og kommende sejlture vises efter dato. 
-I selve listboksene kan man se ``Planlagte afgang'', ``Planlagte hjemkomst'' og ``Formål'' ved både logbøger og kommende sejlture. 
-Til sidst er der to knapper: ``Se detaljer for valgte logbøger'' og, hvis man er logget ind som administrator, ``Svar på skadesrapporten''. Ved at først vælge en logbog, i listen over logbøger, og derefter klikke på ``Se detaljer for valgte logbøger'', så kan man se detaljer omkring den valgte logbog. 
-Hvis der dobbeltklikkes på en logbog i listboksen, så opnår man samme effekt. 
-Hvis man er logget ind som administrator, så man kan vælge en logbog og trykke på ``Svar på skadesrapporten'', hvor der åbnes et nyt vindue, hvor der kan svares på skadesrapporten. 
+\textbf{Code-Behind:}
+Den bagvedliggende kode henter data fra databasen og opdaterer de grafiske elementer med dataet. 
 
-\textbf{Code-behind:}
 
-Metoden BoatComboBox\_OnSelectionChanged aktiveres ved at vælge en båd i dropdown menuen. 
-Hvis der ikke er valgt en båd, så er Book Button (``Booking'') ikke aktiv. 
+\subsection{StudyTeacher UserControl}
 
-Først noget hentning af data fra dal og sortering\fxnote{Skal skrives når database oprettes}
+\textbf{Formål:}
+Denne UserControl bruges til give lærerer på sejlerskolen mulighed for at administrere skolehold og undervisningslektioner.
 
-Efter dataet er hentet fra databasen, så tjekkes der, at hvis brugeren ikke er supportmedlem, så er BookButton (``Booking'') aktiv. 
+\textbf{Brugergrænseflade:}
+Når der er valgt et hold, er der forskellige controls som opdateres.
+Man kan se holdets lærer, elever og hvorvidt holdet er et 1. eller 2. års hold. 
+Det er også muligt at se holdets lektioner, samt oprette og slette disse.
+Når der trykkes på knappen for opretning af en ny lektion, åbnes et nyt vindue, hvor man indtaster start og sluttidspunkt.
+Efter der er valgt en lektion kan der afkrydset hvad der er lært på lektionen, samt hvilke elever der har lært disse.
+Der er også en knap som åbner et vindue, hvor man kan se hvilke læringsområder de enkelte elever har lært.
+Når der laves et nyt hold, åbnes et vindue hvor man blot indtaster det ønskede navn for holdet.
+Der kan slettes og forfremmes hold, hvilket betyder de får et bådførerbevis.
 
-Derefter laves der et tjek på om ImagePath er null, hvis ikke, så er billedestien ImagePath, så hver båd har sit eget billede. 
-Hvis ImagePath er null, så bliver der vist et gråt billede.
+\textbf{Code-Behind:}
+Når der oprettes en lektion, bliver der reserveret en båd på det pågældende tidspunkt.
+Når der forsøges at forfremme et hold, tjekker Code-Behinden om eleverne har lært alt det de skal og ændrer herefter eleverne fra StudentMember til SailClubMember og sætter deres BoatDriver property til true.
 
-Derefter tjekkes der om båden er operationel dernæst hentes bådtypen og begge vises i hver deres textbox. 
-
-Til sidst så bliver dataet, som hentes fra databasen afbildet i hvert sit datagrid.\fxnote{sæt kode ind}
+Der findes også en undervisnings UserControl for elever. 
+Denne kan ikke interageres med men viser blot hvilke læringsområde eleverne har lært, informationer om det hold de er på, samt hvornår næste lektion er.
 
 
 \section{Vinduer}
-
+Aller vinduer beskrevet i dette afsnit kan ses på \fxnote{Indset kilde til figur}
 
 \subsection{Login brugergrænseflade}
-\begin{wrapfigure}{r}{0.5\textwidth}
-    \label{img:login_interface}
-    \vspace{-20pt}
-    \begin{center}
-        \includegraphics[width=0.48\textwidth]{UI/Login_Window_Empty_Fields.png}
-    \end{center}
-    \vspace{-15pt}
-    \caption{Login interface}
-\end{wrapfigure}
  
-\textbf{Formål}: 
+\textbf{Formål}:
 Login brugergrænsefladen har til formål at verificere en brugers identitet. 
-Det er det første vindue brugeren ser når programmet åbnes, og det er også det vindue, som leder brugeren ind i selve programmet.
+Det er det første vindue brugeren ser når programmet åbnes, og det åbner hovedvinduet efter fuldført login.
  
 \textbf{BrugerGrænseflade}: 
 Brugergrænsefladen til loginvinduet er meget simpel og ligetil. 
-Der er en textbox til brugernavnet og en passwordbox til kodeordet.
-En passwordbox er en textbox, hvor de intastede karakterer vises som en sort prik, i stedet for de skrevne tegn, for at beskytte brugeren.
-Loginknappen trykkes efter brugeren har indtastet sine brugeroplysninger; den åbner hovedvinduet hvis infomationen er korrekt.
+Der er en TextBox til brugernavnet og en PasswordBox til kodeordet.
+En PasswordBox er en TextBox, hvor hver af de indtastede karakterer vises som en sort prik, i stedet for de skrevne tegn, for at beskytte brugeren.
 ``Login som gæst''-knappen kræver ingen brugeroplysninger og åbner en let udgave af hovedvinduet, uden særlige tilladelser.
-Til sidst er en textblock, som fortæller brugeren, hvis der er skrevet forkert.
- 
-\textbf{Code-Behind}: 
-Den centrale del af det Code-Behind som er i forbindelse med loginvinduet, er det der verificerer at en bruger findes og koden er korrekt.
-I \myref{dologin} vises det stykke kode, som tjekker brugeroplysningerne.
-Først sikres det, at der findes medlemmer i databasen af typen SailClubMember.
-Herefter hentes den anmodede bruger, udtrykket sammenligner det indtastede brugernavn med alle dem i databasen; dette er case insensitive (altså vil ``FoOBar'' være lig med ``foobar'' og ``FOOBAR'').
-Hvis brugen findes, så sammenlignes det indtastede kodeord med det i databasen. 
-Her anvendes en hashing algoritme, hvilket sikrer at hvis noget får adgang til databasen, kan de ikke se brugernes kodeord.
-Er alt infomation gyldigt så kaldes ``LoginCompleted''-metoden med argumentet ``usr'' som er brugeren. 
- 
-\begin{lstlisting}[frame=single, caption=DoLogin, label=dologin]
-private void DoLogin(object sender, RoutedEventArgs e)
-{
-    // If usernamebox or password is empty display an error message.
-    [...]
- 
-    if (sailClubMembers != null)
-    {
-        SailClubMember usr =
-            sailClubMembers.FirstOrDefault(
-                x => String.Equals(x.Username, UsernameBox.Text, StringComparison.CurrentCultureIgnoreCase));
- 
-        // Check if user exists (Case insensitive)
-        if (usr != null &&
-            String.Equals(usr.Username, UsernameBox.Text, StringComparison.CurrentCultureIgnoreCase))
-        {
-            // Check if the password is correct (Case sensitive)
-            if (usr.PasswordHash == EncryptionHelper.Sha256(PasswordBox.Password))
-            {
-                LoginCompleted(usr);
-            } 
- 
-            // Code to show errors for wrong infomation
-            [...]
-        }
-    }
-}
-\end{lstlisting}
+Til sidst er en TextBlock, som fortæller brugeren, hvad der er skrevet forkert, hvis der er skrevet noget forkert.
 
+\textbf{Code-Behind}: 
+TextBoxen, hvor brugernavnet indtastes, er case insensitive.
+PasswordTextBoxen er case sensitive. 
 
 \subsection{CreateBoatBookingWindow}
-
-\begin{wrapfigure}{R}{0.5\textwidth}
-    \label{img:boatBookWindow}
-    \vspace{-20pt}
-    \begin{center}
-        \includegraphics[width=0.48\textwidth]{UI/CreateBoatbookingWindow.png}
-    \end{center}
-    \vspace{-20pt}
-    \caption{CreateBoatbookingWindow}
-    \vspace{-30pt}
-\end{wrapfigure}
-
 \textbf{Formål}: 
-Dette vindue opretter, eller ændrer, en \textbf{RegularTrip} (en bådbooking).
-Dette vindue anvendes fire steder i programmet: Fra \textbf{Boats}-usercontrollen, \textbf{NewLecture}-vinduet (under Undervisning), og fra \textbf{FrontPage}-usercontrollen eller \textbf{Boats}-usercontrollen (til at redigere en booking). 
+Dette vindue opretter, eller ændrer, en instans af RegularTrip.
 
-\textbf{BrugerGrænseflade}: 
-Vinduet er opbygget af et vertikalt stackpanel.
-Først vælges en båd, her anvendes en combobox, da der skal vælges en værdi fra en liste.
-Herefter anvendes \textbf{DateTimePicker}-usercontrollen til at vælge et start- og sluttidspunkt.
-Der vises den nuværende besætning, samt muligheden for at ændre den ved at trykke på en Button med labellet ``Ændre Besætning''.
+\textbf{Brugergrænseflade}: 
+Først vælges en båd, her anvendes en ComboBox.
+Herefter anvendes \textbf{DateTimePicker}-UserControllen til at vælge et start- og sluttidspunkt.
+Der vises den nuværende besætning, samt muligheden for at ændre den ved at trykke på en knappen ``Ændre Besætning'', som åbner CreateCrewWindow.
 Når en besætning er valgt, kan der vælges en kaptajn ud fra besætningslisten.
-Til sidst er der en textbox, hvori brugeren kan angive formålet med turen.
-Derudover er der to buttons, en til at gemme og en til at annullere.
+Til sidst er der en TextBox, hvori brugeren kan angive formålet med turen.
 
 \textbf{Code-Behind}: 
-Til vinduet er der tre constructors. Dette er således de fire steder, hvorfra vinduet åbnes, hver kan behandle det på sin måde, da to af dem er ens. 
-De tre constuctors er i listing \ref{threeConstructors}.
-Den første constuctor skaber et nyt vindue, herunder henter den bådede fra databasen og bliver kaldt fra Boats-usercontrollen.
-Den vælger også den båd, som er angivet i dens indeksparameter.
-De to datetimerpickere sættes også til det nuværende tidspunkt, dette gør det nemmere at vælge et passende tidspunkt for den kommende booking, ellers ville der blive valgt defaultværdien, hvilket er 1/1/0001.
-
-De to andre constructors kalder den første, da den er grundlæggende for at kunne bruge vinduet. 
-Constructoren med forskiften ``CreateBoatBookingWindow(RegularTrip rt) : this(-1)'', ændrer teksten på gem knappen fra ``Gem Booking'' til ``Ændre Booking'', \fixme{Skal der være nutids-r på ændre(r)? Det skal der vel ikke, når det er i bydeform - Thomas} samt den ændrer hvilken metode den kalder, således der ikke forsøges at oprette en ny sejltur, men derimod opdaterer en eksisterende. 
-Fælles for de to metoder, som kaldes af knappen, er at de skal verificere gyldigheden af en tur. 
-Dette udføres i ``CreateSailTrip()'' som returner en gyldig instans af SailTrip-klassen, hvis turen er gyldig eller null og en fejlbesked, hvis den ikke er. 
-Dette null bliver håndteret af kaldermetoden, således der ikke opstår exceptions.
-
-\begin{lstlisting}[frame=single, caption=De tre constuctoreres forskrifter, label=threeConstructors]
-// Called to Initialize the window, from the other constructors and from the Boats-UserControl
-public CreateBoatBookingWindow(int index)
-{
-    InitializeComponent();
-
-    // Initialize ComboBoxes and Databaseforbindelsen
-    [...]
-
-    // Set DateTimerPickers to the current time.
-    [...]
-}
-
-// Called to edit a trip from the FrontPage
-public CreateBoatBookingWindow(RegularTrip rt) : this(-1)
-{
-    // Sets all the value from the input RegularTrip
-    [...]
-
-    // Change the text and behaveour of the buttons
-    [...]
-}
-
-// Called from NewLecture
-public CreateBoatBookingWindow(DateTime departure, DateTime arrival, Team currentTeam) : this(-1)
-{
-    // Sets values to match the parameters given
-    [...]
-
-    // Set the Captain to be the tracher
-    [...]
-
-    // Add a description of the class in the PurposeTextBox.
-    [...]
-
-    // Call the SaveFunction
-    [...]
-}
-\end{lstlisting}
+I Code-Behinden er der to constructors. 
+Den ene bruges til at oprette en ny reservation, den anden bruges når der skal ændres på en eksisterende reservation. 
+Efter tryk på ``Gem Reservation'', verificeres brugerens input fra alle de grafiske elementer i vinduet.
 
 \subsection{CreateCrewWindow}
 
-\begin{wrapfigure}{r}{0.5\textwidth}
-    %\label{img:login_interface}
-    \vspace{-20pt}
-    \begin{center}
-        \includegraphics[width=0.48\textwidth]{Screenshots/CreateCrewWindow.png}
-    \end{center}
-    \vspace{-20pt}
-    \caption{CreateCrewWindow}
-    \vspace{-30pt}
-\end{wrapfigure}
+\textbf{Formål}: Dette vindue åbnes to steder i programmet: \textbf{CreateLogbookWindow} og i \textbf{CreateBoatBookingWindow}. 
+Det bruges, når der skal laves en besætning til en RegularTrip.  
 
-\textbf{Formål}: Dette vindue åbnes op to steder i programmet: \textbf{CreateLogbookWindow} og i \textbf{CreateBoatBookingWindow}. Det bruges, når der skal laves en besætning til en RegularSailtrip.  
-
-\textbf{BrugerGrænseflade}: Der er to datagrids, som indeholder to lister. Listen til venstre består af SailClubMembers, som bliver hentet ind fra databasen. Listen til højre indeholder det Crew, som man er i gang med at udforme til enten RegularSailTrip eller Logbook. Der er også tilføjet tekstfelter, så man kan skrive navnet på en gæst, man tog med på sejlturen. Der er knapper, som tilføjer de forskellige personer til Crewlisten. Øverst findes også et tekstfelt til at søge listen over medlemmer igennem. Når man har lavet sin liste, kan man trykke udfør, for at komme tilbage til vinduet, der kaldte CreateCrewWindow.
+\textbf{Brugergrænseflade}: 
+Der er to DataGrids, som hver indeholder en liste. 
+Listen til venstre består af SailClubMembers, som bliver hentet ind fra databasen. 
+Listen til højre indeholder det Crew, som man er i gang med at udforme til enten RegularTrip eller Logbook. 
+Der er også tilføjet TextBoxe, så man kan skrive navnet på en gæst, man tog med på sejlturen. 
+Der er knapper, som tilføjer de forskellige personer til Crewlisten. 
+Øverst findes også et tekstfelt til at søge i listen over medlemmer. 
+Når man har lavet sin liste, kan man trykke udfør, for at komme tilbage til vinduet, der kaldte CreateCrewWindow.
 
 \textbf{Code-Behind}: 
-På \myref{AddGuestButton} kan man se koden der sker, når man trykker på knappen med teksten Tilføj Gæst.
-Der er blevet brugt et \textbf{regular expression} til at tjekke, om den string brugeren angiver i de to tekstbokse for gæstens navne, er lovlige. 
+Der er blevet brugt et \textbf{regular expression} til at tjekke, om den string brugeren angiver i de to TextBoxe for gæstens navne, er lovlige. 
 Det er blevet valgt, at man må bruge hele det danske alfabet samt mellemrum, så navne såsom: Lars Peter Østergaard, er mulige.
-Hvis begge tekstbokse er lovlige, kommer man ind i det inderste if-statement, hvor der laves en ny person med det pågældende FirstName og LastName. 
-Derefter tilføjes personen til listen, der vises i datagriddet til højre, og til sidst kaldes RefreshDatagrid, som man kan se på \myref{RefreshDatagrid}.
+Derefter tilføjes personen til listen, der vises i DataGridet til højre, og til sidst kaldes RefreshDataGrid, som man kan se på \myref{RefreshDatagrid}.
 
-\begin{lstlisting}[frame=single, caption=Add Guest Buttton, label=AddGuestButton]
-{
-    if (Regex.IsMatch(FirstNameBox.Text, "^[A-ZÆØÅa-zæøå ]*$") && FirstNameBox.Text.Trim() != String.Empty)
-    {
-        if (Regex.IsMatch(LastNameBox.Text, "^[A-ZÆØÅa-zæøå ]*$") && LastNameBox.Text.Trim() != String.Empty)
-        {
-            var p = new Person();
-            p.FirstName = FirstNameBox.Text;
-            p.LastName = LastNameBox.Text;
-            CrewList.Add(p);
-
-            RefreshDatagrid(CurrentCrewDataGrid, CrewList);
-
-            FirstNameBox.Clear();
-            LastNameBox.Clear();
-        }
-    }
-    else
-    {
-        MessageBox.Show("Ugyldigt navn. \nPrøv venligst igen");
-    }
-}      
-\end{lstlisting}
-
-Her modtages der et datagrid, som skal have dets Itemssource refreshet\fxnote{Er det ikke bedre med "opdateret" i stedet for refreshet?}, og en ICollection, som er det data, der skal sættes ind i datagridet. 
-Det gøres ved at assigne dets Itemssource til null, og derefter assigne det tilbage til den ICollection, der blev sendt med. 
+Her modtages der et DataGrid, som skal have dets Itemssource opdateret, og en ICollection, som er det data, der skal sættes ind i DataGridet. 
+Det gøres ved at assigne dets ItemsSource til null, og derefter assigne det tilbage til den ICollection, der blev sendt med. 
+Der kan laves en tilsvarende metode, som opdaterer andre WPF-controls.
 
 \begin{lstlisting}[frame=single, caption=Refresh Datagrid, label=RefreshDatagrid]
 private void RefreshDatagrid(DataGrid Grid, ICollection<Person> list)
@@ -379,218 +207,18 @@ private void RefreshDatagrid(DataGrid Grid, ICollection<Person> list)
 }
 \end{lstlisting}
 
-Knappen til at tilføje et medlem kan ses på \myref{AddMember}.
-Inden det valgte medlem tilføjes til listen tjekkes der, om medlemmet allerede findes i den anden liste. 
-Dette gøres ved at anvende standard query operatorer. 
-Først et where med et lambda udtryk, hvor der findes alle SailClubMembers i listen. 
-Herefter castes disse om til SailClubMembers, for derefter at kunne tjekke, om det valgte medlems SailClubMemberId er forskelligt fra de andre i listen. 
-Hvis det hele er true, så bliver det valgte medlem tilføjet til listen, og RefreshDataGrid kaldes for at opdatere datagridet.
-
-\begin{lstlisting}[frame=single, caption=Add Member, label=AddMember]
-private void AddButton_OnClick(object sender, RoutedEventArgs e)
-{
-    var currentPerson = (SailClubMember) MemberDataGrid.SelectedItem;
-
-    if (
-        CrewList.Where(x => x is SailClubMember)
-            .Cast<SailClubMember>()
-            .All(x => x.SailClubMemberId != currentPerson.SailClubMemberId))
-        CrewList.Add(currentPerson);
-
-    DataGridCollection.Filter = Filter; 
-    RefreshDatagrid(CurrentCrewDataGrid, CrewList);
-}
-\end{lstlisting}
-
 \subsection{CreateLogbookWindow}
 
-\begin{wrapfigure}{r}{0.5\textwidth}
-    %\label{img:login_interface}
-    \vspace{-20pt}
-    \begin{center}
-        \includegraphics[width=0.48\textwidth]{Screenshots/CreateLogbook.png}
-    \end{center}
-    \vspace{-15pt}
-    \caption{CreateLogBookWindow}
-    \vspace{-30pt}
-\end{wrapfigure}
+\textbf{Formål}: 
+Dette vindue bruges til at udfylde logbogen for en sejltur.
 
-\textbf{Formål}: Dette vindue bruges når et medlem, som har booket en båd skal udfylde sejlturens logbog. Vinduet tilgås fra usercontrollen FrontPage. Medlemmet skal udfylde de forskellige felter der findes i vinduet og trykke udfør for at gemme logbogen i databasen.
+\textbf{Brugergrænseflade}:  
+Når vinduet åbnes indlæses der data fra den instans af RegularTrip som logbogen udfyldes for.
+Som tidligere vinduer, bliver dataet afbilledet i de respektive grafiske elementer. 
+De tomme felter skal selv udfyldes af brugeren. 
 
-\textbf{BrugerGrænseflade}: Der er mange elementer på dette skærmbillede. Øverst til venstre finder man en textbox, som udfyldes automatisk, når man vil udfylde sin logbog. 
-Textboxen indeholder navnet på den båd, logbogen skrives for, og dette loades igennem den RegularSailtrip, som logbogen skrives for.
-Under den findes en combobox, hvor man vælger kaptajnen eller bådføren for sejlturen.
-Her kan vælges imellem alle de personer som er sat på besætningslisten. 
-Der bliver altså ikke tjekket, om personerne har duelighedsbevis, da gæsterne netop også kan være kaptajnen eller bådføren.
-Under dette finder man en textbox, hvor man angiver turens formål. 
-Der er desuden tre radiobuttons, som angiver hvilken tilstand båden er i. 
-Hvis man aktiverer enten knappen med teksten: ``Ja men skadet'' eller ``Nej'', så påkræves det, at man udfylder dette felt. 
-
-Til højre finder man 4 datetimepicker usercontrols, som beskrevet i \myref{subsec:DateTimePicker}. De to øverste er ikke enabled, da de også er loaded fra den RegularSailtrip, man udfylder logbog for. De to andre skal dog udfyldes og ændres fra de standardværdier, som de har, når man åbner vinduet. 
-
-Under disse datetimepickers, finder man endnu en textbox, som skal udfyldes med en vejrrapport.
-
-Der findes et lignende vindue som hedder ViewSpecificLogbookWindow.
-Dette vindue indeholder alle de samme felter, men har også et svar fra BoatChief, som findes i en textbox.
-Alle elementerne i det vindue er sat til readonly eller IsEnabled="False", da man kun skal kunne se logbogen i det vindue og altså ikke udfylde noget.
-
-
-\textbf{Code-Behind}: Der er ikke meget kode at se på ved dette vindue, da meget af det er simpelt, men man kan se på den kode, der findes bag knappen med teksten: ``Udfør''.
-Koden for dette kan ses på \myref{SaveLogbookButton}.
-Først tjekkes der om de forskellige felter i vinduet er udfyldt og, hvis alt er udfyldt, kommer man ind i det sidste else if-statement, der ses i koden. 
-Her afsættes der om båden har taget skade under sejlturen, og derefter gemmes alle felterne i de lokale kopier af både RegularSailTrip og Logbook, hvor der til slut kaldes updatedatabase på de to lokale objekter.
-
-\begin{lstlisting}[frame=single, caption= Gem Logbog, label=SaveLogbookButton]
-private void FileLogbookButton_OnClick(object sender, RoutedEventArgs e)
-{
-	if (YesRadioButton.IsChecked == false && NoRadioButton.IsChecked == false)
-	{
-	    MessageBox.Show("Udfyld venligst om båden blev skadet under sejladsen");
-	}
-	...
-	else if (YesRadioButton.IsChecked == true || NoRadioButton.IsChecked == true
-	            || YesButBrokenRadioButton.IsChecked == true) 
-	{
-	        if (YesRadioButton.IsChecked == true)
-	        {
-	            currentLogbook.DamageInflicted = false;
-	        }      
-	        if (NoRadioButton.IsChecked == true || YesButBrokenRadioButton.IsChecked == true)
-	        {
-	            currentLogbook.DamageInflicted = true;
-	        }
-	    RegularSailTrip.PurposeAndArea = PurposeTextBox.Text;
-	    currentLogbook.DamageDescription = DamageTextBox.Text;
-	    currentLogbook.ActualCrew = CrewList;
-	    currentLogbook.ActualArrivalTime = DateTimePickerActualArrival.Value;
-	    currentLogbook.ActualDepartureTime = DateTimePickerActualDeparture.Value;
-	    currentLogbook.FiledBy = _currentSailClubMember;
-	    RegularSailTrip.WeatherConditions = WeatherConditionTextBox.Text;
-	    RegularSailTrip.Crew = CrewList;
-	    RegularSailTrip.Logbook = currentLogbook;
-}
-\end{lstlisting}
-
-\fxnote{Opdater denne listning med Update Database kaldet.}
-
+\textbf{Code-Behind}: 
+Code-Behinden verificerer dataet inden det gemmes i databasen.
+Herudover sættes referencen til logbogen i det pågældende RegularTrip.
 
 \subsection{Undervisning}
-Undervisningsdelen i programmet består af to 'usercontrols' og to 'windows'.
-Af 'usercontrols' eksistere 'StudyTeacher' som er det et medlem med undervisning eller administratorstatus kan se.
-Den anden 'usercontrol' er 'StudyStudent', hvilket er den, studenter har adgang til. Hvis man hverken er student, underviser eller administrator, har man således ikke adgang til nogle af disse. 
-'StudyStudent' er programmeringsmæssigt meget begrænset, idet dens eneste funktion er at repræsentere den enkelte students information, hvilket kun er tilgængelig for student på et read-only niveau.
-I 'StudyTeacher' delen kan en underviser oprette lektioner og hold, slette hold, ændre på hold samt fuldføre uddannelsesforløbet ved at give studenter deres duelighedsbevis.
-
-\subsubsection{Brugergrænsefladen}
-\paragraph*{StudyTeacher}
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=1\textwidth]{images/UI/StudyTeacherMarked.jpg}
-  \caption[UIStudyTeacher]{UI for undervisning tab som underviser og admin, markeringer bruges til forklaringer nedenfor}
-  \label{fig:StudyTeacher}
-\end{figure}
-
-På \myref{fig:StudyTeacher} ses en 'usercontrol' for 'StudyTeacher'. På de markerede områder ses grupperinger af brugergrænsefladens funktioner, som er sammenhængende.
-\textbf{1} referere til en 'combobox', som benyttes til valg af hold. 
-Denne 'combobox' har indflydelse på det meste af undervisningsdelen, da denne information er afhængig af hvilket hold, som er valgt.
-\textbf{2} henviser til en 'checkbox', som har kontrol over \textbf{3}, et 'grid' indeholdende funktionalitet til brug af redigering samt kreation af hold.
-\textbf{4} er tilføjelse og sletning af hold, ``Slet hold'' knappen sletter det hold, som er valgt i \textbf{1}, mens ``Nyt hold'' knappen åbner et 'nested window', 'NewTeam', i programmet, hvor et nyt hold kan blive oprettet.
-\textbf{5} disse 'radio buttons' benyttes for at vælge om holdet er 1. års eller 2. års sejlere.
-\textbf{6} dette område benyttes til at tilføj og fjerne medlemmer ved brug af ``Tilføj'' og ``Fjern'' knapperne. 
-Det venstre 'datagrid' benyttes til søgning af medlemmer. I dette grid kan alle 'StudentMember' findes, mens i det højre 'datagrid' ses de studerende, som der er på det valgte hold i \textbf{1}.
-\textbf{7} denne knap gemmer ændringer for holdet. Dette er lavet separat for at undgå kommunikation med database ved hvert klik.
-\textbf{8} denne knap angiver et duelighedsbevis til de medlemmer på det valgte hold i \textbf{1}, som opfylder alle undervisningskrav.
-\textbf{9} referer til et grid med lektionsinformation. Hvis der ikke er valgt en lektion i \textbf{13}, er dette 'grid' ikke muligt at benytte.
-\textbf{10} denne række af 'checkboxe' bruges til at krydse af hvad der er blevet undervist i på den valgte lektion og \textbf{11} benyttes ligeledes til at afkrydse hvilke elever var til stede.
-\textbf{12} fungerer for lektion ligesom \textbf{7} for hold og er lavet til samme formål.
-\textbf{13} er en 'combobox' som bruges til valg af lektion.
-Den sidste funktion \textbf{14} åbner et nyt 'window', 'NewLecture', hvor man kan oprette en ny lektion for det givne hold valgt i \textbf{1}.
-
-\paragraph{StudyStudent}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=1\textwidth]{images/UI/StudyStudentMarked.jpg}
-  \caption[UIStudyStudent]{UI for undervisning tab som student, markeringer bruges til forklaringer nedenfor}
-  \label{fig:StudyStudent}
-\end{figure}
-
-På \myref{fig:StudyStudent} ses en 'usercontrol' for 'StudyStudent'. \textbf{1} indeholder information omkring personens undervisning, 'checkbox'ene' indikerer undervisningsområder for den student som er logget ind, mens teksten ovenfor viser hvilket hold personen er på. \textbf{2} viser den næste lektionstidspunkt for det hold, studenten er tilknyttet.
-
-\paragraph{NewLecture og NewTeam}
-
-\begin{figure}[htbp]
-\centering
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[width=0.8\textwidth]{images/UI/NewLecture.jpg}
-  \caption[UINewLecture]{UI for NewLecture window}
-  \label{fig:NewLecture}
-\end{minipage}%
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[width=0.8\textwidth]{images/UI/NewTeam.jpg}
-  \caption[UINewTeam]{UI for NewTeam window}
-  \label{fig:NewTeam}
-\end{minipage}%
-\end{figure}
-
-På \myref{fig:NewLecture} ses et 'window' for 'NewLecture'. 
-I 'NewLecture' vælges der to datoer ud i fremtiden. Disse bruges til at oprette en lektion, hvilket sker når der trykkes 'OK'. 
-På \myref{fig:NewTeam} ses 'NewTeam'. Her skrives et holdnavn i tekstboksen, og således kan et hold oprettes.
-
-\subsubsection{Code-Behind}
-\paragraph{StudyTeacher}
-\paragraph{StudyStudent}
-\paragraph{NewLecture}
-'NewLecture' er for brugeren simpel at benytte, der er dog mere funktionalitet i dette vindue end der bliver vist for brugeren.\fxnote{Menes der almindelig bruger set i forhold til administrator?}
-
-\begin{lstlisting}[caption={Kode for 'OK' knap i 'NewLecture' 'Window'.}\label{NewLectOk}]
-private void CompleteLectureCreate_Click(object sender, RoutedEventArgs e)
-        {
-            var lecture = new Lecture
-            {
-                DateOfLecture = DateTimePickerPlannedLectureTime.Value
-            };
-            DalLocator.LectureDal.Create(lecture);
-            var Departure = DateTimePickerPlannedLectureTime.Value;
-            var Arrival = DateTimePickerPlannedLectureTimeEnd.Value;
-            var book = new CreateBoatBookingWindow(Departure, Arrival, _currentTeam);
-        }
-\end{lstlisting}
-I \myref{NewLectOk} ses koden for ``OK'' knappen i 'NewLecture' vinduet. Datetimepicker bliver aflæst og informationen brugt til at oprette en 'Lecture'. Yderligere bliver informationen også gemt i henholdsvis 'Departure' og 'Arrival'. Disse bliver videresendt i en constructer for booking af både, 'CreateBoatBookingWindow()'. Dette er ``OK'' knappens indirekte funktionalitet. Funktionaliteten af dette kan ses på \myref{IndirekteBook}.
-
-\begin{lstlisting}[caption={Dette kode bliver indirekte udført når der trykkes på 'OK' knappen, og opretter en bådreservation for lektionen.}\label{IndirekteBook}]
-public CreateBoatBookingWindow(DateTime departure, DateTime arrival, Team currentTeam) 
-	   : this(-1)
-        {
-            List<Boat> boats = new List<Boat>();
-            boats = DalLocator.BoatDal.GetAll().ToList();
-            Boat Anya = new Boat
-            {
-                Type = (currentTeam.Level == Team.ClassLevel.Second) ? BoatType.Gaffelrigger 
-                : BoatType.Drabant
-            };
-
-            Boat currentBoat = boats.FirstOrDefault(
-                x => x.Type == Anya.Type);
-
-            BoatComboBox.SelectedIndex = boats.FindIndex(b => b == currentBoat);
-            CrewList.Add(GlobalInformation.CurrentUser);
-            CaptainComboBox.SelectedIndex = 0;
-            foreach (var member in currentTeam.TeamMembers)
-            {
-                CrewList.Add(member);
-            }
-            DateTimeStart.Value = departure;
-            DateTimeEnd.Value = arrival;
-            PurposeTextBox.Text = "Undervisning af:" + currentTeam.Name;
-            SaveButton_Click(new object(), new RoutedEventArgs());
-        }
-\end{lstlisting}
-Denne constructer nedarver fra 'CreateBoatBookingWindow()' constructeren, som tager en paramter, index. Hertil benyttes ': this(-1)', ses på linje 2, for at sætte combobox'en, der styrer valg af booking, kan ses på <indsæt reference til BoatBooking>\fxnote{look at <>}, til null.\fxnote{Dårlige sætninger imo}
-Alt efter om sejlerholdet er et 1. eller 2. års-hold, skal der bookes henholdsvis en drabant eller en gaffelrigger. Dette håndteres på linje 6 - 15. Der laves en lokal båd, Anya, hvis 'BoatType' bliver sat gennem en 'conditional operator'.
-Herefter benyttes et 'lambda expression' til at finde den første båd af den korrekte type i databasen og 'boatcombobox', som styrer valg af båd, bliver sat til denne.
-Efterfølgende bliver den administrator eller underviser der opretter lektionen sat som kaptajn. Det medsendte hold tilføjes 'CrewList', Departure og Arrival sættes også til de medsendte værdier. Formål bliver sat til undervisning og til sidst kaldes det event, som fuldfører bookningen.\fxnote{Enten slettes alle de apostroffer omkring de udvalgte navneord eller tilføjes til alle andre specielle navneord, fra Undervisning og ned passer ikke rigtig sammen med det tidligere skrevet}
-
-\cbend
