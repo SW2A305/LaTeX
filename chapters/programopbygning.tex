@@ -7,16 +7,15 @@ I dette kapitel vil programmets opbygning blive beskrevet. Først vil programmet
 
 \input{images/flowcharts/programopbygning.tex}
 På \myref{img:Program_flow}, ses den overordnede struktur af programmet.
-I bunden ses modelboksen, som repræsenterer modellaget.
-Her findes de modeller vi anvender i programmet.
+Nederst på figuren ses modelboksen, som repræsenterer modellaget, her findes de modeller vi anvender i programmet.
 Modellerne er forbundet til vores Dal, Data Abstraction Layer, hvilket er den generiske kontakt fra programmet ud mod databasen.
-Fra den generiske IDal findes der forbindelser ud til et SQLite Dal og et Entity Framwork Dal, som hver i sær har forbindelse til de databaser de hører til.
-Ideen ved det generiske IDal er at der let kan skiftes mellem forskellige databaser, dette vil der kommes nærmere ind på i \myref{chap:database}.
-Over IDal og Model findes code-behind og UI'en.
-Code-behind og UI er forbundet da UI-filerne kun indeholder grafiske elementer og code-behind filerne indeholder det kode som UI'en har brug for til at fungere.
-Code-behind filerne er også i direkte kontakt med IDal for at kunne tilgå data i databasen.
-Yderligere har code-behind også kendskab til modellaget, illustreret med en stiplet linje.
-Code-behind har behov for kendskab til modellerne, da der flere steder i koden har været brug for at instantiere modellerne for at håndetere data. 
+Fra den generiske IDal findes der forbindelser ud til et SQLite Dal og et Entity Framework Dal, som hver i sær har forbindelse til de databaser de hører til.
+Ideen ved det generiske IDal er at der let kan skiftes mellem forskellige databaser, dette vil blive uddybet i \myref{chap:database}.
+Over IDal og Model findes Code-Behind og UI'en.
+Code-Behind og UI er forbundet da UI-filerne kun indeholder grafiske elementer og Code-Behind filerne indeholder det kode som UI'en har brug for til at fungere.
+Code-Behind filerne er også i direkte kontakt med IDal for at kunne tilgå data i databasen.
+Yderligere har Code-Behind også kendskab til modellaget, illustreret med en stiplet linje.
+Code-Behind har behov for kendskab til modellerne, da der flere steder i koden har været brug for at instantiere modellerne for at håndetere data. 
 \section{Navigering i programmet}
 \begin{figure}[H]
 \includegraphics[width=1\textwidth]{UI/UI2.pdf}
@@ -27,14 +26,14 @@ Code-behind har behov for kendskab til modellerne, da der flere steder i koden h
 \end{figure}
 På \myref{img:programNavigation} ses der hvordan navigeringen i programmet foregår.
 Øverst ses login-vinduet, herfra logger brugeren ind med sine login informationer, eller en gæst kan logge ind ved at trykke på \textit{login som gæst}-knappen.
-Brugeren ser nu hovedvinduet, hvilket er vinduet i midten med 5 tabs i toppen.
-Antallet af tabs variere alt efter hvilken position brugeren har i systemet, hvilket kan ses på \myref{tab:permissions}. 
-Fra forside tabben kan der så navigeres til de andre tabs, som brugeren har tilgængelig.
-Pilene illusterer de dialogbokse som brugeren kan åbne fra de forskellige tabs.
-Dialogboksene åbnes ved at trykke på knapper inde i tabsne, fx under  \textbf{Bådreservation} kan opret booking dialogen åbnes ved at trykke på knappen \textit{Reserver Båden}. 
+Brugeren ser nu hovedvinduet, hvilket er vinduet i midten med fem tabs i toppen.
+Antallet af tabs varierer alt efter hvilken position brugeren har i systemet, hvilket kan ses på \myref{tab:permissions}. 
+Fra forside tabben kan der navigeres til de andre tabs, som brugeren har tilgængelig.
+Pilene illustrerer de dialogbokse som brugeren kan åbne fra de forskellige tabs.
+Dialogboksene åbnes ved at trykke på knapper inde i tabsne, f.eks. under  \textbf{Bådreservation} kan opret booking dialogen åbnes ved at trykke på knappen \textit{Reserver Båden}. 
 På samme måde åbnes de resterende dialoger ved tryk på knapper.
-Flere steder i programmet anvendes de samme dialogvinduer, fx fra forsiden findes en mulighed for at ændre på en reservation, hvilket åbner en mindre modificeret udgave af booking dialogen, hvorfra at besætningsvælger dialogen også kan åbnes.
-Desuden findes Logbogsdialogen også på forsiden.
+Flere steder i programmet anvendes de samme dialogvinduer, f.eks. fra forsiden findes en mulighed for at ændre på en reservation, hvilket åbner en mindre modificeret udgave af booking dialogen, hvorfra besætningsvælgerdialogen også kan åbnes.
+Desuden findes logbogsdialogen også på forsiden.
 Forskellen på logbogsdialogen på forsiden og den under bådreservation, er at dialogen under forsiden er lavet for at logbogen kan udfyldes, mens den under bådreservation er read-only.
 \fxnote{Aner ikke om knapperne har de rigtige navne}
 \fxnote{Billedet skal opdateres, mangler opret event,}
