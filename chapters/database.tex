@@ -1,7 +1,7 @@
 \chapter{Database}\label{chap:database}
 
 Dette kapitel vil omhandle valget af en løsningen, på at opnå persistens mellem kørsler af programmet.
-Det ønskes naturligvis at programmet kan lagre sit data, uden for ram, for at kunne bruge det igen senere.
+Det ønskes naturligvis at programmet kan lagre sit data, udenfor RAM, for at kunne bruge det igen senere, og det var et fælles ønske fra gruppens side, at der blev brugt tid på at tilføje dette element til programmet.
 
 \section{Persistensløsninger}
 
@@ -16,48 +16,69 @@ Et alternativ er at anvende en database, der findes mange typer databaser, hver 
 Efter research, herunder rådgivning fra OOP lektor Rene Hansen, stod valget mellem to databaser: Entity Framework og SQLite.
 
 \subsubsection*{Entity Framework}
-Den første af de to, Entity Framework, er en Object-Relational Mapping (ORM), til dotNet Frameworket.
+Den første af de to, \ac{EF}, er en Object-Relational Mapping (ORM), til dotNet Frameworket.
 Et ORM skaber et billede af objekterne i hukommelsen i databasen. 
 Herunder var rådgivningen fra Rene Hansen, at anvende Code-First udvikling.
 Med Code-First designes objekterne først, i form af modelklasser, hvorefter databasen og tabellerne i denne genereres ud fra sammenkoblingen mellem de forskellige modeller. Denne sammenkobling sker i såkaldte migrations, som opretter, ændrer og sletter tabeller, afhængigt af ændringerne i de benyttede modeller.
 Fordelen ved denne løsning er, at mange tekniske valg træffes af programmet, så programmøren ikke behøver at have et kendskab til \ac{SQL} for at kunne benytte databasen og dermed persistens.
-Dette ses som en god løsningen til gruppen her, ikke har haft undervisning hverken i databaser eller implementering af dem i C\#.
+Dette gør \ac{EF} til en attraktiv løsning for grupper, der gerne vil hurtigt i gang med at programmere en løsning, uden først at sætte sig ind i databaseprogrammering.
 
 \subsubsection*{SQLite}
-Den anden kandidat er SQLite, som er et \ac{RDBMS}.
-SQLite er en letvægts embedded database, som ikke kører i en applikation for sig, men bliver tilgået i vores program.
-SQLite implementerer det meste af SQL standarden, og er ofte brugt som en database for applikationer, hvor bruger ikke er meget stort, men stadig stort nok til at en database er nødvendigt.
+Den anden kandidat er SQLite, som er et \ac{RDBMS}, hvilket betyder, at det benytter \ac{SQL} til de forskellige former for datahåndtering, såsom INSERT til at indsætte data, og SELECT til at hente data fra databasen.
+SQLite er en letvægts embedded database, der er velegnet til mindre programmer, som har behov for lokal persistens.
+At en database er embedded betyder, at den ikke kører i et separat program, men inkluderes som et bibliotek i programmet.
+SQLite implementerer det meste af SQL-standarden, men udelader de dele, der af SQLite-udviklerne er bedømt til at være for tunge eller unødige til at have med.
+Målet med SQLite er at bibeholde letvægten, da systemet også benyttes på mange mobile enheder, såsom Android.
 
 \fxfatal{Her skal der nok være en konkludere bemærkning på hvilken vi vil vælge}
 
 \section{Database Abstraction Layer}
-Et database abstraction layer (DAL) bruges til at separere programmet fra databasen.
+Et \ac{DAL} bruges til at separere programmet fra databasen.
+Dette gør det muligt at udskifte det underliggende persistenslag, samt at lave lag, der simulerer persistens, ved udelukkende at gemme data i hukommelsen, så længe programmet kører.
 Man udstiller et interface til programmet, som så anvendes, og ikke en direkte forbindelse.
-Hver tabel som findes i den database programmet skal anvende, skal have sin egen DAL, som er logikken der forbinder til databasen.
+Hver tabel som findes i den database programmet skal anvende, skal have sin egen \ac{DAL}, som er logikken der forbinder til databasen.
 Der findes fire basale operationer til en database, kaldt CRUD: Create, Read, Update, Delete. 
-Hver af disse operationer skal DALet udstille. 
+Hver af disse operationer skal DALet udstille, og yderligere metoder kan tilføjes efter behov.
 
-I vores generiske DAL interface, som hver af de konkrete DAL nedarver fra er der otte metoder, disse er forklaret i \myref{tab:ourExtCrud}
+\section{Den valgte løsning}
+
+Efter anbefaling fra OOP lektor Rene Hansen, valgte gruppen at fokusere på \acl{EF} med Code-First, grundet manglende kendskab til \ac{SQL}.
+Det blev yderligere bestemt, at der skulle designes et \ac{DAL}, med henblik på at øge muligheden for at teste systemet.
+
+\subsection{Design af \ac{DAL}}
+
+Der blev udviklet et generisk \ac{DAL}-interface, som hver af de konkrete \ac{DAL}-interfaces nedarver fra.
+Interfacet definerer otte metoder, som beskrevet i \myref{tab:ourExtCrud}.
 
 \begin{table}[h]
     \begin{tabular}{p{2cm}|p{13cm}}
     \textbf{Metode}   & \textbf{Forklaring}       \\ \hline
-    Create   & Opretter et eller flere nye elementer i databasen.                                                    \\ \hline
-    Update   & Opdaterer et eller flere elementer i databasen.                                                       \\ \hline
-    Delete   & Fjerner et eller flere elementer fra databasen.                                                       \\ \hline
-    GetAll   & Findes i to udgaver, en som henter alle elementer, og en hvor der kan medsendes et prædikat.          \\ \hline
-    GetOne   & Henter et element i databasen, ud fra det itemId givet.                                               \\ \hline
-    LoadData & Findes i to udgaver, de henter de indre referencetype objekter til elementet eller elementerne givet. \\ \hline
+    \texttt{Create}   & Opretter et eller flere nye elementer i databasen.                                           \\ \hline
+    \texttt{Update}   & Opdaterer et eller flere elementer i databasen.                                              \\ \hline
+    \texttt{Delete}   & Fjerner et eller flere elementer fra databasen.                                              \\ \hline
+    \texttt{GetAll}   & Findes i to udgaver, en som henter alle elementer, og en hvor der kan medsendes et prædikat. \\ \hline
+    \texttt{GetOne}   & Henter et element i databasen, ud fra det angivne itemId.                                    \\ \hline
+    \texttt{LoadData} & Findes i to udgaver, de henter de indre referencetype objekter til elementet eller elementerne givet. \\ \hline
     \end{tabular}
     \caption{Forklaring af hver metode i det generiske DAL interface.}
     \label{tab:ourExtCrud}
 \end{table}
 
-Ud fra dette interface skal der være en implementation i hver af de databaser, man vil anvende.
-Dette gør også et databasen kan udskiftes.
-Da programmet vil anvende den såkaldte DalLocator, som er en statisk hjælpeklasse som indholder en reference, til det DAL der anvendes.
-Her ligger en af grundene til at anvende et DAL, derudover vil forbindelsen til databasen være standardiseret, således det er nemmere at undgå at lave fejl. \fxfatal{De 2 sidste linjer her skal nok omformuleres.}
+De konkrete interfaces defineres for hver modelklasse og implementeres i specifikke klasser, der snakker med et persistenslag.
+For at gøre det lettere at udskifte \ac{DAL}-implementation, blev en statisk hjælpeklasse, \texttt{DalLocator}, oprettet, hvis opgave består i at returnere en implementation af et \ac{DAL}-interface. Hermed skal der kun foretages ændringer i en enkelt fil, hvis et nyt DAL tages i brug.
 
+\fxnote{Her skal vi muligvis indsætte noget visuelt omkring opbygning af vores specifikke DAL-løsning.}
+
+\subsection{Første implementation}
+
+\acl{EF} blev implementeret for modellerne og systemet blev bygget herpå.
+Under programmets udvikling stod det klart, at det ikke var helt problemfrit at benytte \ac{EF}.
+
+Migrations kom i vejen for hinanden og gav konflikter, der krævede, at gruppens medlemmer regelmæssigt skulle slette hver tabel og kalde kommandoen \texttt{Update-Database}, som får \ac{EF} til at gennemløbe alle migrations og udføre handlingerne i disse. \fxnote{Lidt langt. Bør nok omskrives.}
+
+\subsection{Anden implementation}
+
+\subsection{Ekstra implementation}
 
 
 %I forbindelse med programmets data var det nødvendigt at overveje, om programmet skulle have foruddefineret
