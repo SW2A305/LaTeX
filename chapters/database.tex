@@ -68,17 +68,35 @@ De konkrete interfaces defineres for hver modelklasse og implementeres i specifi
 For at gøre det lettere at udskifte \ac{DAL}-implementation, blev en statisk hjælpeklasse, \texttt{DalLocator}, oprettet, hvis opgave består i at returnere en implementation af et \ac{DAL}-interface. Hermed skal der kun foretages ændringer i en enkelt fil, hvis et nyt DAL tages i brug.
 
 \fxnote{Her skal vi muligvis indsætte noget visuelt omkring opbygning af vores specifikke DAL-løsning.}
-
-\subsection{Første implementation}
+  
+\subsection{Første implementation --- \acl{EF}}
 
 \acl{EF} blev implementeret for modellerne og systemet blev bygget herpå.
 Under programmets udvikling stod det klart, at det ikke var helt problemfrit at benytte \ac{EF}.
 
-Migrations kom i vejen for hinanden og gav konflikter, der krævede, at gruppens medlemmer regelmæssigt skulle slette hver tabel og kalde kommandoen \texttt{Update-Database}, som får \ac{EF} til at gennemløbe alle migrations og udføre handlingerne i disse. \fxnote{Lidt langt. Bør nok omskrives.}
+Migrations kom i vejen for hinanden og gav konflikter, der krævede, at gruppens medlemmer regelmæssigt skulle slette hver tabel og kalde kommandoen \texttt{Update-Database}, som får \ac{EF} til at gennemløbe alle migrations og udføre handlingerne i disse.
+\fxnote{Lang sætning. Bør nok omskrives.}
 
-\subsection{Anden implementation}
+Systemet reagerede også sporadisk, hvor det ét sted fungerede som det skulle, mens det fejlede lydløst, altså uden en fejlbesked, andre steder.
+Dette til trods for, at de to områder var programmeret ens.
 
-\subsection{Ekstra implementation}
+\subsection{Anden implementation --- SQLite}
+
+Gruppen aftalte at forsøge en implementation af SQLite i stedet for.
+Det var på dette tidspunkt, at det udviklede \acl{DAL} viste sin styrke, da hele persistenslaget kunne udskiftes uden konflikter i koden.
+
+Den implementerede løsning er relativt simpel i sin konstruktion, især i forhold til \acl{EF}.
+\fxnote{Skal der eventuelt tilføjes noget her om ``lazy loading'', eller vil det være for meget?}
+Dette blev gjort for at sikre, at det ikke ville tage mere end et par dage at implementere og teste.
+
+SQLites enkeltbruger-design har dog også givet lidt problemer, idet databasen til tider angiver, at den er låst af en anden proces.
+Disse problemer kan forårsages af flere ting, og virker til at opstå tilfældigt, så det er svært at forudse, hvor og hvornår det vil ske.
+
+\subsection{Ekstra implementation --- Mock-data}
+
+Som en backup--løsning, i tilfælde af, at SQLite pludseligt fejler, er en mock--implementation designet.
+Denne implementation simulerer persistens, men gemmer kun i RAM mens programmet kører, og slettes derefter.
+\fxnote{Jeg udvider dette afsnit, så snart jeg har verificeret, at det virker som det skal.}
 
 
 %I forbindelse med programmets data var det nødvendigt at overveje, om programmet skulle have foruddefineret
