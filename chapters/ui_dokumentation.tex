@@ -164,6 +164,20 @@ Når der forsøges at forfremme et hold, tjekker Code-Behinden om eleverne har l
 Der findes også en undervisnings UserControl for elever. 
 Denne kan ikke interageres med men viser blot hvilke læringsområde eleverne har lært, informationer om det hold de er på, samt hvornår næste lektion er.
 
+\subsection{Event UserControl}
+\textbf{Formål:}
+UserControlen Event bruges til at se informationer om kommende begivenheder i sejlklubben. 
+Hvis man er administrator kan også oprettes nye begivenheder, redigering og sletning af eksisterende begivenheder og tilmelding hvis det kræves.
+
+\textbf{Brugergrænseflade:}
+Brugergrænsefladen består mest af to ListBoxe.
+I den første bliver begivenheder vist med navn, dato og om der kræves tilmelding.
+I den næste ListBox vises beskrivelsen af begivenheden når der klikkes på en begivenhed i den tidligere ListBox. 
+
+\textbf{Code-Behind:}
+Den bagvedliggende kode henter allerede oprettede begivenheder fra databasen. 
+Ved oprettelse, redigering og sletning skrives ændringerne til databasen. 
+Ved tilmelding tilføjes personen, som er logget ind, til listen over tilmeldte personer, som hver Event har instansieret. 
 
 \section{Vinduer}
 Aller vinduer beskrevet i dette afsnit kan ses på \fxnote{Indset kilde til figur}
