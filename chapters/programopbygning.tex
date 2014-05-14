@@ -6,6 +6,7 @@ I dette kapitel vil programmets opbygning blive beskrevet. Først vil programmet
 \section{Programopbygning}\label{sec:programopbygning}
 
 \input{images/flowcharts/programopbygning.tex}
+
 På \myref{img:Program_flow}, ses den overordnede struktur af programmet.
 Nederst på figuren ses modelboksen, som repræsenterer modellaget, her findes de modeller vi anvender i programmet.
 Modellerne er forbundet til vores Dal, Data Abstraction Layer, hvilket er den generiske kontakt fra programmet ud mod databasen.
@@ -16,26 +17,4 @@ Code-Behind og UI er forbundet da UI-filerne kun indeholder grafiske elementer o
 Code-Behind filerne er også i direkte kontakt med IDal for at kunne tilgå data i databasen.
 Yderligere har Code-Behind også kendskab til modellaget, illustreret med en stiplet linje.
 Code-Behind har behov for kendskab til modellerne, da der flere steder i koden har været brug for at instantiere modellerne for at håndtere data. 
-\section{Navigering i programmet}
-\begin{figure}[H]
-\hspace*{-2cm}
-\includegraphics{UI/UI2.pdf}
-\label{img:programNavigation}
-\vspace{-310pt}
-\caption{Navigations skema for programmet}
-\vspace{-20pt}
-\end{figure}
 
-På \myref{img:programNavigation} ses der hvordan navigeringen i programmet foregår.
-Øverst ses login-vinduet, herfra logger brugeren ind med sine login informationer, eller en gæst kan logge ind ved at trykke på \textit{login som gæst}-knappen.
-Brugeren ser nu hovedvinduet, hvilket er vinduet i midten med fem tabs i toppen.
-Antallet af tabs varierer alt efter hvilken position brugeren har i systemet, hvilket kan ses på \myref{tab:permissions}. 
-Fra forside tabben kan der navigeres til de andre tabs, som brugeren har tilgængelig.
-Pilene illustrerer de dialogbokse som brugeren kan åbne fra de forskellige tabs.
-Dialogboksene åbnes ved at trykke på knapper inde i tabsne, f.eks. under  \textbf{Bådreservation} kan opret booking dialogen åbnes ved at trykke på knappen \textit{Reserver Båden}. 
-På samme måde åbnes de resterende dialoger ved tryk på knapper.
-Flere steder i programmet anvendes de samme dialogvinduer, f.eks. fra forsiden findes en mulighed for at ændre på en reservation, hvilket åbner en mindre modificeret udgave af booking dialogen, hvorfra besætningsvælgerdialogen også kan åbnes.
-Desuden findes logbogsdialogen også på forsiden.
-Forskellen på logbogsdialogen på forsiden og den under bådreservation, er at dialogen under forsiden er lavet for at logbogen kan udfyldes, mens den under bådreservation er read-only.
-\fxnote{Aner ikke om knapperne har de rigtige navne}
-\fxnote{Billedet skal opdateres, mangler opret event,}
