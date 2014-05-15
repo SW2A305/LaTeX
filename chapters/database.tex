@@ -5,12 +5,11 @@ Det ønskes naturligvis at programmet kan lagre sit data, udenfor RAM, for at ku
 
 \section{Persistensløsninger}
 
-Der er flere løsninger til denne problemstilling, en meget simple løsning vil være at anvende flade filer. 
-Dvs. at man skriver data til en tekst eller binær fil ved programnedlukning, og indlæser samme fil ved opstart.
+Der findes flere løsninger til denne problemstilling, der kan vælges en bestemt database ud fra de eksistrende databaser eller dataet kan gemmes på flade filer.
 
 \subsection{Flade filer}
-Denne løsningen bliver dog hurtig upraktisk, da den ikke har samme evne til at skalere til et større system.
-Et alternativ er at anvende en database, der findes mange typer databaser, hver med deres fordele.
+En simpel løsning på persistensproblemet ville være at gemme alt data på en flad fil ved programlukning, og læse filen igen ved programmets opstart.
+Denne løsningen bliver dog hurtig upraktisk, da flade filer ikke har samme evne til at skalere til et større system, som egentlige databaser.
 
 \subsection{Databaser}
 Efter research, herunder rådgivning fra OOP lektor Rene Hansen, stod valget mellem to databaser: Entity Framework og SQLite.
@@ -30,6 +29,7 @@ At en database er embedded betyder, at den ikke kører i et separat program, men
 SQLite implementerer det meste af SQL-standarden, men udelader de dele, der af SQLite-udviklerne er bedømt til at være for tunge eller unødige til at have med.
 Målet med SQLite er at bibeholde letvægten, da systemet også benyttes på mange mobile enheder, såsom Android.
 
+Begge databaser blev implementeret under projektarbejdet, grundet komplikationer med vores første valg af database, Entity Framework. 
 \fxfatal{Her skal der nok være en konkludere bemærkning på hvilken vi vil vælge}
 
 \section{Database Abstraction Layer}
