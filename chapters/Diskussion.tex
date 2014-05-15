@@ -16,7 +16,6 @@ Udfyldelsen af logbøger blev beskrevet i interviewet med Jacob Nørbjerg, som v
 Det menes derfor at programmet her kan gøre det lettere for klubben at holde styr på logbøger, ved at digitalisere dem, holde referencer til hvilken sejltur de hører til, sørge for at ikke alle kan udfylde logbøgerne og selvfølgelig indeholde de krævede informationer. 
 Dette anses for at være en god løsning, sammenlignet med at skulle finde den korrekte, fysiske logbog i klubhuset for den pågældende båd og derefter udfylde alle informationerne i hånden. 
 
-
 Et andet vigtigt krav til programmet var at gøre det muligt at holde styr på undervisningen, både fra elevernes side og undervisernes side. 
 I programmet er der blevet konstrueret en del som specifikt tager sig af undervisningen, hvorfra underviserne kan notere hvilke hold og elever der har gennemført specifikke opgaver.
 Tilsvarende kan eleverne se deres egne fremskridt og hvornår de har deres undervisningslektioner.
@@ -37,20 +36,24 @@ Taget tidsforbruget på databaserne i betragtning, ville en simplere løsning ha
 Sådan en løsning kunne have været med flade filer eller et program helt uden persistenslag, som udelukkende kørte ved brug af Mockdata.  
 
 Ved problemløsnings start blev det besluttet at brugergrænsefladen skulle tilstræbe principperne minimalisme og konsistens i layout.
-Grundet den spredte arbejdsproces som blev beskrevet i \myref{sec:faktiske-arbejdsproces}
+Grundet den spredte arbejdsproces som blev beskrevet i \myref{sec:faktiske-arbejdsproces}, blev disse principper ikke overholdt, da gruppemedlemmernes forståelse for implementationen af principperne ikke stemte overens med hinanden.
+Dette har haft en negativ indvirkning på programmets layout, da skærmvinduerne ikke er konsistente.
+Ved brugertest kom dette til udtryk, da testpersonerne havde svært ved at finde rundt i enkelte område af programmet.
+Selvom testpersonerne ikke bestod af sejlklubmedlemmer, kan deres testresultater og feedback stadig bruges til at forbedre programmet.
+Dette konkluderes da Sejlklubben Sundets medlemmer består af et bredt befolkningssegment, som inkluderer testpersonerne.
+Testen viste at der var visse mangler ved programmets layout, dog ytrede testpersonerne generelt tilfredshed med programmet.
+Dette indikerer at der skal laves ændringer til programmets brugergrænseflade i tilfælde af, at det skulle publiceres i en kommerciel kontekst. 
 
-Løsningen kan på nuværende tidspunkt anvendes af sejlklubber med sejlerskole og bådudlån, med mindre modifikationer af programmet. 
+Det muligt for Sejlklubben Sundet at benytte programmet på nuværende tidspunkt, men vi vil anbefale at testpersonernes forslag til ændringer bliver implementeret, før det tages i brug.
+Løsningen kan anvendes af andre sejlklubber med sejlerskole og bådudlån, efter de nødvendige rettelser er blevet implementeret.
 
-Ses der på programmet i et større perspektiv så vil det være svært at bruge programmet til andre formål end sejlklubsreleterede. 
+Ses der på programmet i et større perspektiv så vil det være svært at bruge programmet til andre formål end sejlklubsrelaterede. 
 Det er grundet den tætte forbindelse mellem modellerne og selve Code-Behind'en. 
-Derfor kan programmet ikke ses som værende muligt at anvende i andre former for fritidsklubber. 
+Derfor kan programmet ikke ses som værende muligt at anvende i andre former for fritidsklubber.
 
+Ses der på problemformuleringen i forhold til den færdige løsning, kan der argumenteres for at der er blevet udviklet et brugbart IT-system. 
+Dette konkluderes da systemet digitaliserer en stor del af den dokumenthåndtering som foregår i klubben, såsom undervisningsfremskridt for hver elev, booking af både, udfyldelse af logbøger, oprettelser af begivenheder og visning af begivenheder.
+Programmet er god til at håndtere dokumentationen som påkræves af Sejlklubben Sundet vedrørende sejlture og undervisning.
+Desuden verificerer programmet brugerinput og dette kan mindske fejlraten på informationerne.
 
-\fxfatal{Husk test + UI}
-
-Ses der på problemformuleringen i forhold til den færdige løsning, kan der argumenteres for at der er blevet udviklet et IT-system. 
-Dette digitaliserer en stor del af den dokumenthåndtering som foregår i klubben, såsom undervisningsfremskridt for hver elev, booking af både, udfyldelse af logbøger, oprettelser af begivenheder og visning af begivenheder.
-Dog er målet om at understøtte frivilligt arbejde ikke blevet opfyldt til fulde, da der er blevet lagt mere fokus på elev, undervisere og almindelige medlemmer i programmet. 
-Programmet er dog god til at håndtere dokumentationen som påkræves af Sejlklubben Sundet vedrørende sejlture og undervisning.
-Desuden hjælper programmet også med at sikre at alle nødvendige informationer bliver skrevet ind, og ikke bliver glemt.
 
