@@ -18,12 +18,12 @@ Derefter bliver der vha. \texttt{Assert.AreEqual} tjekket, om SailClubMemberId b
 Hvis den bliver sat til værdien 3, så består testen.
 
 \begin{lstlisting}[frame=single, caption=Eksempel på Unit test, label=unit_test]
-        [Test]
-        public void SetMemberId_InputSimpleNumberString_ShouldSetMemberIdToNumericValue()
-        {
-            this.SetMemberId("3");
-            Assert.AreEqual(3, this.SailClubMemberId);
-        }
+[Test]
+public void SetMemberId_InputSimpleNumberString_ShouldSetMemberIdToNumericValue()
+	{
+		this.SetMemberId("3");
+		Assert.AreEqual(3, this.SailClubMemberId);
+	}
 \end{lstlisting}
 
 \section{Brugertest}
