@@ -12,6 +12,20 @@ Det er ikke alt kode, som bliver testet, men udvalgte kodestykker.
 Disse udvalgte kodestykker er valgt på baggrund af deres relevans for den overordnede struktur i programmet. 
 Blandt andet bliver klasserne testet.
 
+Et eksempel på en unit test kan ses på \myref{unit_test}.
+Først bliver MemberId sat til værdien 3. 
+Derefter bliver der vha. \texttt{Assert.AreEqual} tjekket, om SailClubMemberId bliver sat til værdien 3.
+Hvis den bliver sat til værdien 3, så består testen.
+
+\begin{lstlisting}[frame=single, caption=Eksempel på Unit test, label=unit_test]
+        [Test]
+        public void SetMemberId_InputSimpleNumberString_ShouldSetMemberIdToNumericValue()
+        {
+            this.SetMemberId("3");
+            Assert.AreEqual(3, this.SailClubMemberId);
+        }
+\end{lstlisting}
+
 \section{Brugertest}
 I dette afsnit forklares fremgangsmåden for brugertests i forbindelse med programmets brugervenlighed.
 Derudover ses der nærmere på hvordan resultaterne bruges, hvorfra der kan dannes et overblik over programmets funktionalitet. 
