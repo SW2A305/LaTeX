@@ -30,7 +30,19 @@ Desuden kan en bruger, når de logger ind på systemet, se kommende begivenheder
 Dette ses som en god løsning, da medlemmer hurtigt kan få et overblik over kommende begivenheder i klubben.
 Dog er det ikke muligt kun at se hvilke begivenheder man selv er tilmeldt, hvilket anses for at være en mangel. 
 
-\fxfatal{Husk test + DB + portability til andre klubber}
+Der var valgt at bruge et persistenslag til lagring af data. 
+Først faldt valget på \acl{EF}. 
+Grundet problemer blev der skiftet til SQLite, som også endte med at give problemer. 
+Taget tidsforbruget på databaserne i betragtning, ville en simplere løsning have været bedre.
+Sådan en løsning kunne have været med flade filer eller et program helt uden persistenslag, som udelukkende kørte ved brug af Mockdata.  
+
+Løsningen kan på nuværende tidspunkt anvendes af sejlklubber med sejlerskole og bådudlån, med mindre modifikationer af programmet. 
+
+Ses der på programmet i et større perspektiv så vil det være svært at bruge programmet til andre formål end sejlklubsreleterede. 
+Det er grundet den tætte forbindelse mellem modellerne og selve Code-Behind'en. 
+Derfor kan programmet ikke ses som værende muligt at anvende i andre former for fritidsklubber. 
+
+\fxfatal{Husk test}
 
 Ses der på problemformuleringen i forhold til den færdige løsning, kan der argumenteres for at der er blevet udviklet et IT-system. 
 Dette digitaliserer en stor del af den dokumenthåndtering som foregår i klubben, såsom undervisningsfremskridt for hver elev, booking af både, udfyldelse af logbøger, oprettelser af begivenheder og visning af begivenheder.
