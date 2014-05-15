@@ -29,8 +29,8 @@ At en database er embedded betyder, at den ikke kører i et separat program, men
 SQLite implementerer det meste af SQL-standarden, men udelader de dele, der af SQLite-udviklerne er bedømt til at være for tunge eller unødige til at have med.
 Målet med SQLite er at bibeholde letvægten, da systemet også benyttes på mange mobile enheder, såsom Android.
 
-Begge databaser blev implementeret under projektarbejdet, grundet komplikationer med vores første valg af database, Entity Framework. 
-\fxfatal{Her skal der nok være en konkludere bemærkning på hvilken vi vil vælge}
+Begge databaser blev implementeret under projektarbejdet, grundet komplikationer med første valget af database, Entity Framework. 
+
 
 \section{Database Abstraction Layer}
 Et \ac{DAL} bruges til at separere programmet fra databasen.
@@ -86,7 +86,6 @@ Gruppen aftalte at forsøge en implementation af SQLite i stedet for.
 Det var på dette tidspunkt, at det udviklede \acl{DAL} viste sin styrke, da hele persistenslaget kunne udskiftes uden konflikter i koden.
 
 Den implementerede løsning er relativt simpel i sin konstruktion, især i forhold til \acl{EF}.
-\fxnote{Skal der eventuelt tilføjes noget her om ``lazy loading'', eller vil det være for meget?}
 Dette blev gjort for at sikre, at det ikke ville tage mere end et par dage at implementere og teste.
 
 SQLites enkeltbruger-design har dog også givet lidt problemer, idet databasen til tider angiver, at den er låst af en anden proces.
