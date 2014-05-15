@@ -5,13 +5,14 @@ I dette kapitel, beskrives de to typer af tests der er udført i forbindelse med
 
 
 \section{Brugertest}
-I dette afsnit forklares hvordan brugertests udføres i forbindelse med programmets brugervenlighed.
+I dette afsnit forklares fremgangsmåden for brugertests i forbindelse med programmets brugervenlighed.
 Derudover ses der nærmere på hvordan resultaterne bruges, hvorfra der kan dannes et overblik over programmets funktionalitet. 
 For at teste programmet anvendes der, foruden unit tests i dette projekt, en række brugertests, som tager udgangspunkt i projektets UserStories\fxnote{myref til userstories}. 
-Denne type test ligger fokus på uafhængige brugers mening om programmets brugervenlighed.
+Denne type test ligger fokus på uafhængige brugers, dvs. brugere som ingen association til hverken gruppen eller projektet, mening om programmets brugervenlighed.
+Testens form er inspireret af black-box testing, som normalt ellers udføres af udviklerne selv.
 
-Da programmet er lavet med henblik på benyttelse i en sejlklub, er målgruppen stor. 
-Idet det er et computersystem, er det eneste krav til målgruppen, at det er villige til at bruge en computer.
+Da programmet er lavet med henblik på brug i en sejlklub, består målgruppen af mange forskellige befolkningssegmenter. 
+Idet det er et computerprogram, er det eneste krav til målgruppen, at det er villige til at bruge en computer.
 
 Ud fra programmets funktionaliteter dannes der nogle mål som brugerene skal opnå igennem testen. 
 Der defineres en række testscenarier med udgangspunkt i de mål der blev sat for testen.
@@ -21,15 +22,15 @@ Disse mål er:
   \item Se reservationer af både.
   \item Oprette reservation af både.
   \item Tilmelde sig begivenheder.
-  \item Følg status på begivenheder og undervisning(ændringer/aflysninger).
+  \item Følge status på begivenheder og undervisning.
   \item Oprette logbog for fuldendt sejlads.
 \end{itemize}
 
-Ud fra disse mål kan der skrives en række korte opgaver, som berører ét bestemt område i programmet. 
+Ud fra disse mål er der skrevet en række korte opgaver, som berører bestemte funktionaliteter i programmet. 
 Opgaverne kan findes i \myref{BrugerTestCases}.
 
-Dette bilag vil blive vist til testpersoner af programmet, og de vil blive observeret mens de forsøger at udføre den opgave de har fået. 
-Efter udførslen af opgaven de er blevet stillet, spørges der ind til brugerens oplevelse af programmet med henblik på funktionalitet, om brugergrænsefladen var forvirrende eller guidede testpersonerne i den rigtige retning og eventuelt andre meninger fra testpersonerne.
+Dette bilag vil blive vist til testpersoner af programmet, og de vil blive observeret under testen. 
+Efter udførslen af testen spørges der ind til brugerens oplevelse af programmet med henblik på funktionalitet, brugergrænseflades design, og deres helhedsindtryk.
 
 En opgave kunne eksempelvis være:
 \begin{itemize}
@@ -45,48 +46,46 @@ En opgave kunne eksempelvis være:
 	\item Log ud af systemet igen
 \end{itemize}
 
-Samtidigt udfyldes et skema med tidsforbrug af hver enkelt opgave, samt kommentarer omkring brugerens færden i programmet, hvis noget er bemærkelsesværdigt. 
+Samtidigt udfyldes et skema med tidsforbrug af hver enkelt opgave, samt kommentarer omkring brugerens færden i programmet.
 
-Testen opnår altså både at teste brugergrænsefladen, og testpersonernes holdning til denne, foruden også at teste funktionaliteterne i programmet, som en slags ekstern black-box test.
-
-I de følgende afsnit beskrives der hvordan disse data vil blive behandlet.
+I de følgende afsnit beskrives der hvordan testens data vil blive behandlet.
 
 \subsection{Funktionalitet}
-I denne sektion ses der på produktets funktionalitet og udførelsen af programmets mål for den givne målgruppe.
-Funktionalitet ser på en overordnet succesrate af programmet og tester således for helt basale fejl i brugergrænsefladen, der resultere i at opgaver ikke bliver løst. 
+I testområdet funktionalitet undersøges der hvorvidt opgaverne stillet er mulige at løse for testpersonerne.
+Dermed testes der om brugergrænsefladen hindrer programmets funktionalitet. 
 
 \subsection{Effektivitet}
-Effektivitet anses som værende forholdet mellem en erfaren bruger og en nybegynders tid for at udføre en given opgave.\citep{UIEffeciency}
+Effektivitet anses som værende forholdet mellem en ekspert og en nybegynders tid, for at udføre en given opgave.\citep{UIEffeciency}
 Derfor tages der tid på udførelsen af, hver enkelt opgave som testpersonen udfører.
+Eksperten vil være et medlem af projektgruppen, som ikke var observatør i nogen af de andre testpersoners test. 
 
 \subsection{Tilfredshed}
 Til sidst laves der en tilfredshedsundersøgelse for at få brugerens meninger omkring programmets design. 
-Dette kan gøres igennem et spørgeskema. 
-Undersøgelsen skal give et indtryk af, hvor godt brugeren synes programmet var i forhold til layout, placering af de krævede objekter i programmet og deres synlighed i programmet. 
-Denne undersøgelse giver et indtryk af, hvor godt programmet er designet, og derved hvor let forskellige funktioner i programmet er at tilgå. 
-Et spørgeskema kan ses i \myref{bilag:SporgeSkema}. \citep{UISatisfaction}
+Dette gøres igennem et spørgeskema. 
+Undersøgelsen skal give et indtryk af, hvor godt brugeren synes programmet var i forhold til layout, placering og synlighed af de krævede elementer i programmet. 
+Denne undersøgelse giver et indtryk af, hvor godt programmet er designet, og sværhedsgraden af forskellige funktioner. 
+Spørgeskemaet kan ses i \myref{bilag:SporgeSkema}. \citep{UISatisfaction}
 
 
-\section{Opsamling på test}
+\section{Analyse af testresultater}
 
-Grundet tidspres bl.a. fra fejl med databasen, var der ikke tid til at teste programmet ved mange personer.
+Grundet tidspres bl.a. fra fejl med databasen, var der kun tid til at teste på fire personer, samt eksperten.
 Personerne der udførte testene, bestod af elever på Aalborg Universitet, som ikke havde set eller på anden vis hørt om projektet før.
-Resultaterne ikke konkluderes at give et endegyldigt svar på om programmet kan bruges i sejlklubben Sundet, da de ingen kendskab har til klubben, eller klubbens behov til systemet.
-For at få det bedste resultat fra testen, skulle testpersonerne være medlemmer fra sejlklubben, eller på anden vis være indblandet med en sejlklub. 
-På denne måde, ville testpersonen have en bedre forståelse for, hvad og hvorfor det fungerer både godt og dårligt.
-Dog menes der at testens resultater alligevel kan sige noget om brugen af programmet, både om navigering og de testede funktioner.
-
-På \myref{tab:TestTimeTable} kan der ses en tabel over tid brugt pr opgave for hvert enkelt testperson, og sammenlignet med en af gruppens medlemmer, som også prøvede at lave testen.
+Resultaterne kan ikke konkluderes til at give et endegyldigt svar på om programmet kan bruges i sejlklubben Sundet, da de ingen kendskab har til sejlklubben, og deres behov.
+For at få et mere brugbart resultat fra testen, skulle testpersonerne være en repræsentativ gruppe af medlemmer fra sejlklubben, eller på anden vis være indblandet med en sejlklub. 
+På denne måde, ville testpersonen have en bedre forståelse for, kravene til programmets funktionalitet.
+Dog menes det at testens resultater alligevel kan sige noget om brugen af programmet, både om navigering og de testede funktioner.
+\subsection{TestData}
+På \myref{tab:TestTimeTable} kan der ses en tabel over tid brugt ved hver opgave for hver enkelt testperson, sammenlignet med ekspertens tid.
 
 % Table generated by Excel2LaTeX from sheet 'Sheet1'
 \begin{table}[htbp]
+    \colorlet{shadecolor}{gray!40}
+    \rowcolors{1}{white}{shadecolor}
   \centering
-  \caption{Tid brugt pr opgave under test}
+  \caption{Tid brugt pr opgave under test. T[1-4] er udefrakommende testpersoner.}
     \begin{tabular}{r|rrrr|r|r|r}
-    \toprule
-          & \textbf{Testperson} &       &       &       &       &       &  \\
-    \midrule
-    \textbf{Opgave} & 1     & 2     & 3     & 4     & \textbf{AVG} & \textbf{Ekspert} & \textbf{Sammenligning} \\
+    \textbf{Opgave} & T1     & T2     & T3     & T4     & \textbf{AVG} & \textbf{Ekspert} & \textbf{Sammenligning} \\ \hline
     1     & 00:15 & 00:32 & 00:24 & 00:31 & 00:25 & 00:15 & 59\% \\
     2     & 04:42 & 04:00 & 02:04 & 02:27 & 03:18 & 01:35 & 48\% \\
     3     & 01:08 & 02:13 & 01:02 & 01:10 & 01:23 & 00:30 & 36\% \\
@@ -94,13 +93,182 @@ På \myref{tab:TestTimeTable} kan der ses en tabel over tid brugt pr opgave for 
     5     & 00:29 & 00:24 & 00:27 & 00:30 & 00:27 & 00:13 & 47\% \\
     6     & 01:16 & 00:57 & 00:57 & 01:02 & 01:03 & 00:50 & 79\% \\
     7     & 02:00 & 00:35 & 00:30 & 00:40 & 00:56 & 00:14 & 25\% \\
-    8     & 00:45 & 04:20 & 04:57 & 02:10 & 03:03 & 00:56 & 31\% \\
-    9     & 00:32 & 00:26 & 00:19 & 00:42 & 00:29 & 00:10 & 34\% \\
+    8     & 02:02 & 04:20 & 04:57 & 02:10 & 03:22 & 00:56 & 28\% \\
+    9     & 00:32 & 00:26 & 00:19 & 00:42 & 00:29 & 00:10 & 34\% \\ \hline
     \textbf{SUM} & 11:56 & 13:59 & 11:12 & 10:07 & 11:48 & 05:12 & 44\% \\
-    \bottomrule
+    %\bottomrule
     \end{tabular}%
   \label{tab:TestTimeTable}%
 \end{table}%
 
 Det lykkedes for testpersonerne at udføre alle opgaverne.
+
+\subsection{Diskussion af test data}
+
 Nogle opgaver var tydeligt sværere end andre for personer som ikke havde kendskab til programmets brugergrænseflade. 
+Særligt var opgave 2, 7, og 8 udfordrende.
+
+
+Opgave 2 lød på at reservere en bestemt båd, med udleverede data.
+Den tiltænkte løsning af opgaven er:
+\begin{enumerate}
+    \item Vælg tabben ``Både''
+    \item Vælg båden ``Anastasia''
+    \item Tryk på knappen ``Reserver båden'' (Dette åbner CreateBoatBookingWindow)
+    \item Udfyld felterne med det udleverede data.
+    \item Tryk på knappen ``Gem reservation''
+\end{enumerate}
+
+T1 og T2 havde svært ved det 3. skridt i opgaven.
+Fælles var at de havde brugt over to minutter på netop dette skridt.
+Efter udførelse af testen blev de bedt om at uddybe, hvorfor dette var sådan.
+De mente begge at der var for meget støj på tabben ``Både'' og dette distraherede dem fra at finde den korrekte knap.
+T3 og T4 havde i kontrast ingen problemer med at gennemgå dette skridt, og brugte hver under fem sekunder på at finde den korrekte knap. 
+Eksperten brugte væsentligt mindre tid end T1 og T2, men sammenlignet T3 er forskellen betydeligt mindre.
+
+\textbf{Testpersonernes forslag til forbedring af funktionalitet i denne opgave:}
+\begin{itemize}
+    \item Ryd op i tabben ``Både''. 
+    \item Herunder flyt alt logbogsrelateret til sin egen tab.
+    \item Øg størrelsen på knappen ``Reserver båden''.
+\end{itemize}
+
+I opgave 7 skulle testpersonerne forfremme et hold i sejlerskolen. 
+Den tiltænkte løsning af opgaven er:
+\begin{enumerate}
+    \item Vælg tabben ``Undervisning''
+    \item Vælg holdet ``MasterRace''
+    \item Tjek CheckBoxen ``Rediger hold''
+    \item Tryk på knappen ``Forfrem hold''
+    \item Tryk på knappen ``Log ud''
+\end{enumerate}
+
+T1 havde særlig svært ved regne ud, at man skal udføre det 3. skridt, før man kunne udføre det 4. skridt.
+T1 mente at der var for mange elementer i tabben ``Undervisning'' og at dette forvirrede ham fra at udføre opgaven, da de fjernede opmærksomheden fra CheckBoxen i toppen af tabben.
+
+\textbf{Testpersonernes forslag til forbedring af funktionalitet i denne opgave:}
+\begin{itemize}
+    \item Flyt rediger hold funktionaliteten til sit eget vindue, ved tryk på en knap.
+    \item Der er ingen respons fra programmet efter det 4. skridt, tilføj et popup vindue som giver besked.
+\end{itemize}
+
+
+I opgave 8 blev testpersonerne bedt om at udfylde logbogen for en fuldført tur, som brugeren de anvendt havde reserveret, og derfor skulle udføre logbogen for.
+
+Den tiltænkte løsning af opgaven er:
+\begin{enumerate}
+    \item Log ind
+    \item Marker bådturen i det højre DataGrid på forsiden.
+    \item Tryk på knappen ``Opret logbog''
+    \item Tryk på knappen ``Ændre besætning''
+    \item Fjern ``Kasper Eriksen''
+    \item Ændre ``Faktisk afgang''
+    \item Tryk på ``Ja'' under ``Er båden skadet?''
+    \item Angiv vejrforhold og skadesrapport
+    \item Tryk på knappen ``Udfør''
+\end{enumerate}
+
+Alle fire testpersoner havde svært ved skridt 2 og 3.
+Særligt T2 og T3 brugte lang tid på dette problem.
+Testpersonerne besøgte tabben ``Både'' for at udføre dette. 
+Eksperten havde ingen problemer med denne opgave og gennemførte opgaven på under et minut.
+
+\textbf{Testpersonernes forslag til forbedring af funktionalitet i denne opgave:}
+\begin{itemize}
+    \item Giv tydelig besked og instrukser efter log in, om at en logbog mangler at blive udfyldt.
+    \item Forøg størrelsen af den forklarende tekst på forsiden til hver af de to DataGrids.
+    \item Øg afstanden fra velkomstbeskeden til de 2 DataGrids
+    \item Mindske højden af de to DataGrids, da de alligevel er hovedsageligt tomme. 
+    \item Dediker en tab til læsning og udførelse af logbøger. 
+\end{itemize}
+
+\subsection{Testpersonernes samlede vurdering}
+
+I spørgeskemaet blev testpersonerne bedt om at vurdere flere centrale skærmvinduer.
+De blev bedt om at vurdere, deres evne til at overskue hvert af de angivne skærmvinduers funktionaliteter.
+Dette skulle angives som en karakter fra et til fem, hvor et er meget uoverskueligt og fem er meget overskueligt.
+Dette kan ses i skemaet \myref{tab:vurderingtest}.
+
+% Table generated by Excel2LaTeX from sheet 'Sheet1'
+\begin{table}[htbp]
+    \colorlet{shadecolor}{gray!40}
+    \rowcolors{1}{white}{shadecolor}
+    \centering
+    \caption{Testpersonernes vurdering af centrale skærmvinduer}
+    \begin{tabular}{l|rrrr|r}
+        \toprule
+        \textbf{Vindue} & T1 & T2 & T3 & T4 & \textbf{GNS} \\
+        \midrule
+        Forside & 5 & 4 & 4 & 3 & 4 \\
+        Undervisning & 1 & 2 & 3 & 2 & 2 \\
+        Medlemmer & 4 & 5 & 4 & 2 & 3,75 \\
+        Både & 3 & 4 & 3 & 3 & 3,25 \\
+        Begivenheder & 4 & 4 & 3 & 2 & 3,25 \\
+        Logbogsvinduer & 3 & 2 & 2 & 4 & 2,75 \\
+        CreateCrewWindow & 5 & 5 & 4 & 3 & 4,25 \\
+        CreateBoatBookingWindow & 5 & 5 & 4 & 4 & 4,5 \\ \hline
+        \textbf{Samlet Vurdering} & 3,75 & 3,88 & 3,38 & 2,88 & 3,47 \\
+    \end{tabular}%
+    \label{tab:vurderingtest}%
+\end{table}%
+
+\subsubsection*{Kommentarer fra testpersonerne}
+Foruden \myref{tab:vurderingtest} argumenterede testpersonerne også for deres vurdering.
+
+\textbf{Forside}: 
+Generelt kunne testpersonerne lide formålet med forsiden, som er at give brugeren et hurtigt overblik efter log in. 
+Dog mente flere at layoutet kunne have været udført bedre.
+Herunder større afstand fra velkomstteksten til de to DataGrids, større overskrifter ved hver DataGrid, mindre DataGrids da de hovedsageligt var tomme. 
+
+\textbf{Undervisning}: 
+Generel utilfredshed omkring denne UserControl.
+Specifikt var der klager om at der var CheckBoxes til at tjekke elevers deltagelse af. 
+Her mente flere at CreateCrewWindow-vinduet kunne have været anvendt. 
+Derudover tilføjede den højre side af vinduet, der havde et layout som lignede CreateCrewWindow-vinduet, forvirring. 
+Der var også negative kommentarer omhandlende CheckBoxen ``Rediger hold''. 
+Flere fandt denne unødvendig, mens en anden mente af det indhold denne låste op for, burde have sit eget dedikerede popup vindue.
+
+\textbf{Medlemmer}:
+Testpersonerne skulle ikke bruge dette vindue i nogen af de stilne opgaver.
+Derfor fik de vist dette vindue efter testens gennemførsel, så ledes de kunne kommentere tabbens indhold. 
+Der var generelt positive kommentarer, dog mente T4, at den store mænge data virkede overvældende. 
+T3 og T4 mente at søgebaren ikke var klart nok markeret, og foreslog at der kunne tilføjes et ``loop''-ikon. 
+
+\textbf{Både}:
+Flere testpersoner udtrykte at denne UserControl var uoverskuelig, da der vises for meget information efter valg af en båd.
+T1, T3 og T4 forslog at flytte alt logbogsrelateret til sin egen tab.
+Derudover kunne størrelsen af skrift forstøres, således den ville være nemmere at læse. 
+
+\textbf{Begivenheder}:
+Kommentarer til denne tab var få, T3 forslog at ændre overskriften ``Agenda'' til ``Begivenheder'', over ListBoxen.
+Flere mente at brugen af ListBoxen burde have været erstatte med et DataGrid, som er anvendte mange andre steder i programmet. 
+
+\textbf{Logbogsvinduerne}:
+Kritikken af disse var primært rettet mod navigeringen til vinduet. 
+Der var uenighed imellem testpersonernes vurdering af vinduets design, en mente at elementene i det 2 spaltede layout var uoverskueligt, særligt pga. rækkefølgen af disse. 
+Mens en anden udtrykte positive tanker om layoutet.
+
+\textbf{CreateCrewWindow}
+Om dette vindue var der næsten kun positive kommentarer.
+Vinduet blev omtalt som værende overskueligt, dog kunne DataGridet til venstre godt have været større.
+T3 foreslog at dette kunne have samme størrelse med det til venstre. 
+Her blev søgefunktionen igen overset, igen blev der foreslået tilføjelsen af et ``loop''-ikon.
+
+\textbf{CreateBoatBookingWindow}
+Der var meget få kritikpunkter til dette vindue.
+T4 mente at knapperne ``Gem reservation'' og ``Annuller reservation'' var for brede, og burde være placeret således de lignede dem fra windows vinduer såsom egenskaber. 
+Altså hvor de er placeret nederst i højre hjørne, på linje med hinanden. 
+
+\subsection{Konklusion af brugertest}
+Brugertesten har givet os en større indsigt i programmets layout.
+Målene for layoutet var minimalisme og konsistens, men dette er ikke sket, da problemer i arbejdsprocessen, se \myref{sec:faktiske-arbejdsproces}.
+
+På baggrund af brugertesten, etableres det at nogle dele af brugergrænsefladen er bedre konstrueret end andre.
+De bedste vurderes til at være vinduerne: \textbf{CreateCrewWindow} og \textbf{CreateBoatBookingWindow}. 
+Disse vinduer har begge en høj overskuelighed, dette er et af principperne fra minimalisme, altså at fjerne det unødvendige. 
+
+Ud fra testpersonernes kommentarer kunne de resterende vinduers og UserControls layout forbedres. 
+Særligt skulle tabben ``Undervisning'' og tabben ``Både'' forbedres.
+Konkrete forslag til disse forbedringer er givet af testpersonerne, disse udtrykker projektgruppen enighed i. 
+
+Men da projektgruppen ikke har en begrænset mænge tid, bliver disse rettelser ikke implementeret. 
