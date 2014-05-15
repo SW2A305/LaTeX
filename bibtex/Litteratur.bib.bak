@@ -226,10 +226,65 @@
 }
 
 @misc{winforms,
-  title = {A WPF QA},
+  title = {A WPF Q\&A},
   url = {http://www.infoq.com/news/2014/04/WPF-QA},
   urldate = {2014-05-07},
   year = 2014,
   author = {{Jonathan Allen}}
 }
 
+@misc{UIEffectiveness,
+  title = {GUI Effectiveness},
+  url = {http://ui-designer.net/usability/effectiveness.htm},
+  urldate = {2014-05-09},
+  year = 2014,
+  author = {{Anton Sergeev}}
+}
+  
+@misc{UIEffeciency,
+  title = {GUI Effeciency},
+  url = {http://ui-designer.net/usability/efficiency.htm},
+  urldate = {2014-05-09},
+  year = 2014,
+  author = {{Anton Sergeev}}
+}
+
+@misc{UISatisfaction,
+  title = {GUI Satisfaction},
+  url = {http://ui-designer.net/usability/satisfaction.htm},
+  urldate = {2014-05-09},
+  year = 2014,
+  author = {{Anton Sergeev}}
+}
+
+@misc{resolutions,
+  title = {Browser Display Statistics},
+  url = {http://www.w3schools.com/browsers/browsers_display.asp},
+  urldate = {2014-05-10},
+  year = 2014,
+  author = {{w3schools.com}}
+}
+
+@misc{winforms2,
+  title = {WPF vs. WinForms},
+  url = {http://www.wpf-tutorial.com/about-wpf/wpf-vs-winforms/},
+  urldate = {2014-05-14},
+  year = 2014,
+  author = {{wpf-tutorial.com}}
+}
+@misc{aalborg_sejlklub_sejlerskole,
+	title = {Sejlerskole Aalborg Sejlklub},
+	url = {http://www.aalborg-sejlklub.dk/events_category.php?id=20},
+	urldate = {2014-05-15},
+	year = {2014},
+	journal = {Aalborg Sejlklub},
+	author = {{Aalborg Sejlklub}}
+}
+
+@misc{agile_software,
+	title = {Agile Software development manifest},
+	url = {http://agilemanifesto.org/iso/dk/principles.html},
+	urldate = {2014-05-15},
+	year = {2014},
+	author = {{agilemanifesto.org}}
+}
