@@ -66,16 +66,15 @@ Interfacet definerer otte metoder, som beskrevet i \myref{tab:ourExtCrud}.
 
 De konkrete interfaces defineres for hver modelklasse og implementeres i specifikke klasser, der snakker med et persistenslag.
 For at gøre det lettere at udskifte \ac{DAL}-implementation, blev en statisk hjælpeklasse, \texttt{DalLocator}, oprettet, hvis opgave består i at returnere en implementation af et \ac{DAL}-interface. Hermed skal der kun foretages ændringer i en enkelt fil, hvis et nyt DAL tages i brug.
+På \myref{img:Program_flow} kan man se hvordan \ac{DAL} indgår i programmets struktur.
 
-\fxnote{Her skal vi muligvis indsætte noget visuelt omkring opbygning af vores specifikke DAL-løsning.}
-  
 \subsection{Første implementation --- \acl{EF}}
 
 \acl{EF} blev implementeret for modellerne og systemet blev bygget herpå.
 Under programmets udvikling stod det klart, at det ikke var helt problemfrit at benytte \ac{EF}.
 
-Migrations kom i vejen for hinanden og gav konflikter, der krævede, at gruppens medlemmer regelmæssigt skulle slette hver tabel og kalde kommandoen \texttt{Update-Database}, som får \ac{EF} til at gennemløbe alle migrations og udføre handlingerne i disse.
-\fxnote{Lang sætning. Bør nok omskrives.}
+Migrations kom i vejen for hinanden og gav konflikter, der krævede, at gruppens medlemmer regelmæssigt skulle slette hver tabel og kalde kommandoen \texttt{Update-Database}.
+Denne kommando får \ac{EF} til at gennemløbe alle migrations og udføre handlingerne i disse.
 
 Systemet reagerede også sporadisk, hvor det ét sted fungerede som det skulle, mens det fejlede lydløst, altså uden en fejlbesked, andre steder.
 Dette til trods for, at de to områder var programmeret ens.
