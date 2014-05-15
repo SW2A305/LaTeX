@@ -29,8 +29,8 @@ At en database er embedded betyder, at den ikke kører i et separat program, men
 SQLite implementerer det meste af SQL-standarden, men udelader de dele, der af SQLite-udviklerne er bedømt til at være for tunge eller unødige til at have med.
 Målet med SQLite er at bibeholde letvægten, da systemet også benyttes på mange mobile enheder, såsom Android.
 
-Begge databaser blev implementeret under projektarbejdet, grundet komplikationer med vores første valg af database, Entity Framework. 
-\fxfatal{Her skal der nok være en konkludere bemærkning på hvilken vi vil vælge}
+Begge databaser blev implementeret under projektarbejdet, grundet komplikationer med første valget af database, Entity Framework. 
+
 
 \section{Database Abstraction Layer}
 Et \ac{DAL} bruges til at separere programmet fra databasen.
@@ -66,16 +66,15 @@ Interfacet definerer otte metoder, som beskrevet i \myref{tab:ourExtCrud}.
 
 De konkrete interfaces defineres for hver modelklasse og implementeres i specifikke klasser, der snakker med et persistenslag.
 For at gøre det lettere at udskifte \ac{DAL}-implementation, blev en statisk hjælpeklasse, \texttt{DalLocator}, oprettet, hvis opgave består i at returnere en implementation af et \ac{DAL}-interface. Hermed skal der kun foretages ændringer i en enkelt fil, hvis et nyt DAL tages i brug.
+På \myref{img:Program_flow} kan man se hvordan \ac{DAL} indgår i programmets struktur.
 
-\fxnote{Her skal vi muligvis indsætte noget visuelt omkring opbygning af vores specifikke DAL-løsning.}
-  
 \subsection{Første implementation --- \acl{EF}}
 
 \acl{EF} blev implementeret for modellerne og systemet blev bygget herpå.
 Under programmets udvikling stod det klart, at det ikke var helt problemfrit at benytte \ac{EF}.
 
-Migrations kom i vejen for hinanden og gav konflikter, der krævede, at gruppens medlemmer regelmæssigt skulle slette hver tabel og kalde kommandoen \texttt{Update-Database}, som får \ac{EF} til at gennemløbe alle migrations og udføre handlingerne i disse.
-\fxnote{Lang sætning. Bør nok omskrives.}
+Migrations kom i vejen for hinanden og gav konflikter, der krævede, at gruppens medlemmer regelmæssigt skulle slette hver tabel og kalde kommandoen \texttt{Update-Database}.
+Denne kommando får \ac{EF} til at gennemløbe alle migrations og udføre handlingerne i disse.
 
 Systemet reagerede også sporadisk, hvor det ét sted fungerede som det skulle, mens det fejlede lydløst, altså uden en fejlbesked, andre steder.
 Dette til trods for, at de to områder var programmeret ens.
@@ -86,7 +85,6 @@ Gruppen aftalte at forsøge en implementation af SQLite i stedet for.
 Det var på dette tidspunkt, at det udviklede \acl{DAL} viste sin styrke, da hele persistenslaget kunne udskiftes uden konflikter i koden.
 
 Den implementerede løsning er relativt simpel i sin konstruktion, især i forhold til \acl{EF}.
-\fxnote{Skal der eventuelt tilføjes noget her om ``lazy loading'', eller vil det være for meget?}
 Dette blev gjort for at sikre, at det ikke ville tage mere end et par dage at implementere og teste.
 
 SQLites enkeltbruger-design har dog også givet lidt problemer, idet databasen til tider angiver, at den er låst af en anden proces.

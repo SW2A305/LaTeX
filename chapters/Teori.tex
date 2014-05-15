@@ -29,8 +29,7 @@ Menustrukturen består af tabs, som er store og lette at se.
 De forskellige funktioner i programmet er delt op i deres tilhørende tabs, og man kan altid gå ind i en ny tab uanset hvor, man befinder sig i programmet. 
 Dette betyder, at strukturen ikke har et hierarki, da uanset hvor man befinder sig, kan der navigeres ind i alle programmets funktioner. 
 
-Når brugergrænsefladen er lavet, skal den dermed også testes. Der vil blive forklaret hvordan dette vil blive gjort i et senere kapitel. \fxnote{Tilføj en kilde til kapitlet omhandlende test af programmets GUI}
-
+Når brugergrænsefladen er lavet, skal den dermed også testes. Der vil blive forklaret hvordan dette vil blive gjort i \myref{test_af_program}.
 \section{Valg af grafikframework} 
 
 \subsection{Windows Presentation Foundation}
@@ -49,7 +48,7 @@ En helt anden mulighed, som blev diskuteret, var at bruge en hjemmeside, som vil
 En hjemmeside, som gør brug af C\#, vil kunne laves lidt på samme måde som ved WPF og XAML; med HTML (HyperText Markup Language) og CSS (Cascading Style Sheets) som frontend og C\#-klasser som backend. 
 
 \subsection{Afgrænsning}
-En hjemmeside blev fravalgt, da det blev vurderet at WPF var nemmere at oprette end en hjemmeside, og at vores fokus er rette nærmere mod objekt orienterede principper end udvikling af brugergrænseflade.\fxnote{Er dette ok?}
+En hjemmeside blev fravalgt, da det blev vurderet at WPF var nemmere at oprette end en hjemmeside, og at vores fokus er mere rettet mod objektorienterede principper end udvikling af brugergrænseflade.
 
 WinForms blev fravalgt af den grund at det er så småt ved at være forældet.
 Microsoft har informeret om, at der ikke længere tilføjes nye funktioner til WinForms, men kun udelukkende rettelser af fejl.\citep{winforms}
@@ -87,11 +86,11 @@ Det er også muligt at konstruere en søgefunktion, altså kan et DataGrid blive
     \vspace{-15pt}
     \caption{Demonstration af WPFs Controls}
     \vspace{-15pt}
-\end{wrapfigure}\fxnote{Nævn billedets indhold}
+\end{wrapfigure}
 
 \subsubsection*{CheckBox}
 En CheckBox er en kvadratisk boks, som enten er ``Checked'' eller ikke ``Checked''. 
-Dens stadie er binært, og (som standard) uafhængig af andre elementer.\fxnote{Måske give et eksempel på dette}
+Ud fra om den er ``Checked'' eller ej, kan der valideres på data. 
 
 \subsubsection*{RadioButton}
 En RadioButton er en cirkelformet CheckBox.

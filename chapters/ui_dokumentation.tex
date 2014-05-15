@@ -9,9 +9,9 @@ I dette kapitel vil programmet grafiske brugergrænseflade blive beskrevet.
 \begin{figure}[H]
 \hspace*{-2cm}
 \includegraphics{UI/UI2.pdf}
-\label{img:programNavigation}
 \vspace{-310pt}
 \caption{Navigations skema for programmet}
+\label{img:programNavigation}
 \vspace{-20pt}
 \end{figure}
 
@@ -27,7 +27,7 @@ Flere steder i programmet anvendes de samme dialogvinduer, f.eks. fra forsiden f
 Desuden findes logbogsdialogen også på forsiden.
 Forskellen på logbogsdialogen på forsiden og den under bådreservation, er at dialogen under forsiden er lavet for at logbogen kan udfyldes, mens den under bådreservation er read-only.
 \fxnote{Aner ikke om knapperne har de rigtige navne}
-\fxnote{Billedet skal opdateres, mangler opret event,}
+
 
 
 % LaTeX tabel som viser alle brugerniveauer og deres muligheder efter login.
@@ -35,21 +35,22 @@ Forskellen på logbogsdialogen på forsiden og den under bådreservation, er at 
 \begin{table}
     \colorlet{shadecolor}{gray!40}
     \rowcolors{1}{white}{shadecolor}
-    \begin{tabular}{l|llllll}
-    ~                        & Gæst & Støttemedlem & Medlem & Elev & Underviser & Administrator \\ \hline
-    Personlig forside        & ~    & ~             & \ding{51}     & \ding{51}    & \ding{51}          & \ding{51}             \\
-    Se begivenheder          & \ding{51}    & \ding{51}             & \ding{51}      & \ding{51}    & \ding{51}          & \ding{51}             \\
-    Tilmeld begivenheder     & ~    & ~	             & \ding{51}      & \ding{51}    & \ding{51}          & \ding{51}             \\
-    Opret begivenheder       & ~    & ~             & ~      & ~    & \ding{51}          & \ding{51}             \\
-    Se sejlture              & \ding{51}    & \ding{51}             & \ding{51}      & \ding{51}    & \ding{51}          & \ding{51}             \\
-    Opret sejltur            & ~    & ~             & \ding{51}      & \ding{51}    & \ding{51}          & \ding{51}             \\
-    Se logbøger              & \ding{51}    & \ding{51}             & \ding{51}      & \ding{51}    & \ding{51}          & \ding{51}             \\
-    Opret logbog             & ~    & ~             & \ding{51}      & \ding{51}    & \ding{51}          & \ding{51}             \\
-    Svar på logbog           & ~    & ~             & ~      & ~    & ~          & \ding{51}             \\
-    Se undervisningstimer    & ~    & ~             & ~      & \ding{51}    & \ding{51}          & \ding{51}             \\
-    Opret undervisningstimer & ~    & ~             & ~      & ~    & \ding{51}          & \ding{51}             \\
+    \begin{tabular}{l|llll}
+    \hline
+    ~                        & Gæst & Medlem & Elev & Administrator \\ \hline
+    Personlig forside        & ~    & \ding{51}      & \ding{51}    & \ding{51}             \\
+    Se begivenheder          & \ding{51}    & \ding{51}      & \ding{51}    & \ding{51}             \\
+    Tilmeld begivenheder     & ~    & \ding{51}      & \ding{51}    & \ding{51}             \\
+    Opret begivenheder       & ~    & ~      & ~    & \ding{51}             \\
+    Se sejlture              & \ding{51}    & \ding{51}      & \ding{51}    & \ding{51}             \\
+    Opret sejltur            & ~    & \ding{51}      & \ding{51}    & \ding{51}             \\
+    Se logbøger              & \ding{51}    & \ding{51}      & \ding{51}    & \ding{51}             \\
+    Opret logbog             & ~    & \ding{51}      & \ding{51}    & \ding{51}             \\
+    Svar på logbog           & ~    & ~      & ~    & \ding{51}             \\
+    Se undervisningstimer    & ~    & ~      & \ding{51}    & \ding{51}             \\
+    Opret undervisningstimer & ~    & ~      & ~    & \ding{51}             \\
     \end{tabular}
-    \caption{Tabel over alle brugerniveauer og deres tilladte funktioner.}\label{tab:permissions}\fixme{Måske skal denne tabel lige laves lidt om, enten indholdet, eller hvordan det virker i programmet.}
+    \caption{Tabel over alle brugerniveauer og deres tilladte funktioner.}\label{tab:permissions}
 \end{table}
 
 \section{Hovedvinduet}
@@ -180,7 +181,7 @@ Ved oprettelse, redigering og sletning skrives ændringerne til databasen.
 Ved tilmelding tilføjes personen, som er logget ind, til listen over tilmeldte personer, som hver Event har instansieret. 
 
 \section{Vinduer}
-Aller vinduer beskrevet i dette afsnit kan ses på \fxnote{Indset kilde til figur}
+Aller vinduer beskrevet i dette afsnit kan ses på \myref{img:programNavigation}. 
 
 \subsection{Login brugergrænseflade}
  
@@ -260,4 +261,3 @@ De tomme felter skal selv udfyldes af brugeren.
 Code-Behinden verificerer dataet inden det gemmes i databasen.
 Herudover sættes referencen til logbogen i det pågældende RegularTrip.
 
-\subsection{Undervisning}
