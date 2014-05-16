@@ -9,7 +9,7 @@ I dette kapitel vil klasserne i modellaget blive beskrevet.
   \label{img:UML}
 \end{figure}
 
-\subsection{Klasse: Person}
+\subsection{Klasse: Person} \fxnote{Troels: Vi ændrede Felter til formål på et tidspunkt, men flere starter nu med felter?}
 \fxnote{Nikolaj: En reference i starten til UML-diagrammet, i stedet for ved hver klasse? Bedre brug af section/subsections somehow, måske skal afsnit tallene også bare fjernes fra person klassen}
 \textbf{Formål:}
 I personklassen findes felter, som indeholder informationer vedrørende personen. Felterne ses på \myref{img:UML}.
@@ -19,7 +19,8 @@ Personklassen har overrided \textbf{ToString()}, som returnerer \textbf{FullName
 
 \textbf{Anvendelse:}
 Personklassen bruges til at repræsentere alle personer i systemet. 
-Gæster repræsenteres direkte som instanser af personklassen. Sejlklubbens medlemmer repræsenteres som subklasser af personklassen. 
+Gæster repræsenteres direkte som instanser af personklassen. 
+Sejlklubbens medlemmer repræsenteres som subklasser af personklassen. 
 
 \subsection*{Klasse: SailClubMember}
 
@@ -31,7 +32,7 @@ Disse felter kan ses på \myref{img:UML}.
 Dette repræsenteres ud fra en enumeration.
 
 \textbf{Anvendelse:}
-SailClubMember bruges til at danne instanser af alle sejlklubbens medlemmer. 
+SailClubMember bruges til at danne instanser af alle sejlklubbens medlemmer. \fxnote{Troels: Bortset fra studerende, som er en instans af studentmember som nedarver herfra}
 
 \subsection*{Klasse: StudentMember}
 \textbf{Formål:}
@@ -68,7 +69,7 @@ Hver reservation er en instans af klassen RegularTrip, dette gælder også reser
 
 \subsection*{Klasse: Event}
 
-\textbf{Formål:}
+\textbf{Formål:} \fxnote{Troels: Er dette et formål?}
 Klassen indeholder felter, som giver en beskrivelse af, hvornår og hvad begivenheden går ud på. 
 
 \textbf{Anvendelse:}
