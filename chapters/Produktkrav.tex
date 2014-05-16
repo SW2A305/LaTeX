@@ -7,21 +7,21 @@ I følgende afsnit undersøges der, hvilke krav et managements system for Sejlkl
 
 \section{Funktionelle krav} \label{sec:funktionelleKrav}
 
-Den nødvendige dokumentation indebærer logbøger, bådreservationer, besætningslisten, tilmeldinger til begivenheder m.m. 
+Den nødvendige dokumentation indebærer logbøger, bådreservationer, besætningslisten, tilmeldinger til begivenheder m.m. \fxnote{Troels: omformuler så det står, ``det er et krav at..''. At starte at afsnite med ``Den nødvendige [...]'' giver ingen mening}
 Som grundlag for at alt dette kan fungere, kræves der en metode til at sætte sig selv på en aktivitet. 
 For at gøre dette muligt kræves der således to ting: En database af medlemmer, samt en form for begivenhedskalender. 
 Foruden dette kræves der information om de forskellige begivenheder og hvem der er tilmeldt. 
 Der kræves også et system til udlejning af både samt undervisning.
 
 Produktet bør have følgende funktioner i prioriteret rækkefølge:
-\begin{itemize}
+\begin{enumerate}
   \item Medlemshåndtering
   \item Brugerlogin
-  \item Oversigt over undervisning
+  \item Oversigt over undervisning \fxnote{Troels: Skal man kun kunne se undervisning?}
   \item Bådreservation
   \item Logbog
-  \item Vise begivenhedsinformation
-\end{itemize}
+  \item Vise begivenhedsinformation \fxnote{Troels: Skal man ikke være i stand til at oprette begivnheder?}
+\end{enumerate}
 
 
 %Dette afsnit skal uddybes meget mere, har skrevet et eksempel på hvad jeg mener afsnittet skal indeholde
@@ -30,16 +30,16 @@ Produktet bør have følgende funktioner i prioriteret rækkefølge:
 
 Der ligger mere bag de ovenstående elementer end \myref{sec:funktionelleKrav} giver udtryk for, disse vil her blive set nærmere på.
 
-\subsection{Medlemmer}
+\subsection{Medlemmer} \fxnote{Troels: Overskrift matcher ikke den fra oversigten}
 
 Det er et krav, at man kan udnytte medlemmerne i klubben, så man kan registrere hvem der er tilmeldt de forskellige reservationer eller lignende. 
 Systemet skal kunne kende forskel på medlemmer, så man ikke kan have flere af det samme medlem på en reservation eller en begivenhed.
 Forskellige informationer skal kunne findes på medlemmerne i programmet, så brugerne kan finde de rigtige medlemmer og markere om de mødte op.
 
-\subsection{Login system}
+\subsection{Login system} \fxnote{Troels: Overskrift matcher ikke den fra oversigten}
 Det skal være muligt at registrere hvem der er logget ind i programmet, for på denne måde at give forskellig adgang til diverse funktionaliteter i programmet.
 
-\subsection{Oversigt over undervisning}
+\subsection{Oversigt over undervisning}\fxnote{Troels: Som ovenfor, dårlig overskrift}
 
 Det skal være muligt for elever ved sejlerskolen at se hvornår deres næste lektion finder sted.
 Herudover skal de også kunne se hvor langt de er kommet i forbindelse med deres uddannelse, hvilke milepæle de har udført mm.
@@ -58,7 +58,7 @@ Herudover skal det være muligt af afmelde sig en booking, hvis man ikke deltage
 I forbindelse med en sejltur, skal der kunne gemmes en logbog over turen med informationer, som beskrevet i \myref{subsec:bådudlån}.
 Der skal her være registreret på hvilken båd turen foregik, så de korrekte logbøger kan findes for en given båd.
 
-\subsection{Vise begivenhedsinformation}
+\subsection{Vise begivenhedsinformation} \fxnote{Troels: ... igen dårlig overskrift}
 
 Endeligt skal man kunne gemme begivenheder i klubben, med en dato og en beskrivelse af begivenheden, samt slette disse igen, hvis de skulle blive aflyst. 
 Det skal være muligt at til- og afmelde sig begivenheden, foruden at kunne se hvilke medlemmer der er tilmeldt.
