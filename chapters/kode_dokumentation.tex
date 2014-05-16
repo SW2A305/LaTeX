@@ -10,7 +10,7 @@ I dette kapitel vil klasserne i modellaget blive beskrevet.
 \end{figure}
 
 \subsection{Klasse: Person}
-
+\fxnote{Nikolaj: En reference i starten til UML-diagrammet, i stedet for ved hver klasse? Bedre brug af section/subsections somehow, måske skal afsnit tallene også bare fjernes fra person klassen}
 \textbf{Formål:}
 I personklassen findes felter, som indeholder informationer vedrørende personen. Felterne ses på \myref{img:UML}.
 
@@ -45,13 +45,14 @@ Klassen StudentMember nedarver fra SailClubMember og bruges til at repræsentere
 \textbf{Formål:}
 Klassen Team indeholder informationer om et vilkårligt hold. 
 Samtidigt inderholder den både en liste over elever og lektioner.
+
 \textbf{Anvendelse:}
 Team anvendes til at samle en gruppe elever i sejlerskolen.
 Denne samling gør det muligt at håndtere eleverne på holdet på samme tid.
 
 \subsection*{Klasse: SailTrip og RegularSailTrip}
 
-I en tidlig designstruktur var det tænkt at programmet skulle have indeholdt flere forskellige typer af sejlture, og derfor blev SailTrip-klassen skabt som værende superklasse for sejltursklasser. 
+I en tidlig designstruktur var det tænkt at programmet skulle indeholde flere forskellige typer af sejlture, og derfor blev SailTrip-klassen skabt som værende superklasse for sejltursklasser. 
 Senere blev ideen om at have flere typer sejlture ændret, og i stedet blev der valgt, at der kun skulle være én sejlturstype. 
 SailTrip-klassen er dog bibeholdt i tilfælde af videre udbygning af programmet.
 Dog findes der enkelte felter i klasserne, som overlapper hinanden lidt, men felter er også bibeholdt i tilfælde af udbygning til flere typer sejlture.
@@ -72,7 +73,7 @@ Klassen indeholder felter, som giver en beskrivelse af, hvornår og hvad begiven
 
 \textbf{Anvendelse:}
 En instans af eventklassen repræsenterer en begivenhed. 
-Det behøves ikke at være en sejlrelateret begivenhed.
+Det behøver ikke at være en sejlrelateret begivenhed.
 
 \subsection*{Klasse: Logbook}
 
