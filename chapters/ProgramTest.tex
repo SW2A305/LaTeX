@@ -3,13 +3,13 @@ I dette kapitel, beskrives de to typer af tests der er udført i forbindelse med
 
 \section{Unit test}
 Til test af selve koden er der benyttet Unit tests.
-Unit tests tester metoder, properties, klasser og assemblies. 
+Unit tests tester metoder, properties, klasser og assemblies. \fxnote{Assemblies?? (Søren)}
 Når man har lavet en metode, så forventer man, som regel, et bestemt resultat.
-Unit test af metoden fungerer ved, at man giver metoden, som skal testes, et input, og ser man får det forventede resultat.
+Unit test af metoden fungerer ved, at man giver metoden, som skal testes, et input, og ser om man får det forventede resultat.
 
 Til Unit tests bruges frameworket NUnit, som er lavet til .NET platformen. 
 Det er ikke alt kode, som bliver testet, men udvalgte kodestykker.
-Disse udvalgte kodestykker er valgt på baggrund af deres relevans for den overordnede struktur i programmet. 
+Disse udvalgte kodestykker er valgt på baggrund af deres relevans for den overordnede struktur i programmet. \fxnote{Skal vi nævne noget med at det også er fordi de var lettere at lave tests til??}
 Blandt andet bliver klasserne testet.
 
 Et eksempel på en unit test kan ses på \myref{unit_test}.
@@ -24,7 +24,7 @@ public void SetMemberId_InputSimpleNumberString_ShouldSetMemberIdToNumericValue(
 		this.SetMemberId("3");
 		Assert.AreEqual(3, this.SailClubMemberId);
 	}
-\end{lstlisting}
+\end{lstlisting}\fxnote{Har vi ikke mere spændende eksempler??}
 
 \section{Brugertest}
 I dette afsnit forklares fremgangsmåden for brugertests i forbindelse med programmets brugervenlighed.
@@ -32,13 +32,10 @@ Derudover ses der nærmere på hvordan resultaterne bruges, hvorfra der kan dann
 
 For at teste programmet anvendes der, foruden unit tests i dette projekt, en række brugertests, som tager udgangspunkt i projektets UserStories\myref{User_stories}.
 Denne type test ligger fokus på uafhængige brugers mening om programmets brugervenlighed.
-
-For at teste programmet anvendes der, foruden unit tests i dette projekt, en række brugertests, som tager udgangspunkt i projektets UserStories\fxnote{myref til userstories}. 
-Denne type test ligger fokus på uafhængige brugers, dvs. brugere som ingen association til hverken gruppen eller projektet, mening om programmets brugervenlighed.
-Testens form er inspireret af black-box testing, som normalt ellers udføres af udviklerne selv.
+Testens form er inspireret af black-box testing, som også er blevet brugt i forbindelse med udviklingen af programmet, normalt ellers udføres af udviklerne selv.
 
 Da programmet er lavet med henblik på brug i en sejlklub, består målgruppen af mange forskellige befolkningssegmenter. 
-Idet det er et computerprogram, er det eneste krav til målgruppen, at det er villige til at bruge en computer.
+Idet det er et computerprogram, er det eneste krav til målgruppen, at de er villige til at bruge en computer.
 
 Ud fra programmets funktionaliteter dannes der nogle mål som brugerene skal opnå igennem testen. 
 Der defineres en række testscenarier med udgangspunkt i de mål der blev sat for testen.
@@ -56,7 +53,7 @@ Ud fra disse mål er der skrevet en række korte opgaver, som berører bestemte 
 Opgaverne kan findes i \myref{BrugerTestCases}.
 
 Dette bilag vil blive vist til testpersoner af programmet, og de vil blive observeret under testen. 
-Efter udførslen af testen spørges der ind til brugerens oplevelse af programmet med henblik på funktionalitet, brugergrænseflades design, og deres helhedsindtryk.
+Efter udførelsen af testen spørges der ind til testpersonens oplevelse af programmet med henblik på funktionalitet, brugergrænsefladens design, og deres helhedsindtryk.
 
 En opgave kunne eksempelvis være:
 \begin{itemize}
@@ -78,7 +75,7 @@ I de følgende afsnit beskrives der hvordan testens data vil blive behandlet.
 
 \subsection{Funktionalitet}
 I testområdet funktionalitet undersøges der hvorvidt opgaverne stillet er mulige at løse for testpersonerne.
-Dermed testes der om brugergrænsefladen hindrer programmets funktionalitet. 
+Dermed testes der altså om brugergrænsefladen hindrer programmets funktionalitet. 
 
 \subsection{Effektivitet}
 Effektivitet anses som værende forholdet mellem en ekspert og en nybegynders tid, for at udføre en given opgave.\citep{UIEffeciency}
@@ -97,10 +94,10 @@ Spørgeskemaet kan ses i \myref{bilag:SporgeSkema}. \citep{UISatisfaction}
 
 Grundet tidspres bl.a. fra fejl med databasen, var der kun tid til at teste på fire personer, samt eksperten.
 Personerne der udførte testene, bestod af elever på Aalborg Universitet, som ikke havde set eller på anden vis hørt om projektet før.
-Resultaterne kan ikke konkluderes til at give et endegyldigt svar på om programmet kan bruges i sejlklubben Sundet, da de ingen kendskab har til sejlklubben, og deres behov.
+Resultaterne kan ikke konkluderes til at give et endegyldigt svar på om programmet kan bruges i sejlklubben Sundet, da testpersonerne ingen kendskab har til sejlklubben, og deres behov.
 For at få et mere brugbart resultat fra testen, skulle testpersonerne være en repræsentativ gruppe af medlemmer fra sejlklubben, eller på anden vis være indblandet med en sejlklub. 
 På denne måde, ville testpersonen have en bedre forståelse for, kravene til programmets funktionalitet.
-Dog menes det at testens resultater alligevel kan sige noget om brugen af programmet, både om navigering og de testede funktioner.
+Dog menes det at testens resultater alligevel kan sige noget om brugen af programmet, både om navigering og de testede funktionaliteter.
 \subsection{TestData}
 På \myref{tab:TestTimeTable} kan der ses en tabel over tid brugt ved hver opgave for hver enkelt testperson, sammenlignet med ekspertens tid.
 
@@ -147,10 +144,10 @@ Den tiltænkte løsning af opgaven er:
 
 T1 og T2 havde svært ved det 3. skridt i opgaven.
 Fælles var at de havde brugt over to minutter på netop dette skridt.
-Efter udførelse af testen blev de bedt om at uddybe, hvorfor dette var sådan.
+Efter udførelse af testen blev de bedt om at uddybe, hvad dette skyldtes.
 De mente begge at der var for meget støj på tabben ``Både'' og dette distraherede dem fra at finde den korrekte knap.
 T3 og T4 havde i kontrast ingen problemer med at gennemgå dette skridt, og brugte hver under fem sekunder på at finde den korrekte knap. 
-Eksperten brugte væsentligt mindre tid end T1 og T2, men sammenlignet T3 er forskellen betydeligt mindre.
+Eksperten brugte væsentligt mindre tid end T1 og T2, men sammenlignet med T3 er forskellen betydeligt mindre.
 
 \textbf{Testpersonernes forslag til forbedring af funktionalitet i denne opgave:}
 \begin{itemize}
@@ -170,7 +167,7 @@ Den tiltænkte løsning af opgaven er:
 \end{enumerate}
 
 T1 havde særlig svært ved regne ud, at man skal udføre det 3. skridt, før man kunne udføre det 4. skridt.
-T1 mente at der var for mange elementer i tabben ``Undervisning'' og at dette forvirrede ham fra at udføre opgaven, da de fjernede opmærksomheden fra CheckBoxen i toppen af tabben.
+T1 mente at der var for mange elementer i tabben ``Undervisning'' og at dette forvirrede i udførelsen af opgaven, da de fjernede opmærksomheden fra CheckBoxen i toppen af tabben.
 
 \textbf{Testpersonernes forslag til forbedring af funktionalitet i denne opgave:}
 \begin{itemize}
@@ -184,11 +181,11 @@ I opgave 8 blev testpersonerne bedt om at udfylde logbogen for en fuldført tur,
 Den tiltænkte løsning af opgaven er:
 \begin{enumerate}
     \item Log ind
-    \item Marker bådturen i det højre DataGrid på forsiden.
+    \item Marker sejlturen i det højre DataGrid på forsiden.
     \item Tryk på knappen ``Opret logbog''
     \item Tryk på knappen ``Ændre besætning''
     \item Fjern ``Kasper Eriksen''
-    \item Ændre ``Faktisk afgang''
+    \item Ændre den ``Faktisk afgang'' til 10:00
     \item Tryk på ``Ja'' under ``Er båden skadet?''
     \item Angiv vejrforhold og skadesrapport
     \item Tryk på knappen ``Udfør''
@@ -203,7 +200,7 @@ Eksperten havde ingen problemer med denne opgave og gennemførte opgaven på und
 \begin{itemize}
     \item Giv tydelig besked og instrukser efter log in, om at en logbog mangler at blive udfyldt.
     \item Forøg størrelsen af den forklarende tekst på forsiden til hver af de to DataGrids.
-    \item Øg afstanden fra velkomstbeskeden til de 2 DataGrids
+    \item Øg afstanden fra velkomstbeskeden til de to DataGrids
     \item Mindske højden af de to DataGrids, da de alligevel er hovedsageligt tomme. 
     \item Dediker en tab til læsning og udførelse af logbøger. 
 \end{itemize}
@@ -244,20 +241,20 @@ Foruden \myref{tab:vurderingtest} argumenterede testpersonerne også for deres v
 \textbf{Forside}: 
 Generelt kunne testpersonerne lide formålet med forsiden, som er at give brugeren et hurtigt overblik efter log in. 
 Dog mente flere at layoutet kunne have været udført bedre.
-Herunder større afstand fra velkomstteksten til de to DataGrids, større overskrifter ved hver DataGrid, mindre DataGrids da de hovedsageligt var tomme. 
+Herunder større afstand fra velkomstteksten til de to DataGrids, større overskrifter ved hver DataGrid, og lav de to DataGrids mindre da de hovedsageligt er tomme. 
 
 \textbf{Undervisning}: 
 Generel utilfredshed omkring denne UserControl.
-Specifikt var der klager om at der var CheckBoxes til at tjekke elevers deltagelse af. 
+Specifikt var der klager om at der blev brugt CheckBoxes til at tjekke elevers fremmøde. 
 Her mente flere at CreateCrewWindow-vinduet kunne have været anvendt. 
 Derudover tilføjede den højre side af vinduet, der havde et layout som lignede CreateCrewWindow-vinduet, forvirring. 
 Der var også negative kommentarer omhandlende CheckBoxen ``Rediger hold''. 
 Flere fandt denne unødvendig, mens en anden mente af det indhold denne låste op for, burde have sit eget dedikerede popup vindue.
 
 \textbf{Medlemmer}:
-Testpersonerne skulle ikke bruge dette vindue i nogen af de stilne opgaver.
-Derfor fik de vist dette vindue efter testens gennemførsel, så ledes de kunne kommentere tabbens indhold. 
-Der var generelt positive kommentarer, dog mente T4, at den store mænge data virkede overvældende. 
+Testpersonerne skulle ikke bruge dette vindue i opgaverne.
+Derfor fik de vist dette vindue efter testens gennemførsel, således de kunne kommentere tabbens indhold. 
+Der var generelt positive kommentarer, dog mente T4, at den store mængde data virkede overvældende. 
 T3 og T4 mente at søgebaren ikke var klart nok markeret, og foreslog at der kunne tilføjes et ``loop''-ikon. 
 
 \textbf{Både}:
@@ -271,23 +268,23 @@ Flere mente at brugen af ListBoxen burde have været erstatte med et DataGrid, s
 
 \textbf{Logbogsvinduerne}:
 Kritikken af disse var primært rettet mod navigeringen til vinduet. 
-Der var uenighed imellem testpersonernes vurdering af vinduets design, en mente at elementene i det 2 spaltede layout var uoverskueligt, særligt pga. rækkefølgen af disse. 
+Der var der uenighed imellem testpersonernes vurdering af vinduets design, en mente at elementerne i det 2 spaltede layout var uoverskueligt, særligt pga. rækkefølgen af disse. 
 Mens en anden udtrykte positive tanker om layoutet.
 
 \textbf{CreateCrewWindow}
-Om dette vindue var der næsten kun positive kommentarer.
-Vinduet blev omtalt som værende overskueligt, dog kunne DataGridet til venstre godt have været større.
-T3 foreslog at dette kunne have samme størrelse med det til venstre. 
-Her blev søgefunktionen igen overset, igen blev der foreslået tilføjelsen af et ``loop''-ikon.
+Der var næsten kun positive kommentarer om dette vindue.
+Vinduet blev omtalt som værende overskueligt, dog mente de det venstre DataGrid burde være større.
+T3 foreslog at dette kunne have samme størrelse som det til højre. 
+Her blev søgefunktionen igen overset, og der blev igen foreslået tilføjelsen af et ``loop''-ikon.
 
 \textbf{CreateBoatBookingWindow}
 Der var meget få kritikpunkter til dette vindue.
-T4 mente at knapperne ``Gem reservation'' og ``Annuller reservation'' var for brede, og burde være placeret således de lignede dem fra windows vinduer såsom egenskaber. 
+T4 mente at knapperne ``Gem reservation'' og ``Annuller reservation'' var for brede, og burde være placeret således de lignede dem fra windows vinduer såsom ``egenskaber''. 
 Altså hvor de er placeret nederst i højre hjørne, på linje med hinanden. 
 
 \subsection{Konklusion af brugertest}
 Brugertesten har givet os en større indsigt i programmets layout.
-Målene for layoutet var minimalisme og konsistens, men dette er ikke sket, da problemer i arbejdsprocessen, se \myref{sec:faktiske-arbejdsproces}.
+Målene for layoutet var minimalisme og konsistens, men dette er ikke opnået, grundet problemer i arbejdsprocessen, se \myref{sec:faktiske-arbejdsproces}.
 
 På baggrund af brugertesten, etableres det at nogle dele af brugergrænsefladen er bedre konstrueret end andre.
 De bedste vurderes til at være vinduerne: \textbf{CreateCrewWindow} og \textbf{CreateBoatBookingWindow}. 
@@ -297,4 +294,4 @@ Ud fra testpersonernes kommentarer kunne de resterende vinduers og UserControls 
 Særligt skulle tabben ``Undervisning'' og tabben ``Både'' forbedres.
 Konkrete forslag til disse forbedringer er givet af testpersonerne, disse udtrykker projektgruppen enighed i. 
 
-Men da projektgruppen ikke har en begrænset mænge tid, bliver disse rettelser ikke implementeret. 
+Men da projektgruppen har en begrænset mængde tid, bliver disse rettelser ikke implementeret. 
