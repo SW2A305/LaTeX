@@ -1,42 +1,36 @@
 \chapter{Teknologianalyse}\label{chap:teknologi-analyse}
 
-I det følgende kapitel findes en analyse af de programmer, som på nuværende
-tidspunkt er state of the art inden for administration af sejlklubber.
+I det følgende kapitel findes en analyse af de programmer, som på nuværende tidspunkt er state of the art inden for administration af sejlklubber.
 
 
 \section{Management systemer}\label{subsec:management-systemer}
 
-Et system som med fordel kunne anvendes til at administrere en fritidsklub, som en sejlklub, er et management system. Et management system er et
-framework af processer og procedurer, som bruges til administration af frivillige organisationer og
-virksomheder. 
+Et system som med fordel kunne anvendes til at administrere en sejlklub, er et management system.
+Et management system er et framework af processer og procedurer, som bruges til administration af organisationer og virksomheder.\fxnote{Nikolaj: Skal " af organisationer og virksomheder" ikke bare slettes?}
 Eksempler på management systemer findes i \myref{sec:sota}. 
-Mere præcist er SailingClubManager et management system, som har en \ac{GUI} i web browseren. Dette er i kontrast til en konsol applikation, eller en nativ \ac{GUI}.
+Mere præcist er SailingClubManager et management system, som har en \ac{GUI} i web browseren.\fxnote{Niikolaj: Bør der stå noget om et specifikt system her?}
+Dette er i kontrast til en konsol applikation, eller en nativ \ac{GUI}.
 
-Ved at anvende et management system kan en klub eller forening, forudsat at systemet er succesfuldt, mindske den
-tid, der bruges på papirarbejde. Ifølge
-\citet{Frivilligrapporten} er 26\% af de arbejdsopgaver, som findes for frivillige, sekretariatsarbejde og
-administrativt arbejde. 
-Med et godt management system kan de administrative opgaver derved bringes ned på mindre tid. 
+Ved at anvende et management system kan en klub eller forening, forudsat at systemet er succesfuldt, mindske den tid, der bruges på papirarbejde. 
+Ifølge \citet{Frivilligrapporten} er 26\% af de arbejdsopgaver, som findes for frivillige, sekretariatsarbejde og administrativt arbejde. \fxnote{Nikolaj: Måske der skrives om på sætningen og kilden sættes passivt}
+Med et godt management system kan de administrative opgaver bringes ned på mindre tid. 
 Derved kan de frivillige bruge deres tid på mere interessante ting for organisationen, eller bruge den ekstra tid på noget andet og derved gøre de frivilliges arbejde nemmere.
 
 
 \section{State of the art}\label{sec:sota}
 
-For at kunne udvikle et godt produkt, der skal kunne bruges i en bådklub, er det vigtigt, at se på hvilke
-produkter der allerede er på markedet, altså hvad er ``state of the art''. 
+For at kunne udvikle et godt produkt, der skal kunne bruges i en bådklub, er det vigtigt, at se på hvilke produkter der allerede er på markedet, altså hvad er ``state of the art''. 
 I denne forbindelse er der fundet forskellige produkter, som har nogle af de features der efterspørges i et system til en bådklub.
 
 
 \subsection*{BoatCloud}
 
-BoatCloud er udviklet af Anderson Software. \citep{BoatCloud} 
+BoatCloud er udviklet af Anderson Software \citep{BoatCloud}.
 BoatCloud består af 3 applikationer, StackTrack, VesselValet og Service Request. 
 StackTrack benyttes, når medlemmerne selv sejler deres både, hvorimod VesselValet, er når der skal tjenere og passagerer med ombord på bådene. 
-BoatCloud applikationerne er derfor mere designet til
-en bådklub, som passer på medlemmernes både, fremfor klubbens egne både. 
-I applikationerne kan medlemmerne melde, at de vil sejle på et bestemt tidspunkt. 
-Medlemmet kan få klubben til at vaske båden, tanke den, og
-fylde den op med diverse snacks, alt sammen registreres igennem denne webbaserede applikation. 
+BoatCloud applikationerne er derfor mere designet til en bådklub, som passer på medlemmernes både, fremfor at klubben har både. 
+I applikationerne kan medlemmerne meddele, at de vil sejle på et bestemt tidspunkt. 
+Medlemmet kan få klubben til at vaske båden, tanke den, og fylde den op med diverse snacks, alt sammen registreres igennem denne webbaserede applikation. 
 Applikationen tager imod alle disse bestillinger i realtime, og 24 timer i døgnet. 
 Herudover bliver der sendt e-mails ud til medlemmerne, når de har lavet en bestilling. 
 Man kan logge ind som administrator, og her kan man se alle reservationer, der er lavet, samt have mulighed for at se yderligere detaljer om hver enkelt reservation.
@@ -46,8 +40,9 @@ Man kan logge ind som administrator, og her kan man se alle reservationer, der e
 
 En anden applikation der findes er Sailing Club Manager \citep{SailClub}. 
 Denne applikation er også webbaseret, og gør det muligt for en bådklub at tilføje hvilke både der er, samt hvor de er fortøjet i havnen. 
-Man kan i en kalender lave begivenheder og reservationer, samt medlemstilmeldelse til forskellige begivenheder. Applikationen kan også bruges som kontaktmedium for klubben til deres medlemmer. 
-Klubben kan sætte et e-mail system op, samt tilføje et template som bliver sendt med hver enkelt e-mail. Applikationen kan endvidere holde styr på økonomien, man kan tilføje en bankkonto, samt  holde styr på fakturaer, og endda sende dem og håndtere det online. 
+Man kan i en kalender lave begivenheder og reservationer, desuden er der medlemstilmeldelse til forskellige begivenheder. Applikationen kan også bruges som kontaktmedium for klubben til deres medlemmer. 
+Klubben kan sætte et e-mail system op, samt tilføje et template, som bliver sendt med hver enkelt e-mail.
+Applikationen kan endvidere holde styr på økonomien, man kan tilføje en bankkonto, samt  holde styr på fakturaer, og sende dem og håndtere det online. 
 Man kan tilføje medlemsskaber, med forskellige oplysninger omkring medlemmerne der har netop dette medlemsskab i klubben.
 
 \subsection*{ForeningLet}
@@ -56,9 +51,8 @@ ForeningLet er en applikation, som adskiller sig fra de andre ved ikke at henven
 Applikationen er web-baseret og har mange nyttige funktioner for en sejlklub som Sundet. 
 Applikationen har en medlemsdatabase, et regnskabssystem samt en kontaktfunktion som kan benytte både e-mail og SMS. 
 Der kan også opkræves betalinger fra medlemmerne gennem systemet. 
-Applikationen har også en reservationsfunktioner, hvilket kunne specielt klubber som Sundet kunne anvende til at administrere  udlejning af deres både. 
+Applikationen har også en reservationsfunktioner, hvilket klubber som Sundet kunne anvende til at administrere udlejning af deres både. 
 Desuden kan der oprettes begivenheder i applikationen, som medlemmerne også kan tilmelde sig gennem applikationen. ForeningLet giver også foreningen mulighed for at oprette deres egen hjemmeside samt deres egen online butik. 
-
 
 Ud fra undersøgelsen af disse tre programmer er flg. features fundet i applikationerne:
 
@@ -79,7 +73,7 @@ Ud fra undersøgelsen af disse tre programmer er flg. features fundet i applikat
 Ud fra state of the art afsnittet kan der konkluderes at der findes programmer som administerer udlån/udlejning af både.
 Specielt ForeningLet har denne funktion, hvilket netop ville være en funktion som Sejlklubben Sundet ville kunne benytte sig af.
 Flere af funktionerne, som findes på tværs af de tre programmer, anses for at være relevante for dette projekt, og vil derfor blive taget med videre til problemløsningsdelen.
-Dog er der ikke nogen af disse tre programmer der har undervisningsfunktioner, hvilket var efterspurgt fra Sejlklubben Sundet, derfor menes der, at der her findes en mangel indenfor de produkter der allerede findes.
+Dog er der ikke nogen af disse tre programmer der har undervisningsfunktioner, hvilket var efterspurgt fra Sejlklubben Sundet. Derfor menes der, at der her findes en mangel indenfor de produkter der allerede findes.
 Netop manglen af undervisningsfunktioner kunne være en grund til at Sejlklubben Sundet ikke anvender en af disse produkter.
 Et produkt med undervisningsfunktioner vil derfor kunne indtage det "hul'' som de nuværende produkter har efterladt.
 
