@@ -24,7 +24,7 @@ På \myref{img:programNavigation} ses der hvordan navigeringen i programmet fore
 Brugeren ser nu hovedvinduet, hvilket er vinduet i midten med fem tabs i toppen.
 Antallet af tabs varierer alt efter hvilken position brugeren har i systemet, hvilket kan ses på \myref{tab:permissions}. 
 Fra forside tabben kan der navigeres til de andre tabs, som brugeren har adgang til.
-Pilene illustrerer de dialogbokse som brugeren kan åbne fra de forskellige tabs.
+Pilene illustrerer de dialogbokse, som brugeren kan åbne fra de forskellige tabs.
 Dialogboksene åbnes ved at trykke på knapper inde i tabben, f.eks. under  \textbf{Bådreservation} kan opret reservations dialogen åbnes ved at trykke på knappen \textit{Reserver Båden}. \fxnote{Troels: Omformuler den sidste sætning?}
 På samme måde åbnes de resterende dialoger ved tryk på knapper.
 Flere steder i programmet anvendes de samme dialogvinduer, f.eks. fra forsiden findes en mulighed for at ændre på en reservation, hvilket åbner en mindre modificeret udgave af reservations dialogen, hvorfra besætningsvælgerdialogen også kan åbnes.
@@ -60,7 +60,7 @@ Forskellen på logbogsdialogen på forsiden og den under bådreservation, er at 
 \end{table}
 
 \section{Hovedvinduet} \fxnote{Troels: skal dette komme før eller efter navigationsdiagrammet?}
-Hovedvinduet tilgås via loginvinduet, som starter ved programstart eller ved at trykke på ``log ud´''-knappen inde fra hovedvinduet selv. \fxnote{Troels: Forvirende sætning}
+Hovedvinduet tilgås via loginvinduet, som starter ved programstart eller ved at trykke på ``log ud''-knappen inde fra hovedvinduet selv. \fxnote{Troels: Forvirende sætning}
 Der findes fire udgaver af hovedvinduet, forskellen mellem dem er, hvilke tabs der er aktive.
 Hver tab indeholder forskellige funktioner, samlet set findes følgende tabs:
 \begin{itemize}% Denne skulle måske relatere til tabel tab:permission
@@ -73,13 +73,13 @@ Hver tab indeholder forskellige funktioner, samlet set findes følgende tabs:
 
 Via hver af disse tabs, vil der være adgang til programmets forskellige funktionaliteter.
 Programmet er lavet til at køre i opløsningen 1024x720 pixels.
-Denne opløsning er valgt for at understøtte alt fra bærbare, med opløsninger som 1366x768 pixels i et vindue, og op til FullHD (1920x1080 pixels). 
+Denne opløsning er valgt for at understøtte alt fra bærbare, med opløsninger som 1366x768 pixels i et vindue, og op til FullHD (1920x1080 pixels).\fxnote{Nikolaj: ``..alt fra bærbar'', ligger op til at der kommmer noget i stil med ``til smartphones''}
 Stort set alle computerskærme har en opløsning større end 1024x720 pixels \citep{resolutions}. 
 Programmet har et lyst farveskema; med farverne lyseblå og hvid som primære farver.
 
 \section{UserControls}
 Der anvendes UserControls til at kode både brugergrænsefladen og den tilhørende Code-Behind.
-Hver usercontrol, kan ses inkluderet på \myref{programNavigation}
+Hver usercontrol kan ses på \myref{img:programNavigation}
 
 \subsection{DateTimePicker}\label{subsec:DateTimePicker}
 
@@ -96,10 +96,10 @@ Hver usercontrol, kan ses inkluderet på \myref{programNavigation}
 
 \textbf{Formål}: 
 Denne UserControl er lavet, da der ikke fandtes en tilfredsstillende løsning, som gjorde det muligt at vælge både dato og tidspunkt i samme control. 
-Det er ofte nødvendigt at vælge både dato og tidspunkt samtidigt. 
+Det er ofte nødvendigt at vælge både dato og tidspunkt samtidigt i programmet. 
 
 \textbf{BrugerGrænseflade}: 
-Den består af en DatePicker, og en TimePicker som findes i extended WPF toolkit.
+Den består af en DatePicker og en TimePicker, som findes i extended WPF toolkit.
 
 \textbf{Code-Behind}: 
 Der er lavet en specifik getter og setter for UserControlen, som udnytter både controllens DatePicker og TimePicker.
@@ -114,7 +114,7 @@ Fra forsiden kan man ændre og slette sine reservationer, samt starte oprettelse
 
 \textbf{Brugergrænseflade}: 
 Brugergrænsefladen på forsiden består primært af to DataGrids: Det venstre DataGrid viser brugerens kommende sejlture, og det højre viser de sejlture brugeren mangler at udfylde logbøger for. 
-Under dem er der knapper, som bliver aktive efter en markering er udført ved, at trykke på en af rækkerne i knappernes tilhørende datagrid.
+Under dem er der knapper, som bliver aktive, efter en markering er udført ved at trykke på en af rækkerne i knappernes tilhørende datagrid.
 
 \textbf{Code-Behind}: 
 For kun at vise de sejlture hvor personen, som er logget ind deltager i, anvendes der standard query operatorer. 
@@ -123,11 +123,11 @@ I listing \ref{fntpg-cb} er der et udsnit af koden, nærmere bestemt den del som
 Begge udtryk returnerer en IEnumerable, som derefter assignes som ItemsSource til hvert DataGrid.
 
 \begin{lstlisting}[frame=single, caption=Forsidens Code-Behind, label=fntpg-cb]
-// Sets the trips for the person currently logged in while only getting the ones in the furture to the DataGrid ItemsSource
+// Sets the trips for the person currently logged in while only getting the ones in the future to the DataGrid ItemsSource
 UpcommingTripsDataGrid.ItemsSource =
     sailTripList.Where(t => t.Crew.Select(p => p.PersonId).Contains(usrId))
         .Where(t => t.DepartureTime > DateTime.Now);
-// Sets trips created by the current user which happend in the past while also missing a logbook, as the other DataGrids ItemsSource 
+// Sets trips created by the current user which happened in the past while also missing a logbook, as the other DataGrids ItemsSource 
 LogbookDataGrid.ItemsSource =
     sailTripList.Where(t => t.Captain.PersonId == usrId && t.ArrivalTime < DateTime.Now && t.Logbook == null);
 \end{lstlisting}
@@ -144,7 +144,8 @@ Efter valg af båd opdateres de resterende elementer i UserControllen.
 Her kan der ses et DataGrid med udfyldte logbøger samt et andet DataGrid med kommende reservationer på båden.
 Det er muligt at vise og ændre felterne i begge DataGrids.\fxnote{Det kan man kun i det ene, som sådan. Man kan give et svar på skadesrapporten i det ene, ellers kan man ikke ændre dem.}
 Som administrator kan man også svare på logbogens skadesrapport.
-Foruden disse funktionaliteter kan man også herinde reservere den valgte båd samt har administratorer mulighed for at tilføje og redigere både.
+Foruden disse funktionaliteter kan man også herinde reservere den valgte båd.
+Desuden har administratorer mulighed for at tilføje og redigere både.
 
 \textbf{Code-Behind:}
 Den bagvedliggende kode henter data fra databasen og opdaterer de grafiske elementer med dataet.
@@ -174,7 +175,7 @@ Denne kan ikke interageres med men viser blot hvilke læringsområde brugeren ha
 \subsection{Event UserControl}\fxnote{Troels: Hvorfor står der her usercontrol når det er under usercontrols?}
 \textbf{Formål:}
 UserControllen Event bruges til at se informationer om kommende begivenheder i sejlklubben, samt til at tilmelde sig begivenhederne. 
-Hvis man er administrator kan der også oprettes nye begivenheder, redigering og sletning af eksisterende begivenheder.
+Hvis man er administrator kan man også oprette nye begivenheder, redigere og slette eksisterende begivenheder.
 
 \textbf{Brugergrænseflade:}
 Brugergrænsefladen består af to ListBoxe og nogle knapper.
@@ -182,9 +183,9 @@ I den første ListBox bliver begivenheder vist med navn, dato og om  hvorvidt de
 I den næste ListBox vises beskrivelsen af begivenheden, som opdateres når der klikkes på en begivenhed i den førnævnte ListBox. 
 
 \textbf{Code-Behind:}
-Den bagvedliggende kode henter allerede oprettede begivenheder fra databasen. 
+Den bagvedliggende kode henter oprettede begivenheder fra databasen. 
 Ved oprettelse, redigering og sletning skrives ændringerne til databasen. 
-Ved tilmelding tilføjes personen, som er logget ind, til listen over tilmeldte personer. 
+Ved tilmelding tilføjes personen, som er logget ind, til listen over tilmeldte personer.\fxnote{Nikolaj: Skal måske laves om hvis programmet bliver lavet om til kun at hente og gemme data ved start og lukning}
 
 \section{Vinduer}\fxnote{Pop-up Vinduer istedet ? (Søren)}
 Alle vinduer beskrevet i dette afsnit kan ses på \myref{img:programNavigation}. 
@@ -196,7 +197,7 @@ Login brugergrænsefladen har til formål at verificere en brugers identitet.
 Det er det første vindue brugeren ser når programmet åbnes, og det åbner hovedvinduet efter succesfuldt login.
  
 \textbf{Brugergrænseflade}: 
-Brugergrænsefladen til loginvinduet er meget simpel og ligetil. 
+Brugergrænsefladen til loginvinduet er meget simpel og ligetil.\fxnote{Nikolaj: Talesprog?}
 Der er en TextBox til brugernavnet og en PasswordBox til kodeordet.
 En PasswordBox er en TextBox, hvor hver af de indtastede karakterer vises som en sort prik, i stedet for de skrevne tegn, for at beskytte brugeren.
 Knappen ``Login som gæst'' kræver ingen brugeroplysninger og åbner en let udgave af hovedvinduet, uden særlige tilladelser.
@@ -208,8 +209,7 @@ PasswordTextBoxen er case sensitive.
 
 \subsection{CreateBoatBookingWindow}
 \textbf{Formål}: 
-Dette vindue opretter, eller ændrer, en instans af RegularTrip.
-Det vil sige en bådreservation. 
+Dette vindue opretter eller ændrer en instans af RegularTrip, det vil sige en bådreservation. 
 
 \textbf{Brugergrænseflade}: 
 Først benyttes en ComboBox til at vælge hvilken båd der skal reserveres.
