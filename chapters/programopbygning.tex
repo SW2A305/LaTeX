@@ -9,12 +9,12 @@ I dette kapitel vil programmets opbygning blive beskrevet. Først vil programmet
 
 På \myref{img:Program_flow}, ses den overordnede struktur af programmet.
 Nederst på figuren ses modelboksen, som repræsenterer modellaget, her findes de modeller vi anvender i programmet.
-Modellerne er forbundet til vores Dal, Data Abstraction Layer, hvilket er den generiske kontakt fra programmet ud mod databasen.
+Modellerne er forbundet til vores Dal (Data Abstraction Layer) hvilket er den generiske kontakt fra programmet ud mod databasen.
 Fra den generiske IDal findes der forbindelser ud til et SQLite Dal og et Entity Framework Dal, som hver i sær har forbindelse til de databaser de hører til.
 Ideen ved det generiske IDal er at der let kan skiftes mellem forskellige databaser, dette vil blive uddybet i \myref{chap:database}.
 Over IDal og Model findes Code-Behind og UI'en.
 Code-Behind og UI er forbundet da UI-filerne kun indeholder grafiske elementer og Code-Behind filerne indeholder det kode som UI'en har brug for til at fungere.
 Code-Behind filerne er også i direkte kontakt med IDal for at kunne tilgå data i databasen.
 Yderligere har Code-Behind også kendskab til modellaget, illustreret med en stiplet linje.
-Code-Behind har behov for kendskab til modellerne, da der flere steder i koden har været brug for at instantiere modellerne for at håndtere data. 
+Code-Behind har behov for kendskab til modellerne, da der, flere steder i koden, har været brug for at instantiere modellerne for at håndtere data. 
 
