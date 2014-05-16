@@ -2,7 +2,7 @@
 
 Dette kapitel omhandler forsøget på at opnå persistens mellem kørsler af programmet.
 Det ønskes naturligvis at programmet kan lagre sit data, udenfor RAM, for at kunne bruge det igen senere. 
-Det var et fælles ønske fra gruppens side, at der blev brugt tid på at tilføje dette element til programmet.
+Det var et fælles ønske fra gruppens side, at der blev brugt tid på at tilføje dette element til programmet. 
 
 \section{Persistensløsninger}
 
@@ -20,9 +20,10 @@ Efter research, herunder rådgivning fra OOP lektor Rene Hansen, stod valget mel
 Den første af de to, \ac{EF}, er en Object-Relational Mapping (ORM), til dotNet Frameworket.\fxnote{Nikolaj: Bør der ikke stå: ``.Net''?}
 Et ORM skaber et billede af objekterne i hukommelsen i databasen. 
 Herunder var rådgivningen fra Rene Hansen, at anvende Code-First udvikling.
-Med Code-First designes objekterne først, i form af modelklasser, hvorefter databasen og tabellerne i denne genereres ud fra sammenkoblingen mellem de forskellige modeller. Denne sammenkobling sker i såkaldte migrations, som opretter, ændrer og sletter tabeller, afhængigt af ændringerne i de benyttede modeller.
-Fordelen ved denne løsning er, at mange tekniske valg træffes af programmet, så programmøren ikke behøver at have et kendskab til \ac{SQL} for at kunne benytte databasen og dermed persistens.
-Dette gør \ac{EF} til en attraktiv løsning for grupper, der gerne vil hurtigt i gang med at programmere en løsning, uden først at sætte sig ind i databaseprogrammering.
+Med Code-First designes objekterne først, i form af modelklasser, hvorefter databasen og tabellerne i denne genereres ud fra sammenkoblingen mellem de forskellige modeller. 
+Denne sammenkobling sker i såkaldte migrations, som opretter, ændrer og sletter tabeller, afhængigt af ændringerne i de benyttede modeller.
+Fordelen ved denne løsning er, at mange tekniske valg træffes af programmet, så programmøren ikke behøver at have et kendskab til \ac{SQL} for at kunne benytte databasen og dermed opnå persistens.
+Dette gør \ac{EF} til en attraktiv løsning for grupper\fxnote{Troels: Kun grupper ikke individer?}, der gerne vil hurtigt i gang med at programmere en løsning, uden først at sætte sig ind i databaseprogrammering.
 
 \subsubsection*{SQLite}
 Den anden kandidat er SQLite, som er et \ac{RDBMS}, hvilket betyder, at det benytter \ac{SQL} til de forskellige former for datahåndtering, såsom INSERT til at indsætte data, og SELECT til at hente data fra databasen.
@@ -44,7 +45,7 @@ Hver af disse operationer skal DAL'et udstille, og yderligere metoder kan tilfø
 
 \section{Den valgte løsning}
 
-Efter anbefaling fra OOP lektor Rene Hansen, valgte gruppen at fokusere på \acl{EF} med Code-First, grundet manglende kendskab til \ac{SQL}.\fxnote{Nikolaj: Det er blevet nævnt en gang, bør det slettes her?}
+Efter anbefaling fra OOP lektor Rene Hansen, valgte gruppen at fokusere på \acl{EF} med Code-First, grundet manglende kendskab til \ac{SQL}.\fxnote{Nikolaj: Det er blevet nævnt en gang, bør det slettes her?} 
 Det blev yderligere bestemt, at der skulle designes et \ac{DAL}, med henblik på at øge muligheden for at teste systemet.
 
 \subsection{Design af \ac{DAL}}
