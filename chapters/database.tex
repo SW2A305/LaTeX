@@ -1,11 +1,13 @@
 \chapter{Database}\label{chap:database}
 
-Dette kapitel vil omhandle valget af en løsningen, på at opnå persistens mellem kørsler af programmet.
-Det ønskes naturligvis at programmet kan lagre sit data, udenfor RAM, for at kunne bruge det igen senere, og det var et fælles ønske fra gruppens side, at der blev brugt tid på at tilføje dette element til programmet.
+Dette kapitel omhandler forsøget på at opnå persistens mellem kørsler af programmet.
+Det ønskes naturligvis at programmet kan lagre sit data, udenfor RAM, for at kunne bruge det igen senere. 
+Det var et fælles ønske fra gruppens side, at der blev brugt tid på at tilføje dette element til programmet.
 
 \section{Persistensløsninger}
 
-Der findes flere løsninger til denne problemstilling, der kan vælges en bestemt database ud fra de eksistrende databaser eller dataet kan gemmes på flade filer.
+Der findes flere løsninger til denne problemstilling. 
+Der kan vælges en bestemt database ud fra de eksisterende databaser eller dataet kan gemmes på flade filer.
 
 \subsection{Flade filer}
 En simpel løsning på persistensproblemet ville være at gemme alt data på en flad fil ved programlukning, og læse filen igen ved programmets opstart.
@@ -15,7 +17,7 @@ Denne løsningen bliver dog hurtig upraktisk, da flade filer ikke har samme evne
 Efter research, herunder rådgivning fra OOP lektor Rene Hansen, stod valget mellem to databaser: Entity Framework og SQLite.
 
 \subsubsection*{Entity Framework}
-Den første af de to, \ac{EF}, er en Object-Relational Mapping (ORM), til dotNet Frameworket.
+Den første af de to, \ac{EF}, er en Object-Relational Mapping (ORM), til dotNet Frameworket.\fxnote{Nikolaj: Bør der ikke stå: ``.Net''?}
 Et ORM skaber et billede af objekterne i hukommelsen i databasen. 
 Herunder var rådgivningen fra Rene Hansen, at anvende Code-First udvikling.
 Med Code-First designes objekterne først, i form af modelklasser, hvorefter databasen og tabellerne i denne genereres ud fra sammenkoblingen mellem de forskellige modeller. Denne sammenkobling sker i såkaldte migrations, som opretter, ændrer og sletter tabeller, afhængigt af ændringerne i de benyttede modeller.
@@ -29,7 +31,7 @@ At en database er embedded betyder, at den ikke kører i et separat program, men
 SQLite implementerer det meste af SQL-standarden, men udelader de dele, der af SQLite-udviklerne er bedømt til at være for tunge eller unødige til at have med.
 Målet med SQLite er at bibeholde letvægten, da systemet også benyttes på mange mobile enheder, såsom Android.
 
-Begge databaser blev implementeret under projektarbejdet, grundet komplikationer med første valget af database, Entity Framework. 
+Begge databaser blev implementeret under projektarbejdet, grundet komplikationer med førstevalget af database, Entity Framework. 
 
 
 \section{Database Abstraction Layer}
@@ -38,11 +40,11 @@ Dette gør det muligt at udskifte det underliggende persistenslag, samt at lave 
 Man udstiller et interface til programmet, som så anvendes, og ikke en direkte forbindelse.
 Hver tabel som findes i den database programmet skal anvende, skal have sin egen \ac{DAL}, som er logikken der forbinder til databasen.
 Der findes fire basale operationer til en database, kaldt CRUD: Create, Read, Update, Delete. 
-Hver af disse operationer skal DALet udstille, og yderligere metoder kan tilføjes efter behov.
+Hver af disse operationer skal DAL'et udstille, og yderligere metoder kan tilføjes efter behov.
 
 \section{Den valgte løsning}
 
-Efter anbefaling fra OOP lektor Rene Hansen, valgte gruppen at fokusere på \acl{EF} med Code-First, grundet manglende kendskab til \ac{SQL}.
+Efter anbefaling fra OOP lektor Rene Hansen, valgte gruppen at fokusere på \acl{EF} med Code-First, grundet manglende kendskab til \ac{SQL}.\fxnote{Nikolaj: Det er blevet nævnt en gang, bør det slettes her?}
 Det blev yderligere bestemt, at der skulle designes et \ac{DAL}, med henblik på at øge muligheden for at teste systemet.
 
 \subsection{Design af \ac{DAL}}
@@ -64,7 +66,7 @@ Interfacet definerer otte metoder, som beskrevet i \myref{tab:ourExtCrud}.
     \label{tab:ourExtCrud}
 \end{table}
 
-De konkrete interfaces defineres for hver modelklasse og implementeres i specifikke klasser, der snakker med et persistenslag.
+De konkrete interfaces defineres for hver modelklasse og implementeres i specifikke klasser, der kommunikerer med et persistenslag.
 For at gøre det lettere at udskifte \ac{DAL}-implementation, blev en statisk hjælpeklasse, \texttt{DalLocator}, oprettet, hvis opgave består i at returnere en implementation af et \ac{DAL}-interface. Hermed skal der kun foretages ændringer i en enkelt fil, hvis et nyt DAL tages i brug.
 På \myref{img:Program_flow} kan man se hvordan \ac{DAL} indgår i programmets struktur.
 
@@ -87,7 +89,7 @@ Det var på dette tidspunkt, at det udviklede \acl{DAL} viste sin styrke, da hel
 Den implementerede løsning er relativt simpel i sin konstruktion, især i forhold til \acl{EF}.
 Dette blev gjort for at sikre, at det ikke ville tage mere end et par dage at implementere og teste.
 
-SQLites enkeltbruger-design har dog også givet lidt problemer, idet databasen til tider angiver, at den er låst af en anden proces.
+SQLites enkeltbruger-design har dog også givet problemer, idet databasen til tider angiver, at den er låst af en anden proces.
 Disse problemer kan forårsages af flere ting, og virker til at opstå tilfældigt, så det er svært at forudse, hvor og hvornår det vil ske.
 
 \subsection{Ekstra implementation --- Mock-data}
