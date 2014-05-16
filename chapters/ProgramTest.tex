@@ -5,7 +5,7 @@ I dette kapitel, beskrives de to typer af tests der er udført i forbindelse med
 Til test af selve koden er der benyttet Unit tests.
 Unit tests tester metoder, properties, klasser og assemblies. \fxnote{Assemblies?? (Søren)}
 Når man har lavet en metode, så forventer man, som regel, et bestemt resultat.
-Unit test af metoden fungerer ved, at man giver metoden, som skal testes, et input, og ser om man får det forventede resultat.
+Unit test af en metode fungerer ved, at man giver metoden, som skal testes, et input, og ser om man får det forventede resultat.
 
 Til Unit tests bruges frameworket NUnit, som er lavet til .NET platformen. 
 Det er ikke alt kode, som bliver testet, men udvalgte kodestykker.
@@ -30,14 +30,14 @@ public void SetMemberId_InputSimpleNumberString_ShouldSetMemberIdToNumericValue(
 I dette afsnit forklares fremgangsmåden for brugertests i forbindelse med programmets brugervenlighed.
 Derudover ses der nærmere på hvordan resultaterne bruges, hvorfra der kan dannes et overblik over programmets funktionalitet. 
 
-For at teste programmet anvendes der, foruden unit tests i dette projekt, en række brugertests, som tager udgangspunkt i projektets UserStories\myref{User_stories}.
+For at teste programmet anvendes der, foruden unit tests i dette projekt, en række brugertests, som tager udgangspunkt i projektets UserStories\myref{User_stories}.\fxnote{Nikolaj: Burde man ikke skrive i metateksten at der anvendes brugertests?}
 Denne type test ligger fokus på uafhængige brugers mening om programmets brugervenlighed.
-Testens form er inspireret af black-box testing, som også er blevet brugt i forbindelse med udviklingen af programmet, normalt ellers udføres af udviklerne selv.
+Testens form er inspireret af black-box testing, som også er blevet brugt i forbindelse med udviklingen af programmet, normalt ellers udføres af udviklerne selv.\fxnote{Nikolaj: Det sidste giver ikke mening}
 
 Da programmet er lavet med henblik på brug i en sejlklub, består målgruppen af mange forskellige befolkningssegmenter. 
 Idet det er et computerprogram, er det eneste krav til målgruppen, at de er villige til at bruge en computer.
 
-Ud fra programmets funktionaliteter dannes der nogle mål som brugerene skal opnå igennem testen. 
+Ud fra programmets funktionaliteter dannes der nogle mål som brugerne skal opnå igennem testen. 
 Der defineres en række testscenarier med udgangspunkt i de mål der blev sat for testen.
 Disse mål er:
 \begin{itemize}
@@ -53,11 +53,13 @@ Ud fra disse mål er der skrevet en række korte opgaver, som berører bestemte 
 Opgaverne kan findes i \myref{BrugerTestCases}.
 
 Dette bilag vil blive vist til testpersoner af programmet, og de vil blive observeret under testen. 
-Efter udførelsen af testen spørges der ind til testpersonens oplevelse af programmet med henblik på funktionalitet, brugergrænsefladens design, og deres helhedsindtryk.
+Efter udførelsen af testen spørges der ind til testpersonens oplevelse af programmet med henblik på funktionalitet, brugergrænsefladens design og deres helhedsindtryk.
 
 En opgave kunne eksempelvis være:
 \begin{itemize}
-	\item Log ind på systemet med følgende brugeroplysninger: oskar og lauridsen
+	\item Log ind på systemet med følgende brugeroplysninger:
+	\newline - Brugernavn: oskar
+	\newline - Kodeord: lauridsen
 	\item Foretag en booking af båden: Anna til næste lørdag, med følgende andre oplysninger: 
 	\begin{itemize}
 		\item Starttidspunkt: 20-07-2014 13:37
@@ -71,14 +73,14 @@ En opgave kunne eksempelvis være:
 
 Samtidigt udfyldes et skema med tidsforbrug af hver enkelt opgave, samt kommentarer omkring brugerens færden i programmet.
 
-I de følgende afsnit beskrives der hvordan testens data vil blive behandlet.
+I de følgende afsnit beskrives der, hvordan testens data vil blive behandlet.
 
 \subsection{Funktionalitet}
 I testområdet funktionalitet undersøges der hvorvidt opgaverne stillet er mulige at løse for testpersonerne.
 Dermed testes der altså om brugergrænsefladen hindrer programmets funktionalitet. 
 
 \subsection{Effektivitet}
-Effektivitet anses som værende forholdet mellem en ekspert og en nybegynders tid, for at udføre en given opgave.\citep{UIEffeciency}
+Effektivitet anses som værende forholdet mellem en ekspert og en nybegynders tid, for at udføre en given opgave \citep{UIEffeciency}.
 Derfor tages der tid på udførelsen af, hver enkelt opgave som testpersonen udfører.
 Eksperten vil være et medlem af projektgruppen, som ikke var observatør i nogen af de andre testpersoners test. 
 
@@ -92,9 +94,9 @@ Spørgeskemaet kan ses i \myref{bilag:SporgeSkema}. \citep{UISatisfaction}
 
 \section{Analyse af testresultater}
 
-Grundet tidspres bl.a. fra fejl med databasen, var der kun tid til at teste på fire personer, samt eksperten.
+Grundet tidspres, bl.a. fra fejl med databasen, var der kun tid til at teste på fire personer, samt eksperten.
 Personerne der udførte testene, bestod af elever på Aalborg Universitet, som ikke havde set eller på anden vis hørt om projektet før.
-Resultaterne kan ikke konkluderes til at give et endegyldigt svar på om programmet kan bruges i sejlklubben Sundet, da testpersonerne ingen kendskab har til sejlklubben, og deres behov.
+Resultaterne kan ikke konkluderes til at give et endegyldigt svar på om programmet kan bruges i Sejlklubben Sundet, da testpersonerne ingen kendskab har til sejlklubben og deres behov.
 For at få et mere brugbart resultat fra testen, skulle testpersonerne være en repræsentativ gruppe af medlemmer fra sejlklubben, eller på anden vis være indblandet med en sejlklub. 
 På denne måde, ville testpersonen have en bedre forståelse for, kravene til programmets funktionalitet.
 Dog menes det at testens resultater alligevel kan sige noget om brugen af programmet, både om navigering og de testede funktionaliteter.
@@ -128,7 +130,7 @@ Det lykkedes for testpersonerne at udføre alle opgaverne.
 
 \subsection{Diskussion af test data}
 
-Nogle opgaver var tydeligt sværere end andre for personer som ikke havde kendskab til programmets brugergrænseflade. 
+Nogle opgaver var tydeligt sværere end andre for personer, som ikke havde kendskab til programmets brugergrænseflade. 
 Særligt var opgave 2, 7, og 8 udfordrende.
 
 
@@ -176,7 +178,7 @@ T1 mente at der var for mange elementer i tabben ``Undervisning'' og at dette fo
 \end{itemize}
 
 
-I opgave 8 blev testpersonerne bedt om at udfylde logbogen for en fuldført tur, som brugeren de anvendt havde reserveret, og derfor skulle udføre logbogen for.
+I opgave 8 blev testpersonerne bedt om at udfylde logbogen for en fuldført tur, som brugeren, de var logget ind som, havde reserveret, og derfor skulle udføre logbogen for.
 
 Den tiltænkte løsning af opgaven er:
 \begin{enumerate}
@@ -241,7 +243,7 @@ Foruden \myref{tab:vurderingtest} argumenterede testpersonerne også for deres v
 \textbf{Forside}: 
 Generelt kunne testpersonerne lide formålet med forsiden, som er at give brugeren et hurtigt overblik efter log in. 
 Dog mente flere at layoutet kunne have været udført bedre.
-Herunder større afstand fra velkomstteksten til de to DataGrids, større overskrifter ved hver DataGrid, og lav de to DataGrids mindre da de hovedsageligt er tomme. 
+Herunder større afstand fra velkomstteksten til de to DataGrids, større overskrifter ved hver DataGrid, og lave de to DataGrids mindre da de hovedsageligt er tomme. 
 
 \textbf{Undervisning}: 
 Generel utilfredshed omkring denne UserControl.
@@ -294,4 +296,4 @@ Ud fra testpersonernes kommentarer kunne de resterende vinduers og UserControls 
 Særligt skulle tabben ``Undervisning'' og tabben ``Både'' forbedres.
 Konkrete forslag til disse forbedringer er givet af testpersonerne, disse udtrykker projektgruppen enighed i. 
 
-Men da projektgruppen har en begrænset mængde tid, bliver disse rettelser ikke implementeret. 
+Da projektgruppen har en begrænset mængde tid, bliver disse rettelser ikke implementeret. 
