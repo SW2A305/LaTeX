@@ -1,16 +1,16 @@
 \chapter{Test af program}\label{test_af_program}
-I dette kapitel, beskrives de to typer af tests der er udført i forbindelse med projektet.
+I dette kapitel, beskrives de to typer af tests der er udført i forbindelse med projektet. 
 
 \section{Unit test}
 Til test af selve koden er der benyttet Unit tests.
 Unit tests tester metoder, properties, klasser og assemblies. \fxnote{Assemblies?? (Søren)}
-Når man har lavet en metode, så forventer man, som regel, et bestemt resultat.
+Når man har lavet en metode, så forventer man, som regel, et bestemt resultat. \fxnote{Troels: Ved et givent input.}
 Unit test af en metode fungerer ved, at man giver metoden, som skal testes, et input, og ser om man får det forventede resultat.
 
 Til Unit tests bruges frameworket NUnit, som er lavet til .NET platformen. 
 Det er ikke alt kode, som bliver testet, men udvalgte kodestykker.
 Disse udvalgte kodestykker er valgt på baggrund af deres relevans for den overordnede struktur i programmet. \fxnote{Skal vi nævne noget med at det også er fordi de var lettere at lave tests til??}
-Blandt andet bliver klasserne testet.
+Blandt andet bliver klasserne testet. \fxnote{Troels: Hvad menes der med klasser? er alt ikke inden i en klasse?, menes der her modeller eller hvad?}
 
 Et eksempel på en unit test kan ses på \myref{unit_test}.
 Først bliver MemberId sat til værdien 3. 
@@ -32,7 +32,7 @@ Derudover ses der nærmere på hvordan resultaterne bruges, hvorfra der kan dann
 
 For at teste programmet anvendes der, foruden unit tests i dette projekt, en række brugertests, som tager udgangspunkt i projektets UserStories\myref{User_stories}.\fxnote{Nikolaj: Burde man ikke skrive i metateksten at der anvendes brugertests?}
 Denne type test ligger fokus på uafhængige brugers mening om programmets brugervenlighed.
-Testens form er inspireret af black-box testing, som også er blevet brugt i forbindelse med udviklingen af programmet, normalt ellers udføres af udviklerne selv.\fxnote{Nikolaj: Det sidste giver ikke mening}
+Testens form er inspireret af black-box testing, som også er blevet brugt i forbindelse med udviklingen af programmet, normalt ellers udføres af udviklerne selv.\fxnote{Nikolaj: Det sidste giver ikke mening.}
 
 Da programmet er lavet med henblik på brug i en sejlklub, består målgruppen af mange forskellige befolkningssegmenter. 
 Idet det er et computerprogram, er det eneste krav til målgruppen, at de er villige til at bruge en computer.
@@ -94,7 +94,7 @@ Spørgeskemaet kan ses i \myref{bilag:SporgeSkema}. \citep{UISatisfaction}
 
 \section{Analyse af testresultater}
 
-Grundet tidspres, bl.a. fra fejl med databasen, var der kun tid til at teste på fire personer, samt eksperten.
+Grundet tidspres, fra bl.a. problemer med database implementationen, var der kun tid til at teste på fire personer, samt eksperten.
 Personerne der udførte testene, bestod af elever på Aalborg Universitet, som ikke havde set eller på anden vis hørt om projektet før.
 Resultaterne kan ikke konkluderes til at give et endegyldigt svar på om programmet kan bruges i Sejlklubben Sundet, da testpersonerne ingen kendskab har til sejlklubben og deres behov.
 For at få et mere brugbart resultat fra testen, skulle testpersonerne være en repræsentativ gruppe af medlemmer fra sejlklubben, eller på anden vis være indblandet med en sejlklub. 
