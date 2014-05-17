@@ -1,7 +1,7 @@
 \chapter{Programopbygning}
 
 I dette kapitel vil programmets opbygning blive beskrevet. 
-Først vil programmets arkitektur blive beskrevet, derefter navigeringen i programmets brugergrænseflade. 
+Først vil programmets arkitektur blive beskrevet, derefter navigeringen i programmets brugergrænseflade. \fxnote{Caspar: Indledningen skal tilpasses}
 
 
 \section{Programopbygning}\label{sec:programopbygning}
@@ -9,7 +9,7 @@ Først vil programmets arkitektur blive beskrevet, derefter navigeringen i progr
 \input{images/flowcharts/programopbygning.tex}
 
 På \myref{img:Program_flow}, ses den overordnede struktur af programmet.
-Nederst på figuren ses modelboksen, som repræsenterer modellaget, her findes de modeller vi anvender i programmet.
+Nederst på figuren ses modelboksen, som repræsenterer modellaget, her findes de modeller der anvendes i programmet.
 Modellerne er forbundet til vores Dal (Data Abstraction Layer) hvilket er den generiske kontakt fra programmet ud mod databasen. \fxnote{Troels: Her lyder det som om at IDal og dal blandes sammen, med det neden under}	
 Fra den generiske IDal findes der forbindelser ud til et SQLite Dal og et Entity Framework Dal, som hver i sær har forbindelse til de databaser de hører til. \fxnote{Troels: IDal har ingen forbindelser, det definerer bare hvad hvert dal skal implementere}
 Ideen ved det generiske IDal er at der let kan skiftes mellem forskellige databaser, dette vil blive uddybet i \myref{chap:database}.
