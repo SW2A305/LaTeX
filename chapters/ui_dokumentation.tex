@@ -238,7 +238,7 @@ Der er knapper, som tilføjer de forskellige personer til besætnings-listen.
 Når man har lavet sin liste, kan man trykke udfør, for at komme tilbage til vinduet, der kaldte CreateCrewWindow.
 
 \textbf{Code-Behind}: 
-Der er blevet brugt en \textbf{regular expression} til at tjekke, om den string brugeren angiver i de to TextBoxe for gæstens navne, er lovlige. \fxnote{Troels: lovlige? måske et andet ord her?}
+Der er blevet brugt en \textbf{regular expression} til at tjekke, om den string brugeren angiver i de to TextBoxe for gæstens navne, er lovlige. \fxnote{Troels: lovlige? måske et andet ord her? Caspar: tilladt}
 Det er blevet valgt, at man må bruge hele det danske alfabet samt mellemrum, så navne såsom: Lars Peter Østergaard, er mulige.
 Derefter tilføjes personen til listen, der vises i DataGridet til højre, og til sidst kaldes RefreshDataGrid, som man kan se på \myref{RefreshDatagrid}.
 
@@ -262,7 +262,7 @@ Dette vindue bruges til at udfylde logbogen for en sejltur.
 \textbf{Brugergrænseflade}:  
 Når vinduet åbnes indlæses der data fra den instans af RegularTrip som logbogen udfyldes for, hvilket bliver sendt til vinduets constructor.
 Som tidligere vinduer, bliver dataet afbilledet i de respektive grafiske elementer. 
-De tomme felter skal selv udfyldes af brugeren. 
+De tomme felter skal selv udfyldes af brugeren. \fxnote{Caspar: Slet selv fra sætningen}
 
 \textbf{Code-Behind}: 
 Code-Behinden verificerer dataet inden det gemmes i databasen.
