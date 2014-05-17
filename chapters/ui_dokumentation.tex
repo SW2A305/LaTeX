@@ -22,14 +22,14 @@ I dette kapitel vil programmets grafiske brugergrænseflade blive beskrevet.
 På \myref{img:programNavigation} ses der hvordan navigeringen i programmet foregår.\fxnote{Et navigationsdiagram for programmet? (Søren)}
 Øverst er login-vinduet, herfra logger brugeren ind med sine login informationer, eller en gæst kan logge ind ved at trykke på knappen ``login som gæst''. \fxnote{Troels: Bruger vi ``'' eller italics?}
 Brugeren ser nu hovedvinduet, hvilket er vinduet i midten med fem tabs i toppen.
-Antallet af tabs varierer alt efter hvilken position brugeren har i systemet, hvilket kan ses på \myref{tab:permissions}. 
+Antallet af tabs varierer alt efter, hvilken position brugeren har i systemet, hvilket kan ses på \myref{tab:permissions}. 
 Fra forside tabben kan der navigeres til de andre tabs, som brugeren har adgang til.
 Pilene illustrerer de dialogbokse, som brugeren kan åbne fra de forskellige tabs.
-Dialogboksene åbnes ved at trykke på knapper inde i tabben, f.eks. under  \textbf{Bådreservation} kan opret reservations dialogen åbnes ved at trykke på knappen \textit{Reserver Båden}. \fxnote{Troels: Omformuler den sidste sætning?}
+Dialogboksene åbnes ved at trykke på knapper inde i tabben, f.eks. under  \textbf{Bådreservation} kan opret reservationsdialogen åbnes ved at trykke på knappen \textit{Reserver Båden}. \fxnote{Troels: Omformuler den sidste sætning?}
 På samme måde åbnes de resterende dialoger ved tryk på knapper.
-Flere steder i programmet anvendes de samme dialogvinduer, f.eks. fra forsiden findes en mulighed for at ændre på en reservation, hvilket åbner en mindre modificeret udgave af reservations dialogen, hvorfra besætningsvælgerdialogen også kan åbnes.
+Flere steder i programmet anvendes de samme dialogvinduer, f.eks. fra forsiden findes en mulighed for at ændre på en reservation, hvilket åbner en mindre modificeret udgave af reservationsdialogen, hvorfra besætningsvælgerdialogen også kan åbnes.
 Desuden findes logbogsdialogen også på forsiden.
-Forskellen på logbogsdialogen på forsiden og den under bådreservation, er at dialogen under forsiden er lavet for at logbogen kan udfyldes, mens den under bådreservation er read-only. \fxnote{Troels: ... og kun til læsning}
+Forskellen på logbogsdialogen på forsiden og den under bådreservation er, at dialogen under forsiden er lavet for at logbogen kan udfyldes, mens den under bådreservation er read-only. \fxnote{Troels: ... og kun til læsning}
 \fxnote{Aner ikke om knapperne har de rigtige navne}
 \fxnote{Skal vi ændre teksten fra dialog til de korrekte vinduers navne? (Søren)}
 \fxnote{Skal vi ændre figuren, kan se jeg har glippet at man jo kunne ændre på en reservation fra forsiden..(Søren)}
@@ -114,10 +114,10 @@ Fra forsiden kan man ændre og slette sine reservationer, samt starte oprettelse
 
 \textbf{Brugergrænseflade}: 
 Brugergrænsefladen på forsiden består primært af to DataGrids: Det venstre DataGrid viser brugerens kommende sejlture, og det højre viser de sejlture brugeren mangler at udfylde logbøger for. 
-Under dem er der knapper, som bliver aktive, efter en markering er udført ved at trykke på en af rækkerne i knappernes tilhørende datagrid.
+Under dem er der knapper, som bliver aktive, efter en markering er udført ved at trykke på en af rækkerne i knappernes tilhørende DataGrid.
 
 \textbf{Code-Behind}: 
-For kun at vise de sejlture hvor personen, som er logget ind deltager i, anvendes der standard query operatorer. 
+For kun at vise de sejlture hvor personen, som er logget ind, deltager i anvendes der standard query operatorer. 
 I listing \ref{fntpg-cb} er der et udsnit af koden, nærmere bestemt den del som vælger de korrekte sejlture.
 
 Begge udtryk returnerer en IEnumerable, som derefter assignes som ItemsSource til hvert DataGrid.
@@ -159,28 +159,28 @@ Denne UserControl bruges til give undervisere på sejlerskolen mulighed for at a
 Når der er valgt et hold, er der forskellige controls som opdateres.
 Man kan se holdets underviser, elever og hvorvidt holdet er et 1. eller 2. års hold. 
 Det er også muligt at se holdets lektioner, samt oprette og slette disse.
-Når der trykkes på knappen ``Opret ny Lektion'', åbnes et nyt vindue, hvor man skal indtaste start og sluttidspunkt, og trykke ok, for at afslutte sin oprettelse af lektionen.
-Efter der er valgt en lektion kan der afkrydses hvad der er lært på lektionen, samt hvilke elever der var fremmødte.
-Ved tryk på knappen ``Se elevers fremskridt'' åbnes et vindue, hvor man kan se hvilke læringsområder de enkelte elever har lært.
-Når der laves et nyt hold, åbnes et vindue hvor man blot indtaster det ønskede navn for holdet.
+Når der trykkes på knappen ``Opret ny Lektion'', åbnes et nyt vindue, hvor man skal indtaste start- og sluttidspunkt, og trykke ok, for at afslutte sin oprettelse af lektionen.
+Efter der er valgt en lektion, kan der afkrydses hvad der er lært på lektionen, samt hvilke elever der var fremmødte.
+Ved tryk på knappen ``Se elevers fremskridt'' åbnes et vindue, hvor man kan se hvilke læringsområder, de enkelte elever har lært.
+Når der laves et nyt hold, åbnes et vindue, hvor man blot indtaster det ønskede navn for holdet.
 Der kan slettes og forfremmes hold, hvilket betyder de får et bådførerbevis.
 
 \textbf{Code-Behind:}
 Når der oprettes en lektion, bliver der reserveret den korrekte båd på det pågældende tidspunkt.
-Når der forsøges at forfremme et hold, tjekker Code-Behinden om eleverne har lært alt det de skal og ændrer herefter eleverne fra StudentMember til SailClubMember og sætter deres BoatDriver property til true.
+Når der forsøges at forfremme et hold, tjekker Code-Behinden, om eleverne har, lært alt det de skal og ændrer herefter eleverne fra StudentMember til SailClubMember og sætter deres BoatDriver property til true.\fxnote{Fx vil true i dette tilfælde ikke være godt at skrive som texttt?}
 
 Der findes også en undervisnings UserControl for elever. 
-Denne kan ikke interageres med men viser blot hvilke læringsområde brugeren har lært, informationer om det hold de er på, samt hvornår deres næste lektion er planlagt.
+Denne kan ikke interageres med, men viser blot hvilke læringsområde brugeren har lært, informationer om det hold de er på, samt hvornår deres næste lektion er planlagt.
 
 \subsection{Event UserControl}\fxnote{Troels: Hvorfor står der her usercontrol når det er under usercontrols?}
 \textbf{Formål:}
 UserControllen Event bruges til at se informationer om kommende begivenheder i sejlklubben, samt til at tilmelde sig begivenhederne. 
-Hvis man er administrator kan man også oprette nye begivenheder, redigere og slette eksisterende begivenheder.
+Hvis man er administrator, kan man også oprette nye begivenheder, redigere og slette eksisterende begivenheder.
 
 \textbf{Brugergrænseflade:}
 Brugergrænsefladen består af to ListBoxe og nogle knapper.
 I den første ListBox bliver begivenheder vist med navn, dato og om  hvorvidt der kræves tilmelding.
-I den næste ListBox vises beskrivelsen af begivenheden, som opdateres når der klikkes på en begivenhed i den førnævnte ListBox. 
+I den næste ListBox vises beskrivelsen af begivenheden, som opdateres, når der klikkes på en begivenhed i den førnævnte ListBox. 
 
 \textbf{Code-Behind:}
 Den bagvedliggende kode henter oprettede begivenheder fra databasen. 
@@ -188,17 +188,17 @@ Ved oprettelse, redigering og sletning skrives ændringerne til databasen.
 Ved tilmelding tilføjes personen, som er logget ind, til listen over tilmeldte personer.\fxnote{Nikolaj: Skal måske laves om hvis programmet bliver lavet om til kun at hente og gemme data ved start og lukning}
 
 \section{Vinduer}\fxnote{Pop-up Vinduer istedet ? (Søren)}
-Alle vinduer beskrevet i dette afsnit kan ses på \myref{img:programNavigation}. 
+Alle vinduer beskrevet i dette afsnit kan ses på \myref{img:programNavigation}. \fxnote{Thomas: Måske lidt metatext hvad forskellen er på UserControls og vinduer?}
 
 \subsection{Login brugergrænseflade} \fxnote{Troels: Er brugergrænseflade ikke lidt ``redundant''?}
  
 \textbf{Formål}:
 Login brugergrænsefladen har til formål at verificere en brugers identitet. 
-Det er det første vindue brugeren ser når programmet åbnes, og det åbner hovedvinduet efter succesfuldt login.
+Det er, det første vindue brugeren ser, når programmet åbnes, og det åbner hovedvinduet efter succesfuldt login.
  
 \textbf{Brugergrænseflade}: 
-Brugergrænsefladen til loginvinduet er meget simpel og ligetil.\fxnote{Nikolaj: Talesprog?}
-Der er en TextBox til brugernavnet og en PasswordBox til kodeordet.
+Brugergrænsefladen til loginvinduet er meget simpel og ligetil.\fxnote{Nikolaj: Talesprog? Thomas: Og meget subjektiv}
+Der er, en TextBox til brugernavnet og en PasswordBox til kodeordet.
 En PasswordBox er en TextBox, hvor hver af de indtastede karakterer vises som en sort prik, i stedet for de skrevne tegn, for at beskytte brugeren.
 Knappen ``Login som gæst'' kræver ingen brugeroplysninger og åbner en let udgave af hovedvinduet, uden særlige tilladelser.
 Til sidst er en TextBlock, som fortæller brugeren, hvad der er skrevet forkert, hvis der er skrevet noget forkert.\fxnote{Som fortæller brugeren, hvad og hvis der er skrevet noget forkert?(Søren)}
@@ -235,7 +235,7 @@ Listen til højre indeholder det Crew, som man er i gang med at udforme til ente
 Der er også tilføjet TextBoxe, så man kan skrive navnet på en gæst, man tog med på sejlturen. 
 Der er knapper, som tilføjer de forskellige personer til besætnings-listen. 
 Øverst findes også et tekstfelt til at søge i listen over medlemmer. 
-Når man har lavet sin liste, kan man trykke udfør, for at komme tilbage til vinduet, der kaldte CreateCrewWindow.
+Når man har lavet sin liste, kan man trykke Udfør, for at komme tilbage til vinduet, der kaldte CreateCrewWindow.
 
 \textbf{Code-Behind}: 
 Der er blevet brugt en \textbf{regular expression} til at tjekke, om den string brugeren angiver i de to TextBoxe for gæstens navne, er lovlige. \fxnote{Troels: lovlige? måske et andet ord her? Caspar: tilladt}
@@ -260,7 +260,7 @@ private void RefreshDatagrid(DataGrid Grid, ICollection<Person> list)
 Dette vindue bruges til at udfylde logbogen for en sejltur.
 
 \textbf{Brugergrænseflade}:  
-Når vinduet åbnes indlæses der data fra den instans af RegularTrip som logbogen udfyldes for, hvilket bliver sendt til vinduets constructor.
+Når vinduet åbnes, indlæses der data fra den instans af RegularTrip, som logbogen udfyldes for, hvilket bliver sendt til vinduets constructor.
 Som tidligere vinduer, bliver dataet afbilledet i de respektive grafiske elementer. 
 De tomme felter skal selv udfyldes af brugeren. \fxnote{Caspar: Slet selv fra sætningen}
 
