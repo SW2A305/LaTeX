@@ -1,11 +1,11 @@
 \chapter{Teknologianalyse}\label{chap:teknologi-analyse}
 
-I det følgende kapitel findes en analyse af de programmer, som på nuværende tidspunkt er state of the art inden for administration af sejlklubber.\fxnote{Caspar: Indledningen stemmer ikke overens med indholdet, management systemer falder udenfor? (Søren) : "Forinden dette gives en beskrivelse af hvordan projektgruppen definerer et management system, hvilket er det sejlklubben Sundet har behov for, på baggrund af analysen i forige kapitel? }
+I det følgende kapitel findes en analyse af de programmer, som på nuværende tidspunkt er state of the art inden for administration af sejlklubber.\fxnote{Caspar: Indledningen stemmer ikke overens med indholdet, management systemer falder udenfor? (Søren) : "Forinden dette gives en beskrivelse af hvordan projektgruppen definerer et management system, hvilket er det Sejlklubben Sundet har behov for, på baggrund af analysen i forrige kapitel? }
 
 \section{Management systemer}\label{subsec:management-systemer}\fxnote{Jeg synes vi bør redefinere management systemer i dette afsnit, og skrive det om fra bunden, hva' tænker i ? (Søren)}
 
-Et system som med fordel kunne anvendes til at administrere en sejlklub, er et management system. \fxnote{Troels: Starten her er fucked up, der burde først være en defination.}
-Et management system er et framework af processer og procedurer, som bruges til administration af organisationer og virksomheder.\fxnote{Nikolaj: Skal " af organisationer og virksomheder" ikke bare slettes?}
+Et system som med fordel kunne anvendes til at administrere en sejlklub, er et management system. \fxnote{Troels: Starten her er fucked up, der burde først være en definition.}
+Et management system er et framework af processer og procedurer, som bruges til administration af organisationer og virksomheder.\fxnote{Nikolaj: Skal `` af organisationer og virksomheder'' ikke bare slettes?}
 Eksempler på management systemer findes i \myref{sec:sota}. 
 Mere præcist er SailingClubManager et management system, som har en \ac{GUI} i web browseren.\fxnote{Niikolaj: Bør der stå noget om et specifikt system her?}\fxnote{Marc: SCM kommer op meget pludseligt uden for nogen meningsfuld kontekst}
 Dette er i kontrast til en konsol applikation, eller en nativ \ac{GUI}. 
@@ -20,34 +20,34 @@ Derved kan de frivillige bruge deres tid på mere interessante ting for organisa
 \section{State of the art}\label{sec:sota}
 
 For at kunne udvikle et godt produkt, der skal kunne bruges i en sejlklub, er det vigtigt, at se på hvilke produkter der allerede er på markedet, altså hvad der er ``state of the art''. 
-I denne forbindelse er der fundet forskellige produkter, som har nogle af de features der efterspørges i et system til en bådklub.
+I denne forbindelse er der fundet forskellige produkter, som har nogle af de features, der efterspørges i et system til en bådklub.
 
 
 \subsection*{BoatCloud}
 
 BoatCloud er udviklet af Anderson Software \citep{BoatCloud}.
-BoatCloud består af 3 applikationer, StackTrack, VesselValet og Service Request. 
+BoatCloud består af 3 applikationer, StackTrack, VesselValet og Service Request.\fxnote{Tristan: Bør vi ikke også lige nævne hvad ``Service Request'' gør?}
 StackTrack benyttes, når medlemmerne selv sejler deres både, hvorimod VesselValet, er når der skal tjenere og passagerer med ombord på bådene. 
 BoatCloud applikationerne er derfor mere designet til en sejlklub, som passer på medlemmernes både, fremfor at klubben har både til udlejning. 
 I applikationerne kan medlemmerne meddele, at de vil sejle på et bestemt tidspunkt. 
 Medlemmet kan få klubben til at vaske båden, tanke den, og fylde den op med diverse snacks, alt sammen registreres igennem denne webbaserede applikation. 
 Applikationen tager imod alle disse bestillinger 24 timer i døgnet. 
-Herudover bliver der sendt e-mails ud til medlemmerne, som bekræftigelse når de har lavet en bestilling. \fxnote{Hedder det Bekræftigelse eller bekræftelse? (Søren)}
+Herudover bliver der sendt e-mails ud til medlemmerne, som bekræftelse når de har lavet en bestilling.
 Man kan logge ind som administrator, og her kan man se alle reservationer, der er lavet, samt have mulighed for at se yderligere detaljer om hver enkelt reservation.
 
 
 \subsection*{Sailing Club Manager}
 
 En anden applikation der findes er Sailing Club Manager \citep{SailClub}. 
-Denne applikation er også webbaseret, og gør det muligt for en bådklub at tilføje hvilke både, samt hvor disse er fortøjnet i havnen. \fxnote{Iflg ordbogen findes ordet fortøjnet ikke, skal vi skrive lokaliseret?(Søren)}
+Denne applikation er også webbaseret, og gør det muligt for en bådklub at tilføje hvilke både, samt hvor disse er fortøjnet i havnen. \fxnote{Iflg ordbogen findes ordet fortøjnet ikke, skal vi skrive lokaliseret?(Søren) Tristan: Eller bare ``fortøjet''.} \fxnote{Tristan: Sætningen giver ikke mening. Vi starter på en sætning med ``tilføje hvilke både,'', men afslutter den aldrig.}
 Man kan i en kalender lave begivenheder og reservationer, desuden er der medlemstilmeldelse til forskellige begivenheder. Applikationen kan også bruges som kontaktmedium for klubben til deres medlemmer. 
 Klubben kan sætte et e-mail system op, samt tilføje et template, som bliver sendt med hver enkelt e-mail.
 Applikationen kan endvidere holde styr på økonomien, man kan tilføje en bankkonto, samt holde styr på fakturaer, og sende dem og håndtere det online. 
-Man kan tilføje medlemsskaber, med forskellige oplysninger omkring medlemmerne der har netop dette medlemsskab i klubben.
+Man kan tilføje medlemsskaber, med forskellige oplysninger omkring medlemmerne, der har netop dette medlemsskab i klubben.
 
 \subsection*{ForeningLet}
 
-ForeningLet er en applikation, som adskiller sig fra de andre ved ikke at henvende sig specifikt til én type klub, desuden er det en dansk applikation. \fxnote{Caspar: er det ikke ligegyldigt at det er dansk?}
+ForeningLet er en applikation, som adskiller sig fra de andre ved ikke at henvende sig specifikt til én type klub, desuden er det en dansk applikation. \fxnote{Caspar: er det ikke ligegyldigt at det er dansk? Tristan: Kun hvis de andre to programmer har korrekte, danske oversættelser, samt dansk support. Ellers vil jeg mene, at det er ganske relevant for eksempelvis ældre brugere.}
 Applikationen er web-baseret og har mange nyttige funktioner for en sejlklub som Sundet. 
 Applikationen har en medlemsdatabase, et regnskabssystem samt en kontaktfunktion, som kan benytte både e-mail og SMS. 
 Der kan også opkræves betalinger fra medlemmerne gennem systemet. 
@@ -73,7 +73,7 @@ Ud fra undersøgelsen af disse tre programmer er flg. funktioner fundet i applik
 Ud fra state of the art afsnittet kan der konkluderes, at der findes programmer, som administrerer udlån/udlejning af både.
 Specielt ForeningLet har denne funktion, hvilket netop ville være en funktion som Sejlklubben Sundet ville kunne benytte sig af.
 Flere af funktionerne, som findes på tværs af de tre programmer, anses for at være relevante for dette projekt, og vil derfor blive taget med videre til problemløsningsdelen.
-Dog er der ikke nogen af disse tre programmer, der har undervisningsfunktioner, hvilket var efterspurgt af Sejlklubben Sundet.\fxnote{Marc: Dette er som sådan ikke efterspurgt af Sundet da vi kun har været i kontakt med en forhenværende skolechef som blot nævnte at det kunne være rart i et interview, slriv istedet: Hvilket Jacob Nørbjerg gjorde udtryk for kunne være brugbart i <interview reference>} Derfor menes der, at der her findes en mangel indenfor de produkter, der allerede findes.
+Dog er der ikke nogen af disse tre programmer, der har undervisningsfunktioner, hvilket var efterspurgt af Sejlklubben Sundet.\fxnote{Marc: Dette er som sådan ikke efterspurgt af Sundet da vi kun har været i kontakt med en forhenværende skolechef som blot nævnte at det kunne være rart i et interview, skriv i stedet: Hvilket Jacob Nørbjerg gjorde udtryk for kunne være brugbart i <interview reference>} Derfor menes der, at der her findes en mangel indenfor de produkter, der allerede findes.
 Netop manglen af undervisningsfunktioner kunne være en grund til, at Sejlklubben Sundet ikke anvender et af disse produkter.
-Et produkt med undervisningsfunktioner vil derfor kunne indtage det "hul'', som de nuværende produkter har efterladt. \fxnote{Troels: Genskriv denne sætning ?(Søren) Når du ikke selv gider finde på noget så gør jeg det da bare Troels :P : Et lignende produkt med undervisningsfunktioner vil derfor kunne formodes at være en bedre løsning for sejlklubben Sundet.}
+Et produkt med undervisningsfunktioner vil derfor kunne indtage det ``hul'', som de nuværende produkter har efterladt. \fxnote{Troels: Genskriv denne sætning ?(Søren) Når du ikke selv gider finde på noget så gør jeg det da bare Troels :P : Et lignende produkt med undervisningsfunktioner vil derfor kunne formodes at være en bedre løsning for sejlklubben Sundet.}
 
