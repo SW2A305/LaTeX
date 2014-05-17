@@ -97,7 +97,13 @@ Disse problemer kan forårsages af flere ting, og virker til at opstå tilfældi
 
 Som en backup--løsning, i tilfælde af, at SQLite pludseligt fejler, er en mock--implementation designet.
 Denne implementation simulerer persistens, men gemmer kun i RAM mens programmet kører, og slettes derefter.
-\fxnote{Jeg udvider dette afsnit, så snart jeg har verificeret, at det virker som det skal.}
+
+\subsubsection*{Mock-data-persistens}
+
+Idet persistens er vigtigt for gruppen blev der udviklet et persistenslag til mock-data-implementationen.
+Dette persistenslag benytter ligeledes SQLite, men gemmer kun data når programmet lukkes, og henter det igen når programmet starter op.
+Denne løsning er skrøbeligt overfor eventuelle computernedbrud, idet data i så fald ikke ville blive gemt i databasen.
+Det ville være en mulighed at gemme data hver gang der trykkes på ``Log ud''--knappen, eller måske at have en decideret ``Gem''--knap.
 
 
 %I forbindelse med programmets data var det nødvendigt at overveje, om programmet skulle have foruddefineret
