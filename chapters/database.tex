@@ -1,7 +1,7 @@
-\chapter{Database}\label{chap:database}
+\chapter{Database}\label{chap:database}\fxnote{Marc: afsnittet er generalt lidt lavt på kilder, smid eventuelt en enkelt kilde til EF, SQlite og DAL for at understøtte vores teorier om hvad det er}
 
 Dette kapitel omhandler forsøget på at opnå persistens mellem kørsler af programmet.
-Det ønskes naturligvis, at programmet kan lagre sit data, udenfor RAM, for at kunne bruge det igen senere. 
+Det ønskes naturligvis\fxnote{Marc: at drage sådanne konklusioner bør ikke gøres i en rapport(naturligvis, selvfølgelig, som altid osv.), hvorfra ved man at dette altid er ønsket?}, at programmet kan lagre sit data, udenfor RAM, for at kunne bruge det igen senere. 
 Det var et fælles ønske fra gruppens side, at der blev brugt tid på at tilføje dette element til programmet. 
 
 \section{Persistensløsninger}
@@ -30,7 +30,7 @@ Den anden kandidat er SQLite, som er et \ac{RDBMS}, hvilket betyder, at det beny
 SQLite er en letvægts embedded database, der er velegnet til mindre programmer, som har behov for lokal persistens.
 At en database er embedded betyder, at den ikke kører i et separat program, men inkluderes som et bibliotek i programmet.
 SQLite implementerer det meste af SQL-standarden, men udelader de dele, der af SQLite-udviklerne er bedømt til at være for tunge eller unødige til at have med.
-Målet med SQLite er at bibeholde letvægten, da systemet også benyttes på mange mobile enheder, såsom Android.
+Målet med SQLite er at bibeholde letvægten, da systemet også benyttes på mange mobile enheder, såsom Android.\fxnote{Marc: Smid eventuelt en kilde på det her?}
 
 Begge databaser blev implementeret under projektarbejdet, grundet komplikationer med førstevalget af database, Entity Framework. 
 
