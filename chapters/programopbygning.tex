@@ -11,7 +11,7 @@ Først vil programmets arkitektur blive beskrevet, derefter navigeringen i progr
 På \myref{img:Program_flow}, ses den overordnede struktur af programmet.
 Nederst på figuren ses modelboksen, som repræsenterer modellaget, her findes de modeller, der anvendes i programmet.\fxnote{Lidt sjov sætning, evt. punktum efter 'modellaget'}
 Modellerne er forbundet til Dal'et (Data Abstraction Layer), hvilket er den generiske kontakt fra programmet ud mod databasen. \fxnote{Troels: Her lyder det som om at IDal og dal blandes sammen, med det neden under}	
-Fra den generiske IDal findes der forbindelser ud til et SQLite Dal og et Entity Framework Dal, som hver i sær har forbindelse til de databaser, de hører til. \fxnote{Troels: IDal har ingen forbindelser, det definerer bare hvad hvert dal skal implementere}
+Fra den generiske IDal findes der forbindelser ud til et SQLite Dal og et Entity Framework Dal, som hver i sær har forbindelse til de databaser, de hører til. \fxnote{Troels: IDal har ingen forbindelser, det definerer bare hvad hvert dal skal implementere}\fxnote{Tristan: Ved ikke om vi skal have Entity Framework med her, da vi jo helt har fjernet det som en komponent i programmet?}
 Ideen ved det generiske IDal er, at der let kan skiftes mellem forskellige databaser, hvilket vil blive uddybet i \myref{chap:database}.
 Over IDal og Model findes Code-Behind og UI'en. \fxnote{Troels: Er dette en beskrivelse af flowchartet? eller er det en beskrivelse af vores programs opbygning?}
 Code-Behind og UI er forbundet, da UI-filerne kun indeholder grafiske elementer, og Code-Behind filerne indeholder det kode, som UI'en har brug for til at fungere.
