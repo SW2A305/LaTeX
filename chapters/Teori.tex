@@ -1,7 +1,6 @@
 \chapter{Grafisk teori}
 
-\fxnote{Nikolaj: Måske skulle der skrives noget metatekst her?}
-
+\fxnote{Nikolaj: Måske skulle der skrives noget metatekst her?} \fxnote{Marc: Forslag til dette ''I forbindelse med udvikling af en grafisk brugergrænseflade, undersøges ud fra målgruppen retningslinjer til sådan en brugergrænseflade i dette afsnit.''}
 
 \section{Grafisk brugergrænseflade} \label{chap:GUI}
 
@@ -15,7 +14,7 @@ Programmets brugergrænseflade vil blive designet ud fra principperne i følge K
 
 \begin{itemize}
 	\item Minimalisme
-	\item Konsistent\fxnote{Troels: indsæt evt. ``(Fra engelsk: Consistency)''}
+	\item Konsistent\fxnote{Troels: indsæt evt. ``(Fra engelsk: Consistency)'' Marc: eller oversæt blot korrekt fra engelsk?: Overensstemmelse}
 \end{itemize}
 
 Minimalisme betyder, at der skal være så få forstyrrelser på skærmbilledet som muligt. 
@@ -32,17 +31,17 @@ Disse forskellige principper eller retningslinjer, er forsøgt implementeret i s
 
 Menustrukturen består af tabs, som er store og lette at se.
 De forskellige funktioner i programmet er delt op i deres tilhørende tabs, og man kan altid gå ind i en ny tab uanset hvor, man befinder sig i programmet. 
-Dette betyder, at strukturen ikke har et hierarki, da uanset hvor man befinder sig, kan der navigeres ind i alle programmets funktioner.\fxnote{Nikolaj: Det kan godt være jeg har misforstået noget, men er der ikke et hieraki når man f.eks. reserverer en båd?}
+Dette betyder, at strukturen ikke har et hierarki, da uanset hvor man befinder sig, kan der navigeres ind i alle programmets funktioner.\fxnote{Nikolaj: Det kan godt være jeg har misforstået noget, men er der ikke et hieraki når man f.eks. reserverer en båd? Marc: foruden dette så har vi vinduer der benytter sig af ''showdialog'' hvilket således gør at der ikke kan navigeres fra dem til andre tabs}
 
 Når brugergrænsefladen er lavet, skal den dermed også testes. \fxnote{Troels: Det er jo ikke kun brugergrænseinterfladen ;) som skal testes? Men også resten. ``dermed'' lyder lidt dumt?}
 Der vil blive forklaret hvordan dette vil blive gjort i \myref{test_af_program}.
 \section{Valg af grafikframework} 
-\fxnote{Troels: Kort meta tekst?}
+\fxnote{Troels: Kort meta tekst? Marc: forslag ''Dette afsnit omhandler enkelte valgmuligheder for udviklingen af programmet, såvel som begrundelse for det valgte framework, WPF''}
 \subsection{Windows Presentation Foundation}
 Windows Presentation Foundation (WPF) er en grafisk brugergrænseflade på Windowsbaserede applikationer. \fxnote{Caspar: Det er da ikke WPF der er brugregrænsefladen, men næremere det værktøj man bruger til at skabe det?} 
 WPF gør brug af  bl.a. vektorbaseret rendering af grafik, databinding, til nem redigering af data igennem den grafiske brugergrænseflade, og har også inkluderet Extensible Application Markup Language (XAML), hvilket er en nem måde at skabe WPF-grafik på. \fxnote{Troels: ``nem'' og er det XAML som gør det nemt? Er det ikke nærmere visual studios interface?}
 Selve C\#-koden, den såkaldte Code-Behind, ligger i en separat fil, med samme navn som XAML-filen. 
-Hvis der f.eks. er skabt en Button, en almindelig knap, i XAML-filen, så vil det kode, som Button'en skal udføre, blive placeret i Code-Behind-filen, så grafikken og koden bliver hver for sig, hvilken kan give et bedre overblik. \citep{wpf} \fxnote{Troels: Dog er viewer og controller stadig samlet. Hvilket gør det svært at lave et nyt interface uden at skulle copy paste en masse logik}
+Hvis der f.eks. er skabt en Button, en almindelig knap, i XAML-filen, så vil det kode, som Button'en skal udføre, blive placeret i Code-Behind-filen, så grafikken og koden bliver hver for sig, hvilken kan give et bedre overblik. \citep{wpf} \fxnote{Troels: Dog er viewer og controller stadig samlet. Hvilket gør det svært at lave et nyt interface uden at skulle copy paste en masse logik -- Marc: Dette er vel vores brug af WPF der har gjort dette og ikke WPF som generel platform og skal derfor ikke nævnes i en beskrivelse af WPF?}
 
 \subsection{Windows Forms}
 Windows Forms (WinForms) er, som WPF, en grafisk brugergrænseflade på Windowsbaserede applikationer. \fxnote{Troels: på applikationer? til applikationer, eller på windows platformen, Caspar: Igen, er det ikke nærmere værktøjet til at skabe brugergrænsefladen?}
@@ -97,7 +96,7 @@ Det er også muligt at konstruere en søgefunktion, altså kan et DataGrid blive
 \end{wrapfigure}
 
 \subsubsection*{CheckBox}
-En CheckBox er en kvadratisk boks, som enten er ``Checked'' eller ikke-``Checked''. 
+En CheckBox er en kvadratisk boks, som enten er ``Checked'' eller ikke-``Checked''.\fxnote{Marc: UnChecked?} 
 Ud fra om den er ``Checked'' eller ej, kan der valideres på data. 
 
 \subsubsection*{RadioButton}
