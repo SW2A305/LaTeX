@@ -1,28 +1,28 @@
 \chapter{Database}\label{chap:database}
 
 Dette kapitel omhandler forsøget på at opnå persistens mellem kørsler af programmet.
-Det ønskes naturligvis at programmet kan lagre sit data, udenfor RAM, for at kunne bruge det igen senere. 
+Det ønskes naturligvis, at programmet kan lagre sit data, udenfor RAM, for at kunne bruge det igen senere. 
 Det var et fælles ønske fra gruppens side, at der blev brugt tid på at tilføje dette element til programmet. 
 
 \section{Persistensløsninger}
 
 Der findes flere løsninger til denne problemstilling. 
-Der kan vælges en bestemt database ud fra de eksisterende databaser eller dataet kan gemmes på flade filer.
+Der kan vælges en bestemt database ud fra de eksisterende databaser, eller dataet kan gemmes på flade filer.
 
 \subsection{Flade filer}
 En simpel løsning på persistensproblemet ville være at gemme alt data på en flad fil ved programlukning, og læse filen igen ved programmets opstart.
-Denne løsningen bliver dog hurtig upraktisk, da flade filer ikke har samme evne til at skalere til et større system, som egentlige databaser.
+Denne løsningen bliver dog hurtig upraktisk, da flade filer ikke har samme evne til at skalere til et større system som egentlige databaser.
 
 \subsection{Databaser}
 Efter research, herunder rådgivning fra OOP lektor Rene Hansen, stod valget mellem to databaser: Entity Framework og SQLite.
 
 \subsubsection*{Entity Framework}
-Den første af de to, \ac{EF}, er en Object-Relational Mapping (ORM), til dotNet Frameworket.\fxnote{Nikolaj: Bør der ikke stå: ``.Net''?}
+Den første af de to, \ac{EF}, er en Object-Relational Mapping (ORM) til dotNet Frameworket.\fxnote{Nikolaj: Bør der ikke stå: ``.Net''? Thomas: Der står .NET under WPF}
 Et ORM skaber et billede af objekterne i hukommelsen i databasen. 
 Herunder var rådgivningen fra Rene Hansen, at anvende Code-First udvikling.
 Med Code-First designes objekterne først, i form af modelklasser, hvorefter databasen og tabellerne i denne genereres ud fra sammenkoblingen mellem de forskellige modeller. 
 Denne sammenkobling sker i såkaldte migrations, som opretter, ændrer og sletter tabeller, afhængigt af ændringerne i de benyttede modeller.
-Fordelen ved denne løsning er, at mange tekniske valg træffes af programmet, så programmøren ikke behøver at have et kendskab til \ac{SQL} for at kunne benytte databasen og dermed opnå persistens.
+Fordelen ved denne løsning er, at mange tekniske valg træffes af programmet, så programmøren ikke behøver at have et kendskab til \ac{SQL}, for at kunne benytte databasen og dermed opnå persistens.
 Dette gør \ac{EF} til en attraktiv løsning for grupper\fxnote{Troels: Kun grupper ikke individer? Caspar: måske bare programmører}, der gerne vil hurtigt i gang med at programmere en løsning, uden først at sætte sig ind i databaseprogrammering.
 
 \subsubsection*{SQLite}
@@ -60,7 +60,7 @@ Interfacet definerer otte metoder, som beskrevet i \myref{tab:ourExtCrud}.
     \texttt{Update}   & Opdaterer et eller flere elementer i databasen.                                              \\ \hline
     \texttt{Delete}   & Fjerner et eller flere elementer fra databasen.                                              \\ \hline
     \texttt{GetAll}   & Findes i to udgaver, en som henter alle elementer, og en hvor der kan medsendes et prædikat. \\ \hline
-    \texttt{GetOne}   & Henter et element i databasen, ud fra det angivne itemId.                                    \\ \hline
+    \texttt{GetOne}   & Henter et element i databasen ud fra det angivne itemId.                                    \\ \hline
     \texttt{LoadData} & Findes i to udgaver, de henter de indre referencetype objekter til elementet eller elementerne givet. \\ \hline
     \end{tabular}
     \caption{Forklaring af hver metode i det generiske DAL interface.}
@@ -73,7 +73,7 @@ På \myref{img:Program_flow} kan man se hvordan \ac{DAL} indgår i programmets s
 
 \subsection{Første implementation --- \acl{EF}}\label{subsec:Pwoblem}
 
-\acl{EF} blev implementeret for modellerne og systemet blev bygget herpå.
+\acl{EF} blev implementeret for modellerne, og systemet blev bygget herpå.
 Under programmets udvikling stod det klart, at det ikke var helt problemfrit at benytte \ac{EF}.
 
 Migrations kom i vejen for hinanden og gav konflikter, der krævede, at gruppens medlemmer regelmæssigt skulle slette hver tabel og kalde kommandoen \texttt{Update-Database}.
@@ -100,7 +100,7 @@ Denne implementation simulerer persistens, men gemmer kun i RAM mens programmet 
 
 \subsubsection*{Mock-data-persistens}
 
-Idet persistens er vigtigt for gruppen blev der udviklet et persistenslag til mock-data-implementationen.
+Idet persistens er vigtigt for gruppen, blev der udviklet et persistenslag til mock-data-implementationen.
 Dette persistenslag benytter ligeledes SQLite, men gemmer kun data når programmet lukkes, og henter det igen når programmet starter op.
 Denne løsning er skrøbeligt overfor eventuelle computernedbrud, idet data i så fald ikke ville blive gemt i databasen.
 Det ville være en mulighed at gemme data hver gang der trykkes på ``Log ud''--knappen, eller måske at have en decideret ``Gem''--knap.
