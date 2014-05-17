@@ -39,13 +39,13 @@ Der vil blive forklaret hvordan dette vil blive gjort i \myref{test_af_program}.
 \section{Valg af grafikframework} 
 \fxnote{Troels: Kort meta tekst?}
 \subsection{Windows Presentation Foundation}
-Windows Presentation Foundation (WPF) er en grafisk brugergrænseflade på Windowsbaserede applikationer. 
+Windows Presentation Foundation (WPF) er en grafisk brugergrænseflade på Windowsbaserede applikationer. \fxnote{Caspar: Det er da ikke WPF der er brugregrænsefladen, men næremere det værktøj man bruger til at skabe det?} 
 WPF gør brug af  bl.a. vektorbaseret rendering af grafik, databinding, til nem redigering af data igennem den grafiske brugergrænseflade, og har også inkluderet Extensible Application Markup Language (XAML), hvilket er en nem måde at skabe WPF-grafik på. \fxnote{Troels: ``nem'' og er det XAML som gør det nemt? Er det ikke nærmere visual studios interface?}
 Selve C\#-koden, den såkaldte Code-Behind, ligger i en separat fil, med samme navn som XAML-filen. 
 Hvis der f.eks. er skabt en Button, en almindelig knap, i XAML-filen, så vil det kode, som Button'en skal udføre, blive placeret i Code-Behind-filen, så grafikken og koden bliver hver for sig, hvilken kan give et bedre overblik. \citep{wpf} \fxnote{Troels: Dog er viewer og controller stadig samlet. Hvilket gør det svært at lave et nyt interface uden at skulle copy paste en masse logik}
 
 \subsection{Windows Forms}
-Windows Forms (WinForms) er, som WPF, en grafisk brugergrænseflade på Windowsbaserede applikationer. \fxnote{Troels: på applikationer? til applikationer, eller på windows platformen}
+Windows Forms (WinForms) er, som WPF, en grafisk brugergrænseflade på Windowsbaserede applikationer. \fxnote{Troels: på applikationer? til applikationer, eller på windows platformen, Caspar: Igen, er det ikke nærmere værktøjet til at skabe brugergrænsefladen?}
 WinForms er forgængeren til WPF, hvilket betyder at WPF har nogle nye features, som WinForms ikke har.
 WinForms har ikke XAML, så selve grafikken skal skrives sammen med selve koden. 
 Hvor WPF er bygget helt fra bunden, så er WinForms et ``lag'' oven på standard Windows API (WinAPI), hvilket betyder, at hvis det, som man vil lave i WinForms, ikke er en del af WinAPI, så kan man ende med at skulle bruge 3. parts kode, for at kunne lave det i WinForms.\citep{winforms2}
@@ -72,18 +72,18 @@ På figur \ref{img:wpfdemo} vises de beskrevede elementer (Note: De 3 sidste ele
 
 \subsubsection*{ComboBox}
 I WPF er en ComboBox det element, som andre steder omtales som en dropdown menu. 
-Dens indhold kan instilles enten i XAML-koden eller i Code-Behind koden (her ment C\#-koden).\fxnote{Nikolaj: Muligvis skulle det i parentes, stå første gang Code-Behind bliver nævnt?}
+Dens indhold kan indstilles enten i XAML-koden eller i Code-Behind koden (her ment C\#-koden).\fxnote{Nikolaj: Muligvis skulle det i parentes, stå første gang Code-Behind bliver nævnt?}
 Hvis dette indhold skal være dynamisk, vil Code-Behind ofte være anvendt, eksempelvis hvis man kun vil have de medlemmer af en liste, som opfylder et givent prædikat. 
 
 \subsubsection*{Button}
-En Button er en knap, som kalder en metode i Code-Behind koden, når den trykkes. 
+En Button er en knap, som kalder en metode i Code-Behind koden, når den trykkes på. 
 Den metode udfører det kode, som er angivet i den.\fxnote{Nikolaj: Sidste sætning bør vel nukes}
 
 \subsubsection*{DataGrid}
 Et DataGrid er et grafisk element, som kan vise data dynamisk.
 Ofte vil det vise en liste af objekter.
 Dets layout er opdelt i rækker og kolonner, hvor hver kolonne indeholder en bestemt type data, og kan sorteres ved at klikke på de forskellige headers.
-Det er også muligt at konstruere en søgefunktion, altså kan et DataGrid blive filteret.
+Det er også muligt at konstruere en søgefunktion, altså kan et DataGrid blive filtreret.
 
 \begin{wrapfigure}[22]{R}{0.5\textwidth}
     \label{img:wpfdemo}
