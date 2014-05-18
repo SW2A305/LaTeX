@@ -1,26 +1,26 @@
 \chapter{Produktkrav}
 
 Igennem problemanalysen blev det gjort klart, at der findes et problem ved fritidsklubber, særligt Sejlklubben Sundet, når det kommer til management af deres ressourcer samt dokumenthåndtering. 
-Problemet kan løses ved hjælp af et management system, til at håndtere dokumentation for sejlklubben og gøre det overskueligt. \fxnote{Skal vi ikke sige det som om at det muligvis kan løse det?}
-I følgende afsnit undersøges der, hvilke krav et management system for Sejlklubben Sundet skal have. \fxnote{Caspar: Bør User stories ikke være nævnt her?}
+Problemet kan muligvis løses ved hjælp af et management system, til at håndtere dokumentation for sejlklubben og gøre det overskueligt. 
+I følgende afsnit undersøges der, ud fra user stories \myref{User_stories}, hvilke krav et management system for Sejlklubben Sundet skal have. 
 
 
 \section{Funktionelle krav} \label{sec:funktionelleKrav}
 
-Den nødvendige dokumentation indebærer logbøger, bådreservationer, besætningslisten, tilmeldinger til begivenheder mm. \fxnote{Troels: omformuler så det står, ``det er et krav at..''. At starte at afsnite med ``Den nødvendige [...]'' giver ingen mening}
+Det er et krav, at systemet indholder den nødvendige dokumentation, som indebærer logbøger, bådreservationer, besætningslisten, tilmeldinger til begivenheder mm. 
 Som grundlag for, at alt dette kan fungere, kræves der en metode til at sætte sig selv på en aktivitet. 
-For at gøre dette muligt kræves der således to ting: En database af medlemmer, samt en form for begivenhedskalender.\fxnote{Der er ikke en begivenhedskalender, men agenda - Thomas}\fxnote{Vel ikke en database, men en måde hvorpå man kan håndtere medlemmer? (Søren)}
+For at gøre dette muligt kræves der således to ting: Et register af medlemmer, samt en form for begivenhedskalender.
 Foruden dette kræves der information om de forskellige begivenheder og hvem der er tilmeldt. 
 Der kræves også et system til udlejning af både samt undervisning.
 
 Produktet bør have følgende funktioner i prioriteret rækkefølge:
 \begin{enumerate}
-  \item Medlemshåndtering\fxnote{Marc: Så vil jeg da mene vi har ignoreret førsteprioritet idet vi ikke kan oprette medlemmer eller kræve penge fra dem, hvis ikke dette skal fjernes skal vi da have et godt argument for hvorfor vores program ikke kan det vi prioritere højest. Dette passer heller ikke med hvad der kommer senere hvor det virker som om at programmet skal kunne differentiere mellem medlemmer, ikke håndtere medlemmer}
+  \item Medlemshåndtering
   \item Brugerlogin
-  \item Oversigt over undervisning \fxnote{Troels: Skal man kun kunne se undervisning?}
+  \item Undervisningsorganisering 
   \item Bådreservation
   \item Logbog
-  \item Vise begivenhedsinformation \fxnote{Troels: Skal man ikke være i stand til at oprette begivnheder?}
+  \item Begivenhedsadministration og visning.
 \end{enumerate}
 
 
@@ -30,21 +30,21 @@ Produktet bør have følgende funktioner i prioriteret rækkefølge:
 
 Der ligger mere bag de ovenstående elementer end \myref{sec:funktionelleKrav} giver udtryk for, disse vil her blive set nærmere på.
 
-\subsection{Medlemmer} \fxnote{Troels: Overskrift matcher ikke den fra oversigten}
+\subsection{Medlemshåndtering} \fxnote{Troels: Overskrift matcher ikke den fra oversigten}
 
-Det er et krav, at man kan udnytte medlemmerne i klubben, så man kan registrere hvem der er tilmeldt de forskellige reservationer eller lignende.\fxnote{Findes der ikke et bedre ord end udnytte, måske 'bruge' med lidt omformulering? - Thomas --- Tristan: Fedt med et krav om udnyttelse af medlemmerne. Hvad med ``benytte'' eller ``anvende'', med mindre vi omformulerer sætningen en del?}
+Det er et krav, at man kan håndtere medlemmerne i klubben, så man kan registrere hvem der er tilmeldt de forskellige reservationer eller lignende.
 Systemet skal kunne kende forskel på medlemmer, så man ikke kan have flere af det samme medlem på en reservation eller en begivenhed.
 Forskellige informationer skal kunne findes på medlemmerne i programmet, så brugerne kan finde de rigtige medlemmer og markere, om de mødte op.
 
-\subsection{Login system} \fxnote{Troels: Overskrift matcher ikke den fra oversigten}
+\subsection{Brugerlogin}
 Det skal være muligt at registrere hvem der er logget ind i programmet, for på denne måde at give forskellig adgang til diverse funktionaliteter i programmet.
 
-\subsection{Oversigt over undervisning}\fxnote{Troels: Som ovenfor, dårlig overskrift}
+\subsection{Undervisningsorganisering}
 
 Det skal være muligt for elever ved sejlerskolen at se, hvornår deres næste lektion finder sted.
 Herudover skal de også kunne se, hvor langt de er kommet i forbindelse med deres uddannelse, hvilke milepæle de har udført mm.
 Underviserne skal have mulighed for at oprette nye lektioner, og angive hvilke læremål eleverne udførte i den pågældende lektion. 
-Underviserne skal også kunne oprette, slette og redigere hold på skolen, hvis nogle skulle melde sig ud eller ved sæsonstart. \fxnote{Caspar: Kan det sidste efter kommaet ikke nukes?}\fxnote{Marc: Om ikke andet skal ''eller ved sæsonstart'' fjernes, giver ingen mening i konteksten}
+Underviserne skal også kunne oprette, slette og redigere hold på skolen. 
 
 \subsection{Bådreservation}
 
@@ -58,7 +58,7 @@ Herudover skal det være muligt af afmelde sig en booking, hvis man ikke deltage
 I forbindelse med en sejltur, skal der kunne gemmes en logbog over turen med informationer, som beskrevet i \myref{subsec:bådudlån}.
 Der skal her være registreret på hvilken båd turen foregik, så de korrekte logbøger kan findes for en given båd.
 
-\subsection{Vise begivenhedsinformation} \fxnote{Troels: ... igen dårlig overskrift}
+\subsection{Begivenhedsadministration og visning} 
 
 Endeligt skal man kunne gemme begivenheder i klubben, med en dato og en beskrivelse af begivenheden, samt slette disse igen, hvis de skulle blive aflyst. 
 Det skal være muligt at til- og afmelde sig begivenheden, foruden at kunne se hvilke medlemmer der er tilmeldt.

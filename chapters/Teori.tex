@@ -1,10 +1,11 @@
 \chapter{Grafisk teori}
 
-\fxnote{Nikolaj: Måske skulle der skrives noget metatekst her?} \fxnote{Marc: Forslag til dette ``I forbindelse med udvikling af en grafisk brugergrænseflade, undersøges ud fra målgruppen retningslinjer til sådan en brugergrænseflade i dette afsnit.''}
+For at kunne udvikle en brugbar grafisk brugergrænseflade er det nødvendigt at forstå teorier bag dette. 
+Derfor vil dette blive beskrevet i følgende kapitel. 
 
 \section{Grafisk brugergrænseflade} \label{chap:GUI}
 
-I forbindelsen med udviklingen af systemet, skal man sørge for at designe det, så brugerne kan finde rundt i de forskellige funktioner. \fxnote{Troels: Forslag til ny sætning: ``Centralt for systemets design, er at brugerne kan navigere rundt i det.''}
+Centralt for systemets design, er at brugerne kan navigere rundt i det. 
 Da Sejlklubben Sundets medlemmer kan bestå af en mangfoldig gruppe af mennesker, er det svært at indskrænke brugerne i en enkelt gruppe, dermed formodes det at IT-evnerne kan være meget forskellige.
 
 
@@ -14,14 +15,14 @@ Programmets brugergrænseflade vil blive designet ud fra principperne i følge K
 
 \begin{itemize}
 	\item Minimalisme
-	\item Konsistent\fxnote{Troels: indsæt evt. ``(Fra engelsk: Consistency)'' Marc: eller oversæt blot korrekt fra engelsk?: Overensstemmelse}
+	\item Konsistent design (Fra engelsk: Consistency)
 \end{itemize}
 
 Minimalisme betyder, at der skal være så få forstyrrelser på skærmbilledet som muligt. 
 Det skal være enkelt og simpelt at navigere rundt og finde de funktioner i programmet, man skal bruge. Knapper skal gerne være holdt til et minimum og mindre brugte funktioner gemmes derfor væk i menuer eller andre vinduer.
 En sådan struktur skal dog ikke have et hierarki, der er dybere end tre niveauer for ikke at gemme funktioner for brugeren.
 Unødvendige ikoner og lange sætninger er således også kun til forvirring for brugeren og skal gerne undgås.
-Labels, der forekommer på brugergrænsefladen skal også gerne være konsistente, dette gælder hele brugergrænsefladen, farver, funktionstyper så som tilføj og fjern samt teksttype og størrelse for at undgå forvirring for brugeren.\fxnote{Nikolaj: Lidt uklart hvad der menes med ``tilføj og fjern''}
+Tekst, der forekommer på brugergrænsefladen, skal også gerne være konsistente, dette gælder hele brugergrænsefladen: Farver, funktionstyper der tilføjer eller fjerner elementer, samt teksttype og størrelse for at undgå forvirring for brugeren.
 Således skal den samme navigationsstruktur også være tilbagevendende igennem brugergrænsefladen.
 
 Disse forskellige principper eller retningslinjer, er forsøgt implementeret i systemet.
@@ -33,73 +34,75 @@ Menustrukturen består af tabs, som er store og lette at se.
 De forskellige funktioner i programmet er delt op i deres tilhørende tabs, og man kan altid gå ind i en ny tab uanset hvor, man befinder sig i programmet. 
 Dette betyder, at strukturen ikke har et hierarki, da uanset hvor man befinder sig, kan der navigeres ind i alle programmets funktioner.\fxnote{Nikolaj: Det kan godt være jeg har misforstået noget, men er der ikke et hieraki når man f.eks. reserverer en båd? Marc: foruden dette så har vi vinduer der benytter sig af ``showdialog'' hvilket således gør at der ikke kan navigeres fra dem til andre tabs}
 
-Når brugergrænsefladen er lavet, skal den dermed også testes. \fxnote{Troels: Det er jo ikke kun brugergrænseinterfladen ;) som skal testes? Men også resten. ``dermed'' lyder lidt dumt?}
-Der vil blive forklaret hvordan dette vil blive gjort i \myref{test_af_program}.
+Brugergrænsefladen vil blive testet i brugertesten, beskrevet i \myref{test_af_program}.
 
 \section{Valg af grafikframework} 
-\fxnote{Troels: Kort meta tekst? Marc: forslag ``Dette afsnit omhandler enkelte valgmuligheder for udviklingen af programmet, såvel som begrundelse for det valgte framework, WPF''}
+Dette afsnit omhandler udvalgte valgmuligheder for udviklingen af brugergrænsefladen, samt valget af det endelige framework.
 
 \subsection{Windows Presentation Foundation}
-\ac{WPF} er en grafisk brugergrænseflade på Windowsbaserede applikationer. \fxnote{Caspar: Det er da ikke WPF der er brugergrænsefladen, men næremere det værktøj man bruger til at skabe det?} 
-WPF gør brug af  bl.a. vektorbaseret rendering af grafik, databinding, til nem redigering af data igennem den grafiske brugergrænseflade, og har også inkluderet \ac{XAML}, hvilket er en nem måde at skabe WPF-grafik på. \fxnote{Troels: ``nem'' og er det XAML som gør det nemt? Er det ikke nærmere visual studios interface?}
-Selve C\#-koden, den såkaldte Code-Behind, ligger i en separat fil, med samme navn som XAML-filen. 
-Hvis der f.eks. er skabt en Button, en almindelig knap, i XAML-filen, så vil det kode, som Button'en skal udføre, blive placeret i Code-Behind-filen, så grafikken og koden bliver hver for sig, hvilket kan give et bedre overblik. \citep{wpf} \fxnote{Troels: Dog er viewer og controller stadig samlet. Hvilket gør det svært at lave et nyt interface uden at skulle copy paste en masse logik -- Marc: Dette er vel vores brug af WPF der har gjort dette og ikke WPF som generel platform og skal derfor ikke nævnes i en beskrivelse af WPF?}
+\ac{WPF} er en grafisk framework på Windowsbaserede applikationer. 
+WPF gør brug af moderne teknologier til at generere grafik, bl.a. vektorbaseret og hardware accelereret rendering.
+Visual Studio har en indbygget designer til WPF, hvilket simplificerer udviklingsprocessen. 
+Grafikken kan enten defineres i \ac{XAML}--formatet eller ved C\#--kode. 
+Fordele ved \ac{XAML}--formatet er en adskillelse af logik og grafik. 
+Hvis grafikken kun er defineret som C\#--kode kan det være svært at bevare overblikket, når kompleksiteten øges.
+Selve C\#-koden, den såkaldte Code--Behind, ligger i en separat fil, med samme navn som XAML-filen. 
+Hvis der f.eks. er skabt en Button, en almindelig knap, i XAML-filen, så vil det kode, som Button'en skal udføre, blive placeret i Code-Behind-filen, som består af C\#--kode, så grafikken og koden bliver hver for sig, hvilket kan give et bedre overblik \citep{wpf}. 
 
 \subsection{Windows Forms}
-Windows Forms (WinForms) er, som \ac{WPF}, en grafisk brugergrænseflade på Windowsbaserede applikationer. \fxnote{Troels: på applikationer? til applikationer, eller på windows platformen, Caspar: Igen, er det ikke nærmere værktøjet til at skabe brugergrænsefladen?}
+Windows Forms (WinForms) er, som \ac{WPF}, et grafisk framework til udvikling på Windows platformen, som en overbygning til Windows API.
 WinForms er forgængeren til WPF, hvilket betyder at WPF har nogle nye features, som WinForms ikke har.
-WinForms har ikke XAML, så selve grafikken skal skrives sammen med selve koden. \fxnote{Tristan: Dette lyder lidt misvisende. Så vidt jeg ved gemmer WinForms informationer om, hvordan brugerfladen er opbygget, i en fil ligesom med XAML. Det er bare ikke en fil der er beregnet til at kunne redigeres.}
-Hvor WPF er bygget helt fra bunden, så er WinForms et ``lag'' oven på standard Windows API (WinAPI), hvilket betyder, at hvis det man vil lave i WinForms, ikke er en del af WinAPI, så kan man ende med at skulle bruge 3. parts kode, for at kunne lave det i WinForms.\fxnote{Tristan: Eller man kunne programmere komponenterne selv, som programmører har gjort det siden de første grafiske Windows-varianter kom frem.}\citep{winforms2}
+WinForms har ikke et tilknyttet markup sprog, så selve grafikken skal skrives sammen med selve koden. 
+\citep{winforms2}
 
 \subsection{Website}
 En anden mulighed, som blev diskuteret, var at bruge en hjemmeside, som ville have den fordel, at den kan køre på stort set alle enheder, som har adgang til internettet via en browser. 
-En hjemmeside, som gør brug af C\#, vil kunne laves på en måde, som minder om den ved WPF og XAML; med HTML (HyperText Markup Language), JS (JavaScript) og CSS (Cascading Style Sheets) som front-end og C\#-klasser som backend. \fxnote{Troels: C\# klasser lyder lidt forkert, måske bare C\# som backend?}
+En hjemmeside, som gør brug af C\#, vil kunne laves på en måde, som minder om den ved WPF og XAML; med HTML (HyperText Markup Language), JS (JavaScript) og CSS (Cascading Style Sheets) som front end og C\#--kode som back end. 
 
 \subsection{Afgrænsning}
 En hjemmeside blev fravalgt, da det blev vurderet at WPF var nemmere at oprette end en hjemmeside.
-Samtidig bør fokus være rettet mod objektorienterede principper fremfor udvikling af brugergrænseflade. \fxnote{Bør fokus være, eller er vores fokus? (søren)}
+Samtidig er fokus rettet mod objektorienterede principper fremfor udvikling af brugergrænseflade.
 
 WinForms blev fravalgt, da det er ved at være forældet.
 Microsoft har informeret om, at der ikke længere tilføjes nye funktioner til WinForms, men at der udelukkende bliver lavet rettelser af fejl.\citep{winforms}
 
 I dette projekt bruges \ac{WPF} til at skabe den grafiske brugergrænseflade. 
-Valget faldt på \ac{WPF}, da \ac{XAML}, som WinForms ikke har, gør det let at hurtigt lave en grafisk brugergrænseflade og ligeledes skaber et bedre generelt overblik, når der skabes en brugergrænseflade.\fxnote{Tristan: Igen ``let'' ligefrem? Tror vi bør overveje vort ordvalg.}
+Valget faldt på \ac{WPF}, da dets integration i Visual Studio simplificerer det skabelsen af en grafisk brugergrænseflade.
 
 
 \subsection{Ofte anvendte WPF-controls}
 I projektet anvendes bestemte WPF controls til at bygge brugergrænsefladen. 
 De hyppigst anvendte vil her blive beskrevet. 
-På figur \ref{img:wpfdemo} vises de beskrevne elementer (Note: De 3 sidste elementer er henholdsvis DataGrid, ComboBox og ListBox).\fxnote{Nikolaj: Kan billedet ikke laves således, navnet også står i de sidste tre ting?}
+På figur \ref{img:wpfdemo} vises de beskrevne elementer.
 
 \subsubsection*{ComboBox}
 I WPF er en ComboBox det element, som andre steder omtales som en dropdown menu. 
-Dens indhold kan indstilles enten i XAML-koden eller i Code-Behind koden (her ment C\#-koden).\fxnote{Nikolaj: Muligvis skulle det i parentes, stå første gang Code-Behind bliver nævnt?}
-Hvis dette indhold skal være dynamisk, vil Code-Behind ofte være anvendt, eksempelvis hvis man kun vil have de medlemmer af en liste, som opfylder et givent prædikat.\fxnote{Tristan: Skal vi eventuelt nævne, at dette ikke er tilfældet, hvis man benytter sig af binding? (Søren): Kan også abre skrive "Kan man anvende code-behind".}
+Dens indhold kan indstilles enten i XAML-koden eller i Code-Behind koden.
+Hvis dette indhold skal være dynamisk, kan man anvende Code-Behind, eksempelvis hvis man kun vil have de medlemmer af en liste, som opfylder et givent prædikat.
 
-\subsubsection*{Button}
-En Button er en knap, som kalder en metode i Code-Behind koden, når den trykkes på. \fxnote{Kan man ikke bare skrive " I Code-Behind"(Søren)}
-Den metode udfører det kode, som er angivet i den.\fxnote{Nikolaj: Sidste sætning bør vel nukes}
-
-\subsubsection*{DataGrid}
-Et DataGrid er et grafisk element, som kan vise data dynamisk.\fxnote{Tristan: Måske fremhæve, at der er tale om tabular data? Næsten alle komponenter kan vel vise dynamisk data?}
-Ofte vil det vise en liste af objekter.
-Dets layout er opdelt i rækker og kolonner, hvor hver kolonne indeholder en bestemt type data, og kan sorteres ved at klikke på de forskellige headers.
-Det er også muligt at konstruere en søgefunktion, altså kan et DataGrid blive filtreret.
-
-\begin{wrapfigure}[22]{R}{0.5\textwidth}
+\begin{wrapfigure}[15]{R}{0.5\textwidth}
     \label{img:wpfdemo}
     \vspace{-30pt}
     \begin{center}
         \includegraphics[width=0.48\textwidth]{UI/WPF-Demo.png}
     \end{center}
     \vspace{-15pt}
-    \caption{Demonstration af WPFs Controls}
+    \caption{Demonstration af WPFs Controls (Note: De 3 sidste elementer er henholdsvis DataGrid, ComboBox og ListBox)}
     \vspace{-15pt}
 \end{wrapfigure}
 
+\subsubsection*{Button}
+En Button er en knap, som kalder en metode i Code-Behind, når den trykkes på.
+
+\subsubsection*{DataGrid}
+Et DataGrid er et grafisk element, som kan vise data på tabelform.
+Ofte vil det vise en liste af objekter.
+Dets layout er opdelt i rækker og kolonner, hvor hver kolonne indeholder en bestemt type data, og kan sorteres ved at klikke på de forskellige headers.
+Det er også muligt at konstruere en søgefunktion, altså kan et DataGrid blive filtreret.
+
 \subsubsection*{CheckBox}
-En CheckBox er en kvadratisk boks, som enten er ``Checked'' eller ikke-``Checked''.\fxnote{Marc: UnChecked?} 
-Ud fra om den er ``Checked'' eller ej, kan der valideres på data. 
+En CheckBox er en kvadratisk boks, som enten er ``Checked'' eller ``UnChecked''.
+I code--behind kan stadiet af en CheckBox aflæses.
 
 \subsubsection*{RadioButton}
 En RadioButton er en cirkelformet CheckBox.
@@ -109,25 +112,21 @@ Et oplagt brug af dem er til ja, nej (og måske) situationer, hvor kun en af dem
 \subsubsection*{TextBlock}
 En TextBlock bruges til visning af tekst, som ikke kan redigeres.
 Det vil typisk være en forklarende tekst op ad et andet grafisk element.
-Det er også muligt at ændre en TextBlock via Code-Behind. 
-Hvis man vil føre en dialog med brugeren, eksempelvis til fejlbeskeder.\fxnote{Tristan: Det lyder forkert at starte denne sætning med ``Hvis''. Virker som om der burde komme mere, når man når til punktummet.}
+Det er også muligt at ændre en TextBlock via Code-Behind, hvis man vil føre en dialog med brugeren, eksempelvis til fejlbeskeder.
 
 \subsubsection*{TextBox}
 En TextBox er et tekstfelt, hvori brugeren kan indtaste tekst. 
 Dette kan dermed ses som et inputfelt. 
-Det er også muligt at sætte sådan et felt til at være skrivebeskyttet, imens programmet selv kan ændre det.\fxnote{Tristan: Eventuelt ``at være skrivebeskyttet, så brugeren ikke kan redigere det, mens programmet stadig kan foretage ændringer.'', eller noget i den stil?}
+Det er også muligt at sætte sådan et felt til at være skrivebeskyttet, så brugeren ikke kan redigere det, imens programmet stadig kan ændre feltets indhold.
 
 \subsubsection*{ListBox}
-En ListBox er en tabel, med én kolonne og flere rækker, hvori en bruger kan vælge en eller flere elementer.\fxnote{Nikolaj: Er der tale om en tabel, når der kun er en kolonne. Tristan: Er det ikke bare en liste?}
+En ListBox er en liste, hvori en bruger kan vælge en eller flere elementer.
 ListBoxen er i stand til at indeholde samlinger af data på enhver form, oftest vil det være en streng, men et billede er også en mulighed.
 Den vil i nogle tilfælde have samme brugsscenarie som en ComboBox eller et DataGrid. 
 Forskellen fra en ComboBox er, at der kan være flere synlige elementer i en ListBox på samme tid, samt der ikke er nogen dropdown menu.
-Et DataGrid kan indeholde flere informationer på kolonner, mens en ListBox kun kan indeholde én information.\fxnote{Tristan: Dette virker redundant, og måske endda forkert, med den måde det er formuleret på.}
 
 \subsubsection*{UserControls}
 Det er muligt at konstruere sine egne grænsefladeelementer fra et eller flere af WPFs indbyggede eller 3. parts Controls.
 Dette kaldes en UserControl, som indeholder både en grafisk del og en Code-Behind del.
 Det brugerskabte element kan derefter genbruges flere steder i programmet.
-Dette er et eksempel på genanvendelse, hvilket kan bidrage til højere programkvalitet og større konsistens gennem programmet. \fxnote{Troels: Tilføj evt. ``UserControls gør et program mere modulært, og gør det nemmere at modificere.'' ?}
-
-\fxnote{Skal vi også beskrive et vindue egentlig ? (Søren)}
+Dette er et eksempel på genanvendelse, hvilket kan bidrage til højere programkvalitet og større konsistens gennem programmet. 
