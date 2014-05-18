@@ -18,19 +18,20 @@ Efter research, herunder rådgivning fra OOP lektor Rene Hansen, stod valget mel
 
 \subsubsection*{Entity Framework}
 Den første af de to, \ac{EF}, er en Object-Relational Mapping (ORM) til .NET Frameworket.
-Et ORM skaber et billede af objekterne i hukommelsen i databasen. 
+Et ORM skaber et billede af objekterne i hukommelsen i databasen \citep{object_relational_mapping}. 
 Herunder var rådgivningen fra Rene Hansen, at anvende Code-First udvikling.
 Med Code-First designes objekterne først, i form af modelklasser, hvorefter databasen og tabellerne i denne genereres ud fra sammenkoblingen mellem de forskellige modeller. 
 Denne sammenkobling sker i såkaldte migrations, som opretter, ændrer og sletter tabeller, afhængigt af ændringerne i de benyttede modeller.
 Fordelen ved denne løsning er, at mange tekniske valg træffes af programmet, så programmøren ikke behøver at have et kendskab til \ac{SQL}, for at kunne benytte databasen og dermed opnå persistens.
-Dette gør \ac{EF} til en attraktiv løsning for udviklere, der gerne vil hurtigt i gang med at programmere en løsning, uden først at sætte sig ind i databaseprogrammering.
+Dette gør \ac{EF} til en attraktiv løsning for udviklere, der gerne vil hurtigt i gang med at programmere en løsning, uden først at sætte sig ind i databaseprogrammering. \citep{entity_framework}
 
 \subsubsection*{SQLite}
 Den anden kandidat er SQLite, som er et \ac{RDBMS}, hvilket betyder, at det benytter \ac{SQL} til de forskellige former for datahåndtering, såsom INSERT til at indsætte data, og SELECT til at hente data fra databasen.
 SQLite er en letvægts embedded database, der er velegnet til mindre programmer, som har behov for lokal persistens.
 At en database er embedded betyder, at den ikke kører i et separat program, men inkluderes som et bibliotek i programmet.
 SQLite implementerer det meste af SQL-standarden, men udelader de dele, der af SQLite-udviklerne er bedømt til at være for tunge eller unødige til at have med.
-Målet med SQLite er at bibeholde letvægten, da systemet også benyttes på mange mobile enheder, såsom Android.\fxnote{Marc: Smid eventuelt en kilde på det her? Tristan: Kan ikke finde egentlige tal på det, men SQLite er indbygget i Android API'et. Ved ikke om vi skal bruge dét? http://developer.android.com/guide/topics/data/data-storage.html }
+Målet med SQLite er at bibeholde letvægten, da systemet også benyttes på mange mobile enheder, såsom Android \citep{sqlite_android}.
+SQLite opfattes af dets udviklere, som værende den mest distribuerede SQL database i verden \citep{sqlite_most_deployed}. \citep{sqlite}
 
 Begge databaser blev implementeret under projektarbejdet, grundet komplikationer med førstevalget af database, Entity Framework. 
 

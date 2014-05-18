@@ -18,7 +18,6 @@ del *.nav
 del *.out
 del *.snm
 del *.soc
-del *.synctex.gz
 del *.tdo
 del *.thm
 del *.toc
