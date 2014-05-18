@@ -14,7 +14,7 @@ En simpel løsning på persistensproblemet ville være at gemme alt data på en 
 Denne løsningen bliver dog hurtig upraktisk, da flade filer ikke har samme evne til at skalere til et større system som egentlige databaser.
 
 \subsection{Databaser}
-Efter research, herunder rådgivning fra OOP lektor Rene Hansen, stod valget mellem to databaser: Entity Framework og SQLite.
+Efter research, herunder rådgivning fra OOP lektor Rene Hansen, stod valget mellem to databaser: Entity Framework og SQLite.\fxnote{ER vi sikker på han er lektor ? :) (søren)}
 
 \subsubsection*{Entity Framework}
 Den første af de to, \ac{EF}, er en Object-Relational Mapping (ORM) til dotNet Frameworket.\fxnote{Nikolaj: Bør der ikke stå: ``.Net''? Thomas: Der står .NET under WPF}
@@ -38,7 +38,7 @@ Begge databaser blev implementeret under projektarbejdet, grundet komplikationer
 \section{Database Abstraction Layer}
 Et \ac{DAL} bruges til at separere programmet fra databasen.
 Dette gør det muligt at udskifte det underliggende persistenslag, samt at lave lag, der simulerer persistens, ved udelukkende at gemme data i hukommelsen, så længe programmet kører.
-Man udstiller et interface til programmet, som så anvendes, og ikke en direkte forbindelse.
+Man udstiller et interface til programmet, som så anvendes, og ikke en direkte forbindelse. \fxnote{Søren: Og derfor ikke en? }
 Hver tabel som findes i den database programmet skal anvende, skal have sin egen \ac{DAL}, som er logikken der forbinder til databasen.
 Der findes fire basale operationer til en database, kaldt CRUD: Create, Read, Update, Delete. 
 Hver af disse operationer skal DAL'et udstille, og yderligere metoder kan tilføjes efter behov.
@@ -103,7 +103,7 @@ Denne implementation simulerer persistens, men gemmer kun i RAM mens programmet 
 Idet persistens er vigtigt for gruppen, blev der udviklet et persistenslag til mock-data-implementationen.
 Dette persistenslag benytter ligeledes SQLite, men gemmer kun data når programmet lukkes, og henter det igen når programmet starter op.
 Denne løsning er skrøbeligt overfor eventuelle computernedbrud, idet data i så fald ikke ville blive gemt i databasen.
-Det ville være en mulighed at gemme data hver gang der trykkes på ``Log ud''--knappen, eller måske at have en decideret ``Gem''--knap.
+Det ville være en mulighed at gemme data hver gang der trykkes på ``Log ud''--knappen, eller måske at have en decideret ``Gem''--knap. \fxnote{Kom ind på det i konklusionen.}
 
 
 %I forbindelse med programmets data var det nødvendigt at overveje, om programmet skulle have foruddefineret
