@@ -10,14 +10,13 @@ Ved at analysere videre på de direkte forhold vedrørende en sejlklub, blev der
 
 \section{Interessenterne for sejlklubber}
 
-Der var forskellige interessenter for sejlklubberne, og de havde varierende mængder af interesse i projektet. \fxnote{Caspar: Drop mængder, evt ``har varierende interesse i projektet''}
+Der var forskellige interessenter for sejlklubberne, og de havde varierende interesse i projektet. 
 
 Medlemmerne, underviserne og de frivillige vil alle være personer, der skal bruge det udviklede system. 
 De har derfor en mere direkte indvirkning på, hvordan system skal opbygges. 
-Hvis systemet ikke har de funktioner, som de efterspørger, vil det ikke være den gode løsning, som de gerne vil have.\fxnote{Efterspørger igen her, hvad ændrede vi det til? (Søren)} 
+Hvis systemet ikke har de funktioner, som de tre interessenter har behov for, vil det ikke være en god løsning.
 Dette gælder for alle de tre nævnte interessenter. 
 Det skal dog understreges, at de ikke vil bruge samme dele af systemet. 
-Dette skyldes, at medlemmerne ikke skal kunne oprette undervisningsdage mm., da det kun er underviserne, der skal have tilladelse til dette. \fxnote{Slet dette? ER det ikke løsningsorienteret? (Søren)}
 
 \section{Organisation}
 
@@ -36,19 +35,19 @@ Følgende er en liste over opgaver, som kan dækkes af et system for sejlklubber
   \item Mulighed for at få informationer vedr. begivenheder, samt at tilmelde sig disse.
   \item Organisering af information der nedskrives i forbindelse med en sejlads.
   \item Organisering af betalinger, samlet for det enkelte medlem, samt mulighed for online betaling.
-  \item Reservation af både. \fxnote{Tristan: Jeg har rettet det fra ``Booking'' til ``Reservation''.}
+  \item Reservation af både. 
   \item Administrering af undervisning.
 \end{itemize}
 
 
 \section{Teknologi}
 
-Sejlklubben Sundet,\fxnote{Tristan: Skal det komma være der?} viste sig at have flere forhold at organisere end de andre klubber der er undersøgt, og derfor afgrænses projektet til konkret at designe et IT-system til Sejlklubben Sundet. 
-Dette gøres, da hvis et system kan hjælpe Sundet, er det blevet konkluderet\fxnote{Caspar: Hvor har vi konkluderet dette? Søren: Ovenfor når vi siger at hvis det virker til en sejlklub kan det også virek til andre fritidsklubber, hvis man fjerne nogle funktionaliteter}, at det også kan hjælpe andre sejlklubber, der har færre forhold at holde styr på.
-Man har fundet frem til at systemet, der efterspørges, er af typen management system, som blev beskrevet i \myref{subsec:management-systemer}.\fxnote{Er det ikke bedre med: Der er blevet fundet frem til... i stedet for 'man'? - Thomas}
-Der findes allerede systemer, som kan dække Sundets administrative behov, bortset fra håndteringen af undervisning.
+Sejlklubben Sundet viste sig at have flere forhold at organisere end de andre klubber der er undersøgt, og derfor afgrænses projektet til konkret at designe et IT-system til Sejlklubben Sundet. 
+Dette gøres, da hvis et system kan hjælpe Sejlklubben Sundet, vurderes det, at det også kan hjælpe andre sejlklubber, der har færre forhold at holde styr på.
+Der er blevet fundet frem til at systemet, der efterspørges, er af typen management system, som blev beskrevet i \myref{subsec:management-systemer}.
+Der findes allerede systemer, som kan dække Sejlklubben Sundets administrative behov, bortset fra håndteringen af undervisning.
 Der mangler altså et program på markedet, som kan håndtere en sejlklubs sejlerskole.
-Heri ligger projektets eksistensberettigelse.\fxnote{Sundet vs. Sejlklubben Sundet - Thomas}
+Heri ligger projektets eksistensberettigelse.
 
 \subsection*{Problemformulering}
 \subsubsection*{Ud fra denne afgrænsning er flg. problemformulering formuleret:}
@@ -56,21 +55,21 @@ Heri ligger projektets eksistensberettigelse.\fxnote{Sundet vs. Sejlklubben Sund
 \begin{center}
   \begin{tabular}{|p{14cm}|}
     \textit{Det er et problem at frivillige i fritidsklubber med specielle udlejningsmuligheder, så som Sejlklubben Sundet, benytter unødvendig arbejdskraft på fysisk dokumenthåndtering vedrørende udlånte faciliteter, undervisning og begivenhedsorganisation. 
-    Hvordan kan et system hjælpe med at danne overblik over sådanne opgaver?}
+    Hvordan kan der udvikles et system som kan hjælpe med at danne overblik over sådanne opgaver?}
   \end{tabular}
 \end{center}
-\fxnote{Nikolaj: bør det ikke nærmere være: "Hvordan kan der udvikles et system som kan hjælpe med at danne overblik over sådanne opgaver?}
 
 
 \section{Afgrænsning for problemløsning}
 
-Da dette projekt er udarbejdet i løbet af 2. semester på Aalborg Universitet, er der ikke uanede mængder af tid.\fxnote{Lyder lidt talesprogsagtigt 'uanede mængder', måske skrive noget med begrænset tid. - Thomas --- Tristan: Desuden vil et semesterprojekt vel stort set altid have begrænset tid?}
+Da dette projekt er udarbejdet i løbet af 2. semester på Aalborg Universitet, er der en begrænset mængde tid.
 Der afgrænses derfor fra at udvikle hele management systemet til Sejlklubben Sundet, til i stedet at lave enkelte dele af systemet.
 
 Grundet de manglende ressourcer og tid, vil der altså ikke blive lavet et system, der kører over internettet, men i stedet et system, som kan håndtere de forskellige emner lokalt. 
-Denne afgrænsning finder sted, da hvis funktionerne for klubben kan fungerer på computeren, skal det tilkobles en server, for at kunne tilgås fra flere forskellige computere. \fxnote{Hvad menes der med ``computeren'' er det den nede i klubben, eller enhver?} \fxnote{Tristan: Eventuelt ``skal kunne fungere på...''?}
-Derfor ser projektgruppen altså funktionerne for Sejlklubben Sundet som værende de vigtige ting at udvikle, selvom systemet mister noget af sin effektivitet uden internetopkoblingen.\fxnote{Nikolaj: Omformulering: " selvom systemet mister sin brugbarhed uden internetopkoblingen}\fxnote{Marc: Vi gør kun opmærksom på at kravet om internet ikke vil bliver opfyldt, hvad med medlemsopretning samt betaling af lejede både? dette gør vi ikke i projektet men vi gør ikke opmærksom på at dette undlades --- Tristan: Der er i det hele taget flere ting vi nævner, men aldrig tager stilling til, eller løser.}
-Dette ses som værende acceptabelt, da systemet ikke skal tages i brug af klubben, da dette er et projekt lavet i forbindelse med uddannelsen på Softwareingeniørstudiet ved Aalborg Universitet.\fxnote{Tristan: Ved ikke om dette måske er lidt for tyndt et argument?}
+Denne afgrænsning finder sted, da hvis funktionerne for klubben kan fungere på en computer, skal programmet tilkobles en server, for at kunne tilgås fra flere forskellige computere. 
+Derfor ser projektgruppen altså funktionerne for Sejlklubben Sundet som værende de vigtige ting at udvikle, selvom systemet mister noget af sin brugbarhed uden internetopkoblingen.
+Dette ses som værende acceptabelt, da systemet ikke skal tages i brug af klubben, da dette er et projekt lavet i forbindelse med uddannelsen på Softwareingeniørstudiet ved Aalborg Universitet.
 
 De resterende kapitler i rapporten, vil beskæftige sig med udviklingen af et management system, henvendt imod Sejlklubben Sundet, baseret på problemformuleringen. 
-Som det første vil der komme en kravspecifikation for systemet, på baggrund af denne afgrænsning.\fxnote{Caspar: Skal tilpasses da næste ikke kravspec, men user stories}
+
+Som det første vil der blive udformet en kravspecifikation på baggrund af user stories. 
