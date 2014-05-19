@@ -54,6 +54,7 @@ Først kaldes metoden \texttt{InitializeXmlStrings1()}, som genererer en tekstst
 Herefter kaldes \texttt{ImportMembersFromXml()} med det simulerede XML--data.
 Endeligt benyttes NSubstitute til at verificere, at \texttt{Create()}--metoden i det angivne \ac{DAL} blev kaldt én gang, med et \texttt{SailClubMember} objekt.
 
+
 \begin{lstlisting}[frame=single, caption=Eksempel på Unit test, label=unit_test]
   [Test]
   public void ImportMembersFromXml_InputtingOneMember_OneMemberSaved()
@@ -70,6 +71,8 @@ I dette afsnit forklares fremgangsmåden for brugertests i forbindelse med progr
 Derudover ses der nærmere på, hvordan resultaterne bruges, hvorfra der kan dannes et overblik over programmets funktionalitet. 
 
 For at teste programmet anvendes der, foruden unit tests i dette projekt, en række brugertests, som tager udgangspunkt i projektets UserStories, \myref{User_stories}.\fxnote{Nikolaj: Burde man ikke skrive i metateksten at der anvendes brugertests?}
+Testene er inspireret af user acceptance Test, men da det ikke har været muligt at finde nogle af Sejlklubben Sundets medlemmer til at teste, er det ikke en konkret user acceptance test. 
+Testen består i at få personer, som indgår i den endelige brugers segment til at prøve programmet, og udføre nogle opgaver som simulerer den reelle brug af programmet i sejlklubben \citep{UAT}.
 Denne type test lægger fokus på uafhængige brugeres meninger om programmets brugervenlighed.
 Testens form er inspireret af black-box testing, som også er blevet brugt i forbindelse med udviklingen af programmet, normalt ellers udføres af udviklerne selv.\fxnote{Nikolaj: Det sidste giver ikke mening. Thomas: Måske tilføje [...] som normalt udføres af...}
 
