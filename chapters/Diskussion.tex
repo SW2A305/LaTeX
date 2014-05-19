@@ -50,6 +50,8 @@ Grundet problemer beskrevet i \myref{subsec:Pwoblem} blev der skiftet til SQLite
 Hvis man tager tidsforbruget på udviklingen af persistenslagene i betragtning, ville en simplere løsning have været bedre, da der så havde været mere tid til at udvikle og teste resten af programmet.
 Sådan en løsning kunne have været med flade filer eller et program helt uden persistenslag, som udelukkende kørte ved brug af Mockdata.  
 
+Da der var foretaget flere databaseskift under udviklingen var det et godt valg at bruge et \acl{DAL}, da dette simplificerede skiftet. 
+Uden et \ac{DAL} ville dette skift have været besværligt, da ethvert databasekald skulle skrives om. 
 
 \section*{Brugergrænseflade}
 
@@ -62,6 +64,23 @@ Dette konkluderes, da Sejlklubben Sundets medlemmer består af et bredt befolkni
 Testen viste, at der var visse mangler ved programmets layout, dog ytrede testpersonerne generelt tilfredshed med programmet.
 Det vurderes derfor, at der stadig skal laves ændringer til programmets brugergrænseflade i tilfælde af en publicering i kommerciel kontekst. 
 
+\section*{Modeldesign}
+I det udviklede modellag var der flere designfejl som vil blive uddybet nedenunder. 
+Da der ikke var tid til at refaktorisere programmet, blev disse designfejl ikke udbedret. 
+\begin{itemize}
+	\item SailTrip- og RegularTripklassen
+	\item Lectureklassen
+	\item StudentMember booleans
+\end{itemize}
+
+\textbf{SailTrip- og RegularTripklassen}: 
+Disse to klasser burde have været samlet, da indtil flere felter er placeret på subklassen i stedet for superklassen. 
+
+\textbf{Lectureklassen}: 
+Denne klasse burde have en relation til SailTripklassen. 
+
+\textbf{StudentMember booleans}:
+Disse booleans burde have været af typen \texttt{int}, da elever godt kunne have lavet den samme øvelse flere gange. 
 
 \section*{Opsummering}
 

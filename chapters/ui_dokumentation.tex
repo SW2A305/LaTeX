@@ -15,37 +15,29 @@ Hver tab indeholder forskellige funktioner, samlet set findes følgende tabs:
     \item Både.
 \end{itemize}
 
+Alle tabs kan ses på \myref{img:programNavigation}.
+
 Via hver af disse tabs, vil der være adgang til programmets forskellige funktionaliteter.
 Programmet er lavet til at køre i opløsningen 1024x720 pixels.
 Denne opløsning er valgt, da stort set alle computerskærme har en opløsning større end 1024x720 pixels \citep{resolutions}. 
 Programmet har et lyst farveskema; med farverne lyseblå og hvid som primære farver.
 
 
+
 \begin{center}
     \begin{figure}[H]
-        \noindent{\includegraphics[width=0.9\textwidth]{UI/UI2.png}}
-        \caption{Navigationsskema for programmet}
+        \noindent{\includegraphics[width=0.9\textwidth]{UI/Login.pdf}}
+        \caption{Hovedvinduets tabs.}
         \label{img:programNavigation}
-        \vspace{-60pt}
+        \vspace{-40pt}
     \end{figure}
 \end{center}
-
 %``'' == metoder/knapper/gui elementer
 %textbf == vindue/tab/usercontrol
 %textit= N/A
 
-\section{Navigering i programmet}
-På \myref{img:programNavigation} ses et navigationsdiagram for programmet.
-Øverst er login-vinduet, herfra logger brugeren ind med sine login informationer, eller en gæst kan logge ind ved at trykke på knappen ``Login som gæst''. 
-Brugeren ser nu hovedvinduet, hvilket er vinduet i midten med fem tabs i toppen.
-Antallet af tabs varierer alt efter, hvilken position brugeren har i systemet, hvilket kan ses på \myref{tab:permissions}. 
-Fra forside--tabben kan der navigeres til de andre tabs, som brugeren har adgang til.
-Pilene illustrerer de dialogbokse, som brugeren kan åbne fra de forskellige tabs.
-Dialogboksene åbnes ved at trykke på knapper inde i tabben, f.eks. under tabben \textbf{Både} kan dialogen \textbf{CreateBoatBookingWindow} åbnes ved at trykke på knappen ``Reserver Båden''. 
-På samme måde åbnes de resterende dialoger ved tryk på knapper.
-Flere steder i programmet anvendes de samme dialogvinduer, f.eks. fra tabben \textbf{Forside} findes en mulighed for at ændre på en reservation, hvilket åbner en mindre modificeret udgave af dialogen \textbf{CreateBoatBookingWindow}, hvorfra dialogen \textbf{CreateCrewWindow} også kan åbnes.
-Desuden findes dialogen \textbf{CreateBoatBookingWindow} også fra tabben \textbf{Både}.
-Dialogen \textbf{CreateLogBookWindow} åbnes fra tabben \textbf{Forside} mens en lignende dialog \textbf{ViewSpecificLogBookWindow} åbnes fra tabben \textbf{Både}.
+På \myref{img:programNavigation} kan man se vinduet \textbf{Login}, der åbner hovedvinduet, som består af 5 tabs, som pilene på figuren viser.
+
 
 % LaTeX tabel som viser alle brugerniveauer og deres muligheder efter login.
 % http://bit.ly/1kToHZ3 to edit raw table
@@ -72,6 +64,7 @@ Dialogen \textbf{CreateLogBookWindow} åbnes fra tabben \textbf{Forside} mens en
 
 
 \section{UserControls}
+
 Der anvendes UserControls til at kode både brugergrænsefladen og den tilhørende Code-Behind.
 Hver usercontrol kan ses på \myref{img:programNavigation}
 
@@ -99,7 +92,19 @@ Den består af en DatePicker og en TimePicker, som findes i extended WPF toolkit
 Der er lavet en specifik getter og setter for UserControlen, som udnytter både controllens DatePicker og TimePicker.
 
 
+\begin{center}
+    \begin{figure}[h]
+        \noindent{\includegraphics[width=0.9\textwidth]{UI/FrontPage.pdf}}
+        \caption{Forsidentabben og dens vinduer.}
+        \label{img:forside}
+        \vspace{-20pt}
+    \end{figure}
+\end{center}
+
 \subsection{Forside}
+
+På \myref{img:forside} ses tabben \textbf{forside}. 
+Der vises desuden hvilke vinduer, som kan åbnes fra tabben ved et tryk på diverse knapper, som findes i tabben.
 
 \textbf{Formål}: 
 Formålet med forsiden er at vise aktuel infomation på en overskuelig måde for brugeren.
@@ -126,7 +131,18 @@ LogbookDataGrid.ItemsSource =
     sailTripList.Where(t => t.Captain.PersonId == usrId && t.ArrivalTime < DateTime.Now && t.Logbook == null);
 \end{lstlisting}
 
+\begin{center}
+    \begin{figure}[H]
+        \noindent{\includegraphics[width=0.9\textwidth]{UI/Boat.pdf}}
+        \caption{Bådetabben og dens vinduer.}
+        \label{img:baade}  
+        \vspace{-40pt}
+    \end{figure}
+\end{center}
+
 \subsection{Boat}
+På \myref{img:baade} ses tabben \textbf{Både}. 
+Der vises desuden hvilke vinduer, som kan åbnes fra tabben ved et tryk på diverse knapper, som findes i tabben.
 
 \textbf{Formål:}
 I tabben \textbf{Både}, finder man UserControllen \textbf{Boat}.
@@ -143,7 +159,21 @@ Desuden har administratorer mulighed for at tilføje og redigere både.
 \textbf{Code-Behind:}
 Den bagvedliggende kode henter data fra databasen og opdaterer de grafiske elementer med dataet.
 
+
+\begin{center}
+    \begin{figure}[H]
+        \noindent{\includegraphics[width=0.9\textwidth]{UI/StudyTeacher.pdf}}
+        \caption{Undervisningstabben og dens vinduer.}
+        \label{img:undervisning}
+        \vspace{-40pt}
+    \end{figure}
+\end{center}
+
 \subsection{StudyTeacher}
+
+På \myref{img:undervisning} ses tabben \textbf{Undervisning}. 
+Der vises desuden hvilke vinduer, som kan åbnes fra tabben ved et tryk på diverse knapper, som findes i tabben.
+
 
 \textbf{Formål:}
 Denne UserControl bruges til give undervisere på sejlerskolen mulighed for at administrere skolehold og undervisningslektioner.
@@ -165,7 +195,23 @@ Når der forsøges at forfremme et hold, tjekker Code-Behinden, om eleverne har,
 Der findes også en undervisnings UserControl for elever. 
 Denne kan ikke interageres med, men viser blot hvilke læringsområde brugeren har lært, informationer om det hold de er på, samt hvornår deres næste lektion er planlagt.
 
+
+\begin{center}
+    \begin{figure}[H]
+        \noindent{\includegraphics[width=0.9\textwidth]{UI/Events.pdf}}
+        \caption{Begivenhedstabben og dens vinduer.}
+        \label{img:begivenhed}
+        \vspace{-40pt}
+    \end{figure}
+\end{center}
+
+
+
 \subsection{Event}
+
+På \myref{img:begivenhed} ses tabben \textbf{Begivenheder}. 
+Der vises desuden hvilke vinduer, som kan åbnes fra tabben ved et tryk på diverse knapper, som findes i tabben.
+
 \textbf{Formål:}
 UserControllen Event bruges til at se informationer om kommende begivenheder i sejlklubben, samt til at tilmelde sig begivenhederne. 
 Hvis man er administrator, kan man også oprette nye begivenheder, redigere og slette eksisterende begivenheder.
@@ -179,6 +225,8 @@ I den næste ListBox vises beskrivelsen af begivenheden, som opdateres, når der
 Den bagvedliggende kode henter oprettede begivenheder fra persistenslaget. 
 Ved oprettelse, redigering og sletning skrives ændringerne til persistenslaget. 
 Ved tilmelding tilføjes personen, som er logget ind, til listen over tilmeldte personer.
+
+\newpage
 
 \section{Vinduer}
 Alle vinduer beskrevet i dette afsnit kan ses på \myref{img:programNavigation}. 

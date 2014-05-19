@@ -3,6 +3,7 @@
 I dette afsnit vil der gives en beskrivelse af forskellige funktioner, der er blevet vurderet nyttige, hvis projektet skulle videreudvikles. 
 Der vil desuden blive diskuteret generelle overvejelser af programmet, som kunne have været udformet anderledes. 
 
+\section*{SMS og E-mail}
 Det har i gruppen været diskuteret, at en SMS-service ville være smart at bruge. 
 Denne service kunne bruges til at sende notifikationer på dagen eller dagen før et medlems reservation af en båd.
 Det kunne også tænkes, at hvis man vil reservere en båd i et tidsrum, hvor båden allerede er reserveret, kan man placere sig selv i kø til båden.
@@ -10,14 +11,28 @@ Det betyder, at hvis medlemmet, der har den reelle reservering, pludselig aflyse
 Her kunne der evt. bruges en svarmulighed, så medlemmet, ved at svare på SMS'en, kan meddele om de vil overtage reserveringen eller ej, dvs. uden at skulle åbne systemet.
 Et lignende system kan konstrueres ved e-mail i stedet for SMS.
 
+\section*{Online tilgang}
 Som programmet er nu, fungerer det ikke online, og det vil sige, at man skal ned i sejlklubben for at kunne reservere en båd, tilmelde sig begivenheder og generelt bruge programmet. 
 En måde at ændre dette på er at lægge databaseforbindelsen online, så der kan laves ændringer i databasen uden at logge på i sejlklubben. 
 En online løsning vil gøre brugen af programmet mere fleksibelt, samt hjælpe medlemmerne og gøre brugen af klubbens faciliteter lettere at tilgå.
 
+\section*{Andre fritidsklubber}
 Som tidligere nævnt kan et lignende program designes så det kan anvendes i andre fritidsklubber.
 Et eksempel kunne være et sportscenter, som vil gøre det muligt at reservere hallen til diverse arrangementer, melde sig til begivenheder der måtte foregå o.l. 
 Dog vil dette, som nævnt tidligere, kræve ændringer i programmets funktionaliteter, da løsningen fremstillet til dette projekt, er lavet specifikt til Sejlklubben Sundet.
 
-Der blev i starten af projektperioden diskuteret internt i gruppen, at et system som dette ville tjene sig bedre som værende en hjemmeside.
-Grundet manglende kendskab til at udvikle en hjemmeside ved hjælp af C\#, blev dette dog fravalgt og en skrivebordsapplikation blev udviklet i stedet. 
-Ved en løsning udviklet som en website, ville det være muligt at anvende mobile enheder, såsom smartphones og tablets, samt computere med andre styresystemer end Windows, hvilket anses for at være en fordel. 
+\section*{Website}
+Der blev i starten af projektperioden diskuteret internt i gruppen, at et system som dette ville tjene sig bedre som værende et website.
+Grundet manglende kendskab til at udvikle et website ved hjælp af C\#, blev dette dog fravalgt og en skrivebordsapplikation blev udviklet i stedet. 
+Ved en løsning udviklet som et website, ville det være muligt at anvende mobile enheder, såsom smartphones og tablets, samt computere med andre styresystemer end Windows, hvilket anses for at være en fordel. 
+
+\section*{XML--import}
+Programmet har mulighed for at importere medlemmer fra en XML--fil. 
+Det vil være muligt at eksportere medlemmer fra en Microsoft Access database, såsom den Sejlklubben Sundet bruger. 
+Denne importfunktion skal tilpasses den konkrete database for at være brugbar.
+
+
+Projektets analyse har belyst, at der ikke findes noget produkt på markedet, som opfylder de behov, som Jacob Nørbjerg har givet udtryk for under interviewet. 
+Det viser sig dermed at være en mangelvare. 
+Dermed kan vores analyse for området hjælpe fremtidig udvikling af management systemer med det fokusområde.
+

@@ -15,13 +15,15 @@ Det er ikke alt kode, som bliver testet, men relevante metoder og properties i u
 Der er bl.a. skrevet unit tests til noget af mock data \ac{DAL}--implementationen, for at afprøve nogle formodninger, før hele programmet blev benyttet i testen.
 De valgte tests på dét område blev valgt ud fra formodningen om, at fejl i de metoder kunne vise sig som anderledes fejl andetsteds i programmet, og dermed gøre det svært at lokalisere den egentlige fejl.
 
-Noget af det mest gennemtestede kode, baseret på code coverage, er en hjælpeklasse, der importerer medlemmer fra en XML--fil, ind i det bagvedliggende persistenslag. 
-Code coverage er en indikator for hvor stor en procentdel af koden der testes.
-Denne hjælpeklasse benyttes ikke i programmet, men er forblevet deri som kode, med henblik på, at den kunne blive nyttig i forbindelse med en udvidelse af programmet.\fxfatal{Skal vi eventuelt nævne dette i perspektiveringen?}
+Noget af det mest gennemtestede kode, baseret på dets høje code coverage, er en hjælpeklasse, der importerer medlemmer fra en XML--fil, ind i det bagvedliggende persistenslag. 
+Code coverage er en indikator for, hvor stor en procentdel af koden der testes.
+Denne hjælpeklasse benyttes ikke i programmet, men er forblevet deri som kode, med henblik på, at den kunne blive nyttig i forbindelse med en udvidelse af programmet.
 
 I \myref{unit_test_setup} ses en såkaldt SetUp--metode, som køres inden hver test udføres, og dermed gør det muligt at nulstille til en bestemt tilstand, så tests kan udføres på en ensartet, systematisk måde.
 Til test af XML--import er der blevet benyttet et substitutionsframework, kaldet NSubstitute, der muliggør simulering af interfaces, når den bagvedliggende implementation ikke er vigtig for funktionaliteten.
 Her bruges den specifikt til at simulerer den del af programmets \ac{DAL}, som håndterer medlemmerne i sejlklubben.
+
+\newpage
 
 \begin{lstlisting}[frame=single, caption=Eksempel på Unit test SetUp, label=unit_test_setup]
   [SetUp]
@@ -44,7 +46,7 @@ Der er flere måder at navngive tests på.
 Den metode, som gruppen valgte, består af tre dele, adskilt af \_ (underscore):
 
 \begin{itemize}
-  \item Første del beskriver den metode eller property der testes.
+  \item Første del beskriver den metode eller property, der testes.
   \item Anden del beskriver inputtet til metoden eller propertien.
   \item Tredje del beskriver det forventede udfald af testen.
 \end{itemize}
@@ -265,7 +267,6 @@ Dette kan ses i skemaet \myref{tab:vurderingtest}.
     \colorlet{shadecolor}{gray!40}
     \rowcolors{1}{white}{shadecolor}
     \centering
-    \caption{Testpersonernes vurdering af centrale skærmvinduer}
     \begin{tabular}{l|rrrr|r}
         \textbf{Vindue} & T1 & T2 & T3 & T4 & \textbf{Gennemsnit} \\
         \midrule
@@ -279,6 +280,7 @@ Dette kan ses i skemaet \myref{tab:vurderingtest}.
         CreateBoatBookingWindow & 5 & 5 & 4 & 4 & 4,50 \\ \hline
         \textbf{Samlet Vurdering} & 3,75 & 3,88 & 3,38 & 2,88 & 3,47 \\
     \end{tabular}%
+        \caption{Testpersonernes vurdering af centrale skærmvinduer}
     \label{tab:vurderingtest}%
 \end{table}%
 
