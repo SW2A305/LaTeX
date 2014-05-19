@@ -3,28 +3,67 @@ I dette kapitel beskrives de to typer af tests, der er udført i forbindelse med
 
 \section{Unit test}
 Til test af selve koden er der benyttet Unit tests.
-Unit tests tester metoder, properties, klasser og assemblies. \fxnote{Assemblies?? (Søren) Tristan: Den binære form i .NET, omend det har vi overhovedet ikke nævnt andetsteds.}
-Når man har lavet en metode, så forventer man, som regel, et bestemt resultat. \fxnote{Troels: Ved et givent input.}
+Unit tests benyttes primært til at teste metoder, samt properties med logik.
+Når man har skrevet en metode, så forventer man, som regel, et bestemt resultat ved et givent input.
 Unit test af en metode fungerer ved, at man giver metoden, som skal testes, et input, og ser om man får det forventede resultat.
 
-Til Unit tests bruges frameworket NUnit, som er lavet til .NET platformen. 
-Det er ikke alt kode, som bliver testet, men udvalgte kodestykker.
-Disse udvalgte kodestykker er valgt på baggrund af deres relevans for den overordnede struktur i programmet. \fxnote{Skal vi nævne noget med at det også er fordi de var lettere at lave tests til?? Tristan: Det er dog en sandhed med modifikationer, idet det var ret komplekst at skrive unit tests til XML-import-delen.}
-Blandt andet bliver klasserne testet. \fxnote{Troels: Hvad menes der med klasser? er alt ikke inden i en klasse?, menes der her modeller eller hvad?}
+Der findes flere frameworks til unit testing.
+Til projektet benyttes frameworket NUnit, som er et open source unit testing framework til .NET.
+Det er ikke alt kode, som bliver testet, men relevante metoder og properties i udvalgte klasser.
+Der er bl.a. skrevet unit tests til noget af mock data \ac{DAL}--implementationen, for at afprøve nogle formodninger, før hele programmet blev benyttet i testen.
+De valgte tests på dét område blev valgt ud fra formodningen om, at fejl i de metoder kunne vise sig som anderledes fejl andetsteds i programmet, og dermed gøre det svært at lokalisere den egentlige fejl.
+
+Noget af det mest gennemtestede kode, baseret på code coverage\fxfatal{Sørg for at dette er beskrevet andetsteds?}, er en hjælpeklasse, der importerer medlemmer fra en XML--fil, ind i det bagvedliggende persistenslag.
+Denne hjælpeklasse benyttes ikke i programmet, men er forblevet deri som kode, med henblik på, at den kunne blive nyttig i forbindelse med en udvidelse af programmet.\fxfatal{Skal vi eventuelt nævne dette i perspektiveringen?}
+
+I \myref{unit_test_setup} ses en såkaldt SetUp--metode, som køres inden hver test udføres, og dermed gør det muligt at nulstille til en bestemt tilstand, så tests kan udføres på en ensartet, systematisk måde.
+Til test af XML--import er der blevet benyttet et substitutionsframework, kaldet NSubstitute, der muliggør simulering af interfaces, når den bagvedliggende implementation ikke er vigtig for funktionaliteten.
+Her bruges den specifikt til at simulerer den del af programmets \ac{DAL}, som håndterer medlemmerne i sejlklubben.
+
+\begin{lstlisting}[frame=single, caption=Eksempel på Unit test SetUp, label=unit_test_setup]
+  [SetUp]
+  public void Initialize()
+  {
+    _memberDalSubstitute = Substitute.For<ISailClubMemberDal>();
+    _parser = new XmlMemberParser(_memberDalSubstitute);
+    _sailClubMemberList = new List<SailClubMember>();
+    
+    // React to "creation" calls
+    _memberDalSubstitute
+          .Create(Arg.Any<SailClubMember>())
+          .ReturnsForAnyArgs(true)
+          .AndDoes(x => _sailClubMemberList.AddRange((SailClubMember[])x[0]));
+  }
+\end{lstlisting}
+
+Når SetUp--metoden er skrevet, skrives de enkelte tests, ud fra devisen om, at hver test kun skal teste én ting.
+Der er flere måder at navngive tests på.
+Den metode, som gruppen valgte, består af tre dele, adskilt af \_ (underscore):
+
+\begin{itemize}
+  \item Første del beskriver den metode eller property der testes.
+  \item Anden del beskriver inputtet til metoden eller propertien.
+  \item Tredje del beskriver det forventede udfald af testen.
+\end{itemize}
+
+Navngivningen er valgt på baggrund af, at gruppens medlemmer finder det lettere at se, hvor problemet ligger, hvis en eller flere tests fejler.
 
 Et eksempel på en unit test kan ses på \myref{unit_test}.
-Først bliver MemberId sat til værdien 3. 
-Derefter bliver der vha. \texttt{Assert.AreEqual} tjekket, om SailClubMemberId bliver sat til værdien 3.
-Hvis den bliver sat til værdien 3, så består testen.
+Her testes metoden \texttt{ImportMembersFromXml()}, med input af et enkelt medlem, og med en forventning om, at det ene medlem bliver gemt.
+Først kaldes metoden \texttt{InitializeXmlStrings1()}, som genererer en tekststreng med indholdet af det, der ville stå i en XML--fil med ét medlem.
+Herefter kaldes \texttt{ImportMembersFromXml()} med det simulerede XML--data.
+Endeligt benyttes NSubstitute til at verificere, at \texttt{Create()}--metoden i det angivne \ac{DAL} blev kaldt én gang, med et \texttt{SailClubMember} objekt.
 
 \begin{lstlisting}[frame=single, caption=Eksempel på Unit test, label=unit_test]
-[Test]
-public void SetMemberId_InputSimpleNumberString_ShouldSetMemberIdToNumericValue()
-	{
-		this.SetMemberId("3");
-		Assert.AreEqual(3, this.SailClubMemberId);
-	}
-\end{lstlisting}\fxnote{Har vi ikke mere spændende eksempler??}
+  [Test]
+  public void ImportMembersFromXml_InputtingOneMember_OneMemberSaved()
+  {
+    this.InitializeXmlStrings1();
+    _parser.ImportMembersFromXml(_stream);
+    
+    _memberDalSubstitute.Received(1).Create(Arg.Any<SailClubMember>());
+  }
+\end{lstlisting}
 
 \section{Brugertest}
 I dette afsnit forklares fremgangsmåden for brugertests i forbindelse med programmets brugervenlighed.
