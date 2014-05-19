@@ -69,26 +69,28 @@ I dette projekt bruges \ac{WPF} til at skabe den grafiske brugergrænseflade.
 Valget faldt på \ac{WPF}, da dets integration i Visual Studio simplificerer det skabelsen af en grafisk brugergrænseflade.
 
 
-\subsection{Ofte anvendte WPF-controls}
-I projektet anvendes bestemte WPF controls til at bygge brugergrænsefladen. 
-De hyppigst anvendte vil her blive beskrevet. 
-På figur \ref{img:wpfdemo} vises de beskrevne elementer.
-
-\subsubsection*{ComboBox}
-I WPF er en ComboBox det element, som andre steder omtales som en dropdown menu. 
-Dens indhold kan indstilles enten i XAML-koden eller i Code-Behind koden.
-Hvis dette indhold skal være dynamisk, kan man anvende Code-Behind, eksempelvis hvis man kun vil have de medlemmer af en liste, som opfylder et givent prædikat.
-
-\begin{wrapfigure}[15]{R}{0.5\textwidth}
+\begin{wrapfigure}[22]{r}{0.5\textwidth}
     \label{img:wpfdemo}
     \vspace{-30pt}
     \begin{center}
         \includegraphics[width=0.48\textwidth]{UI/WPF-Demo.png}
     \end{center}
     \vspace{-15pt}
-    \caption{Demonstration af WPFs Controls (Note: De 3 sidste elementer er henholdsvis DataGrid, ComboBox og ListBox)}
+    \caption{Demonstration af WPFs Controls}
     \vspace{-15pt}
 \end{wrapfigure}
+
+\subsection{Ofte anvendte WPF-controls}
+I projektet anvendes bestemte WPF controls til at bygge brugergrænsefladen. 
+De hyppigst anvendte vil her blive beskrevet. 
+På figur \ref{img:wpfdemo} vises de beskrevne elementer.
+
+
+\subsubsection*{ComboBox}
+I WPF er en ComboBox det element, som andre steder omtales som en dropdown menu. 
+Dens indhold kan indstilles enten i XAML-koden eller i Code-Behind koden.
+Hvis dette indhold skal være dynamisk, kan man anvende Code-Behind, eksempelvis hvis man kun vil have de medlemmer af en liste, som opfylder et givent prædikat.
+
 
 \subsubsection*{Button}
 En Button er en knap, som kalder en metode i Code-Behind, når den trykkes på.
