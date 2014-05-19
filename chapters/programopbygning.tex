@@ -4,13 +4,14 @@ I dette kapitel beskrives programmets opbygning.
 
 \input{images/flowcharts/programopbygning.tex}
 
-På \myref{img:Program_flow}, ses den overordnede struktur af programmet.\fxnote{Skriv noget om her at vi har valgt at bruge en database, og at man kan læse mere om det i kapitel(Database)? Vi snakker om dal og alt muligt her, uden at vi har fortalt noget som helst om det til læseren (Søren)}
-Nederst på figuren ses modelboksen, som repræsenterer modellaget, her findes de modeller, der anvendes i programmet.\fxnote{Lidt sjov sætning, evt. punktum efter 'modellaget'}
-Modellerne er forbundet til Dal'et (Data Abstraction Layer), hvilket er den generiske kontakt fra programmet ud mod databasen. \fxnote{Troels: Her lyder det som om at IDal og dal blandes sammen, med det neden under}	
-Fra den generiske IDal findes der forbindelser ud til et SQLite Dal og et Entity Framework Dal, som hver i sær har forbindelse til de databaser, de hører til. \fxnote{Troels: IDal har ingen forbindelser, det definerer bare hvad hvert dal skal implementere}\fxnote{Tristan: Ved ikke om vi skal have Entity Framework med her, da vi jo helt har fjernet det som en komponent i programmet?}
-Ideen ved det generiske IDal er, at der let kan skiftes mellem forskellige databaser, hvilket vil blive uddybet i \myref{chap:database}.
-Over IDal og Model findes Code-Behind og UI'en. \fxnote{Troels: Er dette en beskrivelse af flowchartet? eller er det en beskrivelse af vores programs opbygning?} \fxnote{UI? Skal vi ikke bruge nogle ord her :D ? (Søren)}
-Code-Behind og UI er forbundet, da UI-filerne kun indeholder grafiske elementer, og Code-Behind filerne indeholder det kode, som UI'en har brug for til at fungere.
-Code-Behind filerne er også i direkte kontakt med IDal \fxnote{Troels: gennem IDal interfacet til det aktive Dal} for at kunne tilgå data i databasen.
-Yderligere har Code-Behind også kendskab til modellaget, illustreret med en stiplet linje.
-Code-Behind har behov for kendskab til modellerne, da der flere steder i koden har været brug for at instantiere modellerne for at håndtere data. 
+På \myref{img:Program_flow}, ses den overordnede struktur af programmet. Ud fra figuren kan der ses de forskellige elementer programmet er opbygget af.
+Nederst på figuren ses boksen \textit{Model}, denne repræsenterer modellaget.
+Heri findes de modeller, som bliver brugt i programmet dette er nærmere forklaret i \myref{chap:klasser}.
+Modellaget har en direkte forbindelse til det generiske IDal(Data Abstraction Layer), hvilket kan ses på figuren som \textit{IDal} boksen.
+Dette har en direkte forbindelse ud til persistenslaget, dette er nærmere forklaret i \myref{chap:database}.
+Yderligere ses en forbindelse fra boksen \textit{IDal} til boksen \textit{Code-Behind}. 
+Denne boks repræsenterer programmets bagvedliggende kode, som gennem IDak interfacen kan tilgå persistenslaget. 
+Det ses ydermer fra figuren at der er en direkte forbindelse til UI'et repræsenteret med boksen \textit{UI XAML}.
+Koden har yderligere kendskab til modellaget, illustreret med en stiplet linje, for at kunne instantiere modellerne så da data kan håndteres.
+Dette er den visuele del af programmet som brugeren kan se, når brugeren laver en aktion på programmet kaldes Code-Behind'en for at udføre dette, heraf den direkte forbindelse mellem de to. 
+En nærmere forklaring af disse bokse følger i \myref{Programmets_brugergraenseflade}
