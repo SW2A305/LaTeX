@@ -1,14 +1,33 @@
 %%% Acronyms %%%
+
 % Add acronyms here, using \acrodef{acronym}[short name]{full name}
+%   or \acro{acronym}[short name]{full name}
 % Afterwards, these can be referred to as \ac{acronym}
-\acrodef{AAU}{Aalborg Universitet}
-\acrodef{DAL}{Data Abstraction Layer}
-\acrodef{EF}{Entity Framework}
-\acrodef{GUI}{grafisk brugergrænseflade}
-\acrodef{MVC}{Model--View--Controller}
-\acrodef{ORM}{Object Relational Mapping}
-\acrodef{RDBMS}{Relational Database Management System}
-\acrodef{SQL}{Structured Query Language}
-\acrodef{UML}{Unified Modeling Language}
-\acrodef{WPF}{Windows Presentation Foundation}
-\acrodef{XAML}{Extensible Application Markup Language}
+
+\ifAcroList
+  \begin{acronym}
+    \acro{AAU}{Aalborg Universitet}
+    \acro{DAL}{Data Abstraction Layer}
+    \acro{EF}{Entity Framework}
+    \acro{GUI}{grafisk brugergrænseflade}
+    \acro{MVC}{Model--View--Controller}
+    \acro{ORM}{Object Relational Mapping}
+    \acro{RDBMS}{Relational Database Management System}
+    \acro{SQL}{Structured Query Language}
+    \acro{UML}{Unified Modeling Language}
+    \acro{WPF}{Windows Presentation Foundation}
+    \acro{XAML}{Extensible Application Markup Language}
+  \end{acronym}
+\else
+  \acrodef{AAU}{Aalborg Universitet}
+  \acrodef{DAL}{Data Abstraction Layer}
+  \acrodef{EF}{Entity Framework}
+  \acrodef{GUI}{grafisk brugergrænseflade}
+  \acrodef{MVC}{Model--View--Controller}
+  \acrodef{ORM}{Object Relational Mapping}
+  \acrodef{RDBMS}{Relational Database Management System}
+  \acrodef{SQL}{Structured Query Language}
+  \acrodef{UML}{Unified Modeling Language}
+  \acrodef{WPF}{Windows Presentation Foundation}
+  \acrodef{XAML}{Extensible Application Markup Language}
+\fi

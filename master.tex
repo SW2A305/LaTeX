@@ -2,7 +2,7 @@
 
 \input{preamble/preamble.tex}
 % Preamble additions
-\input{preamble/acronyms.tex}
+%\input{preamble/acronyms.tex}
 \input{preamble/authors.tex}
 \input{preamble/hyphenations.tex}
 
@@ -102,6 +102,16 @@
 
 %%% Tables %%%
 \listoftables
+
+%%% Acronyms %%%
+\vspace*{18mm}
+\begingroup
+\let\clearpage\relax
+\let\cleardoublepage\relax
+\chapter*{Akronymer}
+\AcroListtrue
+\input{preamble/acronyms.tex}
+\endgroup
 
 
 \@openrighttrue\makeatother
