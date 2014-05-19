@@ -1,16 +1,15 @@
-\chapter{Diskussion}
+\chapter{Diskussion}\label{chap:diskussion}
 
-I diskussionen vil alle elementer fra problemløsningen blive diskuteret. \fxnote{Troels: Her sammenligner vi krav og hvorvidt de er opfyldt. Mere beskrivende metatekst ellers er den useless.}
+I diskussionen vil alle elementer fra problemløsningen blive diskuteret, herunder i hvor høj grad produktkravene er opfyldt.
 
-Et af kravene til produktet var medlemshåndtering, som er implementeret i klasserne Person, SailClubMember og StudentMember. \fxnote{Troels: At vi har klasserne gør os ikke i stand til at sige at systemet håndterer medlemmer, kun hvis der er persistens, som der står i næste linje. Tristan: Selve håndteringen afhænger vel ikke af, om der er persistens, hvis vi skal se helt firkantet på det.}
-Derudover lagres objekterne i databasen. 
+Et af kravene til produktet var medlemshåndtering, som er implementeret ved hjælp af klasserne Person, SailClubMember og StudentMember, da instanser af klasserne lagres i databasen; hvert med et unikt ID.
 
 Medlemmerne udgør desuden grundlaget for login-systemet, da der herigennem kan bestemmes hvilken bruger der logger ind, og hvilke funktioner i programmet, de skal have lov til at tilgå.  
 Denne løsning ses som værende tilstrækkelig, da det er muligt at registrere, hvem som er logget ind og dermed give dem adgang til de respektive funktionaliteter. 
 
 Et vigtigt punkt i programmet var at sørge for, at man kunne oprette en reservation af en båd. 
 Dette punkt er blevet gennemført, da der i programmet kan oprettes en reservation. 
-Desuden er der indført logik, som sikrer at båden skal være ledig og ikke være skadet, før reservationen kan gennemføres. \fxnote{Findes dette tjek??? - skadet(Søren) Troels: Ja! Tristan: Fedt! Troede faktisk vi havde overset skadestjekket.}
+Desuden er der indført logik, som sikrer at båden skal være ledig og ikke være skadet, før reservationen kan gennemføres.
 Yderligere er der til en reservation også knyttet en logbog, som skal udfyldes, efter sejladsen er gennemført. 
 Udfyldelsen af logbøger blev beskrevet i interviewet med Jacob Nørbjerg, som værende besværligt i Sejlklubben Sundet, da deres logbøger skal udfyldes på papir. 
 Det menes derfor, at det udviklede program kan gøre det lettere for klubben at holde styr på logbøger, ved at digitalisere dem, holde referencer til hvilken sejltur de hører til, sørge for at ikke alle kan udfylde logbøgerne og ikke mindst indeholde de krævede informationer. 
@@ -21,10 +20,11 @@ I programmet er der blevet konstrueret en del, som specifikt tager sig af underv
 Tilsvarende kan eleverne se deres egne fremskridt, og hvornår de har deres undervisningslektioner.
 Programmets undervisningsdel fungerer, dog er det specifikke pensum, som Sejlklubben Sundet selv står for at udvælge, ikke implementeret. 
 Det menes, at skiftet fra det overfladiske pensum, som programmet er skabt med, til det faktiske pensum som Sejlklubben Sundet anvender, ville være relativt simpelt. 
-Derfor kan programmet også bruges i andre sejlklubber med undervisning, som anvender et andet pensum.\fxnote{Det kunne dog udvides ved også at holde styr på antallet af gange en elev har udført en given opgave, og ikke kun notere om eleven har udført opgaven før.(Søren)}
+Derfor kan programmet også bruges i andre sejlklubber med undervisning, som anvender et andet pensum. 
+Det kunne dog udvides, ved også at holde styr på antallet af gange en elev har udført en given opgave, og ikke kun notere om eleven har udført opgaven før.
 
 Begivenheder findes også på listen af produktkrav.
-Funktionaliteten for begivenhedshåndtering er blevet implementeret, og det er muligt for brugere selv at oprette, samt tilmelde sig begivenheder.\fxnote{Thomas: Kun oprette hvis de er admin}
+Funktionaliteten for begivenhedshåndtering er blevet implementeret, og det er muligt for medlemmer at tilmelde sig begivenheder og som administrator oprette, redigere og slette begivenheder. 
 Desuden kan en bruger, når de logger ind på systemet, se kommende begivenheder og hvilke andre medlemmer der er tilmeldt, hvis begivenheden kræver tilmelding. 
 Dette ses som en god løsning, da medlemmer hurtigt kan få et overblik over kommende begivenheder i klubben.
 Dog er det ikke muligt kun at se hvilke begivenheder man selv er tilmeldt, hvilket anses for at være en mangel. 

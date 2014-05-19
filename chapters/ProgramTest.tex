@@ -1,16 +1,15 @@
 \chapter{Test af program}\label{test_af_program}
-I dette kapitel beskrives de to typer af tests, der er udført i forbindelse med projektet. \fxnote{Marc: vi har da selv kørt utallige blackboxtests som ikke har været af unit test formen, disse er fuldstændig ignoreret her i meta teksten, forslag: nævn blackbox tests sammed med unit tests da de essentielt set fungerer på samme måde, unit tests gemmes dog i programmet og er derfor mere effektive da man hurtigt kan kører dem igen}
+I dette kapitel beskrives de to typer af tests, der er udført i forbindelse med projektet.
+Under udviklingen af programmet har projektgruppens medlemmer testet funktionaliteterne løbende ved hjælp af blackbox testing.
 
 \section{Unit test}
 Til test af selve koden er der benyttet Unit tests.
-Unit tests tester metoder, properties, klasser og assemblies. \fxnote{Assemblies?? (Søren) Tristan: Den binære form i .NET, omend det har vi overhovedet ikke nævnt andetsteds.}
-Når man har lavet en metode, så forventer man, som regel, et bestemt resultat. \fxnote{Troels: Ved et givent input.}
-Unit test af en metode fungerer ved, at man giver metoden, som skal testes, et input, og ser om man får det forventede resultat.
+Unit tests tester metoder, propertieser.         af en metode fungerer ved, at man giver metoden, som skal testes, et input, og ser om man får det forventede resultat.
 
 Til Unit tests bruges frameworket NUnit, som er lavet til .NET platformen. 
 Det er ikke alt kode, som bliver testet, men udvalgte kodestykker.
-Disse udvalgte kodestykker er valgt på baggrund af deres relevans for den overordnede struktur i programmet. \fxnote{Skal vi nævne noget med at det også er fordi de var lettere at lave tests til?? Tristan: Det er dog en sandhed med modifikationer, idet det var ret komplekst at skrive unit tests til XML-import-delen.}
-Blandt andet bliver klasserne testet. \fxnote{Troels: Hvad menes der med klasser? er alt ikke inden i en klasse?, menes der her modeller eller hvad?}
+Disse udvalgte kodestykker er valgt på baggrund af deres relevans for den overordnede struktur i programmet.
+Blandt andet bliver udvalgte modeller testet. \fxnote{Troels: Hvad menes der med klasser? er alt ikke inden i en klasse?, menes der her modeller eller hvad?}
 
 Et eksempel på en unit test kan ses på \myref{unit_test}.
 Først bliver MemberId sat til værdien 3. 
@@ -31,11 +30,11 @@ public void SetMemberId_InputSimpleNumberString_ShouldSetMemberIdToNumericValue(
 I dette afsnit forklares fremgangsmåden for brugertests i forbindelse med programmets brugervenlighed.
 Derudover ses der nærmere på, hvordan resultaterne bruges, hvorfra der kan dannes et overblik over programmets funktionalitet. 
 
-For at teste programmet anvendes der, foruden unit tests i dette projekt, en række brugertests, som tager udgangspunkt i projektets UserStories, \myref{User_stories}.\fxnote{Nikolaj: Burde man ikke skrive i metateksten at der anvendes brugertests?}
+For at teste programmet anvendes der, foruden unit tests i dette projekt, en række brugertests, som tager udgangspunkt i projektets UserStories, \myref{User_stories}.
 Testene er inspireret af user acceptance Test, men da det ikke har været muligt at finde nogle af Sejlklubben Sundets medlemmer til at teste, er det ikke en konkret user acceptance test. 
 Testen består i at få personer, som indgår i den endelige brugers segment til at prøve programmet, og udføre nogle opgaver som simulerer den reelle brug af programmet i sejlklubben \citep{UAT}.
 Denne type test lægger fokus på uafhængige brugeres meninger om programmets brugervenlighed.
-Testens form er inspireret af black-box testing, som også er blevet brugt i forbindelse med udviklingen af programmet, normalt ellers udføres af udviklerne selv.\fxnote{Nikolaj: Det sidste giver ikke mening. Thomas: Måske tilføje [...] som normalt udføres af...}
+Testens form er inspireret af black-box testing, som også er blevet brugt i forbindelse med udviklingen af programmet, som normalt ellers udføres af udviklerne selv.
 
 Da programmet er lavet med henblik på brug i en sejlklub, består målgruppen af mange forskellige befolkningssegmenter. 
 Idet det er et computerprogram, er det eneste krav til målgruppen, at de er villige til at bruge en computer.
@@ -80,7 +79,7 @@ I de følgende afsnit beskrives der, hvordan testens data vil blive behandlet.
 
 \subsection{Funktionalitet}
 I testområdet funktionalitet undersøges der hvorvidt opgaverne stillet er mulige at løse for testpersonerne.
-Dermed testes der altså på, om brugergrænsefladen hindrer programmets funktionalitet.\fxnote{Thomas: Slette 'altså', lyder talesprogsagtigt}
+Dermed testes der på, om brugergrænsefladen hindrer programmets funktionalitet. 
 
 \subsection{Effektivitet}
 Effektivitet anses som værende forholdet mellem en ekspert og en nybegynders tid, for at udføre en given opgave \citep{UIEffeciency}.
@@ -99,8 +98,8 @@ Spørgeskemaet kan ses i \myref{bilag:SporgeSkema}. \citep{UISatisfaction}
 
 Grundet tidspres, fra bl.a. problemer med databaseimplementationen, var der kun tid til at teste på fire personer, foruden eksperten.
 Personerne der udførte testene, bestod af elever på Aalborg Universitet, som ikke havde set eller på anden vis hørt om projektet før.
-Resultaterne kan ikke konkluderes til at give et endegyldigt svar på om programmet kan bruges i Sejlklubben Sundet, da testpersonerne ingen kendskab har til sejlklubben og deres behov.\fxnote{Tristan: Dennes behov?}
-For at få et mere brugbart resultat fra testen, skulle testpersonerne være en repræsentativ gruppe af medlemmer fra sejlklubben, eller på anden vis være indblandet med en sejlklub. \fxnote{Caspar: indblandet, lyder mærkeligt, evt involveret i stedet}
+Resultaterne kan ikke konkluderes til at give et endegyldigt svar på om programmet kan bruges i Sejlklubben Sundet, da testpersonerne ingen kendskab har til sejlklubben og dennes behov. 
+For at få et mere brugbart resultat fra testen, skulle testpersonerne være en repræsentativ gruppe af medlemmer fra sejlklubben, eller på anden vis være involveret med en sejlklub. 
 På denne måde, ville testpersonen have en bedre forståelse for kravene til programmets funktionalitet.
 Dog menes det, at testens resultater alligevel kan sige noget om brugen af programmet, både om navigering og de testede funktionaliteter.
 
@@ -112,21 +111,21 @@ På \myref{tab:TestTimeTable} kan der ses en tabel over tid brugt ved hver opgav
     \colorlet{shadecolor}{gray!40}
     \rowcolors{1}{white}{shadecolor}
   \centering
-  \caption{Tid brugt pr opgave under test. T[1-4] er udefrakommende testpersoner.}
     \begin{tabular}{r|rrrr|r|r|r}
-    \textbf{Opgave} & T1     & T2     & T3     & T4     & \textbf{AVG} & \textbf{Ekspert} & \textbf{Sammenligning} \\ \hline
-    1     & 00:15 & 00:32 & 00:24 & 00:31 & 00:25 & 00:15 & 59\% \\
-    2     & 04:42 & 04:00 & 02:04 & 02:27 & 03:18 & 01:35 & 48\% \\
-    3     & 01:08 & 02:13 & 01:02 & 01:10 & 01:23 & 00:30 & 36\% \\
-    4     & 00:49 & 00:32 & 00:32 & 00:55 & 00:42 & 00:29 & 69\% \\
-    5     & 00:29 & 00:24 & 00:27 & 00:30 & 00:27 & 00:13 & 47\% \\
-    6     & 01:16 & 00:57 & 00:57 & 01:02 & 01:03 & 00:50 & 79\% \\
-    7     & 02:00 & 00:35 & 00:30 & 00:40 & 00:56 & 00:14 & 25\% \\
-    8     & 02:02 & 04:20 & 04:57 & 02:10 & 03:22 & 00:56 & 28\% \\
-    9     & 00:32 & 00:26 & 00:19 & 00:42 & 00:29 & 00:10 & 34\% \\ \hline
-    \textbf{SUM} & 11:56 & 13:59 & 11:12 & 10:07 & 11:48 & 05:12 & 44\% \\
+    \textbf{Opgave} & T1     & T2     & T3     & T4     & \textbf{Gennemsnit} & \textbf{Ekspert} & \textbf{Forhold} \\ \hline
+    1     & 00:15 & 00:32 & 00:24 & 00:31 & 00:25 & 00:15 & 1,7 \\
+    2     & 04:42 & 04:00 & 02:04 & 02:27 & 03:18 & 01:35 & 2,1 \\
+    3     & 01:08 & 02:13 & 01:02 & 01:10 & 01:23 & 00:30 & 2,8 \\
+    4     & 00:49 & 00:32 & 00:32 & 00:55 & 00:42 & 00:29 & 1,4 \\
+    5     & 00:29 & 00:24 & 00:27 & 00:30 & 00:27 & 00:13 & 2,1 \\
+    6     & 01:16 & 00:57 & 00:57 & 01:02 & 01:03 & 00:50 & 1,3 \\
+    7     & 02:00 & 00:35 & 00:30 & 00:40 & 00:56 & 00:14 & 4,0 \\
+    8     & 02:02 & 04:20 & 04:57 & 02:10 & 03:22 & 00:56 & 3,6 \\
+    9     & 00:32 & 00:26 & 00:19 & 00:42 & 00:29 & 00:10 & 3,0 \\ \hline
+    \textbf{SUM} & 11:56 & 13:59 & 11:12 & 10:07 & 11:48 & 05:12 & 2,3 \\
     %\bottomrule
-    \end{tabular}%
+    \end{tabular}%    
+    \caption{Tid brugt pr opgave under test. T[1-4] er udefrakommende testpersoner.\newline Forhold udregnes: $ \dfrac{Gennemsnit}{Ekspert} $}
   \label{tab:TestTimeTable}%
 \end{table}%
 
@@ -208,7 +207,7 @@ Eksperten havde ingen problemer med denne opgave og gennemførte opgaven på und
     \item Forøg størrelsen af den forklarende tekst på forsiden til hver af de to DataGrids.
     \item Øg afstanden fra velkomstbeskeden til de to DataGrids.
     \item Mindske højden af de to DataGrids, da de alligevel er hovedsageligt tomme. 
-    \item Dediker en tab til læsning og udførelse af logbøger. \fxnote{Caspar: Udfyldelse i setdet for udførelse?}
+    \item Dediker en tab til læsning og udfyldelse af logbøger. 
 \end{itemize}
 
 \subsection{Testpersonernes samlede vurdering}
@@ -225,16 +224,16 @@ Dette kan ses i skemaet \myref{tab:vurderingtest}.
     \centering
     \caption{Testpersonernes vurdering af centrale skærmvinduer}
     \begin{tabular}{l|rrrr|r}
-        \textbf{Vindue} & T1 & T2 & T3 & T4 & \textbf{GNS} \\
+        \textbf{Vindue} & T1 & T2 & T3 & T4 & \textbf{Gennemsnit} \\
         \midrule
-        Forside & 5 & 4 & 4 & 3 & 4 \\
-        Undervisning & 1 & 2 & 3 & 2 & 2 \\
+        Forside & 5 & 4 & 4 & 3 & 4,00 \\
+        Undervisning & 1 & 2 & 3 & 2 & 2,00 \\
         Medlemmer & 4 & 5 & 4 & 2 & 3,75 \\
         Både & 3 & 4 & 3 & 3 & 3,25 \\
         Begivenheder & 4 & 4 & 3 & 2 & 3,25 \\
         Logbogsvinduer & 3 & 2 & 2 & 4 & 2,75 \\
         CreateCrewWindow & 5 & 5 & 4 & 3 & 4,25 \\
-        CreateBoatBookingWindow & 5 & 5 & 4 & 4 & 4,5 \\ \hline
+        CreateBoatBookingWindow & 5 & 5 & 4 & 4 & 4,50 \\ \hline
         \textbf{Samlet Vurdering} & 3,75 & 3,88 & 3,38 & 2,88 & 3,47 \\
     \end{tabular}%
     \label{tab:vurderingtest}%
@@ -250,7 +249,7 @@ Herunder større afstand fra velkomstteksten til de to DataGrids, større oversk
 
 \textbf{Undervisning}: 
 Generel utilfredshed omkring denne UserControl.
-Specifikt var der klager om, at der blev brugt CheckBoxes til at tjekke elevers fremmøde.\fxnote{Thomas: Ændre 'klager om' til 'klaget over'}
+Specifikt var der klager vedrørende, brugen af CheckBoxes til at tjekke elevers fremmøde.
 Her mente flere, at CreateCrewWindow-vinduet kunne have været anvendt. 
 Derudover tilføjede den højre side af vinduet, der havde et layout som lignede CreateCrewWindow-vinduet, forvirring. 
 Der var også negative kommentarer omhandlende CheckBoxen ``Rediger hold''. 
@@ -260,7 +259,7 @@ Flere fandt denne unødvendig, mens en anden mente, at det indhold denne låste 
 Testpersonerne skulle ikke bruge dette vindue i opgaverne.
 Derfor fik de vist dette vindue efter testens gennemførsel, således de kunne kommentere tabbens indhold. 
 Der var generelt positive kommentarer, dog mente T4, at den store mængde data virkede overvældende. 
-T3 og T4 mente at søgebaren ikke var klart nok markeret, og foreslog at der kunne tilføjes et ``loop''-ikon. \fxnote{Thomas: Hvad menes der med loop ikon? Evt. specificere.}
+T3 og T4 mente at søgebaren ikke var klart nok markeret, og foreslog at der kunne tilføjes et ``forstørrelsesglas''--ikon.
 
 \textbf{Både}:
 Flere testpersoner udtrykte, at denne UserControl var uoverskuelig, da der vises for meget information efter valg af en båd.
@@ -273,25 +272,25 @@ Flere mente at brugen af ListBoxen burde have været erstattet med et DataGrid, 
 
 \textbf{Logbogsvinduerne}:
 Kritikken af disse var primært rettet mod navigeringen til vinduet. 
-Der var der uenighed imellem testpersonernes vurdering af vinduets design.\fxnote{Tristan: Jeg indsatte et punktum her.}
+Der var der uenighed imellem testpersonernes vurdering af vinduets design.
 Én mente at elementerne i det tospaltede layout var uoverskueligt, særligt pga. rækkefølgen af disse. 
-Mens en anden udtrykte positive tanker om layoutet.\fxnote{Thomas: Slette 'mens', lyder underligt i en sætning for sig selv}
+En anden udtrykte positive tanker om layoutet.
 
 \textbf{CreateCrewWindow}:
 Der var næsten kun positive kommentarer om dette vindue.
 Vinduet blev omtalt som værende overskueligt, dog mente de det venstre DataGrid burde være større.
 T3 foreslog, at dette kunne have samme størrelse som det til højre. 
-Her blev søgefunktionen igen overset, og der blev igen foreslået tilføjelsen af et ``loop''-ikon.\fxnote{Tristan: Tror I ikke der menes et ``lup''--ikon? Som i forstørrelsesglas.}
+Her blev søgefunktionen igen overset, og der blev igen foreslået tilføjelsen af et ``forstørrelsesglas''--ikon.
 
 \textbf{CreateBoatBookingWindow}:
 Der var meget få kritikpunkter til dette vindue.
 T4 mente at knapperne ``Gem reservation'' og ``Annuller reservation'' var for brede og burde være placeret således, de lignede dem fra Windows vinduer såsom ``egenskaber''. 
-Altså hvor de er placeret nederst i højre hjørne, på linje med hinanden. \fxnote{Tristan: Det lyder underligt at starte denne sætning med ``Altså''.}
+Dvs. hvor de er placeret nederst i højre hjørne, på linje med hinanden. 
 
 \subsection{Konklusion af brugertest}
 Brugertesten har givet os en større indsigt i programmets layout.
-Målene for layoutet var minimalisme og konsistens, men dette er ikke opnået, grundet problemer i arbejdsprocessen, se \myref{sec:faktiske-arbejdsproces}. \fxnote{Marc: Arbejdsprocessen begrunder ikke hvorfor målene for layoutet ikke er opfyldt, dette skal tydeliggøres her}
-
+Målene for layoutet var minimalisme og konsistens, men dette er ikke opnået, grundet problemer i arbejdsprocessen, se \myref{sec:faktiske-arbejdsproces}. Dette uddybes i \myref{chap:diskussion}.
+ 
 På baggrund af brugertesten etableres det, at nogle dele af brugergrænsefladen er bedre konstrueret end andre.
 De bedste vurderes til at være vinduerne: \textbf{CreateCrewWindow} og \textbf{CreateBoatBookingWindow}. 
 Disse vinduer har begge en høj overskuelighed, dette er et af principperne fra minimalisme, altså at fjerne det unødvendige. 

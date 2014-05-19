@@ -6,11 +6,11 @@
 \tikzstyle{arrow} = [thick,->,>=stealth]
 \begin{tikzpicture}[node distance = 1.5cm]
 %noderne (objekterne) laves
-\node (uixaml) [lille] {UI XAML};
+\node (uixaml) [lille] {GUI};
 \node (cb) [lille, below of=uixaml] {Code-Behind};
 \node (invi1) [invi,draw=none,below of=cb] {};
 \node (model) [lille, below of=invi1] {Model};
-\node (idal) [lille, right of=invi1] {IDal};
+\node (idal) [lille, right of=invi1] {IDAL};
 \node (persistenslag) [lille, right=0.5cm of idal] {Persistenslag};
 %pointers laves
 \draw [line] (uixaml) -- (cb);

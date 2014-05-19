@@ -4,14 +4,15 @@ I dette kapitel beskrives programmets opbygning.
 
 \input{images/flowcharts/programopbygning.tex}
 
-På \myref{img:Program_flow}, ses den overordnede struktur af programmet. Ud fra figuren kan der ses de forskellige elementer programmet er opbygget af.
-Nederst på figuren ses boksen \textit{Model}, denne repræsenterer modellaget.
-Heri findes de modeller, som bliver brugt i programmet dette er nærmere forklaret i \myref{chap:klasser}.
-Modellaget har en direkte forbindelse til det generiske IDal(Data Abstraction Layer), hvilket kan ses på figuren som \textit{IDal} boksen.
-Dette har en direkte forbindelse ud til persistenslaget, dette er nærmere forklaret i \myref{chap:database}.
-Yderligere ses en forbindelse fra boksen \textit{IDal} til boksen \textit{Code-Behind}. 
-Denne boks repræsenterer programmets bagvedliggende kode, som gennem IDak interfacen kan tilgå persistenslaget. 
-Det ses ydermer fra figuren at der er en direkte forbindelse til UI'et repræsenteret med boksen \textit{UI XAML}.
-Koden har yderligere kendskab til modellaget, illustreret med en stiplet linje, for at kunne instantiere modellerne så da data kan håndteres.
-Dette er den visuele del af programmet som brugeren kan se, når brugeren laver en aktion på programmet kaldes Code-Behind'en for at udføre dette, heraf den direkte forbindelse mellem de to. 
-En nærmere forklaring af disse bokse følger i \myref{Programmets_brugergraenseflade}
+På \myref{img:Program_flow}, ses den overordnede struktur af programmet.
+Ud fra figuren kan der ses de forskellige elementer programmet består af.
+Nederst på figuren ses boksen \textit{Model}, som repræsenterer modellaget.
+Heri findes de modeller, som bliver brugt i programmet, de er nærmere forklaret i \myref{chap:klasser}.
+Modellaget har en forbindelse til det generiske Data Abstraction Layer interface (IDAL), hvilket kan ses på figuren \textit{IDAL} boksen.
+Dette har en forbindelse til persistenslaget, som er nærmere forklaret i \myref{chap:database}.
+Yderligere ses en forbindelse fra boksen \textit{IDAL} til boksen \textit{Code-Behind}. 
+Denne boks repræsenterer programmets bagvedliggende kode, som gennem IDAL interfacet kan tilgå persistenslaget. 
+Det ses ydermere på figuren, at der er en forbindelse til brugergrænsefladen (GUI) repræsenteret med boksen \textit{GUI}.
+Koden har yderligere kendskab til modellaget, illustreret med en stiplet linje, for at kunne instantiere modellerne så data kan håndteres.
+Dette er den del af programmet, som brugeren kan se, når brugeren laver en aktion i programmet kaldes Code-Behind'en for at udføre denne, heraf forbindelsen mellem de to. 
+En nærmere forklaring af \textit{GUI} og \textit{Code-Behind} boksene følger i \myref{Programmets_brugergraenseflade}.
