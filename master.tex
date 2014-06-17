@@ -22,5 +22,32 @@
 
 \chapter{hype}
 \section{derp}
-herp
+\begin{lstlisting}[frame=single, caption=Forsidens Code-Behind, label=fntpg-cb]
+diff --git a/McSntt/McSntt/Views/Windows/CreateBoatBookingWindow.xaml.cs b/McSntt/McSntt/Views/Windows/CreateBoatBookingWindow.xaml.cs
+index 84fb4b8..eb9a525 100644
+--- a/McSntt/McSntt/Views/Windows/CreateBoatBookingWindow.xaml.cs
++++ b/McSntt/McSntt/Views/Windows/CreateBoatBookingWindow.xaml.cs
+@@ -42,6 +42,9 @@ namespace McSntt.Views.Windows
+             this.CaptainComboBox.ItemsSource = this.CrewList.Where(x => x.BoatDriver);
+             this.CaptainComboBox.SelectedIndex =
+                 this.CrewList.IndexOf(this.CrewList.First(p => p.PersonId == rt.CaptainId));
++            // The following lines will select the first eligible member if the above line didn't select any.
++            if (this.CaptainComboBox.SelectedIndex == -1 && this.CrewList.Count(p => p.PersonId == rt.CaptainId) > 0) 
++                this.CaptainComboBox.SelectedIndex = 0;
+         }
+ 
+         public CreateBoatBookingWindow(int index)
+diff --git a/McSntt/McSntt/Views/Windows/NewLecture.xaml.cs b/McSntt/McSntt/Views/Windows/NewLecture.xaml.cs
+index be6ff69..f6ea856 100644
+--- a/McSntt/McSntt/Views/Windows/NewLecture.xaml.cs
++++ b/McSntt/McSntt/Views/Windows/NewLecture.xaml.cs
+@@ -52,6 +52,8 @@ namespace McSntt.Views.Windows
+                            PurposeAndArea = "Undervisning med hold " + this._currentTeam.Name,
+                            WeatherConditions = ""
+                        };
++
++            trip.Crew.Add(this._currentTeam.Teacher);
+             DalLocator.RegularTripDal.Create(trip);
+\end{lstlisting}
+
 \end{document}
