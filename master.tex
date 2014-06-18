@@ -20,9 +20,7 @@
 \sloppy
 
 
-\chapter{Handouts}
-
-\section{Disposition}
+\chapter{Disposition}
 
 	\begin{itemize}
 	\item Introduktion og indledning (Nikolaj)
@@ -34,38 +32,82 @@
 	\item Procesanalyse	(Thomas)
 	\end{itemize}
 
-\newpage
-\section{Kodeændringer}
-\begin{lstlisting}[frame=single, caption=Forsidens Code-Behind, label=fntpg-cb]
-diff --git a/McSntt/McSntt/Views/Windows/CreateBoatBookingWindow.xaml.cs b/McSntt/McSntt/Views/Windows/CreateBoatBookingWindow.xaml.cs
-index 84fb4b8..eb9a525 100644
---- a/McSntt/McSntt/Views/Windows/CreateBoatBookingWindow.xaml.cs
-+++ b/McSntt/McSntt/Views/Windows/CreateBoatBookingWindow.xaml.cs
-@@ -42,6 +42,9 @@ namespace McSntt.Views.Windows
-             this.CaptainComboBox.ItemsSource = this.CrewList.Where(x => x.BoatDriver);
-             this.CaptainComboBox.SelectedIndex =
-                 this.CrewList.IndexOf(this.CrewList.First(p => p.PersonId == rt.CaptainId));
-+            // The following lines will select the first eligible member if the above line didn't select any.
-+            if (this.CaptainComboBox.SelectedIndex == -1 && this.CrewList.Count(p => p.PersonId == rt.CaptainId) > 0) 
-+                this.CaptainComboBox.SelectedIndex = 0;
-         }
- 
-         public CreateBoatBookingWindow(int index)
-diff --git a/McSntt/McSntt/Views/Windows/NewLecture.xaml.cs b/McSntt/McSntt/Views/Windows/NewLecture.xaml.cs
-index be6ff69..f6ea856 100644
---- a/McSntt/McSntt/Views/Windows/NewLecture.xaml.cs
-+++ b/McSntt/McSntt/Views/Windows/NewLecture.xaml.cs
-@@ -52,6 +52,8 @@ namespace McSntt.Views.Windows
-                            PurposeAndArea = "Undervisning med hold " + this._currentTeam.Name,
-                            WeatherConditions = ""
-                        };
-+
-+            trip.Crew.Add(this._currentTeam.Teacher);
-             DalLocator.RegularTripDal.Create(trip);
+\chapter{Ændringer i koden}
+
+\textbf{I McSntt/Views/Windows/CreateBoatBookingWindow.xaml.cs, linje 45-47}
+\lstset{firstnumber=45}
+\begin{lstlisting}[frame=single, caption=CreateBoatBookingWindow.cs ændringer, label=fntpg-cb]
++ // The following lines will select the first eligible member if the above line didn't select any.
++ if(this.CaptainComboBox.SelectedIndex == -1 && this.CrewList.Count(p => p.PersonId == rt.CaptainId) > 0) 
++     this.CaptainComboBox.SelectedIndex = 0;
 \end{lstlisting}
 
-\newpage
-\section{Demonstration}
+\lstset{firstnumber=57}
+\textbf{I McSntt/Views/Windows/NewLecture.xaml.cs, linje 57}
+\begin{lstlisting}[frame=single, caption=NewLecture.xaml.cs ændringer, label=fntpg-cb]
++ trip.Crew.Add(this._currentTeam.Teacher);
+\end{lstlisting}
+
+\textbf{Ændringer til Events, Database Create og Update}
+
+Der var blevet overset en fejl i samarbejdet med databasen i denne del af programmet, efter en ændring på noget af brugergrænsefladen.
+Disse ændringer, har fikset dette, og det virker nu efter hensigten.
+
+\lstset{firstnumber=13}
+\textbf{I McSntt/Views/Windows/EventsPopup.xaml.cs, linje 13}
+\begin{lstlisting}[frame=single, caption=EventsPopup.xaml.cs ændringer, label=fntpg-cb]
++        private readonly bool IsUpdate;
+\end{lstlisting}
+\lstset{firstnumber=31}
+\textbf{Linje 31-32}
+\begin{lstlisting}[frame=single, label=fntpg-cb]
++            Button.Content = "Rediger";
++            this.IsUpdate = true;
+\end{lstlisting}
+
+\textbf{Linje 81-87}
+\begin{lstlisting}[frame=single, label=fntpg-cb]
+-  DalLocator.EventDal.Create(newEvent);
++  if (this.IsUpdate) {
++      DalLocator.EventDal.Update(this.newEvent);
++  }
++  else
++  {
++      DalLocator.EventDal.Create(this.newEvent);
++  }
+\end{lstlisting}
+
+\lstset{firstnumber=40}
+\textbf{I McSntt/Views/Windows/EventsAdmin.xaml.cs, linje 40}
+\begin{lstlisting}[frame=single, caption=EventsPopup.xaml.cs ændringer, label=fntpg-cb]
+-  var newEvent = new Event();
+\end{lstlisting}
+
+
+\lstset{firstnumber=46}
+\textbf{Linje 46-51}
+\begin{lstlisting}[frame=single, label=fntpg-cb]
+-  if (newEvent.Created)
+-     {
+-       this.EventsList.Add(newEvent);
++       this.EventsList = DalLocator.EventDal.GetAll().ToList();
++       DalLocator.EventDal.LoadData(this.EventsList);
+\end{lstlisting}
+
+\lstset{firstnumber=56}
+\textbf{Linje 56}
+\begin{lstlisting}[frame=single, label=fntpg-cb]
+- DalLocator.EventDal.Create(newEvent);
+\end{lstlisting}
+
+\lstset{firstnumber=80}
+\textbf{Linje 81}
+\begin{lstlisting}[frame=single, label=fntpg-cb]
+-  DalLocator.EventDal.Update(selectedEvent);
+\end{lstlisting}
+
+
+\chapter{Demonstration}
 
 I denne sektion, findes hvilke elementer, der testes og vises af programmet, samt i hvilken rækkefølge disse udføres under præsentationen.
 
