@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt,fleqn,twoside,openright,final]{memoir}
+\documentclass[article,a4paper,11pt,onseside,final]{memoir}
 
 \input{preamble/preamble.tex}
 % Preamble additions
@@ -17,8 +17,6 @@
 
 
 \begin{document}
-\sloppy
-
 
 \chapter{Disposition}
 
@@ -32,7 +30,15 @@
 	\item Procesanalyse	(Thomas)
 	\end{itemize}
 
-\chapter{Ændringer i koden}
+\newpage
+\chapter{Rettelser til det afleverede materiale}
+
+\section{Rapportændringer}
+\begin{itemize}
+    \item Afsnit 6.2(State of the Art). BoatCloud beskrivelsen af applikationerne var forkert, en oprigtig beskrivelse er skrevet istedet, funktionaliteten af programmet er stadig den samme.
+\end{itemize}
+
+\section{Kodeændringer}
 
 \textbf{I McSntt/Views/Windows/CreateBoatBookingWindow.xaml.cs, linje 45-47}
 \lstset{firstnumber=45}
@@ -106,7 +112,7 @@ Disse ændringer, har fikset dette, og det virker nu efter hensigten.
 -  DalLocator.EventDal.Update(selectedEvent);
 \end{lstlisting}
 
-
+\newpage
 \chapter{Demonstration}
 
 I denne sektion, findes hvilke elementer, der testes og vises af programmet, samt i hvilken rækkefølge disse udføres under præsentationen.
@@ -132,6 +138,5 @@ I denne sektion, findes hvilke elementer, der testes og vises af programmet, sam
 		\end{itemize}
 	\item Log ud, og vis persistenslag, hvordan filerne opdateres, i mappen, samt at informationerne fra sidste kørsel stadig findes.
 \end{itemize}
-
 
 \end{document}
